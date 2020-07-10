@@ -1,0 +1,6 @@
+module CGURobots [system] {
+  link "gurobots"
+  umbrella header "libgurobots_bridging.h"
+  export *
+  module * { export * }
+}
