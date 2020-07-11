@@ -179,27 +179,27 @@ public struct NaoV5 {
 extension NaoV5.Cameras: Codable {
 
     enum CodingKeys: String, CodingKey {
-        case camera
+        case rawValue
     }
 
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let camera = try values.decode(Int.self, forKey: .camera)
-        switch camera {
+        let rawValue = try values.decode(Int.self, forKey: .rawValue)
+        switch rawValue {
         case Int(GU_NAO_V5_TOP_CAMERA_INDEX):
             self = .top
         case Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX):
             self = .bottom
         default:
-            let keys = [CodingKeys.camera]
-            let msg = "Value of camera '\(camera)' does not equal GU_NAO_V5_TOP_CAMERA_INDEX (\(GU_NAO_V5_TOP_CAMERA_INDEX)) or GU_NAO_V5_BOTTOM_CAMERA_INDEX (\(GU_NAO_V5_BOTTOM_CAMERA_INDEX))"
+            let keys = [CodingKeys.rawValue]
+            let msg = "Value of rawValue '\(rawValue)' does not equal GU_NAO_V5_TOP_CAMERA_INDEX (\(GU_NAO_V5_TOP_CAMERA_INDEX)) or GU_NAO_V5_BOTTOM_CAMERA_INDEX (\(GU_NAO_V5_BOTTOM_CAMERA_INDEX))"
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: keys, debugDescription: msg))
         }
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.rawValue, forKey: .camera)
+        try container.encode(self.rawValue, forKey: .rawValue)
     }
 
 }
