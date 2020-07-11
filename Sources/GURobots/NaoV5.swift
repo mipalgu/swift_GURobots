@@ -61,7 +61,7 @@ import GUCoordinates
 
 public struct NaoV5 {
 
-    public enum Cameras {
+    public enum Cameras: Hashable {
 
         case top
         case bottom
@@ -172,6 +172,34 @@ public struct NaoV5 {
 
     public mutating func update() {
         gu_nao_update_from_wb(&self.rawValue, self.wb.wb)
+    }
+
+}
+
+extension NaoV5.Cameras: Codable {
+
+    enum CodingKeys: String, CodingKey {
+        case camera
+    }
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let camera = try values.decode(Int.self, forKey: .camera)
+        switch camera {
+        case Int(GU_NAO_V5_TOP_CAMERA_INDEX):
+            self = .top
+        case Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX):
+            self = .bottom
+        default:
+            let keys = [CodingKeys.camera]
+            let msg = "Value of camera '\(camera)' does not equal GU_NAO_V5_TOP_CAMERA_INDEX (\(GU_NAO_V5_TOP_CAMERA_INDEX)) or GU_NAO_V5_BOTTOM_CAMERA_INDEX (\(GU_NAO_V5_BOTTOM_CAMERA_INDEX))"
+            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: keys, debugDescription: msg))
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.rawValue, forKey: .camera)
     }
 
 }
