@@ -61,6 +61,34 @@ import GUCoordinates
 
 public struct NaoV5 {
 
+    public enum Cameras {
+
+        case top
+        case bottom
+
+        public var rawValue: Int {
+            switch self {
+            case .top:
+                return Int(GU_NAO_V5_TOP_CAMERA_INDEX)
+            case .bottom:
+                return Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX)
+            }
+        }
+
+        public init?(rawValue: Int) {
+            if rawValue == Int(GU_NAO_V5_TOP_CAMERA_INDEX) {
+                self = .top
+                return
+            }
+            if rawValue == Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX) {
+                self = .bottom
+                return
+            }
+            return nil
+        }
+
+    }
+
     private let wb: Whiteboard
 
     public private(set) var rawValue: gu_nao
@@ -119,27 +147,27 @@ public struct NaoV5 {
     }
 
     public func topCameraRelativeCoordinate(of coord: CameraCoordinate) -> RelativeCoordinate? {
-        coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: Int(GU_NAO_V5_TOP_CAMERA_INDEX))
+        coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: Cameras.top.rawValue)
     }
 
     public func topCameraRelativeCoordinate(of coord: PixelCoordinate) -> RelativeCoordinate? {
-        coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: Int(GU_NAO_V5_TOP_CAMERA_INDEX))
+        coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: Cameras.top.rawValue)
     }
 
     public func topCameraRelativeCoordinate(of coord: PercentCoordinate) -> RelativeCoordinate? {
-        coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: Int(GU_NAO_V5_TOP_CAMERA_INDEX))
+        coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: Cameras.top.rawValue)
     }
 
     public func bottomCameraRelativeCoordinate(of coord: CameraCoordinate) -> RelativeCoordinate? {
-        coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+        coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: Cameras.bottom.rawValue)
     }
 
     public func bottomCameraRelativeCoordinate(of coord: PixelCoordinate) -> RelativeCoordinate? {
-        coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+        coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: Cameras.bottom.rawValue)
     }
 
     public func bottomCameraRelativeCoordinate(of coord: PercentCoordinate) -> RelativeCoordinate? {
-        coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+        coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: Cameras.bottom.rawValue)
     }
 
     public mutating func update() {
