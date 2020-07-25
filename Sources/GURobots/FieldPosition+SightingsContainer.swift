@@ -60,28 +60,44 @@ import GUCoordinates
 
 extension FieldPositionContainer where Self: SightingsContainer {
     
-    public var ballPosition: CartesianCoordinate? {
+// MARK: - Field Positions Of Sightings
+    
+    /// Calculate the field position of the ball that we can currently see.
+    ///
+    /// Returns nil if `fieldPosition` or `ballSighting` is nil.
+    public var ballSightingPosition: CartesianCoordinate? {
         guard let sighting = self.ballSighting else {
             return nil
         }
         return self.cartesianCoordinate(at: sighting)
     }
     
-    public var leftGoalPostPosition: CartesianCoordinate? {
+    /// Calculate the field position of the left goal post that we can
+    /// currently see.
+    ///
+    /// Returns nil if `fieldPosition` or `leftGoalPostSighting` is nil.
+    public var leftGoalPostSightingPosition: CartesianCoordinate? {
         guard let sighting = self.leftGoalPostSighting else {
             return nil
         }
         return self.cartesianCoordinate(at: sighting)
     }
     
-    public var rightGoalPostPosition: CartesianCoordinate? {
+    /// Calculate the field position of the right goal post that we can
+    /// currently see.
+    ///
+    /// Returns nil if `fieldPosition` or `rightGoalPostSighting` is nil.
+    public var rightGoalPostSightingPosition: CartesianCoordinate? {
         guard let sighting = self.rightGoalPostSighting else {
             return nil
         }
         return self.cartesianCoordinate(at: sighting)
     }
     
-    public var goalPosition: CartesianCoordinate? {
+    /// Calculate the field position of the goal that we can currently see.
+    ///
+    /// Returns nil if `fieldPosition` or `goalSighting` is nil.
+    public var goalSightingPosition: CartesianCoordinate? {
         guard let sighting = self.goalSighting else {
             return nil
         }

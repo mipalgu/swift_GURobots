@@ -58,7 +58,10 @@
 
 import GUCoordinates
 
+
 extension FieldPositionContainer where Self: CameraPivotContainer {
+    
+// MARK: - Field Coordinates From Image Coordinates
     
     /// Calculate the position of an object in an image in relation to
     /// `fieldPosition`.
@@ -170,6 +173,8 @@ extension FieldPositionContainer where Self: CameraPivotContainer {
     public func fieldCoordinate(at coord: PercentCoordinate, camera: Int, heading: degrees_t) -> FieldCoordinate? {
         return self.fieldPosition?.fieldCoordinate(at: coord, cameraPivot: self.cameraPivot, camera: camera, heading: heading)
     }
+    
+// MARK: - Unsafe Field Coordinates From Image Coordinates
     
     /// Calculate the position of an object in an image in relation to
     /// `fieldPosition`.
@@ -305,6 +310,8 @@ extension FieldPositionContainer where Self: CameraPivotContainer {
     public func unsafeFieldCoordinate(at coord: PercentCoordinate, camera: Int, heading: degrees_t) -> FieldCoordinate? {
         return self.fieldPosition?.unsafeFieldCoordinate(at: coord, cameraPivot: self.cameraPivot, camera: camera, heading: heading)
     }
+    
+// MARK: - Image Coordinates From Field Coordinates
     
     /// Calculate a pixel within a specific image from a specific camera
     /// representing an object at a given position.
@@ -681,6 +688,8 @@ extension FieldPositionContainer where Self: CameraPivotContainer {
     public func clampedPercentCoordinate(to coord: FieldCoordinate, camera: Int, tolerance: percent_f) -> PercentCoordinate? {
         return self.fieldPosition?.clampedPercentCoordinate(to: coord, cameraPivot: self.cameraPivot, camera: camera, tolerance: tolerance)
     }
+    
+// MARK: - Unsafe Image Coordinates From Field Coordinates
     
     /// Calculate a pixel within a specific image from a specific camera
     /// representing an object at a given position.

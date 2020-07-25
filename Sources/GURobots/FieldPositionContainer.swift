@@ -66,6 +66,8 @@ public protocol FieldPositionContainer {
 
 extension FieldPositionContainer {
     
+// MARK: - Field Coordinates From Relative Coordinates
+    
     /// Calculate the position of a coordinate in relation to this coordinate.
     ///
     /// - Parameter coord: The position of the coordinate in relation to
@@ -90,6 +92,8 @@ extension FieldPositionContainer {
     public func fieldCoordinate(at coord: RelativeCoordinate, heading: degrees_t) -> FieldCoordinate? {
         return self.fieldPosition?.fieldCoordinate(at: coord, heading: heading)
     }
+    
+// MARK: - Relative Coordinates From Field Coordinates
     
     /// Calculate the `RelativeCoordinate` to a target coordinate.
     ///

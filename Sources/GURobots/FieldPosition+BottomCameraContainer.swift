@@ -60,6 +60,8 @@ import GUCoordinates
 
 extension FieldPositionContainer where Self: BottomCameraContainer {
     
+// MARK: - Field Coordinates From Bottom Camera Image Coordinates
+    
     /// Calculate the position of an object in an image from the bottom camera
     /// in relation to `fieldPosition`.
     ///
@@ -140,6 +142,8 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     public func bottomCameraFieldCoordinate(at coord: PercentCoordinate, heading: degrees_t) -> FieldCoordinate? {
         return self.fieldCoordinate(at: coord, camera: self.bottomCameraIndex, heading: heading)
     }
+    
+// MARK: Unsafe Field Coordinates From Bottom Camera Image Coordinates
     
     /// Calculate the position of an object in an image from the bottom camera
     /// in relation to `fieldPosition`.
@@ -245,6 +249,8 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     public func bottomCameraUnsafeFieldCoordinate(at coord: PercentCoordinate, heading: degrees_t) -> FieldCoordinate? {
         return self.unsafeFieldCoordinate(at: coord, camera: self.bottomCameraIndex, heading: heading)
     }
+    
+// MARK: - Bottom Camera Image Coordinates From Field Coordinates
     
     /// Calculate a pixel within a specific image from a specific camera
     /// representing an object at a given position.
@@ -570,6 +576,8 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     public func bottomCameraClampedPercentCoordinate(to coord: FieldCoordinate, tolerance: percent_f) -> PercentCoordinate? {
         return self.clampedPercentCoordinate(to: coord, camera: self.bottomCameraIndex, tolerance: tolerance)
     }
+    
+// MARK: - Unsafe Bottom Camera Image Coordinates From Field Coordinates
     
     /// Calculate a pixel within a specific image from the bottom camera
     /// representing an object at a given position.
