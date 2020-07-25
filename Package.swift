@@ -8,8 +8,11 @@ let package = Package(
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
-            name: "GURobots",
-            targets: ["GURobots"]),
+        name: "GURobots",
+        targets: ["GURobots"]),
+        .library(
+            name: "Nao",
+            targets: ["Nao"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
