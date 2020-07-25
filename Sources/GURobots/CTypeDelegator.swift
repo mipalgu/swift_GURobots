@@ -1,5 +1,5 @@
 /*
- * CTypeWrapper.swift
+ * CTypeDelegator.swift
  * GURobots
  *
  * Created by Callum McColl on 26/7/20.
@@ -57,33 +57,59 @@
  */
 
 /**
- *  `CTypeWrapper` provides a common interface for swift types that convert
+ *  `CTypeDelegator` provides a common interface for swift types that convert
  *  and provide the functionality of underlying C types.
  *
  *  In such a case, some functionality needs to be provided. The swift type
- *  must be able to be converted from the underlying C type, but must also
- *  provide the ability to be converted to the underlying C type.
+ *  must provide the ability to be converted to the underlying C type.
  *
  *  This protocol also requires that conforming types behave the same way
  *  when it comes to equality, hashing, encoding and decoding using the
  *  `Equatable`, `Hashable`, `Encodable` and `Decodable` protocols.
  */
-public protocol CTypeWrapper: CTypeDelegator {
+public protocol CTypeDelegator: Hashable, Codable {
 
     /**
-     *  Initialise the conforming type from the underlying C type.
+     *  The type of the underlying C type that the conforming type is wrapping.
      */
-    init(_: CType)
+    associatedtype CType
+
+    /**
+     *  Convert `self` to the underlying C type.
+     */
+    var rawValue: CType { get }
 
 }
 
-extension CTypeWrapper where Self: Decodable, CType: Decodable {
+extension CTypeDelegator where Self: Equatable, CType: Equatable {
 
     /**
-     *  Delegates decoding to the underlying C type.
+     *  Delegates equality to the underlying C type.
      */
-    public init(from decoder: Decoder) throws {
-        self.init(try CType.init(from: decoder))
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.rawValue == rhs.rawValue
     }
-    
+
+}
+
+extension CTypeDelegator where Self: Hashable, CType: Hashable {
+
+    /**
+     *  Delegates hashing functionality to the underlying C type.
+     */
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.rawValue)
+    }
+
+}
+
+extension CTypeDelegator where Self: Encodable, CType: Encodable {
+
+    /**
+     *  Delegates encoding to the underlying C type.
+     */
+    public func encode(to encoder: Encoder) throws {
+        try self.rawValue.encode(to: encoder)
+    }
+
 }
