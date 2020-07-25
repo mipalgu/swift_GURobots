@@ -1,8 +1,8 @@
 /*
- * NaoV5.swift 
- * GURobots 
+ * SightingsContainer.swift
+ * GURobots
  *
- * Created by Callum McColl on 10/07/2020.
+ * Created by Callum McColl on 25/7/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,100 +56,42 @@
  *
  */
 
-import GUSimpleWhiteboard
 import GUCoordinates
 
-public protocol NaoWrapper: TopCameraContainer, BottomCameraContainer, SightingsContainer, FieldPositionContainer {
+public protocol SightingsContainer {
     
-    var rawValue: gu_nao { get }
+    var sightings: gu_nao_sightings { get }
     
 }
 
-extension NaoWrapper {
+extension SightingsContainer {
     
-    public var topCameraIndex: Int {
-        Int(GU_NAO_V5_TOP_CAMERA_INDEX)
-    }
-    
-    public var bottomCameraIndex: Int {
-        Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX)
-    }
-    
-    public var joints: gu_nao_joints {
-        self.rawValue.joints
-    }
-
-    public var sightings: gu_nao_sightings {
-        self.rawValue.sightings
-    }
-
-    public var fieldPosition: FieldCoordinate? {
-        guard self.rawValue.fieldPosition.hasCoordinate else {
+    public var ballSighting: RelativeCoordinate? {
+        guard self.sightings.ball.canSee else {
             return nil
         }
-        return FieldCoordinate(self.rawValue.fieldPosition.field_coordinate)
-    }
-    
-    public var cameraPivot: CameraPivot {
-        CameraPivot(gu_nao_head_to_camera_pivot(self.joints.head))
-    }
-    
-}
-
-public struct NaoV5: NaoWrapper {
-    
-    public var joints: gu_nao_joints
-    
-    public var sightings: gu_nao_sightings
-    
-    public var fieldPosition: FieldCoordinate?
-    
-    public var rawValue: gu_nao {
-        let fieldCoordinate = gu_optional_field_coordinate(
-            hasCoordinate: self.fieldPosition != nil,
-            field_coordinate: self.fieldPosition?.rawValue ?? gu_field_coordinate()
-        )
-        return gu_nao(
-            fieldPosition: fieldCoordinate,
-            joints: self.joints,
-            sightings: self.sightings
-        )
-    }
-    
-    public init() {
-        self.init(gu_nao())
-    }
-    
-    public init(joints: gu_nao_joints, sightings: gu_nao_sightings, fieldPosition: FieldCoordinate?) {
-        self.joints = joints
-        self.sightings = sightings
-        self.fieldPosition = fieldPosition
-    }
-    
-    public init(_ other: gu_nao) {
-        self.init(
-            joints: other.joints,
-            sightings: other.sightings,
-            fieldPosition: other.fieldPosition.hasCoordinate ? FieldCoordinate(other.fieldPosition.field_coordinate) : nil
-        )
-    }
-    
-}
-
-public struct WBNaoV5: NaoWrapper {
-
-    private let wb: Whiteboard
-
-    public private(set) var rawValue: gu_nao
-
-    public init(wb: Whiteboard = Whiteboard()) {
-        self.wb = wb
-        self.rawValue = gu_nao()
-        self.update()
+        return RelativeCoordinate(self.sightings.ball.coordinate)
     }
 
-    public mutating func update() {
-        gu_nao_update_from_wb(&self.rawValue, self.wb.wb)
+    public var leftGoalPostSighting: RelativeCoordinate? {
+        guard self.sightings.leftGoalPost.canSee else {
+            return nil
+        }
+        return RelativeCoordinate(self.sightings.leftGoalPost.coordinate)
     }
 
+    public var rightGoalPostSighting: RelativeCoordinate? {
+        guard self.sightings.rightGoalPost.canSee else {
+            return nil
+        }
+        return RelativeCoordinate(self.sightings.rightGoalPost.coordinate)
+    }
+
+    public var goalSighting: RelativeCoordinate? {
+        guard self.sightings.goal.canSee else {
+            return nil
+        }
+        return RelativeCoordinate(self.sightings.goal.coordinate)
+    }
+    
 }
