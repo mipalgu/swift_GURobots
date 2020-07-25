@@ -3952,3 +3952,35 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     }
     
 }
+
+extension FieldPositionContainer where Self: SightingsContainer {
+    
+    public var ballPosition: CartesianCoordinate? {
+        guard let sighting = self.ballSighting else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
+    }
+    
+    public var leftGoalPostPosition: CartesianCoordinate? {
+        guard let sighting = self.leftGoalPostSighting else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
+    }
+    
+    public var rightGoalPostPosition: CartesianCoordinate? {
+        guard let sighting = self.rightGoalPostSighting else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
+    }
+    
+    public var goalPosition: CartesianCoordinate? {
+        guard let sighting = self.goalSighting else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
+    }
+    
+}
