@@ -79,7 +79,7 @@ extension NaoWrapper {
         self.rawValue.joints
     }
 
-    public var sightings: gu_nao_sightings {
+    public var sightings: gu_soccer_sightings {
         self.rawValue.sightings
     }
 

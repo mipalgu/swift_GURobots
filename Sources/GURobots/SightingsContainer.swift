@@ -61,7 +61,7 @@ import GUCoordinates
 
 public protocol SightingsContainer {
     
-    var sightings: gu_nao_sightings { get }
+    var sightings: gu_soccer_sightings { get }
     
 }
 
