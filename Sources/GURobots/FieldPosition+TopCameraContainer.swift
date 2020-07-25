@@ -60,235 +60,196 @@ import GUCoordinates
 
 extension FieldPositionContainer where Self: TopCameraContainer {
     
-    /// Calculate the position of an object in an image in relation to this
-    /// coordinate.
+    /// Calculate the position of an object in an image from the top camera in
+    /// relation to `fieldPosition`.
     ///
     /// - Parameter coord: The pixel in the image representing the object.
     ///
-    /// - Returns: A new `CartesianCoordinate` calculated in relation to this
-    /// coordinate.
-    ///
-    /// - SeeAlso: `CameraCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// - Returns: A new `CartesianCoordinate` calculated in relation to
+    /// `fieldPosition`. Returns nil if `fieldPosition` is nil or the `coord`
+    /// represents a pixel that cannot be converted to a `RelativeCoordinate`.
     public func topCameraCartesianCoordinate(at coord: CameraCoordinate) -> CartesianCoordinate? {
         return self.cartesianCoordinate(at: coord, camera: self.topCameraIndex)
     }
 
-    /// Calculate the position of an object in an image in relation to this
-    /// coordinate.
+    /// Calculate the position of an object in an image from the top camera in
+    /// relation to `fieldPosition`.
     ///
     /// - Parameter coord: The pixel in the image representing the object.
     ///
-    /// - Returns: A new `CartesianCoordinate` calculated in relation to this
-    /// coordinate.
-    ///
-    /// - SeeAlso: `PixelCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// - Returns: A new `CartesianCoordinate` calculated in relation to
+    /// `fieldPosition`. Returns nil if `fieldPosition` is nil or the `coord`
+    /// represents a pixel that cannot be converted to a `RelativeCoordinate`.
     public func topCameraCartesianCoordinate(at coord: PixelCoordinate) -> CartesianCoordinate? {
         return self.cartesianCoordinate(at: coord, camera: self.topCameraIndex)
     }
 
-    /// Calculate the position of an object in an image in relation to this
-    /// coordinate.
+    /// Calculate the position of an object in an image from the top camera in
+    /// relation to `fieldPosition`.
     ///
-    /// - Parameter coord: The point in the image representing the object.
+    /// - Parameter coord: The pixel in the image representing the object.
     ///
-    /// - Returns: A new `CartesianCoordinate` calculated in relation to this
-    /// coordinate.
-    ///
-    /// - SeeAlso: `PercentCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// - Returns: A new `CartesianCoordinate` calculated in relation to
+    /// `fieldPosition`. Returns nil if `fieldPosition` is nil or the `coord`
+    /// represents a point that cannot be converted to a `RelativeCoordinate`.
     public func topCameraCartesianCoordinate(at coord: PercentCoordinate) -> CartesianCoordinate? {
         return self.cartesianCoordinate(at: coord, camera: self.topCameraIndex)
     }
 
-    /// Calculate the position of an object in an image in relation to this
-    /// coordinate.
+    /// Calculate the position of an object in an image from the top camera in
+    /// relation to `fieldPosition`.
     ///
     /// - Parameter coord: The pixel in the image representing the object.
     ///
     /// - Parameter heading: The direction in which the new coordinate
     /// is facing.
     ///
-    /// - Returns: A new `FieldCoordinate` calculated in relation to this
-    /// coordinate.
-    ///
-    /// - SeeAlso: `CameraCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// - Returns: A new `FieldCoordinate` calculated in relation to
+    /// `fieldPosition`. Returns nil if `fieldPosition` is nil or the `coord`
+    /// represents a pixel that cannot be converted to a `RelativeCoordinate`.
     public func topCameraFieldCoordinate(at coord: CameraCoordinate, heading: degrees_t) -> FieldCoordinate? {
         return self.fieldCoordinate(at: coord, camera: self.topCameraIndex, heading: heading)
     }
 
-    /// Calculate the position of an object in an image in relation to this
-    /// coordinate.
+    /// Calculate the position of an object in an image from the top camera in
+    /// relation to `fieldPosition`.
     ///
     /// - Parameter coord: The pixel in the image representing the object.
     ///
     /// - Parameter heading: The direction in which the new coordinate
     /// is facing.
     ///
-    /// - Returns: A new `FieldCoordinate` calculated in relation to this
-    /// coordinate.
-    ///
-    /// - SeeAlso: `PixelCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// - Returns: A new `FieldCoordinate` calculated in relation to
+    /// `fieldPosition`. Returns nil if `fieldPosition` is nil or the `coord`
+    /// represents a pixel that cannot be converted to a `RelativeCoordinate`.
     public func topCameraFieldCoordinate(at coord: PixelCoordinate, heading: degrees_t) -> FieldCoordinate? {
         return self.fieldCoordinate(at: coord, camera: self.topCameraIndex, heading: heading)
     }
 
-    /// Calculate the position of an object in an image in relation to this
-    /// coordinate.
+    /// Calculate the position of an object in an image from the top camera in
+    /// relation to `fieldPosition`.
     ///
     /// - Parameter coord: The point in the image representing the object.
     ///
     /// - Parameter heading: The direction in which the new coordinate
     /// is facing.
     ///
-    /// - Returns: A new `FieldCoordinate` calculated in relation to this
-    /// coordinate.
-    ///
-    /// - SeeAlso: `PercentCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// - Returns: A new `FieldCoordinate` calculated in relation to
+    /// `fieldPosition`. Returns nil if `fieldPosition` is nil or the `coord`
+    /// represents a point that cannot be converted to a `RelativeCoordinate`.
     public func topCameraFieldCoordinate(at coord: PercentCoordinate, heading: degrees_t) -> FieldCoordinate? {
         return self.fieldCoordinate(at: coord, camera: self.topCameraIndex, heading: heading)
     }
     
-    /// Calculate the position of an object in an image in relation to this
-    /// coordinate.
+    /// Calculate the position of an object in an image from the top camera in
+    /// relation to `fieldPosition`.
     ///
     /// - Parameter coord: The pixel in the image representing the object.
     ///
-    /// - Returns: A new `CartesianCoordinate` calculated in relation to this
-    /// coordinate.
+    /// - Returns: A new `CartesianCoordinate` calculated in relation to
+    /// `fieldPosition`. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: Only use this function if you are positive that the pixel in
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    ///
-    /// - SeeAlso: `CameraCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
     public func topCameraUnsafeCartesianCoordinate(at coord: CameraCoordinate) -> CartesianCoordinate? {
         return self.unsafeCartesianCoordinate(at: coord, camera: self.topCameraIndex)
     }
     
-    /// Calculate the position of an object in an image in relation to this
-    /// coordinate.
+    /// Calculate the position of an object in an image from the top camera in
+    /// relation to `fieldPosition`.
     ///
     /// - Parameter coord: The pixel in the image representing the object.
     ///
-    /// - Returns: A new `CartesianCoordinate` calculated in relation to this
-    /// coordinate.
+    /// - Returns: A new `CartesianCoordinate` calculated in relation to
+    /// `fieldPosition`. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: Only use this function if you are positive that the pixel in
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    ///
-    /// - SeeAlso: `PixelCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
     public func topCameraUnsafeCartesianCoordinate(at coord: PixelCoordinate) -> CartesianCoordinate? {
         return self.unsafeCartesianCoordinate(at: coord, camera: self.topCameraIndex)
     }
     
-    /// Calculate the position of an object in an image in relation to this
-    /// coordinate.
+    /// Calculate the position of an object in an image from the top camera in
+    /// relation to `fieldPosition`.
     ///
     /// - Parameter coord: The point in the image representing the object.
     ///
-    /// - Returns: A new `CartesianCoordinate` calculated in relation to this
-    /// coordinate.
+    /// - Returns: A new `CartesianCoordinate` calculated in relation to
+    /// `fieldPosition`. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: Only use this function if you are positive that the point in
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    ///
-    /// - SeeAlso: `PercentCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
     public func topCameraUnsafeCartesianCoordinate(at coord: PercentCoordinate) -> CartesianCoordinate? {
         return self.unsafeCartesianCoordinate(at: coord, camera: self.topCameraIndex)
     }
     
-    /// Calculate the position of an object in an image in relation to this
-    /// coordinate.
+    /// Calculate the position of an object in an image from the top camera in
+    /// relation `fieldPosition`.
     ///
     /// - Parameter coord: The pixel in the image representing the object.
     ///
     /// - Parameter heading: The direction in which the new coordinate
     /// is facing.
     ///
-    /// - Returns: A new `FieldCoordinate` calculated in relation to this
-    /// coordinate.
+    /// - Returns: A new `FieldCoordinate` calculated in relation to
+    /// `fieldPosition`. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: Only use this function if you are positive that the pixel in
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    ///
-    /// - SeeAlso: `CameraCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
     public func topCameraUnsafeFieldCoordinate(at coord: CameraCoordinate, heading: degrees_t) -> FieldCoordinate? {
         return self.unsafeFieldCoordinate(at: coord, camera: self.topCameraIndex, heading: heading)
     }
     
-    /// Calculate the position of an object in an image in relation to this
-    /// coordinate.
+    /// Calculate the position of an object in an image from the top camera in
+    /// relation `fieldPosition`.
     ///
     /// - Parameter coord: The pixel in the image representing the object.
     ///
     /// - Parameter heading: The direction in which the new coordinate
     /// is facing.
     ///
-    /// - Returns: A new `FieldCoordinate` calculated in relation to this
-    /// coordinate.
+    /// - Returns: A new `FieldCoordinate` calculated in relation to
+    /// `fieldPosition`. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: Only use this function if you are positive that the pixel in
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    ///
-    /// - SeeAlso: `PixelCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
     public func topCameraUnsafeFieldCoordinate(at coord: PixelCoordinate, heading: degrees_t) -> FieldCoordinate? {
         return self.unsafeFieldCoordinate(at: coord, camera: self.topCameraIndex, heading: heading)
     }
     
-    /// Calculate the position of an object in an image in relation to this
-    /// coordinate.
+    /// Calculate the position of an object in an image from the top camera in
+    /// relation `fieldPosition`.
     ///
     /// - Parameter coord: The point in the image representing the object.
     ///
     /// - Parameter heading: The direction in which the new coordinate
     /// is facing.
     ///
-    /// - Returns: A new `FieldCoordinate` calculated in relation to this
-    /// coordinate.
+    /// - Returns: A new `FieldCoordinate` calculated in relation to
+    /// `fieldPosition`. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: Only use this function if you are positive that the point in
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    ///
-    /// - SeeAlso: `PercentCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
     public func topCameraUnsafeFieldCoordinate(at coord: PercentCoordinate, heading: degrees_t) -> FieldCoordinate? {
         return self.unsafeFieldCoordinate(at: coord, camera: self.topCameraIndex, heading: heading)
     }
     
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -296,29 +257,17 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// - Parameter resHeight: The height of the resolution of the image that
     /// we are placing the object in.
     ///
-    /// - Returns: When successful, a new `CameraCoordinate` representing the
-    /// object in the camera. When unsuccessful (for example when the camera
-    /// cannot actually see the object) then `nil` is returned.
-    ///
-    /// - SeeAlso: `CameraCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// - Returns: A new `CameraCoordinate` representing the
+    /// object in the top camera. Returns nil when `fieldPosition` is nil or
+    /// when the conversion fails.
     public func topCameraCameraCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> CameraCoordinate? {
         return self.cameraCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -326,29 +275,17 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// - Parameter resHeight: The height of the resolution of the image that
     /// we are placing the object in.
     ///
-    /// - Returns: When successful, a new `CameraCoordinate` representing the
-    /// object in the camera. When unsuccessful (for example when the camera
-    /// cannot actually see the object) then `nil` is returned.
-    ///
-    /// - SeeAlso: `CameraCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// - Returns: A new `CameraCoordinate` representing the
+    /// object in the top camera. Returns nil when `fieldPosition` is nil or
+    /// when the conversion fails.
     public func topCameraCameraCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> CameraCoordinate? {
         return self.cameraCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -356,29 +293,17 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// - Parameter resHeight: The height of the resolution of the image that
     /// we are placing the object in.
     ///
-    /// - Returns: When successful, a new `PixelCoordinate` representing the
-    /// object in the camera. When unsuccessful (for example when the camera
-    /// cannot actually see the object) then `nil` is returned.
-    ///
-    /// - SeeAlso: `PixelCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// - Returns: A new `PixelCoordinate` representing the
+    /// object in the top camera. Returns nil when `fieldPosition` is nil or
+    /// when the conversion fails.
     public func topCameraPixelCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> PixelCoordinate? {
         return self.pixelCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -386,65 +311,50 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// - Parameter resHeight: The height of the resolution of the image that
     /// we are placing the object in.
     ///
-    /// - Returns: When successful, a new `PixelCoordinate` representing the
-    /// object in the camera. When unsuccessful (for example when the camera
-    /// cannot actually see the object) then `nil` is returned.
-    ///
-    /// - SeeAlso: `PixelCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// - Returns: A new `PixelCoordinate` representing the
+    /// object in the top camera. Returns nil when `fieldPosition` is nil or
+    /// when the conversion fails.
     public func topCameraPixelCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> PixelCoordinate? {
         return self.pixelCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
-    /// Calculate a point in an image from a specific camera representing an
-    /// object at a given position.
+    /// Calculate a point within a specific image taken from the top camera
+    /// representing an object at a given position.
     ///
     /// - Parameter coord: The position of the object.
     ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
+    /// - Parameter resWidth: The width of the resolution of the image that
+    /// we are placing the object in.
     ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
+    /// - Parameter resHeight: The height of the resolution of the image that
+    /// we are placing the object in.
     ///
-    /// - Returns: When successful, a new `PercentCoordinate` representing the
-    /// object in the camera. When unsuccessful (for example when the camera
-    /// cannot actually see the object) then `nil` is returned.
-    ///
-    /// - SeeAlso: `PercentCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// - Returns: A new `PercentCoordinate` representing the
+    /// object in the top camera. Returns nil when `fieldPosition` is nil or
+    /// when the conversion fails.
     public func topCameraPercentCoordinate(to coord: CartesianCoordinate) -> PercentCoordinate? {
         return self.percentCoordinate(to: coord, camera: self.topCameraIndex)
     }
 
-    /// Calculate a point in an image from a specific camera representing an
-    /// object at a given position.
+    /// Calculate a point within a specific image taken from the top camera
+    /// representing an object at a given position.
     ///
     /// - Parameter coord: The position of the object.
     ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
+    /// - Parameter resWidth: The width of the resolution of the image that
+    /// we are placing the object in.
     ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
+    /// - Parameter resHeight: The height of the resolution of the image that
+    /// we are placing the object in.
     ///
-    /// - Returns: When successful, a new `PercentCoordinate` representing the
-    /// object in the camera. When unsuccessful (for example when the camera
-    /// cannot actually see the object) then `nil` is returned.
-    ///
-    /// - SeeAlso: `PercentCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// - Returns: A new `PercentCoordinate` representing the
+    /// object in the top camera. Returns nil when `fieldPosition` is nil or
+    /// when the conversion fails.
     public func topCameraPercentCoordinate(to coord: FieldCoordinate) -> PercentCoordinate? {
         return self.percentCoordinate(to: coord, camera: self.topCameraIndex)
     }
     
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// This function ensures that the calculated coordinate falls within the
@@ -458,15 +368,6 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Parameter coord: The position of the object.
     ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
-    ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
     ///
@@ -479,15 +380,13 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Returns: When successful, a new `CameraCoordinate` representing the
     /// object in the camera. This function returns nil when the calculated
-    /// coordinate falls outside the image bounds and the given `tolerance`.
-    ///
-    /// - SeeAlso: `CameraCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// coordinate falls outside the image bounds and the given `tolerance` or
+    /// `fieldPosition` is nil.
     public func topCameraClampedCameraCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f) -> CameraCoordinate? {
         return self.clampedCameraCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// This function ensures that the calculated coordinate falls within the
@@ -501,15 +400,6 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Parameter coord: The position of the object.
     ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
-    ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
     ///
@@ -522,15 +412,13 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Returns: When successful, a new `CameraCoordinate` representing the
     /// object in the camera. This function returns nil when the calculated
-    /// coordinate falls outside the image bounds and the given `tolerance`.
-    ///
-    /// - SeeAlso: `CameraCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// coordinate falls outside the image bounds and the given `tolerance` or
+    /// `fieldPosition` is nil.
     public func topCameraClampedCameraCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f) -> CameraCoordinate? {
         return self.clampedCameraCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image take from the top camera
     /// representing an object at a given position.
     ///
     /// This function ensures that the
@@ -556,15 +444,6 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Parameter coord: The position of the object.
     ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
-    ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
     ///
@@ -577,15 +456,13 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Returns: When successful, a new `PixelCoordinate` representing the
     /// object in the camera. This function returns nil when the calculated
-    /// coordinate falls outside the image bounds and the given `tolerance`.
-    ///
-    /// - SeeAlso: `PixelCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// coordinate falls outside the image bounds and the given `tolerance` or
+    /// `fieldPosition` is nil.
     public func topCameraClampedPixelCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f) -> PixelCoordinate? {
         return self.clampedPixelCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// This function ensures that the
@@ -611,15 +488,6 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Parameter coord: The position of the object.
     ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
-    ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
     ///
@@ -632,15 +500,13 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Returns: When successful, a new `PixelCoordinate` representing the
     /// object in the camera. This function returns nil when the calculated
-    /// coordinate falls outside the image bounds and the given `tolerance`.
-    ///
-    /// - SeeAlso: `PixelCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// coordinate falls outside the image bounds and the given `tolerance` or
+    /// `fieldPosition` is nil.
     public func topCameraClampedPixelCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f) -> PixelCoordinate? {
         return self.clampedPixelCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
-    /// Calculate a point within a specific image from a specific camera
+    /// Calculate a point within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// This function ensures that the
@@ -662,15 +528,6 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Parameter coord: The position of the object.
     ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
-    ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
     ///
@@ -683,7 +540,8 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Returns: When successful, a new `PercentCoordinate` representing the
     /// object in the camera. This function returns nil when the calculated
-    /// coordinate falls outside the image bounds and the given `tolerance`.
+    /// coordinate falls outside the image bounds and the given `tolerance` or
+    /// `fieldPosition` is nil.
     ///
     /// - SeeAlso: `PercentCoordinate`.
     /// - SeeAlso: `CameraPivot`.
@@ -691,7 +549,7 @@ extension FieldPositionContainer where Self: TopCameraContainer {
         return self.clampedPercentCoordinate(to: coord, camera: self.topCameraIndex, tolerance: tolerance)
     }
 
-    /// Calculate a point within a specific image from a specific camera
+    /// Calculate a point within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// This function ensures that the
@@ -713,15 +571,6 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Parameter coord: The position of the object.
     ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
-    ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
     ///
@@ -734,27 +583,16 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Returns: When successful, a new `PercentCoordinate` representing the
     /// object in the camera. This function returns nil when the calculated
-    /// coordinate falls outside the image bounds and the given `tolerance`.
-    ///
-    /// - SeeAlso: `PercentCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// coordinate falls outside the image bounds and the given `tolerance` or
+    /// `fieldPosition` is nil.
     public func topCameraClampedPercentCoordinate(to coord: FieldCoordinate, tolerance: percent_f) -> PercentCoordinate? {
         return self.clampedPercentCoordinate(to: coord, camera: self.topCameraIndex, tolerance: tolerance)
     }
     
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -762,34 +600,23 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// - Parameter resHeight: The height of the resolution of the image that
     /// we are placing the object in.
     ///
-    /// - Returns: A new `CameraCoordinate` representing the object in the camera.
+    /// - Returns: A new `CameraCoordinate` representing the object in the
+    /// camera. Returns nil when `fieldPosition` is nil.
     ///
     /// - Warning: This function does not check whether the calculated coordinate
     /// is within the bounds of the `resWidth` and `resHeight`. As such you
     /// should only use this function if you are positive that the camera can
     /// actually see the object at `coord`. If you would like to use a version
     /// of this function that performs this bounds check then use
-    /// `cameraCoordinate(to:cameraPivot:camera:resWidth:resHeight:)`
-    ///
-    /// - SeeAlso: `CameraCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// `topCameraCameraCoordinate(to:resWidth:resHeight:)`.
     public func topCameraUnsafeCameraCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> CameraCoordinate? {
         return self.unsafeCameraCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -797,34 +624,23 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// - Parameter resHeight: The height of the resolution of the image that
     /// we are placing the object in.
     ///
-    /// - Returns: A new `CameraCoordinate` representing the object in the camera.
+    /// - Returns: A new `CameraCoordinate` representing the object in the
+    /// camera. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: This function does not check whether the calculated coordinate
     /// is within the bounds of the `resWidth` and `resHeight`. As such you
     /// should only use this function if you are positive that the camera can
     /// actually see the object at `coord`. If you would like to use a version
     /// of this function that performs this bounds check then use
-    /// `cameraCoordinate(to:cameraPivot:camera:resWidth:resHeight:)`
-    ///
-    /// - SeeAlso: `CameraCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// `topCameraCameraCoordinate(to:resWidth:resHeight:)`.
     public func topCameraUnsafeCameraCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> CameraCoordinate? {
         return self.unsafeCameraCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -832,34 +648,23 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// - Parameter resHeight: The height of the resolution of the image that
     /// we are placing the object in.
     ///
-    /// - Returns: A new `PixelCoordinate` representing the object in the camera.
+    /// - Returns: A new `PixelCoordinate` representing the object in the
+    /// camera. Returns nil when `fieldPosition` is nil.
     ///
     /// - Warning: This function does not check whether the calculated coordinate
     /// is within the bounds of the `resWidth` and `resHeight`. As such you
     /// should only use this function if you are positive that the camera can
     /// actually see the object at `coord`. If you would like to use a version
     /// of this function that performs this bounds check then use
-    /// `pixelCoordinate(to:cameraPivot:camera:resWidth:resHeight:)`
-    ///
-    /// - SeeAlso: `PixelCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// `topCameraPixelCoordinate(to:resWidth:resHeight:)`.
     public func topCameraUnsafePixelCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> PixelCoordinate? {
         return self.unsafePixelCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -867,53 +672,33 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// - Parameter resHeight: The height of the resolution of the image that
     /// we are placing the object in.
     ///
-    /// - Returns: A new `PixelCoordinate` representing the object in the camera.
+    /// - Returns: A new `PixelCoordinate` representing the object in the
+    /// camera. Returns nil when `fieldPosition` is nil.
     ///
     /// - Warning: This function does not check whether the calculated coordinate
     /// is within the bounds of the `resWidth` and `resHeight`. As such you
     /// should only use this function if you are positive that the camera can
     /// actually see the object at `coord`. If you would like to use a version
     /// of this function that performs this bounds check then use
-    /// `pixelCoordinate(to:cameraPivot:camera:resWidth:resHeight:)`
-    ///
-    /// - SeeAlso: `PixelCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// `topCameraPixelCoordinate(to:resWidth:resHeight:)`.
     public func topCameraUnsafePixelCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> PixelCoordinate? {
         return self.unsafePixelCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
-    /// Calculate a point within a specific image from a specific camera
+    /// Calculate a point within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// - Parameter coord: The position of the object.
     ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
-    ///
-    /// - Parameter resWidth: The width of the resolution of the image that
-    /// we are placing the object in.
-    ///
-    /// - Parameter resHeight: The height of the resolution of the image that
-    /// we are placing the object in.
-    ///
     /// - Returns: A new `PercentCoordinate` representing the object in the
-    /// camera.
+    /// camera. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: This function does not check whether the calculated coordinate
     /// is within the bounds of the `resWidth` and `resHeight`. As such you
     /// should only use this function if you are positive that the camera can
     /// actually see the object at `coord`. If you would like to use a version
     /// of this function that performs this bounds check then use
-    /// `percentCoordinate(to:cameraPivot:camera:)`
-    ///
-    /// - SeeAlso: `PercentCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// `topCameraPercentCoordinate(to:)`.
     public func topCameraUnsafePercentCoordinate(to coord: CartesianCoordinate) -> PercentCoordinate? {
         return self.unsafePercentCoordinate(to: coord, camera: self.topCameraIndex)
     }
@@ -923,38 +708,20 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Parameter coord: The position of the object.
     ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
-    ///
-    /// - Parameter resWidth: The width of the resolution of the image that
-    /// we are placing the object in.
-    ///
-    /// - Parameter resHeight: The height of the resolution of the image that
-    /// we are placing the object in.
-    ///
     /// - Returns: A new `PercentCoordinate` representing the object in the
-    /// camera.
+    /// camera. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: This function does not check whether the calculated coordinate
     /// is within the bounds of the `resWidth` and `resHeight`. As such you
     /// should only use this function if you are positive that the camera can
     /// actually see the object at `coord`. If you would like to use a version
     /// of this function that performs this bounds check then use
-    /// `percentCoordinate(to:cameraPivot:camera:)`
-    ///
-    /// - SeeAlso: `PercentCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
+    /// `topCameraPercentCoordinate(to:)`.
     public func topCameraUnsafePercentCoordinate(to coord: FieldCoordinate, camera: Int) -> PercentCoordinate? {
         return self.unsafePercentCoordinate(to: coord, camera: self.topCameraIndex)
     }
     
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// When `tolerance` is not nil then this function ensures that the
@@ -973,15 +740,6 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// bounds.
     ///
     /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -1002,19 +760,16 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// bounds will be adjusted so that they are within the image.
     ///
     /// - Returns: A new `CameraCoordinate` representing the object in the
-    /// camera.
+    /// camera. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: When tolerance is not nil, and the coordinate falls outside
     /// the specified tolerance, then the coordinate returned from this function
     /// will be outside the image resolution bounds.
-    ///
-    /// - SeeAlso: `CameraCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
     public func topCameraUnsafeClampedCameraCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f? = nil) -> CameraCoordinate? {
         return self.unsafeClampedCameraCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// When `tolerance` is not nil then this function ensures that the
@@ -1033,15 +788,6 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// bounds.
     ///
     /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -1062,19 +808,16 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// bounds will be adjusted so that they are within the image.
     ///
     /// - Returns: A new `CameraCoordinate` representing the object in the
-    /// camera.
+    /// camera. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: When tolerance is not nil, and the coordinate falls outside
     /// the specified tolerance, then the coordinate returned from this function
     /// will be outside the image resolution bounds.
-    ///
-    /// - SeeAlso: `CameraCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
     public func topCameraUnsafeClampedCameraCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f? = nil) -> CameraCoordinate? {
         return self.unsafeClampedCameraCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// When `tolerance` is not nil then this function ensures that the
@@ -1104,15 +847,6 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// bounds.
     ///
     /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -1127,19 +861,16 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// bounds will be adjusted so that they are within the image.
     ///
     /// - Returns: A new `PixelCoordinate` representing the object in the
-    /// camera.
+    /// camera. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: When tolerance is not nil, and the coordinate falls outside
     /// the specified tolerance, then the coordinate returned from this function
     /// will be outside the image resolution bounds.
-    ///
-    /// - SeeAlso: `PixelCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
     public func topCameraUnsafeClampedPixelCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f? = nil) -> PixelCoordinate? {
         return self.unsafeClampedPixelCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
-    /// Calculate a pixel within a specific image from a specific camera
+    /// Calculate a pixel within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// When `tolerance` is not nil then this function ensures that the
@@ -1170,15 +901,6 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Parameter coord: The position of the object.
     ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
-    ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
     ///
@@ -1192,19 +914,16 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// bounds will be adjusted so that they are within the image.
     ///
     /// - Returns: A new `PixelCoordinate` representing the object in the
-    /// camera.
+    /// camera. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: When tolerance is not nil, and the coordinate falls outside
     /// the specified tolerance, then the coordinate returned from this function
     /// will be outside the image resolution bounds.
-    ///
-    /// - SeeAlso: `PixelCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
     public func topCameraUnsafeClampedPixelCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f? = nil) -> PixelCoordinate? {
         return self.unsafeClampedPixelCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
-    /// Calculate a point within a specific image from a specific camera
+    /// Calculate a point within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// When `tolerance` is not nil then this function ensures that the
@@ -1231,21 +950,6 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Parameter coord: The position of the object.
     ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
-    ///
-    /// - Parameter resWidth: The width of the resolution of the image that
-    /// we are placing the object in.
-    ///
-    /// - Parameter resHeight: The height of the resolution of the image that
-    /// we are placing the object in.
-    ///
     /// - Parameter tolerance: A percentage of the resolution indicating an
     /// area outside the image which, if the coordinate falls within, ajusts the
     /// coordinate so that it is within the image. When the tolerance is nil
@@ -1253,19 +957,16 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// bounds will be adjusted so that they are within the image.
     ///
     /// - Returns: A new `PercentCoordinate` representing the object in the
-    /// camera.
+    /// camera. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: When tolerance is not nil, and the coordinate falls outside
     /// the specified tolerance, then the coordinate returned from this function
     /// will be outside the image resolution bounds.
-    ///
-    /// - SeeAlso: `PercentCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
     public func topCameraUnsafeClampedPercentCoordinate(to coord: CartesianCoordinate, tolerance: percent_f? = nil) -> PercentCoordinate? {
         return self.unsafeClampedPercentCoordinate(to: coord, camera: self.topCameraIndex, tolerance: tolerance)
     }
 
-    /// Calculate a point within a specific image from a specific camera
+    /// Calculate a point within a specific image taken from the top camera
     /// representing an object at a given position.
     ///
     /// When `tolerance` is not nil then this function ensures that the
@@ -1292,21 +993,6 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     ///
     /// - Parameter coord: The position of the object.
     ///
-    /// - Parameter cameraPivot: The `CameraPivot` detailing the configuration
-    /// of the pivot point in which the camera is placed, as well as detailing
-    /// the cameras attached to the pivot point.
-    ///
-    /// - Parameter camera: The index of the camera which recorded the image
-    /// containing the pixel represented by `coord`. This index should reference
-    /// a valid `Camera` within the `cameras` array within
-    /// `cameraPivot.cameras`.
-    ///
-    /// - Parameter resWidth: The width of the resolution of the image that
-    /// we are placing the object in.
-    ///
-    /// - Parameter resHeight: The height of the resolution of the image that
-    /// we are placing the object in.
-    ///
     /// - Parameter tolerance: A percentage of the resolution indicating an
     /// area outside the image which, if the coordinate falls within, ajusts the
     /// coordinate so that it is within the image. When the tolerance is nil
@@ -1314,14 +1000,11 @@ extension FieldPositionContainer where Self: TopCameraContainer {
     /// bounds will be adjusted so that they are within the image.
     ///
     /// - Returns: A new `PercentCoordinate` representing the object in the
-    /// camera.
+    /// camera. Returns nil if `fieldPosition` is nil.
     ///
     /// - Warning: When tolerance is not nil, and the coordinate falls outside
     /// the specified tolerance, then the coordinate returned from this function
     /// will be outside the image resolution bounds.
-    ///
-    /// - SeeAlso: `PercentCoordinate`.
-    /// - SeeAlso: `CameraPivot`.
     public func topUnsafeClampedPercentCoordinate(to coord: FieldCoordinate, tolerance: percent_f? = nil) -> PercentCoordinate? {
         return self.unsafeClampedPercentCoordinate(to: coord, camera: self.topCameraIndex, tolerance: tolerance)
     }
