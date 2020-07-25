@@ -1,6 +1,6 @@
 /*
- * SoccerSightings.swift
- * GURobots
+ * NaoJointsContainer.swift
+ * Nao
  *
  * Created by Callum McColl on 26/7/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
@@ -56,41 +56,8 @@
  *
  */
 
-import CGURobots
-import GUCoordinates
-
-public struct SoccerSightings: CTypeWrapper {
+public protocol NaoJointsContainer {
     
-    public var ball: RelativeCoordinate?
-    
-    public var leftGoalPost: RelativeCoordinate?
-    
-    public var rightGoalPost: RelativeCoordinate?
-    
-    public var goal: RelativeCoordinate?
-    
-    public var rawValue: gu_soccer_sightings {
-        return gu_soccer_sightings(
-            ball: gu_optional_relative_coordinate(canSee: self.ball != nil, coordinate: self.ball?.rawValue ?? gu_relative_coordinate()),
-            leftGoalPost: gu_optional_relative_coordinate(canSee: self.leftGoalPost != nil, coordinate: self.leftGoalPost?.rawValue ?? gu_relative_coordinate()),
-            rightGoalPost: gu_optional_relative_coordinate(canSee: self.rightGoalPost != nil, coordinate: self.rightGoalPost?.rawValue ?? gu_relative_coordinate()),
-            goal: gu_optional_relative_coordinate(canSee: self.goal != nil, coordinate: self.goal?.rawValue ?? gu_relative_coordinate()))
-    }
-    
-    public init(_ other: gu_soccer_sightings) {
-        self.init(
-            ball: other.ball.canSee ? RelativeCoordinate(other.ball.coordinate) : nil,
-            leftGoalPost: other.leftGoalPost.canSee ? RelativeCoordinate(other.leftGoalPost.coordinate) : nil,
-            rightGoalPost: other.rightGoalPost.canSee ? RelativeCoordinate(other.rightGoalPost.coordinate) : nil,
-            goal: other.goal.canSee ? RelativeCoordinate(other.goal.coordinate) : nil
-        )
-    }
-    
-    public init(ball: RelativeCoordinate? = nil, leftGoalPost: RelativeCoordinate? = nil, rightGoalPost: RelativeCoordinate? = nil, goal: RelativeCoordinate? = nil) {
-        self.ball = ball
-        self.leftGoalPost = leftGoalPost
-        self.rightGoalPost = rightGoalPost
-        self.goal = goal
-    }
+    var joints: NaoJoints { get }
     
 }

@@ -59,7 +59,7 @@
 import GURobots
 import GUCoordinates
 
-public protocol NaoWrapper: TopCameraContainer, BottomCameraContainer, SightingsContainer, FieldPositionContainer {
+public protocol NaoWrapper: TopCameraContainer, BottomCameraContainer, NaoJointsContainer, SightingsContainer, FieldPositionContainer {
     
     var rawValue: gu_nao { get }
     
@@ -75,8 +75,8 @@ extension NaoWrapper {
         Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX)
     }
     
-    public var joints: gu_nao_joints {
-        self.rawValue.joints
+    public var joints: NaoJoints {
+        NaoJoints(self.rawValue.joints)
     }
 
     public var sightings: SoccerSightings {
@@ -91,7 +91,7 @@ extension NaoWrapper {
     }
     
     public var cameraPivot: CameraPivot {
-        CameraPivot(gu_nao_head_to_camera_pivot(self.joints.head))
+        CameraPivot(gu_nao_head_to_camera_pivot(self.joints.head.rawValue))
     }
     
 }
