@@ -1,5 +1,5 @@
 /*
- * YawPitchJoint.swift
+ * YPJoint.swift
  * GURobots
  *
  * Created by Callum McColl on 26/7/20.
@@ -58,9 +58,9 @@
 
 import CGURobots
 
-public typealias YawPitchJoint = gu_yp_joint
+public typealias YPJoint = gu_yp_joint
 
-extension YawPitchJoint: CTypeWrapper {
+extension YPJoint: CTypeWrapper {
     
     public var rawValue: gu_yp_joint {
         return self
