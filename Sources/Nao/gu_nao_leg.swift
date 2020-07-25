@@ -1,5 +1,5 @@
 /*
- * NaoArm.swift
+ * gu_nao_leg.swift
  * GURobots
  *
  * Created by Callum McColl on 26/7/20.
@@ -56,41 +56,41 @@
  *
  */
 
-import CGURobots
+import GURobots
 
-public struct NaoArm: CTypeWrapper {
+extension gu_nao_leg: Hashable, Codable {
     
-    public var shoulder: PitchRollJoint
-    
-    public var elbow: YawRollJoint
-    
-    public var wrist: YawJoint
-    
-    public var hand: NaoHandSensors
-    
-    public var rawValue: gu_nao_arm {
-        return gu_nao_arm(
-            shoulder: self.shoulder.rawValue,
-            elbow: self.elbow.rawValue,
-            wrist: self.wrist.rawValue,
-            hand: self.hand.rawValue
-        )
+    enum CodingKeys: String, CodingKey {
+        case hip
+        case knee
+        case ankle
+    }
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let hip = try values.decode(gu_yp_joint.self, forKey: .hip)
+        let knee = try values.decode(gu_pitch_joint.self, forKey: .knee)
+        let ankle = try values.decode(gu_pitch_roll_joint.self, forKey: .ankle)
+        self.init(hip: hip, knee: knee, ankle: ankle)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.hip, forKey: .hip)
+        try container.encode(self.knee, forKey: .knee)
+        try container.encode(self.ankle, forKey: .ankle)
     }
     
-    public init(_ other: gu_nao_arm) {
-        self.init(
-            shoulder: PitchRollJoint(other.shoulder),
-            elbow: YawRollJoint(other.elbow),
-            wrist: YawJoint(other.wrist),
-            hand: NaoHandSensors(other.hand)
-        )
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.hip)
+        hasher.combine(self.knee)
+        hasher.combine(self.ankle)
     }
     
-    public init(shoulder: PitchRollJoint, elbow: YawRollJoint, wrist: YawJoint, hand: NaoHandSensors) {
-        self.shoulder = shoulder
-        self.elbow = elbow
-        self.wrist = wrist
-        self.hand = hand
+    public static func ==(lhs: gu_nao_leg, rhs: gu_nao_leg) -> Bool {
+        return lhs.hip == rhs.hip
+            && lhs.knee == rhs.knee
+            && lhs.ankle == rhs.ankle
     }
     
 }

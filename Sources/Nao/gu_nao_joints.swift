@@ -1,5 +1,5 @@
 /*
- * gu_nao_hand_sensors.swift
+ * gu_nao_joints.swift
  * GURobots
  *
  * Created by Callum McColl on 26/7/20.
@@ -56,39 +56,51 @@
  *
  */
 
-import CGURobots
+import GURobots
 
-extension gu_nao_hand_sensors: Hashable, Codable {
+extension gu_nao_joints: Hashable, Codable {
     
     enum CodingKeys: String, CodingKey {
-        case touchLeft
-        case touchBack
-        case touchRight
+        case head
+        case leftArm
+        case rightArm
+        case leftLeg
+        case rightLeg
     }
 
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let touchLeft = try values.decode(Bool.self, forKey: .touchLeft)
-        let touchBack = try values.decode(Bool.self, forKey: .touchBack)
-        let touchRight = try values.decode(Bool.self, forKey: .touchRight)
-        self.init(touchLeft: touchLeft, touchBack: touchBack, touchRight: touchRight)
+        let head = try values.decode(gu_nao_head.self, forKey: .head)
+        let leftArm = try values.decode(gu_nao_arm.self, forKey: .leftArm)
+        let rightArm = try values.decode(gu_nao_arm.self, forKey: .rightArm)
+        let leftLeg = try values.decode(gu_nao_leg.self, forKey: .leftLeg)
+        let rightLeg = try values.decode(gu_nao_leg.self, forKey: .rightLeg)
+        self.init(head: head, leftArm: leftArm, rightArm: rightArm, leftLeg: leftLeg, rightLeg: rightLeg)
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.touchLeft, forKey: .touchLeft)
-        try container.encode(self.touchBack, forKey: .touchBack)
-        try container.encode(self.touchRight, forKey: .touchRight)
+        try container.encode(self.head, forKey: .head)
+        try container.encode(self.leftArm, forKey: .leftArm)
+        try container.encode(self.rightArm, forKey: .rightArm)
+        try container.encode(self.leftLeg, forKey: .leftLeg)
+        try container.encode(self.rightLeg, forKey: .rightLeg)
     }
     
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.touchLeft)
-        hasher.combine(self.touchBack)
-        hasher.combine(self.touchRight)
+        hasher.combine(self.head)
+        hasher.combine(self.leftArm)
+        hasher.combine(self.rightArm)
+        hasher.combine(self.leftLeg)
+        hasher.combine(self.rightLeg)
     }
     
-    public static func ==(lhs: gu_nao_hand_sensors, rhs: gu_nao_hand_sensors) -> Bool {
-        return gu_nao_hand_sensors_equals(lhs, rhs)
+    public static func ==(lhs: gu_nao_joints, rhs: gu_nao_joints) -> Bool {
+        return lhs.head == rhs.head
+            && lhs.leftArm == rhs.leftArm
+            && lhs.rightArm == rhs.rightArm
+            && lhs.leftLeg == rhs.leftLeg
+            && lhs.rightLeg == rhs.rightLeg
     }
     
 }

@@ -1,8 +1,8 @@
 /*
- * NaoV5.swift 
- * GURobots 
+ * NaoHandSensors.swift
+ * GURobots
  *
- * Created by Callum McColl on 10/07/2020.
+ * Created by Callum McColl on 26/7/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,45 +56,18 @@
  *
  */
 
-import CGURobots
-import GUCoordinates
+import GURobots
 
-public struct NaoV5: NaoWrapper {
+public typealias NaoHandSensors = gu_nao_hand_sensors
+
+extension NaoHandSensors: CTypeWrapper {
     
-    public var joints: gu_nao_joints
-    
-    public var sightings: SoccerSightings
-    
-    public var fieldPosition: FieldCoordinate?
-    
-    public var rawValue: gu_nao {
-        let fieldCoordinate = gu_optional_field_coordinate(
-            hasCoordinate: self.fieldPosition != nil,
-            field_coordinate: self.fieldPosition?.rawValue ?? gu_field_coordinate()
-        )
-        return gu_nao(
-            fieldPosition: fieldCoordinate,
-            joints: self.joints,
-            sightings: self.sightings.rawValue
-        )
+    public var rawValue: gu_nao_hand_sensors {
+        return self
     }
     
-    public init() {
-        self.init(gu_nao())
-    }
-    
-    public init(joints: gu_nao_joints, sightings: SoccerSightings, fieldPosition: FieldCoordinate?) {
-        self.joints = joints
-        self.sightings = sightings
-        self.fieldPosition = fieldPosition
-    }
-    
-    public init(_ other: gu_nao) {
-        self.init(
-            joints: other.joints,
-            sightings: SoccerSightings(other.sightings),
-            fieldPosition: other.fieldPosition.hasCoordinate ? FieldCoordinate(other.fieldPosition.field_coordinate) : nil
-        )
+    public init(_ other: gu_nao_hand_sensors) {
+        self = other
     }
     
 }

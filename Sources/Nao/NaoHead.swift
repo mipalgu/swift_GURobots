@@ -1,5 +1,5 @@
 /*
- * NaoJoints.swift
+ * NaoHead.swift
  * GURobots
  *
  * Created by Callum McColl on 26/7/20.
@@ -56,46 +56,28 @@
  *
  */
 
-import CGURobots
+import GURobots
 
-public struct NaoJoints: CTypeWrapper {
+public struct NaoHead: CTypeWrapper {
     
-    public var head: NaoHead
+    public var neck: PitchYawJoint
     
-    public var leftArm: NaoArm
+    public var buttons: NaoHeadSensors
     
-    public var rightArm: NaoArm
-    
-    public var leftLeg: NaoLeg
-    
-    public var rightLeg: NaoLeg
-    
-    public var rawValue: gu_nao_joints {
-        return gu_nao_joints(
-            head: self.head.rawValue,
-            leftArm: self.leftArm.rawValue,
-            rightArm: self.rightArm.rawValue,
-            leftLeg: self.leftLeg.rawValue,
-            rightLeg: self.rightLeg.rawValue
-        )
+    public var rawValue: gu_nao_head {
+        return gu_nao_head(neck: self.neck.rawValue, buttons: self.buttons.rawValue)
     }
     
-    public init(_ other: gu_nao_joints) {
+    public init(_ other: gu_nao_head) {
         self.init(
-            head: NaoHead(other.head),
-            leftArm: NaoArm(other.leftArm),
-            rightArm: NaoArm(other.rightArm),
-            leftLeg: NaoLeg(other.leftLeg),
-            rightLeg: NaoLeg(other.rightLeg)
+            neck: PitchYawJoint(other.neck),
+            buttons: NaoHeadSensors(other.buttons)
         )
     }
     
-    public init(head: NaoHead, leftArm: NaoArm, rightArm: NaoArm, leftLeg: NaoLeg, rightLeg: NaoLeg) {
-        self.head = head
-        self.leftArm = leftArm
-        self.rightArm = rightArm
-        self.leftLeg = leftLeg
-        self.rightLeg = rightLeg
+    public init(neck: PitchYawJoint, buttons: NaoHeadSensors) {
+        self.neck = neck
+        self.buttons = buttons
     }
     
 }

@@ -1,5 +1,5 @@
 /*
- * NaoHead.swift
+ * NaoHeadSensors.swift
  * GURobots
  *
  * Created by Callum McColl on 26/7/20.
@@ -56,28 +56,18 @@
  *
  */
 
-import CGURobots
+import GURobots
 
-public struct NaoHead: CTypeWrapper {
+public typealias NaoHeadSensors = gu_nao_head_sensors
+
+extension NaoHeadSensors: CTypeWrapper {
     
-    public var neck: PitchYawJoint
-    
-    public var buttons: NaoHeadSensors
-    
-    public var rawValue: gu_nao_head {
-        return gu_nao_head(neck: self.neck.rawValue, buttons: self.buttons.rawValue)
+    public var rawValue: gu_nao_head_sensors {
+        return self
     }
     
-    public init(_ other: gu_nao_head) {
-        self.init(
-            neck: PitchYawJoint(other.neck),
-            buttons: NaoHeadSensors(other.buttons)
-        )
-    }
-    
-    public init(neck: PitchYawJoint, buttons: NaoHeadSensors) {
-        self.neck = neck
-        self.buttons = buttons
+    public init(_ other: gu_nao_head_sensors) {
+        self = other
     }
     
 }

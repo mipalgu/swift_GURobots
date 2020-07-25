@@ -1,8 +1,8 @@
 /*
- * NaoWrapper.swift
+ * NaoLeg.swift
  * GURobots
  *
- * Created by Callum McColl on 25/7/20.
+ * Created by Callum McColl on 26/7/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,42 +56,36 @@
  *
  */
 
-import CGURobots
-import GUCoordinates
+import GURobots
 
-public protocol NaoWrapper: TopCameraContainer, BottomCameraContainer, SightingsContainer, FieldPositionContainer {
+public struct NaoLeg: CTypeWrapper {
     
-    var rawValue: gu_nao { get }
+    public var hip: YPJoint
     
-}
-
-extension NaoWrapper {
+    public var knee: PitchJoint
     
-    public var topCameraIndex: Int {
-        Int(GU_NAO_V5_TOP_CAMERA_INDEX)
+    public var ankle: PitchRollJoint
+    
+    public var rawValue: gu_nao_leg {
+        return gu_nao_leg(
+            hip: self.hip.rawValue,
+            knee: self.knee.rawValue,
+            ankle: self.ankle.rawValue
+        )
     }
     
-    public var bottomCameraIndex: Int {
-        Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX)
+    public init(_ other: gu_nao_leg) {
+        self.init(
+            hip: YPJoint(other.hip),
+            knee: PitchJoint(other.knee),
+            ankle: PitchRollJoint(other.ankle)
+        )
     }
     
-    public var joints: gu_nao_joints {
-        self.rawValue.joints
-    }
-
-    public var sightings: SoccerSightings {
-        SoccerSightings(self.rawValue.sightings)
-    }
-
-    public var fieldPosition: FieldCoordinate? {
-        guard self.rawValue.fieldPosition.hasCoordinate else {
-            return nil
-        }
-        return FieldCoordinate(self.rawValue.fieldPosition.field_coordinate)
-    }
-    
-    public var cameraPivot: CameraPivot {
-        CameraPivot(gu_nao_head_to_camera_pivot(self.joints.head))
+    public init(hip: YPJoint, knee: PitchJoint, ankle: PitchRollJoint) {
+        self.hip = hip
+        self.knee = knee
+        self.ankle = ankle
     }
     
 }

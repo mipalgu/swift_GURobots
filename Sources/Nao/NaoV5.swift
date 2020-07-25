@@ -1,8 +1,8 @@
 /*
- * gu_nao_head.swift
- * GURobots
+ * NaoV5.swift 
+ * GURobots 
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 10/07/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,35 +56,45 @@
  *
  */
 
-import CGURobots
+import GURobots
+import GUCoordinates
 
-extension gu_nao_head: Hashable, Codable {
+public struct NaoV5: NaoWrapper {
     
-    enum CodingKeys: String, CodingKey {
-        case neck
-        case buttons
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let neck = try values.decode(gu_pitch_yaw_joint.self, forKey: .neck)
-        let buttons = try values.decode(gu_nao_head_sensors.self, forKey: .buttons)
-        self.init(neck: neck, buttons: buttons)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.neck, forKey: .neck)
-        try container.encode(self.buttons, forKey: .buttons)
-    }
+    public var joints: gu_nao_joints
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.neck)
-        hasher.combine(self.buttons)
+    public var sightings: SoccerSightings
+    
+    public var fieldPosition: FieldCoordinate?
+    
+    public var rawValue: gu_nao {
+        let fieldCoordinate = gu_optional_field_coordinate(
+            hasCoordinate: self.fieldPosition != nil,
+            field_coordinate: self.fieldPosition?.rawValue ?? gu_field_coordinate()
+        )
+        return gu_nao(
+            fieldPosition: fieldCoordinate,
+            joints: self.joints,
+            sightings: self.sightings.rawValue
+        )
     }
     
-    public static func ==(lhs: gu_nao_head, rhs: gu_nao_head) -> Bool {
-        return lhs.neck == rhs.neck && lhs.buttons == rhs.buttons
+    public init() {
+        self.init(gu_nao())
+    }
+    
+    public init(joints: gu_nao_joints, sightings: SoccerSightings, fieldPosition: FieldCoordinate?) {
+        self.joints = joints
+        self.sightings = sightings
+        self.fieldPosition = fieldPosition
+    }
+    
+    public init(_ other: gu_nao) {
+        self.init(
+            joints: other.joints,
+            sightings: SoccerSightings(other.sightings),
+            fieldPosition: other.fieldPosition.hasCoordinate ? FieldCoordinate(other.fieldPosition.field_coordinate) : nil
+        )
     }
     
 }

@@ -1,8 +1,8 @@
 /*
- * gu_nao_joints.swift
+ * WBNaoV5.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 25/7/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,51 +56,23 @@
  *
  */
 
-import CGURobots
+import GURobots
+import GUSimpleWhiteboard
 
-extension gu_nao_joints: Hashable, Codable {
-    
-    enum CodingKeys: String, CodingKey {
-        case head
-        case leftArm
-        case rightArm
-        case leftLeg
-        case rightLeg
-    }
+public struct WBNaoV5: NaoWrapper {
 
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let head = try values.decode(gu_nao_head.self, forKey: .head)
-        let leftArm = try values.decode(gu_nao_arm.self, forKey: .leftArm)
-        let rightArm = try values.decode(gu_nao_arm.self, forKey: .rightArm)
-        let leftLeg = try values.decode(gu_nao_leg.self, forKey: .leftLeg)
-        let rightLeg = try values.decode(gu_nao_leg.self, forKey: .rightLeg)
-        self.init(head: head, leftArm: leftArm, rightArm: rightArm, leftLeg: leftLeg, rightLeg: rightLeg)
+    private let wb: Whiteboard
+
+    public private(set) var rawValue: gu_nao
+
+    public init(wb: Whiteboard = Whiteboard()) {
+        self.wb = wb
+        self.rawValue = gu_nao()
+        self.update()
     }
 
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.head, forKey: .head)
-        try container.encode(self.leftArm, forKey: .leftArm)
-        try container.encode(self.rightArm, forKey: .rightArm)
-        try container.encode(self.leftLeg, forKey: .leftLeg)
-        try container.encode(self.rightLeg, forKey: .rightLeg)
+    public mutating func update() {
+        gu_nao_update_from_wb(&self.rawValue, self.wb.wb)
     }
-    
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.head)
-        hasher.combine(self.leftArm)
-        hasher.combine(self.rightArm)
-        hasher.combine(self.leftLeg)
-        hasher.combine(self.rightLeg)
-    }
-    
-    public static func ==(lhs: gu_nao_joints, rhs: gu_nao_joints) -> Bool {
-        return lhs.head == rhs.head
-            && lhs.leftArm == rhs.leftArm
-            && lhs.rightArm == rhs.rightArm
-            && lhs.leftLeg == rhs.leftLeg
-            && lhs.rightLeg == rhs.rightLeg
-    }
-    
+
 }

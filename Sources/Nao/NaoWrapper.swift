@@ -1,5 +1,5 @@
 /*
- * WBNaoV5.swift
+ * NaoWrapper.swift
  * GURobots
  *
  * Created by Callum McColl on 25/7/20.
@@ -56,23 +56,42 @@
  *
  */
 
-import CGURobots
-import GUSimpleWhiteboard
+import GURobots
+import GUCoordinates
 
-public struct WBNaoV5: NaoWrapper {
+public protocol NaoWrapper: TopCameraContainer, BottomCameraContainer, SightingsContainer, FieldPositionContainer {
+    
+    var rawValue: gu_nao { get }
+    
+}
 
-    private let wb: Whiteboard
-
-    public private(set) var rawValue: gu_nao
-
-    public init(wb: Whiteboard = Whiteboard()) {
-        self.wb = wb
-        self.rawValue = gu_nao()
-        self.update()
+extension NaoWrapper {
+    
+    public var topCameraIndex: Int {
+        Int(GU_NAO_V5_TOP_CAMERA_INDEX)
+    }
+    
+    public var bottomCameraIndex: Int {
+        Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX)
+    }
+    
+    public var joints: gu_nao_joints {
+        self.rawValue.joints
     }
 
-    public mutating func update() {
-        gu_nao_update_from_wb(&self.rawValue, self.wb.wb)
+    public var sightings: SoccerSightings {
+        SoccerSightings(self.rawValue.sightings)
     }
 
+    public var fieldPosition: FieldCoordinate? {
+        guard self.rawValue.fieldPosition.hasCoordinate else {
+            return nil
+        }
+        return FieldCoordinate(self.rawValue.fieldPosition.field_coordinate)
+    }
+    
+    public var cameraPivot: CameraPivot {
+        CameraPivot(gu_nao_head_to_camera_pivot(self.joints.head))
+    }
+    
 }

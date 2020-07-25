@@ -22,7 +22,8 @@ let package = Package(
         .systemLibrary(name: "CGURobots", pkgConfig: "libgurobots"),
         .target(
             name: "GURobots",
-            dependencies: ["CGURobots", "GUCoordinates", "GUSimpleWhiteboard"]),
+            dependencies: ["CGURobots", "GUCoordinates"]),
+        .target(name: "Nao", dependencies: ["GURobots", "GUCoordinates", "GUSimpleWhiteboard"]),
         .testTarget(
             name: "GURobotsTests",
             dependencies: ["GURobots"]),

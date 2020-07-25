@@ -1,5 +1,5 @@
 /*
- * NaoLeg.swift
+ * NaoArm.swift
  * GURobots
  *
  * Created by Callum McColl on 26/7/20.
@@ -56,36 +56,41 @@
  *
  */
 
-import CGURobots
+import GURobots
 
-public struct NaoLeg: CTypeWrapper {
+public struct NaoArm: CTypeWrapper {
     
-    public var hip: YPJoint
+    public var shoulder: PitchRollJoint
     
-    public var knee: PitchJoint
+    public var elbow: YawRollJoint
     
-    public var ankle: PitchRollJoint
+    public var wrist: YawJoint
     
-    public var rawValue: gu_nao_leg {
-        return gu_nao_leg(
-            hip: self.hip.rawValue,
-            knee: self.knee.rawValue,
-            ankle: self.ankle.rawValue
+    public var hand: NaoHandSensors
+    
+    public var rawValue: gu_nao_arm {
+        return gu_nao_arm(
+            shoulder: self.shoulder.rawValue,
+            elbow: self.elbow.rawValue,
+            wrist: self.wrist.rawValue,
+            hand: self.hand.rawValue
         )
     }
     
-    public init(_ other: gu_nao_leg) {
+    public init(_ other: gu_nao_arm) {
         self.init(
-            hip: YPJoint(other.hip),
-            knee: PitchJoint(other.knee),
-            ankle: PitchRollJoint(other.ankle)
+            shoulder: PitchRollJoint(other.shoulder),
+            elbow: YawRollJoint(other.elbow),
+            wrist: YawJoint(other.wrist),
+            hand: NaoHandSensors(other.hand)
         )
     }
     
-    public init(hip: YPJoint, knee: PitchJoint, ankle: PitchRollJoint) {
-        self.hip = hip
-        self.knee = knee
-        self.ankle = ankle
+    public init(shoulder: PitchRollJoint, elbow: YawRollJoint, wrist: YawJoint, hand: NaoHandSensors) {
+        self.shoulder = shoulder
+        self.elbow = elbow
+        self.wrist = wrist
+        self.hand = hand
     }
     
 }

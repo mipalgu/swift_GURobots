@@ -1,5 +1,5 @@
 /*
- * NaoHandSensors.swift
+ * NaoJoints.swift
  * GURobots
  *
  * Created by Callum McColl on 26/7/20.
@@ -56,18 +56,46 @@
  *
  */
 
-import CGURobots
+import GURobots
 
-public typealias NaoHandSensors = gu_nao_hand_sensors
-
-extension NaoHandSensors: CTypeWrapper {
+public struct NaoJoints: CTypeWrapper {
     
-    public var rawValue: gu_nao_hand_sensors {
-        return self
+    public var head: NaoHead
+    
+    public var leftArm: NaoArm
+    
+    public var rightArm: NaoArm
+    
+    public var leftLeg: NaoLeg
+    
+    public var rightLeg: NaoLeg
+    
+    public var rawValue: gu_nao_joints {
+        return gu_nao_joints(
+            head: self.head.rawValue,
+            leftArm: self.leftArm.rawValue,
+            rightArm: self.rightArm.rawValue,
+            leftLeg: self.leftLeg.rawValue,
+            rightLeg: self.rightLeg.rawValue
+        )
     }
     
-    public init(_ other: gu_nao_hand_sensors) {
-        self = other
+    public init(_ other: gu_nao_joints) {
+        self.init(
+            head: NaoHead(other.head),
+            leftArm: NaoArm(other.leftArm),
+            rightArm: NaoArm(other.rightArm),
+            leftLeg: NaoLeg(other.leftLeg),
+            rightLeg: NaoLeg(other.rightLeg)
+        )
+    }
+    
+    public init(head: NaoHead, leftArm: NaoArm, rightArm: NaoArm, leftLeg: NaoLeg, rightLeg: NaoLeg) {
+        self.head = head
+        self.leftArm = leftArm
+        self.rightArm = rightArm
+        self.leftLeg = leftLeg
+        self.rightLeg = rightLeg
     }
     
 }

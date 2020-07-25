@@ -1,5 +1,5 @@
 /*
- * gu_nao_leg.swift
+ * gu_nao_head.swift
  * GURobots
  *
  * Created by Callum McColl on 26/7/20.
@@ -56,41 +56,35 @@
  *
  */
 
-import CGURobots
+import GURobots
 
-extension gu_nao_leg: Hashable, Codable {
+extension gu_nao_head: Hashable, Codable {
     
     enum CodingKeys: String, CodingKey {
-        case hip
-        case knee
-        case ankle
+        case neck
+        case buttons
     }
 
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let hip = try values.decode(gu_yp_joint.self, forKey: .hip)
-        let knee = try values.decode(gu_pitch_joint.self, forKey: .knee)
-        let ankle = try values.decode(gu_pitch_roll_joint.self, forKey: .ankle)
-        self.init(hip: hip, knee: knee, ankle: ankle)
+        let neck = try values.decode(gu_pitch_yaw_joint.self, forKey: .neck)
+        let buttons = try values.decode(gu_nao_head_sensors.self, forKey: .buttons)
+        self.init(neck: neck, buttons: buttons)
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.hip, forKey: .hip)
-        try container.encode(self.knee, forKey: .knee)
-        try container.encode(self.ankle, forKey: .ankle)
+        try container.encode(self.neck, forKey: .neck)
+        try container.encode(self.buttons, forKey: .buttons)
     }
     
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.hip)
-        hasher.combine(self.knee)
-        hasher.combine(self.ankle)
+        hasher.combine(self.neck)
+        hasher.combine(self.buttons)
     }
     
-    public static func ==(lhs: gu_nao_leg, rhs: gu_nao_leg) -> Bool {
-        return lhs.hip == rhs.hip
-            && lhs.knee == rhs.knee
-            && lhs.ankle == rhs.ankle
+    public static func ==(lhs: gu_nao_head, rhs: gu_nao_head) -> Bool {
+        return lhs.neck == rhs.neck && lhs.buttons == rhs.buttons
     }
     
 }

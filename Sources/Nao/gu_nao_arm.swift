@@ -1,5 +1,5 @@
 /*
- * NaoHeadSensors.swift
+ * gu_nao_arm.swift
  * GURobots
  *
  * Created by Callum McColl on 26/7/20.
@@ -56,18 +56,46 @@
  *
  */
 
-import CGURobots
+import GURobots
 
-public typealias NaoHeadSensors = gu_nao_head_sensors
-
-extension NaoHeadSensors: CTypeWrapper {
+extension gu_nao_arm: Hashable, Codable {
     
-    public var rawValue: gu_nao_head_sensors {
-        return self
+    enum CodingKeys: String, CodingKey {
+        case shoulder
+        case elbow
+        case wrist
+        case hand
+    }
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let shoulder = try values.decode(gu_pitch_roll_joint.self, forKey: .shoulder)
+        let elbow = try values.decode(gu_yaw_roll_joint.self, forKey: .elbow)
+        let wrist = try values.decode(gu_yaw_joint.self, forKey: .wrist)
+        let hand = try values.decode(gu_nao_hand_sensors.self, forKey: .hand)
+        self.init(shoulder: shoulder, elbow: elbow, wrist: wrist, hand: hand)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.shoulder, forKey: .shoulder)
+        try container.encode(self.elbow, forKey: .elbow)
+        try container.encode(self.wrist, forKey: .wrist)
+        try container.encode(self.hand, forKey: .hand)
     }
     
-    public init(_ other: gu_nao_head_sensors) {
-        self = other
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.shoulder)
+        hasher.combine(self.elbow)
+        hasher.combine(self.wrist)
+        hasher.combine(self.hand)
+    }
+    
+    public static func ==(lhs: gu_nao_arm, rhs: gu_nao_arm) -> Bool {
+        return lhs.shoulder == rhs.shoulder
+            && lhs.elbow == rhs.elbow
+            && lhs.wrist == rhs.wrist
+            && lhs.hand == rhs.hand
     }
     
 }

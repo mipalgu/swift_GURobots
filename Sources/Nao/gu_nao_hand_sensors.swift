@@ -1,5 +1,5 @@
 /*
- * gu_nao_head_sensors.swift
+ * gu_nao_hand_sensors.swift
  * GURobots
  *
  * Created by Callum McColl on 26/7/20.
@@ -56,39 +56,39 @@
  *
  */
 
-import CGURobots
+import GURobots
 
-extension gu_nao_head_sensors: Hashable, Codable {
+extension gu_nao_hand_sensors: Hashable, Codable {
     
     enum CodingKeys: String, CodingKey {
-        case touchFront
-        case touchMiddle
-        case touchRear
+        case touchLeft
+        case touchBack
+        case touchRight
     }
 
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let touchFront = try values.decode(Bool.self, forKey: .touchFront)
-        let touchMiddle = try values.decode(Bool.self, forKey: .touchMiddle)
-        let touchRear = try values.decode(Bool.self, forKey: .touchRear)
-        self.init(touchFront: touchFront, touchMiddle: touchMiddle, touchRear: touchRear)
+        let touchLeft = try values.decode(Bool.self, forKey: .touchLeft)
+        let touchBack = try values.decode(Bool.self, forKey: .touchBack)
+        let touchRight = try values.decode(Bool.self, forKey: .touchRight)
+        self.init(touchLeft: touchLeft, touchBack: touchBack, touchRight: touchRight)
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.touchFront, forKey: .touchFront)
-        try container.encode(self.touchMiddle, forKey: .touchMiddle)
-        try container.encode(self.touchRear, forKey: .touchRear)
+        try container.encode(self.touchLeft, forKey: .touchLeft)
+        try container.encode(self.touchBack, forKey: .touchBack)
+        try container.encode(self.touchRight, forKey: .touchRight)
     }
     
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.touchFront)
-        hasher.combine(self.touchMiddle)
-        hasher.combine(self.touchRear)
+        hasher.combine(self.touchLeft)
+        hasher.combine(self.touchBack)
+        hasher.combine(self.touchRight)
     }
     
-    public static func ==(lhs: gu_nao_head_sensors, rhs: gu_nao_head_sensors) -> Bool {
-        return gu_nao_head_sensors_equals(lhs, rhs)
+    public static func ==(lhs: gu_nao_hand_sensors, rhs: gu_nao_hand_sensors) -> Bool {
+        return gu_nao_hand_sensors_equals(lhs, rhs)
     }
     
 }
