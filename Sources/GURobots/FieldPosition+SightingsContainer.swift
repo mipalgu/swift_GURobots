@@ -1,8 +1,8 @@
 /*
- * FieldPositionContainer.swift
+ * FieldPosition+SightingsContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 25/7/20.
+ * Created by Callum McColl on 26/7/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,57 +58,34 @@
 
 import GUCoordinates
 
-public protocol FieldPositionContainer {
+extension FieldPositionContainer where Self: SightingsContainer {
     
-    var fieldPosition: FieldCoordinate? { get }
-    
-}
-
-extension FieldPositionContainer {
-    
-    /// Calculate the position of a coordinate in relation to this coordinate.
-    ///
-    /// - Parameter coord: The position of the coordinate in relation to
-    /// this coordinate.
-    ///
-    /// - Returns: A new `CartesianCoordinate` calculated in relation to this
-    /// coordinate.
-    public func cartesianCoordinate(at coord: RelativeCoordinate) -> CartesianCoordinate? {
-        return self.fieldPosition?.cartesianCoordinate(at: coord)
-    }
-
-    /// Calculate the position of a coordinate in relation to this coordinate.
-    ///
-    /// - Parameter coord: The position of the coordinate in relation to
-    /// this coordinate.
-    ///
-    /// - Parameter heading: The direction in which the new coordinate
-    /// is facing.
-    ///
-    /// - Returns: A new `FieldCoordinate` calculated in relation to this
-    /// coordinate.
-    public func fieldCoordinate(at coord: RelativeCoordinate, heading: degrees_t) -> FieldCoordinate? {
-        return self.fieldPosition?.fieldCoordinate(at: coord, heading: heading)
+    public var ballPosition: CartesianCoordinate? {
+        guard let sighting = self.ballSighting else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
     }
     
-    /// Calculate the `RelativeCoordinate` to a target coordinate.
-    ///
-    /// - Parameter coord: The target coordinate.
-    ///
-    /// - Returns: A new `RelativeCoordinate` pointing towards `coord` from
-    /// this coordinate.
-    public func relativeCoordinate(to coord: CartesianCoordinate) -> RelativeCoordinate? {
-        return self.fieldPosition?.relativeCoordinate(to: coord)
+    public var leftGoalPostPosition: CartesianCoordinate? {
+        guard let sighting = self.leftGoalPostSighting else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
     }
-
-    /// Calculate the `RelativeCoordinate` to a target coordinate.
-    ///
-    /// - Parameter coord: The target coordinate.
-    ///
-    /// - Returns: A new `RelativeCoordinate` pointing towards `coord` from
-    /// this coordinate.
-    public func relativeCoordinate(to coord: FieldCoordinate) -> RelativeCoordinate? {
-        return self.fieldPosition?.relativeCoordinate(to: coord)
+    
+    public var rightGoalPostPosition: CartesianCoordinate? {
+        guard let sighting = self.rightGoalPostSighting else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
+    }
+    
+    public var goalPosition: CartesianCoordinate? {
+        guard let sighting = self.goalSighting else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
     }
     
 }
