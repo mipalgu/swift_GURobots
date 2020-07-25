@@ -63,7 +63,7 @@ public struct NaoV5: NaoWrapper {
     
     public var joints: gu_nao_joints
     
-    public var sightings: gu_soccer_sightings
+    public var sightings: SoccerSightings
     
     public var fieldPosition: FieldCoordinate?
     
@@ -75,7 +75,7 @@ public struct NaoV5: NaoWrapper {
         return gu_nao(
             fieldPosition: fieldCoordinate,
             joints: self.joints,
-            sightings: self.sightings
+            sightings: self.sightings.rawValue
         )
     }
     
@@ -83,7 +83,7 @@ public struct NaoV5: NaoWrapper {
         self.init(gu_nao())
     }
     
-    public init(joints: gu_nao_joints, sightings: gu_soccer_sightings, fieldPosition: FieldCoordinate?) {
+    public init(joints: gu_nao_joints, sightings: SoccerSightings, fieldPosition: FieldCoordinate?) {
         self.joints = joints
         self.sightings = sightings
         self.fieldPosition = fieldPosition
@@ -92,7 +92,7 @@ public struct NaoV5: NaoWrapper {
     public init(_ other: gu_nao) {
         self.init(
             joints: other.joints,
-            sightings: other.sightings,
+            sightings: SoccerSightings(other.sightings),
             fieldPosition: other.fieldPosition.hasCoordinate ? FieldCoordinate(other.fieldPosition.field_coordinate) : nil
         )
     }

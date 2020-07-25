@@ -61,38 +61,26 @@ import GUCoordinates
 
 public protocol SightingsContainer {
     
-    var sightings: gu_soccer_sightings { get }
+    var sightings: SoccerSightings { get }
     
 }
 
 extension SightingsContainer {
     
     public var ballSighting: RelativeCoordinate? {
-        guard self.sightings.ball.canSee else {
-            return nil
-        }
-        return RelativeCoordinate(self.sightings.ball.coordinate)
+        return self.sightings.ball
     }
 
     public var leftGoalPostSighting: RelativeCoordinate? {
-        guard self.sightings.leftGoalPost.canSee else {
-            return nil
-        }
-        return RelativeCoordinate(self.sightings.leftGoalPost.coordinate)
+        return self.sightings.leftGoalPost
     }
 
     public var rightGoalPostSighting: RelativeCoordinate? {
-        guard self.sightings.rightGoalPost.canSee else {
-            return nil
-        }
-        return RelativeCoordinate(self.sightings.rightGoalPost.coordinate)
+        return self.sightings.rightGoalPost
     }
 
     public var goalSighting: RelativeCoordinate? {
-        guard self.sightings.goal.canSee else {
-            return nil
-        }
-        return RelativeCoordinate(self.sightings.goal.coordinate)
+        return self.sightings.goal
     }
     
 }

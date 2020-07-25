@@ -79,8 +79,8 @@ extension NaoWrapper {
         self.rawValue.joints
     }
 
-    public var sightings: gu_soccer_sightings {
-        self.rawValue.sightings
+    public var sightings: SoccerSightings {
+        SoccerSightings(self.rawValue.sightings)
     }
 
     public var fieldPosition: FieldCoordinate? {
