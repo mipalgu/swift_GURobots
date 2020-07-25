@@ -82,15 +82,15 @@ extension BottomCameraContainer {
         self.relativeCoordinate(of: coord, camera: self.bottomCameraIndex)
     }
     
-    public func unsafeTopCameraRelativeCoordinate(of coord: CameraCoordinate) -> RelativeCoordinate {
+    public func unsafeBottomCameraRelativeCoordinate(of coord: CameraCoordinate) -> RelativeCoordinate {
         self.unsafeRelativeCoordinate(of: coord, camera: self.bottomCameraIndex)
     }
     
-    public func unsafeTopCameraRelativeCoordinate(of coord: PixelCoordinate) -> RelativeCoordinate {
+    public func unsafeBottomCameraRelativeCoordinate(of coord: PixelCoordinate) -> RelativeCoordinate {
         self.unsafeRelativeCoordinate(of: coord, camera: self.bottomCameraIndex)
     }
     
-    public func unsafeTopCameraRelativeCoordinate(of coord: PercentCoordinate) -> RelativeCoordinate {
+    public func unsafeBottomCameraRelativeCoordinate(of coord: PercentCoordinate) -> RelativeCoordinate {
         self.unsafeRelativeCoordinate(of: coord, camera: self.bottomCameraIndex)
     }
     
