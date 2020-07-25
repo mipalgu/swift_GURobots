@@ -78,10 +78,19 @@ public struct SoccerSightings: CTypeWrapper {
     }
     
     public init(_ other: gu_soccer_sightings) {
-        self.ball = other.ball.canSee ? RelativeCoordinate(other.ball.coordinate) : nil
-        self.leftGoalPost = other.leftGoalPost.canSee ? RelativeCoordinate(other.leftGoalPost.coordinate) : nil
-        self.rightGoalPost = other.rightGoalPost.canSee ? RelativeCoordinate(other.rightGoalPost.coordinate) : nil
-        self.goal = other.goal.canSee ? RelativeCoordinate(other.goal.coordinate) : nil
+        self.init(
+            ball: other.ball.canSee ? RelativeCoordinate(other.ball.coordinate) : nil,
+            leftGoalPost: other.leftGoalPost.canSee ? RelativeCoordinate(other.leftGoalPost.coordinate) : nil,
+            rightGoalPost: other.rightGoalPost.canSee ? RelativeCoordinate(other.rightGoalPost.coordinate) : nil,
+            goal: other.goal.canSee ? RelativeCoordinate(other.goal.coordinate) : nil
+        )
+    }
+    
+    public init(ball: RelativeCoordinate?, leftGoalPost: RelativeCoordinate?, rightGoalPost: RelativeCoordinate?, goal: RelativeCoordinate?) {
+        self.ball = ball
+        self.leftGoalPost = leftGoalPost
+        self.rightGoalPost = rightGoalPost
+        self.goal = goal
     }
     
 }
