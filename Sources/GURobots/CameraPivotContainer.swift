@@ -78,4 +78,16 @@ extension CameraPivotContainer {
         coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: camera)
     }
     
+    public func unsafeRelativeCoordinate(of coord: CameraCoordinate, camera: Int) -> RelativeCoordinate {
+        coord.unsafeRelativeCoordinate(cameraPivot: self.cameraPivot, camera: camera)
+    }
+    
+    public func unsafeRelativeCoordinate(of coord: PixelCoordinate, camera: Int) -> RelativeCoordinate {
+        coord.unsafeRelativeCoordinate(cameraPivot: self.cameraPivot, camera: camera)
+    }
+    
+    public func unsafeRelativeCoordinate(of coord: PercentCoordinate, camera: Int) -> RelativeCoordinate {
+        coord.unsafeRelativeCoordinate(cameraPivot: self.cameraPivot, camera: camera)
+    }
+    
 }
