@@ -56,6 +56,7 @@
  *
  */
 
+import CGURobots
 import GUCoordinates
 
 public protocol SightingsContainer {

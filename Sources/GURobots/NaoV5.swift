@@ -56,7 +56,7 @@
  *
  */
 
-import GUSimpleWhiteboard
+import CGURobots
 import GUCoordinates
 
 public struct NaoV5: NaoWrapper {
@@ -97,22 +97,4 @@ public struct NaoV5: NaoWrapper {
         )
     }
     
-}
-
-public struct WBNaoV5: NaoWrapper {
-
-    private let wb: Whiteboard
-
-    public private(set) var rawValue: gu_nao
-
-    public init(wb: Whiteboard = Whiteboard()) {
-        self.wb = wb
-        self.rawValue = gu_nao()
-        self.update()
-    }
-
-    public mutating func update() {
-        gu_nao_update_from_wb(&self.rawValue, self.wb.wb)
-    }
-
 }
