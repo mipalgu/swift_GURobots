@@ -58,8 +58,10 @@
 
 import GUCoordinates
 
+/// Conforming types are capable of being placed on the soccer field.
 public protocol FieldPositionContainer {
     
+    /// Our current position on the field.
     var fieldPosition: FieldCoordinate? { get }
     
 }
