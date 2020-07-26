@@ -84,10 +84,10 @@ extension NaoWrapper {
     }
 
     public var fieldPosition: FieldCoordinate? {
-        guard self.rawValue.fieldPosition.hasCoordinate else {
+        guard self.rawValue.fieldPosition.has_value else {
             return nil
         }
-        return FieldCoordinate(self.rawValue.fieldPosition.field_coordinate)
+        return FieldCoordinate(self.rawValue.fieldPosition.value)
     }
     
     public var cameraPivot: CameraPivot {

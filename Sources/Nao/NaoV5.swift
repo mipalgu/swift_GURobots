@@ -69,8 +69,8 @@ public struct NaoV5: NaoWrapper {
     
     public var rawValue: gu_nao {
         let fieldCoordinate = gu_optional_field_coordinate(
-            hasCoordinate: self.fieldPosition != nil,
-            field_coordinate: self.fieldPosition?.rawValue ?? gu_field_coordinate()
+            has_value: self.fieldPosition != nil,
+            value: self.fieldPosition?.rawValue ?? gu_field_coordinate()
         )
         return gu_nao(
             fieldPosition: fieldCoordinate,
@@ -89,7 +89,7 @@ public struct NaoV5: NaoWrapper {
         self.init(
             joints: NaoJoints(other.joints),
             sightings: SoccerSightings(other.sightings),
-            fieldPosition: other.fieldPosition.hasCoordinate ? FieldCoordinate(other.fieldPosition.field_coordinate) : nil
+            fieldPosition: other.fieldPosition.has_value ? FieldCoordinate(other.fieldPosition.value) : nil
         )
     }
     

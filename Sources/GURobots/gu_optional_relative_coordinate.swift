@@ -62,30 +62,30 @@ import GUCoordinates
 extension gu_optional_relative_coordinate: Hashable, Codable {
     
     enum CodingKeys: String, CodingKey {
-        case canSee
-        case coordinate
+        case has_value
+        case value
     }
 
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let canSee = try values.decode(Bool.self, forKey: .canSee)
-        let coordinate = try values.decode(RelativeCoordinate.self, forKey: .coordinate)
-        self.init(canSee: canSee, coordinate: coordinate.rawValue)
+        let has_value = try values.decode(Bool.self, forKey: .has_value)
+        let value = try values.decode(RelativeCoordinate.self, forKey: .value)
+        self.init(has_value: has_value, value: value.rawValue)
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.canSee, forKey: .canSee)
-        try container.encode(RelativeCoordinate(self.coordinate), forKey: .coordinate)
+        try container.encode(self.has_value, forKey: .has_value)
+        try container.encode(RelativeCoordinate(self.value), forKey: .value)
     }
     
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.canSee)
-        hasher.combine(RelativeCoordinate(self.coordinate))
+        hasher.combine(self.has_value)
+        hasher.combine(RelativeCoordinate(self.value))
     }
     
     public static func ==(lhs: gu_optional_relative_coordinate, rhs: gu_optional_relative_coordinate) -> Bool {
-        return lhs.canSee == rhs.canSee && lhs.coordinate == rhs.coordinate
+        return lhs.has_value == rhs.has_value && lhs.value == rhs.value
     }
     
 }

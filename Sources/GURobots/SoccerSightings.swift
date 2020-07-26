@@ -71,18 +71,18 @@ public struct SoccerSightings: CTypeWrapper {
     
     public var rawValue: gu_soccer_sightings {
         return gu_soccer_sightings(
-            ball: gu_optional_relative_coordinate(canSee: self.ball != nil, coordinate: self.ball?.rawValue ?? gu_relative_coordinate()),
-            leftGoalPost: gu_optional_relative_coordinate(canSee: self.leftGoalPost != nil, coordinate: self.leftGoalPost?.rawValue ?? gu_relative_coordinate()),
-            rightGoalPost: gu_optional_relative_coordinate(canSee: self.rightGoalPost != nil, coordinate: self.rightGoalPost?.rawValue ?? gu_relative_coordinate()),
-            goal: gu_optional_relative_coordinate(canSee: self.goal != nil, coordinate: self.goal?.rawValue ?? gu_relative_coordinate()))
+            ball: gu_optional_relative_coordinate(has_value: self.ball != nil, value: self.ball?.rawValue ?? gu_relative_coordinate()),
+            leftGoalPost: gu_optional_relative_coordinate(has_value: self.leftGoalPost != nil, value: self.leftGoalPost?.rawValue ?? gu_relative_coordinate()),
+            rightGoalPost: gu_optional_relative_coordinate(has_value: self.rightGoalPost != nil, value: self.rightGoalPost?.rawValue ?? gu_relative_coordinate()),
+            goal: gu_optional_relative_coordinate(has_value: self.goal != nil, value: self.goal?.rawValue ?? gu_relative_coordinate()))
     }
     
     public init(_ other: gu_soccer_sightings) {
         self.init(
-            ball: other.ball.canSee ? RelativeCoordinate(other.ball.coordinate) : nil,
-            leftGoalPost: other.leftGoalPost.canSee ? RelativeCoordinate(other.leftGoalPost.coordinate) : nil,
-            rightGoalPost: other.rightGoalPost.canSee ? RelativeCoordinate(other.rightGoalPost.coordinate) : nil,
-            goal: other.goal.canSee ? RelativeCoordinate(other.goal.coordinate) : nil
+            ball: other.ball.has_value ? RelativeCoordinate(other.ball.value) : nil,
+            leftGoalPost: other.leftGoalPost.has_value ? RelativeCoordinate(other.leftGoalPost.value) : nil,
+            rightGoalPost: other.rightGoalPost.has_value ? RelativeCoordinate(other.rightGoalPost.value) : nil,
+            goal: other.goal.has_value ? RelativeCoordinate(other.goal.value) : nil
         )
     }
     
