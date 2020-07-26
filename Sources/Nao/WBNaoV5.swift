@@ -62,17 +62,20 @@ import GUSimpleWhiteboard
 public struct WBNaoV5: NaoWrapper {
 
     private let wb: Whiteboard
+    
+    private let indexes: NaoWBIndexes
 
     public private(set) var rawValue: gu_nao
 
-    public init(wb: Whiteboard = Whiteboard()) {
+    public init(wb: Whiteboard = Whiteboard(), indexes: NaoWBIndexes = NaoWBIndexes()) {
         self.wb = wb
+        self.indexes = indexes
         self.rawValue = gu_nao()
         self.update()
     }
 
     public mutating func update() {
-        gu_nao_update_from_wb(&self.rawValue, self.wb.wb)
+        gu_nao_update_from_custom_wb(&self.rawValue, self.wb.wb, self.indexes.rawValue)
     }
 
 }
