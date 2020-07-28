@@ -57,17 +57,31 @@
  */
 
 import CGURobots
+import GUUnits
 
-public typealias PitchYawJoint = gu_pitch_yaw_joint
-
-extension PitchYawJoint: CTypeWrapper {
+public struct PitchYawJoint: CTypeWrapper {
+    
+    public var pitch: Degrees_f
+    
+    public var yaw: Degrees_f
     
     public var rawValue: gu_pitch_yaw_joint {
-        return self
+        return gu_pitch_yaw_joint(
+            pitch: self.pitch.rawValue,
+            yaw: self.pitch.rawValue
+        )
     }
     
     public init(_ other: gu_pitch_yaw_joint) {
-        self = other
+        self.init(
+            pitch: Degrees_f(rawValue: other.pitch),
+            yaw: Degrees_f(rawValue: other.yaw)
+        )
+    }
+    
+    public init(pitch: Degrees_f = 0.0, yaw: Degrees_f = 0.0) {
+        self.pitch = pitch
+        self.yaw = yaw
     }
     
 }

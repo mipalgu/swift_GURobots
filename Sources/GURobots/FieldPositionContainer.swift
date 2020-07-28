@@ -91,7 +91,7 @@ extension FieldPositionContainer {
     ///
     /// - Returns: A new `FieldCoordinate` calculated in relation to this
     /// coordinate.
-    public func fieldCoordinate(at coord: RelativeCoordinate, heading: degrees_t) -> FieldCoordinate? {
+    public func fieldCoordinate(at coord: RelativeCoordinate, heading: Degrees_t) -> FieldCoordinate? {
         return self.fieldPosition?.fieldCoordinate(at: coord, heading: heading)
     }
     

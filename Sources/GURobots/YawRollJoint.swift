@@ -57,17 +57,31 @@
  */
 
 import CGURobots
+import GUUnits
 
-public typealias YawRollJoint = gu_yaw_roll_joint
-
-extension YawRollJoint: CTypeWrapper {
+public struct YawRollJoint: CTypeWrapper {
+    
+    public var yaw: Degrees_f
+    
+    public var roll: Degrees_f
     
     public var rawValue: gu_yaw_roll_joint {
-        return self
+        return gu_yaw_roll_joint(
+            yaw: self.yaw.rawValue,
+            roll: self.roll.rawValue
+        )
     }
     
     public init(_ other: gu_yaw_roll_joint) {
-        self = other
+        self.init(
+            yaw: Degrees_f(rawValue: other.yaw),
+            roll: Degrees_f(rawValue: other.roll)
+        )
+    }
+    
+    public init(yaw: Degrees_f = 0.0, roll: Degrees_f = 0.0) {
+        self.yaw = yaw
+        self.roll = roll
     }
     
 }

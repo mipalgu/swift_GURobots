@@ -57,17 +57,36 @@
  */
 
 import CGURobots
+import GUUnits
 
-public typealias YPJoint = gu_yp_joint
-
-extension YPJoint: CTypeWrapper {
+public struct YPJoint: CTypeWrapper {
+    
+    public var pitch: Degrees_f
+    
+    public var roll: Degrees_f
+    
+    public var yawPitch: Degrees_f
     
     public var rawValue: gu_yp_joint {
-        return self
+        return gu_yp_joint(
+            pitch: self.pitch.rawValue,
+            roll: self.roll.rawValue,
+            yawPitch: self.yawPitch.rawValue
+        )
     }
     
     public init(_ other: gu_yp_joint) {
-        self = other
+        self.init(
+            pitch: Degrees_f(rawValue: other.pitch),
+            roll: Degrees_f(rawValue: other.roll),
+            yawPitch: Degrees_f(rawValue: other.yawPitch)
+        )
+    }
+    
+    public init(pitch: Degrees_f = 0.0, roll: Degrees_f = 0.0, yawPitch: Degrees_f = 0.0) {
+        self.pitch = pitch
+        self.roll = roll
+        self.yawPitch = yawPitch
     }
     
 }

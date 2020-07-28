@@ -109,7 +109,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Returns: A new `FieldCoordinate` calculated in relation to this
     /// coordinate. Returns nil if `fieldPosition` is nil or `coord` represents
     /// a pixel that cannot be converted to a `RelativeCoordinate`.
-    public func bottomCameraFieldCoordinate(at coord: CameraCoordinate, heading: degrees_t) -> FieldCoordinate? {
+    public func bottomCameraFieldCoordinate(at coord: CameraCoordinate, heading: Degrees_t) -> FieldCoordinate? {
         return self.fieldCoordinate(at: coord, camera: self.bottomCameraIndex, heading: heading)
     }
 
@@ -124,7 +124,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Returns: A new `FieldCoordinate` calculated in relation to this
     /// coordinate. Returns nil if `fieldPosition` is nil or `coord` represents
     /// a pixel that cannot be converted to a `RelativeCoordinate`.
-    public func bottomCameraFieldCoordinate(at coord: PixelCoordinate, heading: degrees_t) -> FieldCoordinate? {
+    public func bottomCameraFieldCoordinate(at coord: PixelCoordinate, heading: Degrees_t) -> FieldCoordinate? {
         return self.fieldCoordinate(at: coord, camera: self.bottomCameraIndex, heading: heading)
     }
 
@@ -139,7 +139,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Returns: A new `FieldCoordinate` calculated in relation to this
     /// coordinate. Returns nil if `fieldPosition` is nil or `coord` represents
     /// a point that cannot be converted to a `RelativeCoordinate`.
-    public func bottomCameraFieldCoordinate(at coord: PercentCoordinate, heading: degrees_t) -> FieldCoordinate? {
+    public func bottomCameraFieldCoordinate(at coord: PercentCoordinate, heading: Degrees_t) -> FieldCoordinate? {
         return self.fieldCoordinate(at: coord, camera: self.bottomCameraIndex, heading: heading)
     }
     
@@ -208,7 +208,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    public func bottomCameraUnsafeFieldCoordinate(at coord: CameraCoordinate, heading: degrees_t) -> FieldCoordinate? {
+    public func bottomCameraUnsafeFieldCoordinate(at coord: CameraCoordinate, heading: Degrees_t) -> FieldCoordinate? {
         return self.unsafeFieldCoordinate(at: coord, camera: self.bottomCameraIndex, heading: heading)
     }
     
@@ -227,7 +227,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    public func bottomCameraUnsafeFieldCoordinate(at coord: PixelCoordinate, heading: degrees_t) -> FieldCoordinate? {
+    public func bottomCameraUnsafeFieldCoordinate(at coord: PixelCoordinate, heading: Degrees_t) -> FieldCoordinate? {
         return self.unsafeFieldCoordinate(at: coord, camera: self.bottomCameraIndex, heading: heading)
     }
     
@@ -246,7 +246,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    public func bottomCameraUnsafeFieldCoordinate(at coord: PercentCoordinate, heading: degrees_t) -> FieldCoordinate? {
+    public func bottomCameraUnsafeFieldCoordinate(at coord: PercentCoordinate, heading: Degrees_t) -> FieldCoordinate? {
         return self.unsafeFieldCoordinate(at: coord, camera: self.bottomCameraIndex, heading: heading)
     }
     
@@ -275,7 +275,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Returns: When successful, a new `CameraCoordinate` representing the
     /// object in the camera. When unsuccessful (for example when the camera
     /// cannot actually see the object) then `nil` is returned.
-    public func bottomCameraCameraCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> CameraCoordinate? {
+    public func bottomCameraCameraCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
         return self.cameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
@@ -293,7 +293,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Returns: When successful, a new `CameraCoordinate` representing the
     /// object in the bottom camera. Returns nil when `fieldPosition` is nil or
     /// when the conversion fails.
-    public func bottomCameraCameraCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> CameraCoordinate? {
+    public func bottomCameraCameraCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
         return self.cameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
@@ -311,7 +311,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Returns: When successful, a new `PixelCoordinate` representing the
     /// object in the bottom camera. Returns nil when `fieldPosition` is nil or
     /// when the conversion fails.
-    public func bottomCameraPixelCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> PixelCoordinate? {
+    public func bottomCameraPixelCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
         return self.pixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
@@ -329,7 +329,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Returns: When successful, a new `PixelCoordinate` representing the
     /// object in the bottom camera. Returns nil when `fieldPosition` is nil or
     /// when the conversion fails.
-    public func bottomCameraPixelCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> PixelCoordinate? {
+    public func bottomCameraPixelCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
         return self.pixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
@@ -385,7 +385,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// object in the bottom camera. This function returns nil when the
     /// calculated coordinate falls outside the image bounds and the given
     /// `tolerance` or `fieldPosition` is nil.
-    public func bottomCameraClampedCameraCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f) -> CameraCoordinate? {
+    public func bottomCameraClampedCameraCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u, tolerance: Percent_f) -> CameraCoordinate? {
         return self.clampedCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
@@ -417,7 +417,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// object in the bottom camera. This function returns nil when the
     /// calculated coordinate falls outside the image bounds and the given
     /// `tolerance` or `fieldPosition` is nil.
-    public func bottomCameraClampedCameraCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f) -> CameraCoordinate? {
+    public func bottomCameraClampedCameraCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u, tolerance: Percent_f) -> CameraCoordinate? {
         return self.clampedCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
@@ -461,7 +461,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// object in the bottom camera. This function returns nil when the
     /// calculated coordinate falls outside the image bounds and the given
     /// `tolerance` or `fieldPosition` is nil.
-    public func bottomCameraClampedPixelCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f) -> PixelCoordinate? {
+    public func bottomCameraClampedPixelCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u, tolerance: Percent_f) -> PixelCoordinate? {
         return self.clampedPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
@@ -505,7 +505,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// object in the bottom camera. This function returns nil when the
     /// calculated coordinate falls outside the image bounds and the given
     /// `tolerance` or `fieldPosition` is nil.
-    public func bottomCameraClampedPixelCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f) -> PixelCoordinate? {
+    public func bottomCameraClampedPixelCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u, tolerance: Percent_f) -> PixelCoordinate? {
         return self.clampedPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
@@ -539,7 +539,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// object in the bottom camera. This function returns nil when the
     /// calculated coordinate falls outside the image bounds and the given
     /// `tolerance` or `fieldPosition` is nil.
-    public func bottomCameraClampedPercentCoordinate(to coord: CartesianCoordinate, tolerance: percent_f) -> PercentCoordinate? {
+    public func bottomCameraClampedPercentCoordinate(to coord: CartesianCoordinate, tolerance: Percent_f) -> PercentCoordinate? {
         return self.clampedPercentCoordinate(to: coord, camera: self.bottomCameraIndex, tolerance: tolerance)
     }
 
@@ -573,7 +573,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// object in the bottom camera. This function returns nil when the
     /// calculated coordinate falls outside the image bounds and the given
     /// `tolerance` or `fieldPosition` is nil.
-    public func bottomCameraClampedPercentCoordinate(to coord: FieldCoordinate, tolerance: percent_f) -> PercentCoordinate? {
+    public func bottomCameraClampedPercentCoordinate(to coord: FieldCoordinate, tolerance: Percent_f) -> PercentCoordinate? {
         return self.clampedPercentCoordinate(to: coord, camera: self.bottomCameraIndex, tolerance: tolerance)
     }
     
@@ -599,7 +599,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// actually see the object at `coord`. If you would like to use a version
     /// of this function that performs this bounds check then use
     /// `bottomCameraCameraCoordinate(to:resWidth:resHeight:)`.
-    public func bottomCameraUnsafeCameraCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> CameraCoordinate? {
+    public func bottomCameraUnsafeCameraCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
         return self.unsafeCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
@@ -623,7 +623,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// actually see the object at `coord`. If you would like to use a version
     /// of this function that performs this bounds check then use
     /// `bottomCameraCameraCoordinate(to:resWidth:resHeight:)`.
-    public func bottomCameraUnsafeCameraCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> CameraCoordinate? {
+    public func bottomCameraUnsafeCameraCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
         return self.unsafeCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
@@ -647,7 +647,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// actually see the object at `coord`. If you would like to use a version
     /// of this function that performs this bounds check then use
     /// `bottomCameraPixelCoordinate(to:resWidth:resHeight:)`.
-    public func bottomCameraUnsafePixelCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> PixelCoordinate? {
+    public func bottomCameraUnsafePixelCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
         return self.unsafePixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
@@ -671,7 +671,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// actually see the object at `coord`. If you would like to use a version
     /// of this function that performs this bounds check then use
     /// `bottomCameraPixelCoordinate(to:resWidth:resHeight:)`.
-    public func bottomCameraUnsafePixelCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u) -> PixelCoordinate? {
+    public func bottomCameraUnsafePixelCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
         return self.unsafePixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
     }
 
@@ -755,7 +755,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Warning: When tolerance is not nil, and the coordinate falls outside
     /// the specified tolerance, then the coordinate returned from this function
     /// will be outside the image resolution bounds.
-    public func bottomCameraUnsafeClampedCameraCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f? = nil) -> CameraCoordinate? {
+    public func bottomCameraUnsafeClampedCameraCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u, tolerance: Percent_f? = nil) -> CameraCoordinate? {
         return self.unsafeClampedCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
@@ -803,7 +803,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Warning: When tolerance is not nil, and the coordinate falls outside
     /// the specified tolerance, then the coordinate returned from this function
     /// will be outside the image resolution bounds.
-    public func bottomCameraUnsafeClampedCameraCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f? = nil) -> CameraCoordinate? {
+    public func bottomCameraUnsafeClampedCameraCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u, tolerance: Percent_f? = nil) -> CameraCoordinate? {
         return self.unsafeClampedCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
@@ -856,7 +856,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Warning: When tolerance is not nil, and the coordinate falls outside
     /// the specified tolerance, then the coordinate returned from this function
     /// will be outside the image resolution bounds.
-    public func bottomCameraUnsafeClampedPixelCoordinate(to coord: CartesianCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f? = nil) -> PixelCoordinate? {
+    public func bottomCameraUnsafeClampedPixelCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u, tolerance: Percent_f? = nil) -> PixelCoordinate? {
         return self.unsafeClampedPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
@@ -909,7 +909,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Warning: When tolerance is not nil, and the coordinate falls outside
     /// the specified tolerance, then the coordinate returned from this function
     /// will be outside the image resolution bounds.
-    public func bottomCameraUnsafeClampedPixelCoordinate(to coord: FieldCoordinate, resWidth: pixels_u, resHeight: pixels_u, tolerance: percent_f? = nil) -> PixelCoordinate? {
+    public func bottomCameraUnsafeClampedPixelCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u, tolerance: Percent_f? = nil) -> PixelCoordinate? {
         return self.unsafeClampedPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight, tolerance: tolerance)
     }
 
@@ -952,7 +952,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Warning: When tolerance is not nil, and the coordinate falls outside
     /// the specified tolerance, then the coordinate returned from this function
     /// will be outside the image resolution bounds.
-    public func bottomCameraUnsafeClampedPercentCoordinate(to coord: CartesianCoordinate, tolerance: percent_f? = nil) -> PercentCoordinate? {
+    public func bottomCameraUnsafeClampedPercentCoordinate(to coord: CartesianCoordinate, tolerance: Percent_f? = nil) -> PercentCoordinate? {
         return self.unsafeClampedPercentCoordinate(to: coord, camera: self.bottomCameraIndex, tolerance: tolerance)
     }
 
@@ -995,7 +995,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Warning: When tolerance is not nil, and the coordinate falls outside
     /// the specified tolerance, then the coordinate returned from this function
     /// will be outside the image resolution bounds.
-    public func bottomUnsafeClampedPercentCoordinate(to coord: FieldCoordinate, tolerance: percent_f? = nil) -> PercentCoordinate? {
+    public func bottomUnsafeClampedPercentCoordinate(to coord: FieldCoordinate, tolerance: Percent_f? = nil) -> PercentCoordinate? {
         return self.unsafeClampedPercentCoordinate(to: coord, camera: self.bottomCameraIndex, tolerance: tolerance)
     }
     

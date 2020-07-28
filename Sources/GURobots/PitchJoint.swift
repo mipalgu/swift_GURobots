@@ -57,17 +57,22 @@
  */
 
 import CGURobots
+import GUUnits
 
-public typealias PitchJoint = gu_pitch_joint
-
-extension PitchJoint: CTypeWrapper {
+public struct PitchJoint: CTypeWrapper {
+    
+    public var pitch: Degrees_f
     
     public var rawValue: gu_pitch_joint {
-        return self
+        return gu_pitch_joint(pitch: self.pitch.rawValue)
     }
     
     public init(_ other: gu_pitch_joint) {
-        self = other
+        self.init(pitch: Degrees_f(rawValue: other.pitch))
+    }
+    
+    public init(pitch: Degrees_f = 0.0) {
+        self.pitch = pitch
     }
     
 }
