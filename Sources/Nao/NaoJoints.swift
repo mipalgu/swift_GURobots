@@ -90,7 +90,7 @@ public struct NaoJoints: CTypeWrapper {
         )
     }
     
-    public init(head: NaoHead, leftArm: NaoArm, rightArm: NaoArm, leftLeg: NaoLeg, rightLeg: NaoLeg) {
+    public init(head: NaoHead = NaoHead(), leftArm: NaoArm = NaoArm(), rightArm: NaoArm = NaoArm(), leftLeg: NaoLeg = NaoLeg(), rightLeg: NaoLeg = NaoLeg()) {
         self.head = head
         self.leftArm = leftArm
         self.rightArm = rightArm

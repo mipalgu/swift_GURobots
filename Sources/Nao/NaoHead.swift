@@ -75,7 +75,7 @@ public struct NaoHead: CTypeWrapper {
         )
     }
     
-    public init(neck: PitchYawJoint, buttons: NaoHeadSensors) {
+    public init(neck: PitchYawJoint = PitchYawJoint(), buttons: NaoHeadSensors = NaoHeadSensors()) {
         self.neck = neck
         self.buttons = buttons
     }

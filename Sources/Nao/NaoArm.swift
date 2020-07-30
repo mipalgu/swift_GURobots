@@ -86,7 +86,7 @@ public struct NaoArm: CTypeWrapper {
         )
     }
     
-    public init(shoulder: PitchRollJoint, elbow: YawRollJoint, wrist: YawJoint, hand: NaoHandSensors) {
+    public init(shoulder: PitchRollJoint = PitchRollJoint(), elbow: YawRollJoint = YawRollJoint(), wrist: YawJoint = YawJoint(), hand: NaoHandSensors = NaoHandSensors()) {
         self.shoulder = shoulder
         self.elbow = elbow
         self.wrist = wrist

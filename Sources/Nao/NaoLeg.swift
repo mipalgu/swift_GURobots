@@ -82,7 +82,7 @@ public struct NaoLeg: CTypeWrapper {
         )
     }
     
-    public init(hip: YPJoint, knee: PitchJoint, ankle: PitchRollJoint) {
+    public init(hip: YPJoint = YPJoint(), knee: PitchJoint = PitchJoint(), ankle: PitchRollJoint = PitchRollJoint()) {
         self.hip = hip
         self.knee = knee
         self.ankle = ankle

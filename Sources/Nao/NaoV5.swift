@@ -79,7 +79,7 @@ public struct NaoV5: NaoWrapper {
         )
     }
     
-    public init(joints: NaoJoints, sightings: SoccerSightings = SoccerSightings(), fieldPosition: FieldCoordinate? = nil) {
+    public init(joints: NaoJoints = NaoJoints(), sightings: SoccerSightings = SoccerSightings(), fieldPosition: FieldCoordinate? = nil) {
         self.joints = joints
         self.sightings = sightings
         self.fieldPosition = fieldPosition
