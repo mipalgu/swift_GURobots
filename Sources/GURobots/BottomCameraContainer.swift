@@ -58,7 +58,7 @@
 
 import GUCoordinates
 
-public protocol BottomCameraContainer: CameraPivotContainer {
+public protocol BottomCameraContainer: BottomCameraPivotContainer {
     
     var bottomCameraIndex: Int { get }
     
@@ -67,10 +67,10 @@ public protocol BottomCameraContainer: CameraPivotContainer {
 extension BottomCameraContainer {
     
     public var bottomCamera: Camera {
-        self.cameraPivot.cameras[self.bottomCameraIndex]
+        self.bottomCameraPivot.cameras[self.bottomCameraIndex]
     }
     
-    /// Is the object represent by the pixel in the image taken from the bottom
+    /// Is the object represent by the pixel in the image taken from the top
     /// camera on the ground?
     ///
     /// - Parameter coord: The pixel in the image representing the object.
@@ -78,10 +78,10 @@ extension BottomCameraContainer {
     /// - Returns: True if the pixel represents an object that is on the ground.
     /// Otherwise, False.
     public func bottomCameraObjectOnGround(_ coord: CameraCoordinate) -> Bool {
-        return self.cameraPivot.objectOnGround(coord.percentCoordinate, forCamera: self.bottomCameraIndex)
+        self.bottomCameraPivotObjectOnGround(coord, forCamera: self.bottomCameraIndex)
     }
     
-    /// Is the object represent by the pixel in the image taken from the bottom
+    /// Is the object represent by the pixel in the image taken from the top
     /// camera on the ground?
     ///
     /// - Parameter coord: The pixel in the image representing the object.
@@ -89,10 +89,10 @@ extension BottomCameraContainer {
     /// - Returns: True if the pixel represents an object that is on the ground.
     /// Otherwise, False.
     public func bottomCameraObjectOnGround(_ coord: PixelCoordinate) -> Bool {
-        return self.cameraPivot.objectOnGround(coord.percentCoordinate, forCamera: self.bottomCameraIndex)
+        self.bottomCameraPivotObjectOnGround(coord, forCamera: self.bottomCameraIndex)
     }
     
-    /// Is the object represent by the point in the image taken from the bottom
+    /// Is the object represent by the point in the image taken from the top
     /// camera on the ground?
     ///
     /// - Parameter coord: The point in the image representing the object.
@@ -100,23 +100,23 @@ extension BottomCameraContainer {
     /// - Returns: True if the point represents an object that is on the ground.
     /// Otherwise, False.
     public func bottomCameraObjectOnGround(_ coord: PercentCoordinate) -> Bool {
-        return self.cameraPivot.objectOnGround(coord, forCamera: self.bottomCameraIndex)
+        self.bottomCameraPivotObjectOnGround(coord, forCamera: self.bottomCameraIndex)
     }
     
     public func bottomCameraCanSee(object: RelativeCoordinate) -> Bool {
-        self.cameraPivot.canSee(object: object, inCamera: self.bottomCameraIndex)
+        self.bottomCameraPivotCanSee(object: object, inCamera: self.bottomCameraIndex)
     }
     
     public func bottomCameraRelativeCoordinate(of coord: CameraCoordinate) -> RelativeCoordinate {
-        self.relativeCoordinate(of: coord, camera: self.bottomCameraIndex)
+        self.bottomCameraPivotRelativeCoordinate(of: coord, camera: self.bottomCameraIndex)
     }
 
     public func bottomCameraRelativeCoordinate(of coord: PixelCoordinate) -> RelativeCoordinate {
-        self.relativeCoordinate(of: coord, camera: self.bottomCameraIndex)
+        self.bottomCameraPivotRelativeCoordinate(of: coord, camera: self.bottomCameraIndex)
     }
 
     public func bottomCameraRelativeCoordinate(of coord: PercentCoordinate) -> RelativeCoordinate {
-        self.relativeCoordinate(of: coord, camera: self.bottomCameraIndex)
+        self.bottomCameraPivotRelativeCoordinate(of: coord, camera: self.bottomCameraIndex)
     }
     
 }

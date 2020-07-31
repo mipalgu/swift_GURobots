@@ -59,7 +59,14 @@
 import GURobots
 import GUCoordinates
 
-public protocol NaoWrapper: TopCameraContainer, BottomCameraContainer, NaoJointsContainer, SightingsContainer, FieldPositionContainer {
+public protocol NaoWrapper:
+    CameraPivotContainer,
+    TopCameraContainer,
+    BottomCameraContainer,
+    NaoJointsContainer,
+    SightingsContainer,
+    FieldPositionContainer
+{
     
     var rawValue: gu_nao { get }
     

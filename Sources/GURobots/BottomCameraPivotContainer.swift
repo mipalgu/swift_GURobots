@@ -1,8 +1,8 @@
 /*
- * TopCameraContainer.swift
+ * BottomCameraPivotContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 25/7/20.
+ * Created by Callum McColl on 1/8/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,65 +58,78 @@
 
 import GUCoordinates
 
-public protocol TopCameraContainer: TopCameraPivotContainer {
+public protocol BottomCameraPivotContainer {
     
-    var topCameraIndex: Int { get }
+    var bottomCameraPivot: CameraPivot { get }
     
 }
 
-extension TopCameraContainer {
+extension BottomCameraPivotContainer {
     
-    public var topCamera: Camera {
-        self.topCameraPivot.cameras[self.topCameraIndex]
+    public func bottomCameraPivotCanSee(object: RelativeCoordinate, inCamera camera: Int) -> Bool {
+        self.bottomCameraPivot.canSee(object: object, inCamera: camera)
     }
     
-    /// Is the object represent by the pixel in the image taken from the top
-    /// camera on the ground?
+    /// Is the object represent by the pixel in the image taken from the camera
+    /// on the ground?
     ///
     /// - Parameter coord: The pixel in the image representing the object.
     ///
+    /// - Parameter camera: The camera index for the camera in the `cameras`
+    /// array.
+    ///
     /// - Returns: True if the pixel represents an object that is on the ground.
     /// Otherwise, False.
-    public func topCameraObjectOnGround(_ coord: CameraCoordinate) -> Bool {
-        self.topCameraPivotObjectOnGround(coord, forCamera: self.topCameraIndex)
+    public func bottomCameraPivotObjectOnGround(_ coord: CameraCoordinate, forCamera camera: Int) -> Bool {
+        return self.bottomCameraPivot.objectOnGround(coord.percentCoordinate, forCamera: camera)
     }
     
-    /// Is the object represent by the pixel in the image taken from the top
-    /// camera on the ground?
+    /// Is the object represent by the pixel in the image taken from the camera
+    /// on the ground?
     ///
     /// - Parameter coord: The pixel in the image representing the object.
     ///
+    /// - Parameter camera: The camera index for the camera in the `cameras`
+    /// array.
+    ///
     /// - Returns: True if the pixel represents an object that is on the ground.
     /// Otherwise, False.
-    public func topCameraObjectOnGround(_ coord: PixelCoordinate) -> Bool {
-        self.topCameraPivotObjectOnGround(coord, forCamera: self.topCameraIndex)
+    public func bottomCameraPivotObjectOnGround(_ coord: PixelCoordinate, forCamera camera: Int) -> Bool {
+        return self.bottomCameraPivot.objectOnGround(coord.percentCoordinate, forCamera: camera)
     }
     
-    /// Is the object represent by the point in the image taken from the top
-    /// camera on the ground?
+    /// Is the object represent by the point in the image taken from the camera
+    /// on the ground?
     ///
     /// - Parameter coord: The point in the image representing the object.
     ///
+    /// - Parameter camera: The camera index for the camera in the `cameras`
+    /// array.
+    ///
     /// - Returns: True if the point represents an object that is on the ground.
     /// Otherwise, False.
-    public func topCameraObjectOnGround(_ coord: PercentCoordinate) -> Bool {
-        self.topCameraPivotObjectOnGround(coord, forCamera: self.topCameraIndex)
+    public func bottomCameraPivotObjectOnGround(_ coord: PercentCoordinate, forCamera camera: Int) -> Bool {
+        return self.bottomCameraPivot.objectOnGround(coord, forCamera: camera)
     }
     
-    public func topCameraCanSee(object: RelativeCoordinate) -> Bool {
-        self.topCameraPivotCanSee(object: object, inCamera: self.topCameraIndex)
+    public func bottomCameraPivotRelativeCoordinate(of coord: CameraCoordinate, camera: Int) -> RelativeCoordinate {
+        coord.relativeCoordinate(cameraPivot: self.bottomCameraPivot, camera: camera)
     }
     
-    public func topCameraRelativeCoordinate(of coord: CameraCoordinate) -> RelativeCoordinate {
-        self.topCameraPivotRelativeCoordinate(of: coord, camera: self.topCameraIndex)
+    public func bottomCameraPivotRelativeCoordinate(of coord: PixelCoordinate, camera: Int) -> RelativeCoordinate {
+        coord.relativeCoordinate(cameraPivot: self.bottomCameraPivot, camera: camera)
     }
-
-    public func topCameraRelativeCoordinate(of coord: PixelCoordinate) -> RelativeCoordinate {
-        self.topCameraPivotRelativeCoordinate(of: coord, camera: self.topCameraIndex)
+    
+    public func bottomCameraPivotRelativeCoordinate(of coord: PercentCoordinate, camera: Int) -> RelativeCoordinate {
+        coord.relativeCoordinate(cameraPivot: self.bottomCameraPivot, camera: camera)
     }
+    
+}
 
-    public func topCameraRelativeCoordinate(of coord: PercentCoordinate) -> RelativeCoordinate {
-        self.topCameraPivotRelativeCoordinate(of: coord, camera: self.topCameraIndex)
+extension BottomCameraPivotContainer where Self: CameraPivotContainer {
+    
+    public var bottomCameraPivot: CameraPivot {
+        return self.cameraPivot
     }
     
 }

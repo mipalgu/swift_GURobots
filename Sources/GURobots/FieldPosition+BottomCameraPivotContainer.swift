@@ -1,8 +1,8 @@
 /*
- * FieldPosition+BottomCameraContainer.swift
+ * FieldPosition+BottomCameraPivotContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 1/8/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,21 +58,25 @@
 
 import GUCoordinates
 
-extension FieldPositionContainer where Self: BottomCameraContainer {
- 
-// MARK: - Bottom Camera Visibility Of Object On The Field
+extension FieldPositionContainer where Self: BottomCameraPivotContainer {
+
+    
+// MARK: - Visibility Of Object On The Field
     
     /// Can the camera see the object?
     ///
     /// - Parameter coord: The location of the object on the field.
     ///
-    /// - Returns: True if the bottom camera can see the object, False
+    /// - Parameter camera: The camera index for the camera in the camera
+    /// pivots `bottomCameraPivot.cameras` array.
+    ///
+    /// - Returns: True if the specified camera can see the object, False
     /// otherwise. Returns nil if `fieldPosition` is nil.
-    public func bottomCameraCanSee(object coord: CartesianCoordinate) -> Bool? {
+    public func bottomCameraPivotCanSee(object coord: CartesianCoordinate, inCamera camera: Int) -> Bool? {
         guard let relativeCoordinate = self.relativeCoordinate(to: coord) else {
             return nil
         }
-        return self.bottomCameraPivotCanSee(object: relativeCoordinate, inCamera: self.bottomCameraIndex)
+        return self.bottomCameraPivot.canSee(object: relativeCoordinate, inCamera: camera)
     }
     
     /// Can the camera see the object?
@@ -80,23 +84,28 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Parameter coord: The location of the object on the field.
     ///
     /// - Parameter camera: The camera index for the camera in the camera
-    /// pivots `cameraPivot.cameras` array.
+    /// pivots `bottomCameraPivot.cameras` array.
     ///
-    /// - Returns: True if the bottom camera can see the object, False
+    /// - Returns: True if the specified camera can see the object, False
     /// otherwise. Returns nil if `fieldPosition` is nil.
-    public func canSee(object coord: FieldCoordinate) -> Bool? {
+    public func bottomCameraPivotCanSee(object coord: FieldCoordinate, inCamera camera: Int) -> Bool? {
         guard let relativeCoordinate = self.relativeCoordinate(to: coord) else {
             return nil
         }
-        return self.bottomCameraPivotCanSee(object: relativeCoordinate, inCamera: self.bottomCameraIndex)
+        return self.bottomCameraPivot.canSee(object: relativeCoordinate, inCamera: camera)
     }
     
-// MARK: Field Coordinates From Bottom Camera Image Coordinates
+// MARK: - Field Coordinates From Image Coordinates
     
-    /// Calculate the position of an object in an image from the bottom camera
-    /// in relation to `fieldPosition`.
+    /// Calculate the position of an object in an image in relation to
+    /// `fieldPosition`.
     ///
     /// - Parameter coord: The pixel in the image representing the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the point represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
     ///
     /// - Returns: A new `CartesianCoordinate` calculated in relation to this
     /// coordinate. Returns nil if `fieldPosition` is nil.
@@ -105,14 +114,19 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    public func bottomCameraCartesianCoordinate(at coord: CameraCoordinate) -> CartesianCoordinate? {
-        return self.bottomCameraPivotCartesianCoordinate(at: coord, camera: self.bottomCameraIndex)
+    public func bottomCameraPivotCartesianCoordinate(at coord: CameraCoordinate, camera: Int) -> CartesianCoordinate? {
+        return self.fieldPosition?.cartesianCoordinate(at: coord, cameraPivot: self.bottomCameraPivot, camera: camera)
     }
     
-    /// Calculate the position of an object in an image from the bottom camera
-    /// in relation to `fieldPosition`.
+    /// Calculate the position of an object in an image in relation to
+    /// `fieldPosition`.
     ///
     /// - Parameter coord: The pixel in the image representing the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the point represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
     ///
     /// - Returns: A new `CartesianCoordinate` calculated in relation to this
     /// coordinate. Returns nil if `fieldPosition` is nil.
@@ -121,14 +135,19 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    public func bottomCameraCartesianCoordinate(at coord: PixelCoordinate) -> CartesianCoordinate? {
-        return self.bottomCameraPivotCartesianCoordinate(at: coord, camera: self.bottomCameraIndex)
+    public func bottomCameraPivotCartesianCoordinate(at coord: PixelCoordinate, camera: Int) -> CartesianCoordinate? {
+        return self.fieldPosition?.cartesianCoordinate(at: coord, cameraPivot: self.bottomCameraPivot, camera: camera)
     }
     
-    /// Calculate the position of an object in an image from the bottom camera
-    /// in relation to `fieldPosition`.
+    /// Calculate the position of an object in an image in relation to
+    /// `fieldPosition`.
     ///
     /// - Parameter coord: The point in the image representing the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the point represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
     ///
     /// - Returns: A new `CartesianCoordinate` calculated in relation to this
     /// coordinate. Returns nil if `fieldPosition` is nil.
@@ -137,14 +156,19 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    public func bottomCameraCartesianCoordinate(at coord: PercentCoordinate) -> CartesianCoordinate? {
-        return self.bottomCameraPivotCartesianCoordinate(at: coord, camera: self.bottomCameraIndex)
+    public func bottomCameraPivotCartesianCoordinate(at coord: PercentCoordinate, camera: Int) -> CartesianCoordinate? {
+        return self.fieldPosition?.cartesianCoordinate(at: coord, cameraPivot: self.bottomCameraPivot, camera: camera)
     }
     
-    /// Calculate the position of an object in an image from the bottom camera
-    /// in relation to `fieldPosition`.
+    /// Calculate the position of an object in an image in relation to
+    /// `fieldPosition`.
     ///
     /// - Parameter coord: The pixel in the image representing the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
     ///
     /// - Parameter heading: The direction in which the new coordinate
     /// is facing.
@@ -156,14 +180,19 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    public func bottomCameraFieldCoordinate(at coord: CameraCoordinate, heading: Degrees_t) -> FieldCoordinate? {
-        return self.bottomCameraPivotFieldCoordinate(at: coord, camera: self.bottomCameraIndex, heading: heading)
+    public func bottomCameraPivotFieldCoordinate(at coord: CameraCoordinate, camera: Int, heading: Degrees_t) -> FieldCoordinate? {
+        return self.fieldPosition?.fieldCoordinate(at: coord, cameraPivot: self.bottomCameraPivot, camera: camera, heading: heading)
     }
     
-    /// Calculate the position of an object in an image from the bottom camera
-    /// in relation to `fieldPosition`.
+    /// Calculate the position of an object in an image in relation to
+    /// `fieldPosition`.
     ///
     /// - Parameter coord: The pixel in the image representing the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
     ///
     /// - Parameter heading: The direction in which the new coordinate
     /// is facing.
@@ -175,14 +204,19 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    public func bottomCameraFieldCoordinate(at coord: PixelCoordinate, heading: Degrees_t) -> FieldCoordinate? {
-        return self.bottomCameraPivotFieldCoordinate(at: coord, camera: self.bottomCameraIndex, heading: heading)
+    public func bottomCameraPivotFieldCoordinate(at coord: PixelCoordinate, camera: Int, heading: Degrees_t) -> FieldCoordinate? {
+        return self.fieldPosition?.fieldCoordinate(at: coord, cameraPivot: self.bottomCameraPivot, camera: camera, heading: heading)
     }
     
-    /// Calculate the position of an object in an image from the bottom camera
-    /// in relation to `fieldPosition`.
+    /// Calculate the position of an object in an image in relation to
+    /// `fieldPosition`.
     ///
     /// - Parameter coord: The point in the image representing the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the point represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
     ///
     /// - Parameter heading: The direction in which the new coordinate
     /// is facing.
@@ -194,16 +228,176 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// the image represented by `coord` is representing an object on the ground.
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
-    public func bottomCameraFieldCoordinate(at coord: PercentCoordinate, heading: Degrees_t) -> FieldCoordinate? {
-        return self.bottomCameraPivotFieldCoordinate(at: coord, camera: self.bottomCameraIndex, heading: heading)
+    public func bottomCameraPivotFieldCoordinate(at coord: PercentCoordinate, camera: Int, heading: Degrees_t) -> FieldCoordinate? {
+        return self.fieldPosition?.fieldCoordinate(at: coord, cameraPivot: self.bottomCameraPivot, camera: camera, heading: heading)
+    }
+       
+// MARK: - Image Coordinates From Field Coordinates
+    
+    /// Calculate a pixel within a specific image from a specific camera
+    /// representing an object at a given position.
+    ///
+    /// - Parameter coord: The position of the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
+    ///
+    /// - Parameter resWidth: The width of the resolution of the image that
+    /// we are placing the object in.
+    ///
+    /// - Parameter resHeight: The height of the resolution of the image that
+    /// we are placing the object in.
+    ///
+    /// - Returns: A new `CameraCoordinate` representing the object in the
+    /// camera. Returns nil if `fieldPosition` is nil.
+    ///
+    /// - Warning: This function does not check whether the calculated coordinate
+    /// is within the bounds of the `resWidth` and `resHeight`. As such you
+    /// should only use this function if you are positive that the camera can
+    /// actually see the object at `coord`.
+    public func bottomCameraPivotCameraCoordinate(to coord: CartesianCoordinate, camera: Int, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
+        return self.fieldPosition?.cameraCoordinate(to: coord, cameraPivot: self.bottomCameraPivot, camera: camera, resWidth: resWidth, resHeight: resHeight)
+    }
+
+    /// Calculate a pixel within a specific image from a specific camera
+    /// representing an object at a given position.
+    ///
+    /// - Parameter coord: The position of the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
+    ///
+    /// - Parameter resWidth: The width of the resolution of the image that
+    /// we are placing the object in.
+    ///
+    /// - Parameter resHeight: The height of the resolution of the image that
+    /// we are placing the object in.
+    ///
+    /// - Returns: A new `CameraCoordinate` representing the object in the
+    /// camera. Returns nil if `fieldPosition` is nil.
+    ///
+    /// - Warning: This function does not check whether the calculated coordinate
+    /// is within the bounds of the `resWidth` and `resHeight`. As such you
+    /// should only use this function if you are positive that the camera can
+    /// actually see the object at `coord`.
+    public func bottomCameraPivotCameraCoordinate(to coord: FieldCoordinate, camera: Int, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
+        return self.fieldPosition?.cameraCoordinate(to: coord, cameraPivot: self.bottomCameraPivot, camera: camera, resWidth: resWidth, resHeight: resHeight)
+    }
+
+    /// Calculate a pixel within a specific image from a specific camera
+    /// representing an object at a given position.
+    ///
+    /// - Parameter coord: The position of the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
+    ///
+    /// - Parameter resWidth: The width of the resolution of the image that
+    /// we are placing the object in.
+    ///
+    /// - Parameter resHeight: The height of the resolution of the image that
+    /// we are placing the object in.
+    ///
+    /// - Returns: A new `PixelCoordinate` representing the object in the
+    /// camera. Returns nil if `fieldPosition` is nil.
+    ///
+    /// - Warning: This function does not check whether the calculated coordinate
+    /// is within the bounds of the `resWidth` and `resHeight`. As such you
+    /// should only use this function if you are positive that the camera can
+    /// actually see the object at `coord`.
+    public func bottomCameraPivotPixelCoordinate(to coord: CartesianCoordinate, camera: Int, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
+        return self.fieldPosition?.pixelCoordinate(to: coord, cameraPivot: self.bottomCameraPivot, camera: camera, resWidth: resWidth, resHeight: resHeight)
+    }
+
+    /// Calculate a pixel within a specific image from a specific camera
+    /// representing an object at a given position.
+    ///
+    /// - Parameter coord: The position of the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
+    ///
+    /// - Parameter resWidth: The width of the resolution of the image that
+    /// we are placing the object in.
+    ///
+    /// - Parameter resHeight: The height of the resolution of the image that
+    /// we are placing the object in.
+    ///
+    /// - Returns: A new `PixelCoordinate` representing the object in the
+    /// camera. Returns nil if `fieldPosition` is nil.
+    ///
+    /// - Warning: This function does not check whether the calculated coordinate
+    /// is within the bounds of the `resWidth` and `resHeight`. As such you
+    /// should only use this function if you are positive that the camera can
+    /// actually see the object at `coord`.
+    public func bottomCameraPivotPixelCoordinate(to coord: FieldCoordinate, camera: Int, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
+        return self.fieldPosition?.pixelCoordinate(to: coord, cameraPivot: self.bottomCameraPivot, camera: camera, resWidth: resWidth, resHeight: resHeight)
+    }
+
+    /// Calculate a point within a specific image from a specific camera
+    /// representing an object at a given position.
+    ///
+    /// - Parameter coord: The position of the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
+    ///
+    /// - Returns: A new `PercentCoordinate` representing the object in the
+    /// camera. Returns nil if `fieldPosition` is nil.
+    ///
+    /// - Warning: This function does not check whether the calculated coordinate
+    /// is within the bounds of the `resWidth` and `resHeight`. As such you
+    /// should only use this function if you are positive that the camera can
+    /// actually see the object at `coord`.
+    public func bottomCameraPivotPercentCoordinate(to coord: CartesianCoordinate, camera: Int) -> PercentCoordinate? {
+        return self.fieldPosition?.percentCoordinate(to: coord, cameraPivot: self.bottomCameraPivot, camera: camera)
+    }
+
+    /// Calculate a point within a specific image from a specific camera
+    /// representing an object at a given position.
+    ///
+    /// - Parameter coord: The position of the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
+    ///
+    /// - Returns: A new `PercentCoordinate` representing the object in the
+    /// camera. Returns nil if `fieldPosition` is nil.
+    ///
+    /// - Warning: This function does not check whether the calculated coordinate
+    /// is within the bounds of the `resWidth` and `resHeight`. As such you
+    /// should only use this function if you are positive that the camera can
+    /// actually see the object at `coord`.
+    public func bottomCameraPivotPercentCoordinate(to coord: FieldCoordinate, camera: Int) -> PercentCoordinate? {
+        return self.fieldPosition?.percentCoordinate(to: coord, cameraPivot: self.bottomCameraPivot, camera: camera)
     }
     
-// MARK: - Bottom Camera Image Coordinates From Field Coordinates
-    
-    /// Calculate a pixel within a specific image from the bottom camera
+    /// Calculate a pixel within a specific image from a specific camera
     /// representing an object at a given position.
     ///
+    /// All calculated pixels that fall outside
+    /// the bounds of the image are moved to the edge of the image to ensure
+    /// that the function always calculates a coordinate within the image
+    /// bounds.
+    ///
     /// - Parameter coord: The position of the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -213,19 +407,24 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     ///
     /// - Returns: A new `CameraCoordinate` representing the object in the
     /// camera. Returns nil if `fieldPosition` is nil.
-    ///
-    /// - Warning: This function does not check whether the calculated coordinate
-    /// is within the bounds of the `resWidth` and `resHeight`. As such you
-    /// should only use this function if you are positive that the camera can
-    /// actually see the object at `coord`.
-    public func bottomCameraCameraCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
-        return self.bottomCameraPivotCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    public func bottomCameraPivotClampedCameraCoordinate(to coord: CartesianCoordinate, camera: Int, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
+        return self.fieldPosition?.clampedCameraCoordinate(to: coord, cameraPivot: self.bottomCameraPivot, camera: camera, resWidth: resWidth, resHeight: resHeight)
     }
 
-    /// Calculate a pixel within a specific image from the bottom camera
+    /// Calculate a pixel within a specific image from a specific camera
     /// representing an object at a given position.
     ///
+    /// All calculated pixels that fall outside
+    /// the bounds of the image are moved to the edge of the image to ensure
+    /// that the function always calculates a coordinate within the image
+    /// bounds.
+    ///
     /// - Parameter coord: The position of the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -235,19 +434,24 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     ///
     /// - Returns: A new `CameraCoordinate` representing the object in the
     /// camera. Returns nil if `fieldPosition` is nil.
-    ///
-    /// - Warning: This function does not check whether the calculated coordinate
-    /// is within the bounds of the `resWidth` and `resHeight`. As such you
-    /// should only use this function if you are positive that the camera can
-    /// actually see the object at `coord`.
-    public func bottomCameraCameraCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
-        return self.bottomCameraPivotCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    public func bottomCameraPivotClampedCameraCoordinate(to coord: FieldCoordinate, camera: Int, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
+        return self.fieldPosition?.clampedCameraCoordinate(to: coord, cameraPivot: self.bottomCameraPivot, camera: camera, resWidth: resWidth, resHeight: resHeight)
     }
 
-    /// Calculate a pixel within a specific image from the bottom camera
+    /// Calculate a pixel within a specific image from a specific camera
     /// representing an object at a given position.
     ///
+    /// All calculated pixels that fall outside
+    /// the bounds of the image are moved to the edge of the image to ensure
+    /// that the function always calculates a coordinate within the image
+    /// bounds.
+    ///
     /// - Parameter coord: The position of the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -257,19 +461,24 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     ///
     /// - Returns: A new `PixelCoordinate` representing the object in the
     /// camera. Returns nil if `fieldPosition` is nil.
-    ///
-    /// - Warning: This function does not check whether the calculated coordinate
-    /// is within the bounds of the `resWidth` and `resHeight`. As such you
-    /// should only use this function if you are positive that the camera can
-    /// actually see the object at `coord`.
-    public func bottomCameraPixelCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
-        return self.bottomCameraPivotPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    public func bottomCameraPivotClampedPixelCoordinate(to coord: CartesianCoordinate, camera: Int, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
+        return self.fieldPosition?.clampedPixelCoordinate(to: coord, cameraPivot: self.bottomCameraPivot, camera: camera, resWidth: resWidth, resHeight: resHeight)
     }
 
-    /// Calculate a pixel within a specific image from the bottom camera
+    /// Calculate a pixel within a specific image from a specific camera
     /// representing an object at a given position.
     ///
+    /// All calculated pixels that fall outside
+    /// the bounds of the image are moved to the edge of the image to ensure
+    /// that the function always calculates a coordinate within the image
+    /// bounds.
+    ///
     /// - Parameter coord: The position of the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
     ///
     /// - Parameter resWidth: The width of the resolution of the image that
     /// we are placing the object in.
@@ -279,167 +488,50 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     ///
     /// - Returns: A new `PixelCoordinate` representing the object in the
     /// camera. Returns nil if `fieldPosition` is nil.
-    ///
-    /// - Warning: This function does not check whether the calculated coordinate
-    /// is within the bounds of the `resWidth` and `resHeight`. As such you
-    /// should only use this function if you are positive that the camera can
-    /// actually see the object at `coord`.
-    public func bottomCameraPixelCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
-        return self.bottomCameraPivotPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    public func bottomCameraPivotClampedPixelCoordinate(to coord: FieldCoordinate, camera: Int, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
+        return self.fieldPosition?.clampedPixelCoordinate(to: coord, cameraPivot: self.bottomCameraPivot, camera: camera, resWidth: resWidth, resHeight: resHeight)
     }
 
-    /// Calculate a point within a specific image from the bottom camera
+    /// Calculate a point within a specific image from a specific camera
     /// representing an object at a given position.
     ///
+    /// All calculated pixels that fall outside
+    /// the bounds of the image are moved to the edge of the image to ensure
+    /// that the function always calculates a coordinate within the image
+    /// bounds.
+    ///
     /// - Parameter coord: The position of the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
     ///
     /// - Returns: A new `PercentCoordinate` representing the object in the
     /// camera. Returns nil if `fieldPosition` is nil.
-    ///
-    /// - Warning: This function does not check whether the calculated coordinate
-    /// is within the bounds of the `resWidth` and `resHeight`. As such you
-    /// should only use this function if you are positive that the camera can
-    /// actually see the object at `coord`.
-    public func bottomCameraPercentCoordinate(to coord: CartesianCoordinate) -> PercentCoordinate? {
-        return self.bottomCameraPivotPercentCoordinate(to: coord, camera: self.bottomCameraIndex)
+    public func bottomCameraPivotClampedPercentCoordinate(to coord: CartesianCoordinate, camera: Int) -> PercentCoordinate? {
+        return self.fieldPosition?.clampedPercentCoordinate(to: coord, cameraPivot: self.bottomCameraPivot, camera: camera)
     }
 
-    /// Calculate a point within a specific image from the bottom camera
+    /// Calculate a point within a specific image from a specific camera
     /// representing an object at a given position.
     ///
+    /// All calculated pixels that fall outside
+    /// the bounds of the image are moved to the edge of the image to ensure
+    /// that the function always calculates a coordinate within the image
+    /// bounds.
+    ///
     /// - Parameter coord: The position of the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel represented by `coord`. This index should reference
+    /// a valid `Camera` within the `cameras` array within
+    /// `bottomCameraPivot.cameras`.
     ///
     /// - Returns: A new `PercentCoordinate` representing the object in the
     /// camera. Returns nil if `fieldPosition` is nil.
-    ///
-    /// - Warning: This function does not check whether the calculated coordinate
-    /// is within the bounds of the `resWidth` and `resHeight`. As such you
-    /// should only use this function if you are positive that the camera can
-    /// actually see the object at `coord`. If you would like to use a version
-    /// of this function that performs this bounds check then use
-    /// `bottomCameraPercentCoordinate(to:)`.
-    public func bottomCameraPercentCoordinate(to coord: FieldCoordinate, camera: Int) -> PercentCoordinate? {
-        return self.bottomCameraPivotPercentCoordinate(to: coord, camera: self.bottomCameraIndex)
-    }
-    
-    /// Calculate a pixel within a specific image from the bottom camera
-    /// representing an object at a given position.
-    ///
-    /// All calculated pixels that fall outside
-    /// the bounds of the image are moved to the edge of the image to ensure
-    /// that the function always calculates a coordinate within the image
-    /// bounds.
-    ///
-    /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter resWidth: The width of the resolution of the image that
-    /// we are placing the object in.
-    ///
-    /// - Parameter resHeight: The height of the resolution of the image that
-    /// we are placing the object in.
-    ///
-    /// - Returns: A new `CameraCoordinate` representing the object in the
-    /// camera. Returns nil if `fieldPosition` is nil.
-    public func bottomCameraClampedCameraCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
-        return self.bottomCameraPivotClampedCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
-    }
-
-    /// Calculate a pixel within a specific image from the bottom camera
-    /// representing an object at a given position.
-    ///
-    /// All calculated pixels that fall outside
-    /// the bounds of the image are moved to the edge of the image to ensure
-    /// that the function always calculates a coordinate within the image
-    /// bounds.
-    ///
-    /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter resWidth: The width of the resolution of the image that
-    /// we are placing the object in.
-    ///
-    /// - Parameter resHeight: The height of the resolution of the image that
-    /// we are placing the object in.
-    ///
-    /// - Returns: A new `CameraCoordinate` representing the object in the
-    /// camera. Returns nil if `fieldPosition` is nil.
-    public func bottomCameraClampedCameraCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
-        return self.bottomCameraPivotClampedCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
-    }
-
-    /// Calculate a pixel within a specific image from the bottom camera
-    /// representing an object at a given position.
-    ///
-    /// All calculated pixels that fall outside
-    /// the bounds of the image are moved to the edge of the image to ensure
-    /// that the function always calculates a coordinate within the image
-    /// bounds.
-    ///
-    /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter resWidth: The width of the resolution of the image that
-    /// we are placing the object in.
-    ///
-    /// - Parameter resHeight: The height of the resolution of the image that
-    /// we are placing the object in.
-    ///
-    /// - Returns: A new `PixelCoordinate` representing the object in the
-    /// camera. Returns nil if `fieldPosition` is nil.
-    public func bottomCameraClampedPixelCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
-        return self.bottomCameraPivotClampedPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
-    }
-
-    /// Calculate a pixel within a specific image from the bottom camera
-    /// representing an object at a given position.
-    ///
-    /// All calculated pixels that fall outside
-    /// the bounds of the image are moved to the edge of the image to ensure
-    /// that the function always calculates a coordinate within the image
-    /// bounds.
-    ///
-    /// - Parameter coord: The position of the object.
-    ///
-    /// - Parameter resWidth: The width of the resolution of the image that
-    /// we are placing the object in.
-    ///
-    /// - Parameter resHeight: The height of the resolution of the image that
-    /// we are placing the object in.
-    ///
-    /// - Returns: A new `PixelCoordinate` representing the object in the
-    /// camera. Returns nil if `fieldPosition` is nil.
-    public func bottomCameraClampedPixelCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
-        return self.bottomCameraPivotClampedPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
-    }
-
-    /// Calculate a point within a specific image from the bottom camera
-    /// representing an object at a given position.
-    ///
-    /// All calculated pixels that fall outside
-    /// the bounds of the image are moved to the edge of the image to ensure
-    /// that the function always calculates a coordinate within the image
-    /// bounds.
-    ///
-    /// - Parameter coord: The position of the object.
-    ///
-    /// - Returns: A new `PercentCoordinate` representing the object in the
-    /// camera. Returns nil if `fieldPosition` is nil.
-    public func bottomCameraClampedPercentCoordinate(to coord: CartesianCoordinate) -> PercentCoordinate? {
-        return self.bottomCameraPivotClampedPercentCoordinate(to: coord, camera: self.bottomCameraIndex)
-    }
-
-    /// Calculate a point within a specific image from the bottom camera
-    /// representing an object at a given position.
-    ///
-    /// All calculated pixels that fall outside
-    /// the bounds of the image are moved to the edge of the image to ensure
-    /// that the function always calculates a coordinate within the image
-    /// bounds.
-    ///
-    /// - Parameter coord: The position of the object.
-    ///
-    /// - Returns: A new `PercentCoordinate` representing the object in the
-    /// camera. Returns nil if `fieldPosition` is nil.
-    public func bottomClampedPercentCoordinate(to coord: FieldCoordinate) -> PercentCoordinate? {
-        return self.bottomCameraPivotClampedPercentCoordinate(to: coord, camera: self.bottomCameraIndex)
+    public func bottomCameraPivotClampedPercentCoordinate(to coord: FieldCoordinate, camera: Int) -> PercentCoordinate? {
+        return self.fieldPosition?.clampedPercentCoordinate(to: coord, cameraPivot: self.bottomCameraPivot, camera: camera)
     }
     
 }
