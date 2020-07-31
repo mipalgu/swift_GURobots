@@ -58,16 +58,34 @@
 
 import GURobots
 
-public typealias NaoHeadSensors = gu_nao_head_sensors
-
-extension NaoHeadSensors: CTypeWrapper {
+public struct NaoHeadSensors: CTypeWrapper {
+    
+    public var touchFront: Bool
+    
+    public var touchMiddle: Bool
+    
+    public var touchRear: Bool
     
     public var rawValue: gu_nao_head_sensors {
-        return self
+        return gu_nao_head_sensors(
+            touchFront: self.touchFront,
+            touchMiddle: self.touchMiddle,
+            touchRear: self.touchRear
+        )
     }
     
     public init(_ other: gu_nao_head_sensors) {
-        self = other
+        self.init(
+            touchFront: other.touchFront,
+            touchMiddle: other.touchMiddle,
+            touchRear: other.touchRear
+        )
+    }
+    
+    public init(touchFront: Bool = false, touchMiddle: Bool = false, touchRear: Bool = false) {
+        self.touchFront = touchFront
+        self.touchMiddle = touchMiddle
+        self.touchRear = touchRear
     }
     
 }

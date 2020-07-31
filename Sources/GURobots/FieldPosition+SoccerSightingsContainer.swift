@@ -1,8 +1,8 @@
 /*
- * SightingsContainer.swift
+ * FieldPosition+SoccerSightingsContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 25/7/20.
+ * Created by Callum McColl on 26/7/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,31 +56,52 @@
  *
  */
 
-import CGURobots
 import GUCoordinates
 
-public protocol SightingsContainer {
+extension FieldPositionContainer where Self: SoccerSightingsContainer {
     
-    var sightings: SoccerSightings { get }
+// MARK: - Field Positions Of Sightings
     
-}
-
-extension SightingsContainer {
+    /// Calculate the field position of the ball that we can currently see.
+    ///
+    /// Returns nil if `fieldPosition` or `ballSighting` is nil.
+    public var ballSightingPosition: CartesianCoordinate? {
+        guard let sighting = self.ballSighting else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
+    }
     
-    public var ballSighting: RelativeCoordinate? {
-        return self.sightings.ball
+    /// Calculate the field position of the left goal post that we can
+    /// currently see.
+    ///
+    /// Returns nil if `fieldPosition` or `leftGoalPostSighting` is nil.
+    public var leftGoalPostSightingPosition: CartesianCoordinate? {
+        guard let sighting = self.leftGoalPostSighting else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
     }
-
-    public var leftGoalPostSighting: RelativeCoordinate? {
-        return self.sightings.leftGoalPost
+    
+    /// Calculate the field position of the right goal post that we can
+    /// currently see.
+    ///
+    /// Returns nil if `fieldPosition` or `rightGoalPostSighting` is nil.
+    public var rightGoalPostSightingPosition: CartesianCoordinate? {
+        guard let sighting = self.rightGoalPostSighting else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
     }
-
-    public var rightGoalPostSighting: RelativeCoordinate? {
-        return self.sightings.rightGoalPost
-    }
-
-    public var goalSighting: RelativeCoordinate? {
-        return self.sightings.goal
+    
+    /// Calculate the field position of the goal that we can currently see.
+    ///
+    /// Returns nil if `fieldPosition` or `goalSighting` is nil.
+    public var goalSightingPosition: CartesianCoordinate? {
+        guard let sighting = self.goalSighting else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
     }
     
 }

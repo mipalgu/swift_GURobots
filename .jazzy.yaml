@@ -1,0 +1,50 @@
+theme: fullwidth
+
+exclude:
+    - Sources/*/gu_*.swift
+
+custom_categories:
+    - name: Nao
+      children: 
+          - NaoWrapper
+          - NaoV5
+          - WBNaoV5
+          - NaoWBIndexes
+          - NaoJointsContainer
+          - NaoJoints
+          - NaoHead
+          - NaoHeadSensors
+          - NaoArm
+          - NaoHandSensors
+          - NaoLeg
+
+    - name: Cameras
+      children:
+          - BottomCameraContainer
+          - BottomCameraPivotContainer
+          - CameraPivotContainer
+          - TopCameraContainer
+          - TopCameraPivotContainer
+
+    - name: Joints
+      children:
+          - PitchJoint
+          - PitchRollJoint
+          - PitchYawJoint
+          - YPJoint
+          - YawJoint
+          - YawRollJoint
+
+    - name: Sightings
+      children:
+          - SoccerSightingsContainer
+          - SoccerSightings
+
+    - name: Localisation
+      children:
+          - FieldPositionContainer
+
+    - name: Converting C Types
+      children:
+          - CTypeDelegator
+          - CTypeWrapper

@@ -58,16 +58,34 @@
 
 import GURobots
 
-public typealias NaoHandSensors = gu_nao_hand_sensors
-
-extension NaoHandSensors: CTypeWrapper {
+public struct NaoHandSensors: CTypeWrapper {
+    
+    public var touchLeft: Bool
+    
+    public var touchBack: Bool
+    
+    public var touchRight: Bool
     
     public var rawValue: gu_nao_hand_sensors {
-        return self
+        return gu_nao_hand_sensors(
+            touchLeft: self.touchLeft,
+            touchBack: self.touchBack,
+            touchRight: self.touchRight
+        )
     }
     
     public init(_ other: gu_nao_hand_sensors) {
-        self = other
+        self.init(
+            touchLeft: other.touchLeft,
+            touchBack: other.touchBack,
+            touchRight: other.touchRight
+        )
+    }
+    
+    public init(touchLeft: Bool = false, touchBack: Bool = false, touchRight: Bool = false) {
+        self.touchLeft = touchLeft
+        self.touchBack = touchBack
+        self.touchRight = touchRight
     }
     
 }

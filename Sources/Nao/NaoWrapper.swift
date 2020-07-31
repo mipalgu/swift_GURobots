@@ -64,7 +64,7 @@ public protocol NaoWrapper:
     TopCameraContainer,
     BottomCameraContainer,
     NaoJointsContainer,
-    SightingsContainer,
+    SoccerSightingsContainer,
     FieldPositionContainer
 {
     
@@ -86,7 +86,7 @@ extension NaoWrapper {
         NaoJoints(self.rawValue.joints)
     }
 
-    public var sightings: SoccerSightings {
+    public var soccerSightings: SoccerSightings {
         SoccerSightings(self.rawValue.sightings)
     }
 
