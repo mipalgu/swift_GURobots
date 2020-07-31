@@ -61,7 +61,7 @@ import GUCoordinates
 
 extension FieldPositionContainer where Self: CameraPivotContainer {
     
-// MARK: - Visibility Of Object On The Field
+// MARK: - Visibility Of Objects On The Field
     
     /// Can the camera see the object?
     ///

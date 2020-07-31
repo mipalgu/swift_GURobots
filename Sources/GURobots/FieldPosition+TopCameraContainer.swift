@@ -60,7 +60,7 @@ import GUCoordinates
 
 extension FieldPositionContainer where Self: TopCameraContainer {
   
-// MARK: - Top Camera Visibility Of Object On The Field
+// MARK: - Top Camera Visibility Of Objects On The Field
     
     /// Can the camera see the object?
     ///

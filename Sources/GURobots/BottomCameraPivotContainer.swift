@@ -66,6 +66,7 @@ public protocol BottomCameraPivotContainer {
 
 extension BottomCameraPivotContainer {
     
+    
     public func bottomCameraPivotCanSee(object: RelativeCoordinate, inCamera camera: Int) -> Bool {
         self.bottomCameraPivot.canSee(object: object, inCamera: camera)
     }

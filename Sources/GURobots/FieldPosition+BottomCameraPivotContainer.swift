@@ -61,7 +61,7 @@ import GUCoordinates
 extension FieldPositionContainer where Self: BottomCameraPivotContainer {
 
     
-// MARK: - Visibility Of Object On The Field
+// MARK: - Bottom Camera Pivot Visibility Of Objects On The Field
     
     /// Can the camera see the object?
     ///
@@ -95,7 +95,7 @@ extension FieldPositionContainer where Self: BottomCameraPivotContainer {
         return self.bottomCameraPivot.canSee(object: relativeCoordinate, inCamera: camera)
     }
     
-// MARK: - Field Coordinates From Image Coordinates
+// MARK: - Bottom Camera Pivot Field Coordinates From Image Coordinates
     
     /// Calculate the position of an object in an image in relation to
     /// `fieldPosition`.
@@ -232,7 +232,7 @@ extension FieldPositionContainer where Self: BottomCameraPivotContainer {
         return self.fieldPosition?.fieldCoordinate(at: coord, cameraPivot: self.bottomCameraPivot, camera: camera, heading: heading)
     }
        
-// MARK: - Image Coordinates From Field Coordinates
+// MARK: - Bottom Camera Pivot Image Coordinates From Field Coordinates
     
     /// Calculate a pixel within a specific image from a specific camera
     /// representing an object at a given position.

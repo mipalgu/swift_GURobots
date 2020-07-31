@@ -60,7 +60,7 @@ import GUCoordinates
 
 extension FieldPositionContainer where Self: BottomCameraContainer {
  
-// MARK: - Bottom Camera Visibility Of Object On The Field
+// MARK: - Bottom Camera Visibility Of Objects On The Field
     
     /// Can the camera see the object?
     ///
@@ -84,7 +84,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     ///
     /// - Returns: True if the bottom camera can see the object, False
     /// otherwise. Returns nil if `fieldPosition` is nil.
-    public func canSee(object coord: FieldCoordinate) -> Bool? {
+    public func bottomCameraCanSee(object coord: FieldCoordinate) -> Bool? {
         guard let relativeCoordinate = self.relativeCoordinate(to: coord) else {
             return nil
         }
