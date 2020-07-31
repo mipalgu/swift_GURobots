@@ -70,28 +70,53 @@ extension TopCameraContainer {
         self.cameraPivot.cameras[self.topCameraIndex]
     }
     
-    public func topCameraRelativeCoordinate(of coord: CameraCoordinate) -> RelativeCoordinate? {
+    /// Is the object represent by the pixel in the image taken from the top
+    /// camera on the ground?
+    ///
+    /// - Parameter coord: The pixel in the image representing the object.
+    ///
+    /// - Returns: True if the pixel represents an object that is on the ground.
+    /// Otherwise, False.
+    public func topCameraObjectOnGround(_ coord: CameraCoordinate) -> Bool {
+        return self.cameraPivot.objectOnGround(coord.percentCoordinate, forCamera: self.topCameraIndex)
+    }
+    
+    /// Is the object represent by the pixel in the image taken from the top
+    /// camera on the ground?
+    ///
+    /// - Parameter coord: The pixel in the image representing the object.
+    ///
+    /// - Returns: True if the pixel represents an object that is on the ground.
+    /// Otherwise, False.
+    public func topCameraObjectOnGround(_ coord: PixelCoordinate) -> Bool {
+        return self.cameraPivot.objectOnGround(coord.percentCoordinate, forCamera: self.topCameraIndex)
+    }
+    
+    /// Is the object represent by the point in the image taken from the top
+    /// camera on the ground?
+    ///
+    /// - Parameter coord: The point in the image representing the object.
+    ///
+    /// - Returns: True if the point represents an object that is on the ground.
+    /// Otherwise, False.
+    public func topCameraObjectOnGround(_ coord: PercentCoordinate) -> Bool {
+        return self.cameraPivot.objectOnGround(coord, forCamera: self.topCameraIndex)
+    }
+    
+    public func topCameraCanSee(object: RelativeCoordinate) -> Bool {
+        self.cameraPivot.canSee(object: object, inCamera: self.topCameraIndex)
+    }
+    
+    public func topCameraRelativeCoordinate(of coord: CameraCoordinate) -> RelativeCoordinate {
         self.relativeCoordinate(of: coord, camera: self.topCameraIndex)
     }
 
-    public func topCameraRelativeCoordinate(of coord: PixelCoordinate) -> RelativeCoordinate? {
+    public func topCameraRelativeCoordinate(of coord: PixelCoordinate) -> RelativeCoordinate {
         self.relativeCoordinate(of: coord, camera: self.topCameraIndex)
     }
 
-    public func topCameraRelativeCoordinate(of coord: PercentCoordinate) -> RelativeCoordinate? {
+    public func topCameraRelativeCoordinate(of coord: PercentCoordinate) -> RelativeCoordinate {
         self.relativeCoordinate(of: coord, camera: self.topCameraIndex)
-    }
-    
-    public func topCameraUnsafeRelativeCoordinate(of coord: CameraCoordinate) -> RelativeCoordinate {
-        self.unsafeRelativeCoordinate(of: coord, camera: self.topCameraIndex)
-    }
-    
-    public func topCameraUnsafeRelativeCoordinate(of coord: PixelCoordinate) -> RelativeCoordinate {
-        self.unsafeRelativeCoordinate(of: coord, camera: self.topCameraIndex)
-    }
-    
-    public func topCameraUnsafeRelativeCoordinate(of coord: PercentCoordinate) -> RelativeCoordinate {
-        self.unsafeRelativeCoordinate(of: coord, camera: self.topCameraIndex)
     }
     
 }

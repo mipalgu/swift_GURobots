@@ -66,28 +66,58 @@ public protocol CameraPivotContainer {
 
 extension CameraPivotContainer {
     
-    public func relativeCoordinate(of coord: CameraCoordinate, camera: Int) -> RelativeCoordinate? {
+    /// Is the object represent by the pixel in the image taken from the camera
+    /// on the ground?
+    ///
+    /// - Parameter coord: The pixel in the image representing the object.
+    ///
+    /// - Parameter camera: The camera index for the camera in the `cameras`
+    /// array.
+    ///
+    /// - Returns: True if the pixel represents an object that is on the ground.
+    /// Otherwise, False.
+    public func objectOnGround(_ coord: CameraCoordinate, forCamera camera: Int) -> Bool {
+        return self.cameraPivot.objectOnGround(coord.percentCoordinate, forCamera: camera)
+    }
+    
+    /// Is the object represent by the pixel in the image taken from the camera
+    /// on the ground?
+    ///
+    /// - Parameter coord: The pixel in the image representing the object.
+    ///
+    /// - Parameter camera: The camera index for the camera in the `cameras`
+    /// array.
+    ///
+    /// - Returns: True if the pixel represents an object that is on the ground.
+    /// Otherwise, False.
+    public func objectOnGround(_ coord: PixelCoordinate, forCamera camera: Int) -> Bool {
+        return self.cameraPivot.objectOnGround(coord.percentCoordinate, forCamera: camera)
+    }
+    
+    /// Is the object represent by the point in the image taken from the camera
+    /// on the ground?
+    ///
+    /// - Parameter coord: The point in the image representing the object.
+    ///
+    /// - Parameter camera: The camera index for the camera in the `cameras`
+    /// array.
+    ///
+    /// - Returns: True if the point represents an object that is on the ground.
+    /// Otherwise, False.
+    public func objectOnGround(_ coord: PercentCoordinate, forCamera camera: Int) -> Bool {
+        return self.cameraPivot.objectOnGround(coord, forCamera: camera)
+    }
+    
+    public func relativeCoordinate(of coord: CameraCoordinate, camera: Int) -> RelativeCoordinate {
         coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: camera)
     }
     
-    public func relativeCoordinate(of coord: PixelCoordinate, camera: Int) -> RelativeCoordinate? {
+    public func relativeCoordinate(of coord: PixelCoordinate, camera: Int) -> RelativeCoordinate {
         coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: camera)
     }
     
-    public func relativeCoordinate(of coord: PercentCoordinate, camera: Int) -> RelativeCoordinate? {
+    public func relativeCoordinate(of coord: PercentCoordinate, camera: Int) -> RelativeCoordinate {
         coord.relativeCoordinate(cameraPivot: self.cameraPivot, camera: camera)
-    }
-    
-    public func unsafeRelativeCoordinate(of coord: CameraCoordinate, camera: Int) -> RelativeCoordinate {
-        coord.unsafeRelativeCoordinate(cameraPivot: self.cameraPivot, camera: camera)
-    }
-    
-    public func unsafeRelativeCoordinate(of coord: PixelCoordinate, camera: Int) -> RelativeCoordinate {
-        coord.unsafeRelativeCoordinate(cameraPivot: self.cameraPivot, camera: camera)
-    }
-    
-    public func unsafeRelativeCoordinate(of coord: PercentCoordinate, camera: Int) -> RelativeCoordinate {
-        coord.unsafeRelativeCoordinate(cameraPivot: self.cameraPivot, camera: camera)
     }
     
 }
