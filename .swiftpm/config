@@ -1,0 +1,9 @@
+{
+  "object": [
+    {
+      "mirror": "https://github.com/mipalgu/swift_GUCoordinates.git",
+      "original": "ssh://git.mipal.net/git/swift_GUCoordinates.git"
+    }
+  ],
+  "version": 1
+}
