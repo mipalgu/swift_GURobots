@@ -58,17 +58,48 @@
 
 import GUCoordinates
 
+/// Conforming types have a camera designated the *bottom camera*.
+///
+/// This protocol provides convenience functions which make the use of
+/// `Camera` and `CameraPivot` objects easier. Users of types that conform to
+/// this protocol are able to use most of the functionality provided by the
+/// `Camera` and `CameraPivot` api without having to create their own
+/// pivot points and camera objects.
+///
+/// As the name of the protocol suggests; all the functionality provided by
+/// this protocol deals with a specific camera designated the *bottom camera*.
 public protocol BottomCameraContainer: BottomCameraPivotContainer {
     
+// MARK: - Properties
+    
+    /// The index of the *bottom camera* within the `bottomCameraPivot.cameras`
+    /// array.
     var bottomCameraIndex: Int { get }
     
 }
 
 extension BottomCameraContainer {
     
+    /// Fetch the `Camera` for the bottom camera from the
+    /// `bottomCameraPivot.cameras` array.
     public var bottomCamera: Camera {
         self.bottomCameraPivot.cameras[self.bottomCameraIndex]
     }
+    
+// MARK: - Camera Visibility Of Objects
+    
+    /// Can the bottom camera attached to `bottomCameraPivot` see the object?
+    ///
+    /// - Parameter coord: The location of the object in relation to the
+    /// bottom camera.
+    ///
+    /// - Returns: True if the bottom camera can see the object, False
+    /// otherwise.
+    public func bottomCameraCanSee(object: RelativeCoordinate) -> Bool {
+        self.bottomCameraPivotCanSee(object: object, inCamera: self.bottomCameraIndex)
+    }
+    
+// MARK: - Image Coordinate Validation
     
     /// Is the object represent by the pixel in the image taken from the top
     /// camera on the ground?
@@ -103,18 +134,56 @@ extension BottomCameraContainer {
         self.bottomCameraPivotObjectOnGround(coord, forCamera: self.bottomCameraIndex)
     }
     
-    public func bottomCameraCanSee(object: RelativeCoordinate) -> Bool {
-        self.bottomCameraPivotCanSee(object: object, inCamera: self.bottomCameraIndex)
-    }
+// MARK: Converting Image Coordinates To Relative Coordinates
     
+    /// Convert the object in an image to a `RelativeCoordinate` for the
+    /// bottom camera attached to the `bottomCameraPivot` pivot point.
+    ///
+    /// - Parameter coord: The pixel within the image representing the object.
+    ///
+    /// - Returns: This function returns the
+    /// `RelativeCoordinate` representing the object in the image at the pixel
+    /// `coord`.
+    ///
+    /// - Warning: Only use this function if you are positive that the pixel in
+    /// the image is representing an object on the ground.
+    /// If this is not the case, then the maximum value for the distance will
+    /// be used.
     public func bottomCameraRelativeCoordinate(of coord: CameraCoordinate) -> RelativeCoordinate {
         self.bottomCameraPivotRelativeCoordinate(of: coord, camera: self.bottomCameraIndex)
     }
 
+
+    /// Convert the object in an image to a `RelativeCoordinate` for the
+    /// bottom camera attached to the `bottomCameraPivot` pivot point.
+    ///
+    /// - Parameter coord: The pixel within the image representing the object.
+    ///
+    /// - Returns: This function returns the
+    /// `RelativeCoordinate` representing the object in the image at the pixel
+    /// `coord`.
+    ///
+    /// - Warning: Only use this function if you are positive that the pixel in
+    /// the image is representing an object on the ground.
+    /// If this is not the case, then the maximum value for the distance will
+    /// be used.
     public func bottomCameraRelativeCoordinate(of coord: PixelCoordinate) -> RelativeCoordinate {
         self.bottomCameraPivotRelativeCoordinate(of: coord, camera: self.bottomCameraIndex)
     }
 
+    /// Convert the object in an image to a `RelativeCoordinate` for the
+    /// bottom camera attached to the `bottomCameraPivot` pivot point.
+    ///
+    /// - Parameter coord: The point within the image representing the object.
+    ///
+    /// - Returns: This function returns the
+    /// `RelativeCoordinate` representing the object in the image at the point
+    /// `coord`.
+    ///
+    /// - Warning: Only use this function if you are positive that the point in
+    /// the image is representing an object on the ground.
+    /// If this is not the case, then the maximum value for the distance will
+    /// be used.
     public func bottomCameraRelativeCoordinate(of coord: PercentCoordinate) -> RelativeCoordinate {
         self.bottomCameraPivotRelativeCoordinate(of: coord, camera: self.bottomCameraIndex)
     }

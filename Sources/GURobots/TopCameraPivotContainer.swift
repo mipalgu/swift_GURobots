@@ -58,17 +58,49 @@
 
 import GUCoordinates
 
+/// Conforming types have a camera pivot for the top camera.
+///
+/// Generally it does not make sense to conform to this protocol without
+/// conforming to `TopCameraContainer`. This protocol merely exists to provide
+/// some common functionality for cameras that are not necessarily the camera
+/// designated the *top camera* but still leverage this pivot point.
+///
+/// - SeeAlso: `TopCameraContainer`
 public protocol TopCameraPivotContainer {
     
+    /// The camera pivot point used for the top camera.
     var topCameraPivot: CameraPivot { get }
+    
+}
+
+extension TopCameraPivotContainer where Self: CameraPivotContainer {
+    
+    /// If we conform to `CameraPivotContainer`, then by default, this pivot
+    /// point is the same pivot point as `cameraPivot`.
+    public var topCameraPivot: CameraPivot {
+        return self.cameraPivot
+    }
     
 }
 
 extension TopCameraPivotContainer {
     
+// MARK: - Camera Visibility Of Objects
+    
+    /// Can the camera attached to `topCameraPivot` see the object?
+    ///
+    /// - Parameter coord: The location of the object in relation to the camera.
+    ///
+    /// - Parameter camera: The camera index for the camera in the
+    /// `topCameraPivot.cameras` array.
+    ///
+    /// - Returns: True if the specified camera can see the object, False
+    /// otherwise.
     public func topCameraPivotCanSee(object: RelativeCoordinate, inCamera camera: Int) -> Bool {
         self.topCameraPivot.canSee(object: object, inCamera: camera)
     }
+    
+// MARK: - Image Coordinate Validation
     
     /// Is the object represent by the pixel in the image taken from the camera
     /// on the ground?
@@ -112,24 +144,69 @@ extension TopCameraPivotContainer {
         return self.topCameraPivot.objectOnGround(coord, forCamera: camera)
     }
     
+// MARK: Converting Image Coordinates To Relative Coordinates
+    
+    /// Convert the object in an image to a `RelativeCoordinate` for a camera
+    /// attached to the `topCameraPivot` pivot point.
+    ///
+    /// - Parameter coord: The pixel within the image representing the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel. This index should reference a valid `Camera`
+    /// within the `topCameraPivot.cameras` array.
+    ///
+    /// - Returns: This function returns the
+    /// `RelativeCoordinate` representing the object in the image at the pixel
+    /// `coord`.
+    ///
+    /// - Warning: Only use this function if you are positive that the pixel in
+    /// the image is representing an object on the ground.
+    /// If this is not the case, then the maximum value for the distance will
+    /// be used.
     public func topCameraPivotRelativeCoordinate(of coord: CameraCoordinate, camera: Int) -> RelativeCoordinate {
         coord.relativeCoordinate(cameraPivot: self.topCameraPivot, camera: camera)
     }
     
+    /// Convert the object in an image to a `RelativeCoordinate` for a camera
+    /// attached to the `topCameraPivot` pivot point.
+    ///
+    /// - Parameter coord: The pixel within the image representing the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the pixel. This index should reference a valid `Camera`
+    /// within the `topCameraPivot.cameras` array.
+    ///
+    /// - Returns: This function returns the
+    /// `RelativeCoordinate` representing the object in the image at the pixel
+    /// `coord`.
+    ///
+    /// - Warning: Only use this function if you are positive that the pixel in
+    /// the image is representing an object on the ground.
+    /// If this is not the case, then the maximum value for the distance will
+    /// be used.
     public func topCameraPivotRelativeCoordinate(of coord: PixelCoordinate, camera: Int) -> RelativeCoordinate {
         coord.relativeCoordinate(cameraPivot: self.topCameraPivot, camera: camera)
     }
     
+    /// Convert the object in an image to a `RelativeCoordinate` for a camera
+    /// attached to the `topCameraPivot` pivot point.
+    ///
+    /// - Parameter coord: The point within the image representing the object.
+    ///
+    /// - Parameter camera: The index of the camera which recorded the image
+    /// containing the point. This index should reference a valid `Camera`
+    /// within the `topCameraPivot.cameras` array.
+    ///
+    /// - Returns: This function returns the
+    /// `RelativeCoordinate` representing the object in the image at the point
+    /// `coord`.
+    ///
+    /// - Warning: Only use this function if you are positive that the point in
+    /// the image is representing an object on the ground.
+    /// If this is not the case, then the maximum value for the distance will
+    /// be used.
     public func topCameraPivotRelativeCoordinate(of coord: PercentCoordinate, camera: Int) -> RelativeCoordinate {
         coord.relativeCoordinate(cameraPivot: self.topCameraPivot, camera: camera)
-    }
-    
-}
-
-extension TopCameraPivotContainer where Self: CameraPivotContainer {
-    
-    public var topCameraPivot: CameraPivot {
-        return self.cameraPivot
     }
     
 }
