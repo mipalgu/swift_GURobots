@@ -8,7 +8,6 @@ custom_categories:
       children: 
           - NaoWrapper
           - NaoV5
-          - WBNaoV5
           - NaoWBIndexes
           - NaoJointsContainer
           - NaoJoints
@@ -17,6 +16,7 @@ custom_categories:
           - NaoArm
           - NaoHandSensors
           - NaoLeg
+          - ManageableNaoV5
 
     - name: Cameras
       children:

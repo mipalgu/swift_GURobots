@@ -1,8 +1,8 @@
 /*
- * NaoV5.swift
- * GURobots
+ * ManageableNaoV5.swift
+ * GURobots 
  *
- * Created by Callum McColl on 25/7/20.
+ * Created by Callum McColl on 10/07/2020.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,56 +57,81 @@
  */
 
 import GURobots
-import GUSimpleWhiteboard
+import GUCoordinates
 
-/// A read-only nao that reads its values from the whiteboard.
+/// A fully manageable nao type.
 ///
-/// Note that by itself, this struct looks like it doesn't do anything.
+/// Generally it is advisable to use `NaoV5` instead of this type. You
+/// should only use this type if you are simulating a nao with
+/// an editor or simulator. This type will not allow you to retrieve the current
+/// state of the sensors, the current field position of the robot, nor any
+/// useful data about what the robot is seeing. Instead, this type allows you to
+/// specify all of these things manually. This gives you complete control.
+///
+/// Note that by itself, this struct looks like it doesn't do much.
 /// This is because, the entirety of its functionality is provided through
 /// protocols and protocols extensions. Consider looking through these protocols
 /// in order to understand all the functionality that this type provides.
 ///
+/// - SeeAlso: `NaoV5`
 /// - SeeAlso: `NaoWrapper`
 /// - SeeAlso: `NaoJointsContainer`
 /// - SeeAlso: `SoccerSightingsContainer`
 /// - SeeAlso: `FieldPositionContainer`
-public struct NaoV5: NaoWrapper {
-
+public struct ManageableNaoV5: NaoWrapper {
+    
 // MARK: - Properties
     
-    private let wb: Whiteboard
+    /// The joints of the robot.
+    public var joints: NaoJoints
     
-    private let indexes: NaoWBIndexes
-
-// MARK: - Converting To The Underlying gurobots C Type
+    /// The soccer objects that this robot can see.
+    public var soccerSightings: SoccerSightings
+    
+    /// The current field position of this robot.
+    public var fieldPosition: FieldCoordinate?
+    
+// MARK: - Converting Between The Underlying gurobots C Type
     
     /// Convert this object to the underlying gurobots C type `gu_nao`.
-    public private(set) var rawValue: gu_nao
-    
-// MARK: - Creating a NaoV5
-
-    /// Create a `NaoV5`.
-    ///
-    /// - Parameter wb: The whiteboard which this object will fetch its values
-    /// from. If this parameter is omitted then the global whiteboard is used.
-    ///
-    /// - Parameter indexes: The indexes of the messages within the whiteboard.
-    /// By default, these indexes are those for the normal global whiteboard.
-    /// By specifying a value for the indexes, we can allow the use of custom
-    /// whiteboards. Again, by default, this parameter can be omitted in order
-    /// to use the global whiteboard indexes.
-    public init(wb: Whiteboard = Whiteboard(), indexes: NaoWBIndexes = NaoWBIndexes()) {
-        self.wb = wb
-        self.indexes = indexes
-        self.rawValue = gu_nao()
-        self.update()
+    public var rawValue: gu_nao {
+        let fieldCoordinate = gu_optional_field_coordinate(
+            has_value: self.fieldPosition != nil,
+            value: self.fieldPosition?.rawValue ?? gu_field_coordinate()
+        )
+        return gu_nao(
+            fieldPosition: fieldCoordinate,
+            joints: self.joints.rawValue,
+            sightings: self.soccerSightings.rawValue
+        )
     }
     
-// MARK: - Reading From The Whiteboard
-
-    /// Update the nao by reading values from the whiteboard.
-    public mutating func update() {
-        gu_nao_update_from_custom_wb(&self.rawValue, self.wb.wb, self.indexes.rawValue)
+    /// Create a `ManageableNaoV5` by copying the values from the underlying
+    /// gurobots C type `gu_nao`.
+    ///
+    /// - Parameter other: The underlying gurobots C type `gu_nao` which values
+    /// will be copied.
+    public init(_ other: gu_nao) {
+        self.init(
+            joints: NaoJoints(other.joints),
+            soccerSightings: SoccerSightings(other.sightings),
+            fieldPosition: other.fieldPosition.has_value ? FieldCoordinate(other.fieldPosition.value) : nil
+        )
     }
-
+    
+// MARK: - Creating a ManageableNaoV5
+    
+    /// Create a `ManageableNaoV5`.
+    ///
+    /// - Parameter joints: The list of joints for the robot.
+    ///
+    /// - Parameter soccerSightings: The soccer objects viewable by the robot.
+    ///
+    /// - Parameter fieldPostion: The current field position of the robot.
+    public init(joints: NaoJoints = NaoJoints(), soccerSightings: SoccerSightings = SoccerSightings(), fieldPosition: FieldCoordinate? = nil) {
+        self.joints = joints
+        self.soccerSightings = soccerSightings
+        self.fieldPosition = fieldPosition
+    }
+    
 }
