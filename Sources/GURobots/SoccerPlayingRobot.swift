@@ -1,8 +1,8 @@
 /*
- * NaoWrapper.swift
+ * SoccerPlayingRobot.swift
  * GURobots
  *
- * Created by Callum McColl on 25/7/20.
+ * Created by Callum McColl on 1/8/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,66 +56,5 @@
  *
  */
 
-import GURobots
-import GUCoordinates
-
-/// The protocol that all nao robot types conform to.
-///
-/// This protocol provides a common set of functionality for nao robot types.
-/// The protocol stipulates that conforming types have a top camera, a bottom
-/// camera, a set of `NaoJoint`s and provides all the functionality of the
-/// `SoccerPlayingRobot` protocol.
-public protocol NaoWrapper:
-    CameraPivotContainer,
-    TopCameraContainer,
-    BottomCameraContainer,
-    NaoJointsContainer,
-    SoccerPlayingRobot
-{
-    
-// MARK: - Properties
-    
-    /// Nao types must be able to be converted to the underlying gurobots C
-    /// type `gu_nao`.
-    var rawValue: gu_nao { get }
-    
-}
-
-// MARK: - Default Implementations
-
-extension NaoWrapper {
-    
-    /// Converts from GU_NAO_V5_TOP_CAMERA_INDEX.
-    public var topCameraIndex: Int {
-        Int(GU_NAO_V5_TOP_CAMERA_INDEX)
-    }
-    
-    /// Converts from GU_NAO_V5_BOTTOM_CAMERA_INDEX.
-    public var bottomCameraIndex: Int {
-        Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX)
-    }
-    
-    /// Converts from `rawValue.joints`.
-    public var joints: NaoJoints {
-        NaoJoints(self.rawValue.joints)
-    }
-
-    /// Converts from `rawValue.sightings`.
-    public var soccerSightings: SoccerSightings {
-        SoccerSightings(self.rawValue.sightings)
-    }
-
-    /// Converts from `rawValue.fieldPosition`.
-    public var fieldPosition: FieldCoordinate? {
-        guard self.rawValue.fieldPosition.has_value else {
-            return nil
-        }
-        return FieldCoordinate(self.rawValue.fieldPosition.value)
-    }
-    
-    /// Calculates the cameraPivot by performing a kinematics chain on `joints`.
-    public var cameraPivot: CameraPivot {
-        CameraPivot(gu_nao_head_to_camera_pivot(self.joints.head.rawValue))
-    }
-    
-}
+/// The protocol that provides functionality for robots that can play soccer.
+public protocol SoccerPlayingRobot: SoccerSightingsContainer, FieldPositionContainer {}

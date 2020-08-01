@@ -18,6 +18,10 @@ custom_categories:
           - NaoLeg
           - ManageableNaoV5
 
+    - name: Robot Types
+      children:
+          - SoccerPlayingRobot
+
     - name: Cameras
       children:
           - BottomCameraContainer
