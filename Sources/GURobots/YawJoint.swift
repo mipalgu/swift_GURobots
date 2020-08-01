@@ -59,18 +59,35 @@
 import CGURobots
 import GUUnits
 
+/// A joint that is capable of rotating along the yaw axis.
 public struct YawJoint: CTypeWrapper {
     
+// MARK: - Properties
+    
+    /// The angle of the yaw of the joint.
     public var yaw: Angle
     
+// MARK: - Converting Between The Underlying gurobots C Type
+    
+    /// Convert to the underlying gurobots C type `gu_yaw_joint`.
     public var rawValue: gu_yaw_joint {
         return gu_yaw_joint(yaw: self.yaw.degrees_f.rawValue)
     }
     
+    /// Create a YawJoint by copying the values from the underlying gurobots C
+    /// type `gu_yaw_joint`.
+    ///
+    /// - Parameter other: The underlying gurobots C type `gu_yaw_joint`
+    /// which contains the values being copied.
     public init(_ other: gu_yaw_joint) {
         self.init(yaw: Angle(Degrees_f(rawValue: other.yaw)))
     }
     
+// MARK: - Creating a YawJoint
+    
+    /// Create a YawJoint.
+    ///
+    /// - Parameter yaw: The angle of the yaw of the joint.
     public init(yaw: Angle = 0.0) {
         self.yaw = yaw
     }

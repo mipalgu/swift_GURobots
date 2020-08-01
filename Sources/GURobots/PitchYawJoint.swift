@@ -82,6 +82,9 @@ public struct PitchYawJoint: CTypeWrapper {
     
     /// Create a PitchYawJoint by copying the values from the underlying
     /// gurobots C type `gu_pitch_yaw_joint`.
+    ///
+    /// - Parameter other: The underlying gurobots C type `gu_pitch_yaw_joint`
+    /// which contains the values being copied.
     public init(_ other: gu_pitch_yaw_joint) {
         self.init(
             pitch: Angle(Degrees_f(rawValue: other.pitch)),

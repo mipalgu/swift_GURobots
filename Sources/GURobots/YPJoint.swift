@@ -59,14 +59,24 @@
 import CGURobots
 import GUUnits
 
+/// A joint that can rotate along the pitch axis, roll axis, and an axis
+/// between the yaw and pitch.
 public struct YPJoint: CTypeWrapper {
     
+// MARK: - Properties
+    
+    /// The angle of the pitch of the joint.
     public var pitch: Angle
     
+    /// The angle of the roll of the joint.
     public var roll: Angle
     
+    /// The angle of the yawPitch of the joint.
     public var yawPitch: Angle
     
+// MARK: - Converting Between The Underlying gurobots C Type
+    
+    /// Convert to the underlying gurobots C type `gu_yp_joint`.
     public var rawValue: gu_yp_joint {
         return gu_yp_joint(
             pitch: self.pitch.degrees_f.rawValue,
@@ -75,6 +85,11 @@ public struct YPJoint: CTypeWrapper {
         )
     }
     
+    /// Createa YPJoint by copying the values from the underlying gurobots C
+    /// type `gu_yp_joint`.
+    ///
+    /// - Parameter other: The underlying gurobots C type `gu_yp_joint`
+    /// which contains the values being copied.
     public init(_ other: gu_yp_joint) {
         self.init(
             pitch: Angle(Degrees_f(rawValue: other.pitch)),
@@ -82,7 +97,16 @@ public struct YPJoint: CTypeWrapper {
             yawPitch: Angle(Degrees_f(rawValue: other.yawPitch))
         )
     }
+
+// MARK: - Creating a YPJoint
     
+    /// Create a YPJoint.
+    ///
+    /// - Parameter pitch: The angle of the pitch of the joint.
+    ///
+    /// - Parameter roll: The angle of the roll of the joint.
+    ///
+    /// - Parameter yawPitch: The angle of the yawPitch of the joint.
     public init(pitch: Angle = 0.0, roll: Angle = 0.0, yawPitch: Angle = 0.0) {
         self.pitch = pitch
         self.roll = roll
