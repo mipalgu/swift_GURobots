@@ -114,6 +114,12 @@ extension NaoWrapper {
     }
     
     /// Calculates the cameraPivot by performing a kinematics chain on `joints`.
+    ///
+    /// - Bug: Currently the kinematics calculations do not take palce and
+    /// instead a hard-coded value for the camera pivot is used. This
+    /// hard-coded value takes into consideration the pitch and yaw of the head
+    /// but assumes that the robot is in the position where it is standing and
+    /// ready to walk.
     public var cameraPivot: CameraPivot {
         CameraPivot(gu_nao_head_to_camera_pivot(self.joints.head.rawValue))
     }
