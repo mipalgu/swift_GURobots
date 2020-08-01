@@ -59,16 +59,41 @@
 import CGURobots
 import GUCoordinates
 
+/// Contains the locations on the soccer field in relation from a source point.
+///
+/// The sightings contained within this struct are stored in relation to some
+/// other object (usually the robot). As such, these sightings are only
+/// available if the robot can actually see them. These sightings are typically
+/// created by querying the messages posted by the Kalman Filter in the
+/// whiteboard.
 public struct SoccerSightings: CTypeWrapper {
     
+// MARK: - Properties
+    
+    /// The location of the ball.
     public var ball: RelativeCoordinate?
     
+    /// The location of the left goal post.
+    ///
+    /// Note that the only left goal post being reported is the one that is
+    /// currently being seen, or that has last been seen.
     public var leftGoalPost: RelativeCoordinate?
     
+    /// The location of the right goal post.
+    ///
+    /// Note that the only right goal post being reported is the one that is
+    /// currently being seen, or that has last been seen.
     public var rightGoalPost: RelativeCoordinate?
     
+    /// The location of the right goal post.
+    ///
+    /// Note that the only goal being reported is the one that is
+    /// currently being seen, or that has last been seen.
     public var goal: RelativeCoordinate?
     
+// MARK: - Converting Between The Underlying gurobots C Type
+    
+    /// Convert to the underlying gurobots C type `gu_soccer_sightings`.
     public var rawValue: gu_soccer_sightings {
         return gu_soccer_sightings(
             ball: gu_optional_relative_coordinate(has_value: self.ball != nil, value: self.ball?.rawValue ?? gu_relative_coordinate()),
@@ -77,6 +102,11 @@ public struct SoccerSightings: CTypeWrapper {
             goal: gu_optional_relative_coordinate(has_value: self.goal != nil, value: self.goal?.rawValue ?? gu_relative_coordinate()))
     }
     
+    /// Create a SoccerSightings by copying the values from the underlying
+    /// gurobots C type `gu_soccer_sightings`.
+    ///
+    /// - Parameter other: The underlying gurobots C type `gu_soccer_sightings`
+    /// that contains the values that will be copied.
     public init(_ other: gu_soccer_sightings) {
         self.init(
             ball: other.ball.has_value ? RelativeCoordinate(other.ball.value) : nil,
@@ -86,6 +116,17 @@ public struct SoccerSightings: CTypeWrapper {
         )
     }
     
+// MARK: - Creating SoccerSightings
+    
+    /// Create a SoccerSightings.
+    ///
+    /// - Parameter ball: The location of the ball.
+    ///
+    /// - Parameter leftGoalPost: The location of the left goal post.
+    ///
+    /// - Parameter rightGoalPost: The location of the right goal post.
+    ///
+    /// - Parmaeter goal: The location of the goal.
     public init(ball: RelativeCoordinate? = nil, leftGoalPost: RelativeCoordinate? = nil, rightGoalPost: RelativeCoordinate? = nil, goal: RelativeCoordinate? = nil) {
         self.ball = ball
         self.leftGoalPost = leftGoalPost

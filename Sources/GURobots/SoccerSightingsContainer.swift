@@ -59,26 +59,41 @@
 import CGURobots
 import GUCoordinates
 
+/// Conforming types are capable of knowing the location of object in the
+/// soccer field in relation to themselves.
+///
+/// Note that this means that the values returned by the soccerSightings ---
+/// since they are in relative coordinate --- will be in relation to the
+/// conforming type.
 public protocol SoccerSightingsContainer {
+ 
+// MARK: - Properties
     
+    /// The current soccer field objects that are viewable.
     var soccerSightings: SoccerSightings { get }
     
 }
 
+// MARK: - Convenience Functions
+
 extension SoccerSightingsContainer {
     
+    /// Provides a convenience getter referencing `soccerSightings.ball`.
     public var ballSighting: RelativeCoordinate? {
         return self.soccerSightings.ball
     }
 
+    /// Provides a convenience getter referencing `soccerSightings.leftGoalPost`.
     public var leftGoalPostSighting: RelativeCoordinate? {
         return self.soccerSightings.leftGoalPost
     }
 
+    /// Provides a convenience getter referencing `soccerSightings.rightGoalPost`.
     public var rightGoalPostSighting: RelativeCoordinate? {
         return self.soccerSightings.rightGoalPost
     }
 
+    /// Provides a convenience getter referencing `soccerSightings.goal`.
     public var goalSighting: RelativeCoordinate? {
         return self.soccerSightings.goal
     }
