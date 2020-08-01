@@ -134,7 +134,7 @@ extension TopCameraContainer {
         self.topCameraPivotObjectOnGround(coord, forCamera: self.topCameraIndex)
     }
     
-// MARK: Converting Image Coordinates To Relative Coordinates
+// MARK: - Converting Image Coordinates To Relative Coordinates
     
     /// Convert the object in an image to a `RelativeCoordinate` for the
     /// top camera attached to the `topCameraPivot` pivot point.
@@ -185,6 +185,128 @@ extension TopCameraContainer {
     /// be used.
     public func topCameraRelativeCoordinate(of coord: PercentCoordinate) -> RelativeCoordinate {
         self.topCameraPivotRelativeCoordinate(of: coord, camera: self.topCameraIndex)
+    }
+    
+// MARK: - Converting Relative Coordinates To Image Coordinates
+    
+    /// Calculate a pixel within an image representing the specified object in
+    /// the top camera.
+    ///
+    /// - Parameter coord: The location of the target object.
+    ///
+    /// - Parameter resWidth: The width of the resolution of the image that
+    /// we are placing the target in.
+    ///
+    /// - Parameter resHeight: The height of the resolution of the image that
+    /// we are placing the target in.
+    ///
+    /// - Returns: The `CameraCoordinate` representing the target in the image
+    /// at a specific pixel.
+    ///
+    /// - Warning: This function does not check whether the calculated
+    /// coordinate is within the bounds of `resWidth` and `resHeight`. As such
+    /// you should only use this function if you are positive that the camera
+    /// can actually see the object at `coord`.
+    public func topCameraCameraCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate {
+        return self.topCameraPivotCameraCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    }
+    
+    /// Calculate a pixel within an image representing the specified object in
+    /// the top camera.
+    ///
+    /// - Parameter coord: The location of the target object.
+    ///
+    /// - Parameter resWidth: The width of the resolution of the image that
+    /// we are placing the target in.
+    ///
+    /// - Parameter resHeight: The height of the resolution of the image that
+    /// we are placing the target in.
+    ///
+    /// - Returns: The `PixelCoordinate` representing the target in the image
+    /// at a specific pixel.
+    ///
+    /// - Warning: This function does not check whether the calculated
+    /// coordinate is within the bounds of `resWidth` and `resHeight`. As such
+    /// you should only use this function if you are positive that the camera
+    /// can actually see the object at `coord`.
+    public func topCameraPixelCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate {
+        return self.topCameraPivotPixelCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    }
+    
+    /// Calculate a point within an image representing the specified object in
+    /// the top camera.
+    ///
+    /// - Parameter coord: The location of the target object.
+    ///
+    /// - Returns: The `PercentCoordinate` representing the target in the image
+    /// at a specific pixel.
+    ///
+    /// - Warning: This function does not check whether the calculated
+    /// coordinate is within the bounds of `-1.0` and `1.0`. As such
+    /// you should only use this function if you are positive that the camera
+    /// can actually see the object at `coord`.
+    public func topCameraPercentCoordinate(to coord: RelativeCoordinate) -> PercentCoordinate {
+        return self.topCameraPivotPercentCoordinate(to: coord, camera: self.topCameraIndex)
+    }
+    
+    /// Calculate a pixel within an image representing the specified
+    /// object in the top camera.
+    ///
+    /// All calculated pixels that fall outside
+    /// the bounds of the image are moved to the edge of the image to ensure
+    /// that the function always calculates a coordinate within the image
+    /// bounds.
+    ///
+    /// - Parameter coord: The location of the object.
+    ///
+    /// - Parameter resWidth: The width of the resolution of the image that
+    /// we are placing the target.
+    ///
+    /// - Parameter resHeight: The height of the resolution of the image that
+    /// we are placing the target.
+    ///
+    /// - Returns: A new `CameraCoordinate` representing the object in the
+    /// top camera.
+    public func topCameraClampedCameraCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
+        self.topCameraPivotClampedCameraCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    }
+    
+    /// Calculate a pixel within an image representing the specified
+    /// object in the top camera.
+    ///
+    /// All calculated pixels that fall outside
+    /// the bounds of the image are moved to the edge of the image to ensure
+    /// that the function always calculates a coordinate within the image
+    /// bounds.
+    ///
+    /// - Parameter coord: The location of the object.
+    ///
+    /// - Parameter resWidth: The width of the resolution of the image that
+    /// we are placing the target.
+    ///
+    /// - Parameter resHeight: The height of the resolution of the image that
+    /// we are placing the target.
+    ///
+    /// - Returns: A new `PixelCoordinate` representing the object in the
+    /// top camera.
+    public func topCameraClampedPixelCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
+        self.topCameraPivotClampedPixelCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    }
+    
+    /// Calculate a point within an image representing the specified
+    /// object in the top camera.
+    ///
+    /// All calculated pixels that fall outside
+    /// the bounds of the image are moved to the edge of the image to ensure
+    /// that the function always calculates a coordinate within the image
+    /// bounds.
+    ///
+    /// - Parameter coord: The location of the object.
+    ///
+    /// - Returns: A new `PercentCoordinate` representing the object in the
+    /// top camera.
+    public func topCameraClampedPercentCoordinate(to coord: RelativeCoordinate) -> PercentCoordinate? {
+        self.topCameraPivotClampedPercentCoordinate(to: coord, camera: self.topCameraIndex)
     }
     
 }

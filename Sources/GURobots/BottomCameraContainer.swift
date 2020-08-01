@@ -188,4 +188,126 @@ extension BottomCameraContainer {
         self.bottomCameraPivotRelativeCoordinate(of: coord, camera: self.bottomCameraIndex)
     }
     
+// MARK: - Converting Relative Coordinates To Image Coordinates
+    
+    /// Calculate a pixel within an image representing the specified object in
+    /// the bottom camera.
+    ///
+    /// - Parameter coord: The location of the target object.
+    ///
+    /// - Parameter resWidth: The width of the resolution of the image that
+    /// we are placing the target in.
+    ///
+    /// - Parameter resHeight: The height of the resolution of the image that
+    /// we are placing the target in.
+    ///
+    /// - Returns: The `CameraCoordinate` representing the target in the image
+    /// at a specific pixel.
+    ///
+    /// - Warning: This function does not check whether the calculated
+    /// coordinate is within the bounds of `resWidth` and `resHeight`. As such
+    /// you should only use this function if you are positive that the camera
+    /// can actually see the object at `coord`.
+    public func bottomCameraCameraCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate {
+        return self.bottomCameraPivotCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    }
+    
+    /// Calculate a pixel within an image representing the specified object in
+    /// the bottom camera.
+    ///
+    /// - Parameter coord: The location of the target object.
+    ///
+    /// - Parameter resWidth: The width of the resolution of the image that
+    /// we are placing the target in.
+    ///
+    /// - Parameter resHeight: The height of the resolution of the image that
+    /// we are placing the target in.
+    ///
+    /// - Returns: The `PixelCoordinate` representing the target in the image
+    /// at a specific pixel.
+    ///
+    /// - Warning: This function does not check whether the calculated
+    /// coordinate is within the bounds of `resWidth` and `resHeight`. As such
+    /// you should only use this function if you are positive that the camera
+    /// can actually see the object at `coord`.
+    public func bottomCameraPixelCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate {
+        return self.bottomCameraPivotPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    }
+    
+    /// Calculate a point within an image representing the specified object in
+    /// the bottom camera.
+    ///
+    /// - Parameter coord: The location of the target object.
+    ///
+    /// - Returns: The `PercentCoordinate` representing the target in the image
+    /// at a specific pixel.
+    ///
+    /// - Warning: This function does not check whether the calculated
+    /// coordinate is within the bounds of `-1.0` and `1.0`. As such
+    /// you should only use this function if you are positive that the camera
+    /// can actually see the object at `coord`.
+    public func bottomCameraPercentCoordinate(to coord: RelativeCoordinate) -> PercentCoordinate {
+        return self.bottomCameraPivotPercentCoordinate(to: coord, camera: self.bottomCameraIndex)
+    }
+    
+    /// Calculate a pixel within an image representing the specified
+    /// object in the bottom camera.
+    ///
+    /// All calculated pixels that fall outside
+    /// the bounds of the image are moved to the edge of the image to ensure
+    /// that the function always calculates a coordinate within the image
+    /// bounds.
+    ///
+    /// - Parameter coord: The location of the object.
+    ///
+    /// - Parameter resWidth: The width of the resolution of the image that
+    /// we are placing the target.
+    ///
+    /// - Parameter resHeight: The height of the resolution of the image that
+    /// we are placing the target.
+    ///
+    /// - Returns: A new `CameraCoordinate` representing the object in the
+    /// bottom camera.
+    public func bottomCameraClampedCameraCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
+        self.bottomCameraPivotClampedCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    }
+    
+    /// Calculate a pixel within an image representing the specified
+    /// object in the bottom camera.
+    ///
+    /// All calculated pixels that fall outside
+    /// the bounds of the image are moved to the edge of the image to ensure
+    /// that the function always calculates a coordinate within the image
+    /// bounds.
+    ///
+    /// - Parameter coord: The location of the object.
+    ///
+    /// - Parameter resWidth: The width of the resolution of the image that
+    /// we are placing the target.
+    ///
+    /// - Parameter resHeight: The height of the resolution of the image that
+    /// we are placing the target.
+    ///
+    /// - Returns: A new `PixelCoordinate` representing the object in the
+    /// bottom camera.
+    public func bottomCameraClampedPixelCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
+        self.bottomCameraPivotClampedPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    }
+    
+    /// Calculate a point within an image representing the specified
+    /// object in the bottom camera.
+    ///
+    /// All calculated pixels that fall outside
+    /// the bounds of the image are moved to the edge of the image to ensure
+    /// that the function always calculates a coordinate within the image
+    /// bounds.
+    ///
+    /// - Parameter coord: The location of the object.
+    ///
+    /// - Returns: A new `PercentCoordinate` representing the object in the
+    /// bottom camera.
+    public func bottomCameraClampedPercentCoordinate(to coord: RelativeCoordinate) -> PercentCoordinate? {
+        self.bottomCameraPivotClampedPercentCoordinate(to: coord, camera: self.bottomCameraIndex)
+    }
+    
 }
