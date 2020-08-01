@@ -134,4 +134,190 @@ public struct ManageableNaoV5: NaoWrapper {
         self.fieldPosition = fieldPosition
     }
     
+// MARK: - Creating a ManageableNaoV5 in Specific Poses
+    
+    /// Creates a `ManageableNaoV5` in the kneeling position.
+    ///
+    /// - Parameter head: Optionally specify the position of the head.
+    ///
+    /// - Parameter leftArm: Optionally specify the position of the left arm. By
+    /// default, the left arm will be positioned as it is in the *kneeling*
+    /// pose.
+    ///
+    /// - Parameter rightArm: Optionally specify the position of the right arm.
+    /// By default, the right arm will be positioned as it is in the *kneeling*
+    /// pose.
+    ///
+    /// - Parameter soccerSightings: Optionally specify the sightings viewable
+    /// by the robot. Be default, no objects on the field are visible.
+    ///
+    /// - Parameter fieldPosition: Optionally specify the position of the robot
+    /// on the field. By default, there is no field position.
+    public static func kneeling(
+        head: NaoHead = NaoHead(),
+        leftArm: NaoArm = NaoArm(
+            shoulder: PitchRollJoint(pitch: Angle(degrees: 90), roll: Angle(degrees: 4)),
+            elbow: YawRollJoint(yaw: Angle(degrees: 0), roll: Angle(degrees: -2.8)),
+            wrist: YawJoint(yaw: Angle(degrees: -90))
+        ),
+        rightArm: NaoArm = NaoArm(
+            shoulder: PitchRollJoint(pitch: Angle(degrees: 90), roll: Angle(degrees: -4)),
+            elbow: YawRollJoint(yaw: Angle(degrees: 0), roll: Angle(degrees: 2.8)),
+            wrist: YawJoint(yaw: Angle(degrees: -90))
+        ),
+        soccerSightings: SoccerSightings = SoccerSightings(),
+        fieldPosition: FieldCoordinate? = nil
+    ) -> ManageableNaoV5 {
+        let leftLeg = NaoLeg(
+            hip: YPJoint(pitch: Angle(degrees: 2.7), roll: Angle(degrees: -0.7), yawPitch: Angle(degrees: -53.0)),
+            knee: PitchJoint(pitch: Angle(degrees: 121.0)),
+            ankle: PitchRollJoint(pitch: Angle(degrees: -69.2), roll: Angle(degrees: 0.6))
+        )
+        let rightLeg = NaoLeg(
+            hip: YPJoint(pitch: Angle(degrees: 0.0), roll: Angle(degrees: 0.0), yawPitch: Angle(degrees: -53.0)),
+            knee: PitchJoint(pitch: Angle(degrees: 121.0)),
+            ankle: PitchRollJoint(pitch: Angle(degrees: -69.2), roll: Angle(degrees: -0.7))
+        )
+        return ManageableNaoV5(
+            joints: NaoJoints(head: head, leftArm: leftArm, rightArm: rightArm, leftLeg: leftLeg, rightLeg: rightLeg),
+            soccerSightings: soccerSightings,
+            fieldPosition: fieldPosition
+        )
+    }
+    
+    /// Creates a `ManageableNaoV5` in the standing position.
+    ///
+    /// - Parameter head: Optionally specify the position of the head.
+    ///
+    /// - Parameter leftArm: Optionally specify the position of the left arm. By
+    /// default, the left arm will be positioned as it is in the *standing*
+    /// pose.
+    ///
+    /// - Parameter rightArm: Optionally specify the position of the right arm.
+    /// By default, the right arm will be positioned as it is in the *standing*
+    /// pose.
+    ///
+    /// - Parameter soccerSightings: Optionally specify the sightings viewable
+    /// by the robot. Be default, no objects on the field are visible.
+    ///
+    /// - Parameter fieldPosition: Optionally specify the position of the robot
+    /// on the field. By default, there is no field position.
+    public static func standing(
+        head: NaoHead = NaoHead(),
+        leftArm: NaoArm = NaoArm(
+            shoulder: PitchRollJoint(pitch: Angle(degrees: 90), roll: Angle(degrees: 18)),
+            elbow: YawRollJoint(yaw: Angle(degrees: 0), roll: Angle(degrees: -2)),
+            wrist: YawJoint(yaw: Angle(degrees: -90))
+        ),
+        rightArm: NaoArm = NaoArm(
+            shoulder: PitchRollJoint(pitch: Angle(degrees: 90), roll: Angle(degrees: -18)),
+            elbow: YawRollJoint(yaw: Angle(degrees: 0), roll: Angle(degrees: 2)),
+            wrist: YawJoint(yaw: Angle(degrees: -90))
+        ),
+        soccerSightings: SoccerSightings = SoccerSightings(),
+        fieldPosition: FieldCoordinate? = nil
+    ) -> ManageableNaoV5 {
+        let leftLeg = NaoLeg(
+            hip: YPJoint(pitch: Angle(degrees: 0.0), roll: Angle(degrees: 0.0), yawPitch: Angle(degrees: -29.0)),
+            knee: PitchJoint(pitch: Angle(degrees: 59.2)),
+            ankle: PitchRollJoint(pitch: Angle(degrees: -30), roll: Angle(degrees: 0))
+        )
+        let rightLeg = NaoLeg(
+            hip: YPJoint(pitch: Angle(degrees: 0.0), roll: Angle(degrees: 0.0), yawPitch: Angle(degrees: -29.0)),
+            knee: PitchJoint(pitch: Angle(degrees: 58.8)),
+            ankle: PitchRollJoint(pitch: Angle(degrees: -30), roll: Angle(degrees: 0))
+        )
+        return ManageableNaoV5(
+            joints: NaoJoints(head: head, leftArm: leftArm, rightArm: rightArm, leftLeg: leftLeg, rightLeg: rightLeg),
+            soccerSightings: soccerSightings,
+            fieldPosition: fieldPosition
+        )
+    }
+    
+// MARK: Moving To Specific Poses
+    
+    /// Change the joints so that the robot is in the kneeling position.
+    ///
+    /// - Parameter head: Optionally specify the position of the head. If
+    /// omitted the head is not changed.
+    ///
+    /// - Parameter leftArm: Optionally specify the position of the left arm. If
+    /// omitted the left arm is changed to the position that it is normally in
+    /// when the robot is kneeling. Pass nil to keep the current position of the
+    /// left arm.
+    ///
+    /// - Parameter rightArm: Optionally specify the position of the right arm.
+    /// If omitted the right arm is changed to the position that it is normally
+    /// in when the robot is kneeling. Pass nil to keep the current position of
+    /// the right arm.
+    public mutating func kneel(
+        head: NaoHead? = nil,
+        leftArm: NaoArm? = NaoArm(
+            shoulder: PitchRollJoint(pitch: Angle(degrees: 90), roll: Angle(degrees: 4)),
+            elbow: YawRollJoint(yaw: Angle(degrees: 0), roll: Angle(degrees: -2.8)),
+            wrist: YawJoint(yaw: Angle(degrees: -90))
+        ),
+        rightArm: NaoArm? = NaoArm(
+            shoulder: PitchRollJoint(pitch: Angle(degrees: 90), roll: Angle(degrees: -4)),
+            elbow: YawRollJoint(yaw: Angle(degrees: 0), roll: Angle(degrees: 2.8)),
+            wrist: YawJoint(yaw: Angle(degrees: -90))
+        )
+    ) {
+        self.joints.head = head ?? self.joints.head
+        self.joints.leftArm = leftArm ?? self.joints.leftArm
+        self.joints.rightArm = rightArm ?? self.joints.rightArm
+        self.joints.leftLeg = NaoLeg(
+            hip: YPJoint(pitch: Angle(degrees: 2.7), roll: Angle(degrees: -0.7), yawPitch: Angle(degrees: -53.0)),
+            knee: PitchJoint(pitch: Angle(degrees: 121.0)),
+            ankle: PitchRollJoint(pitch: Angle(degrees: -69.2), roll: Angle(degrees: 0.6))
+        )
+        self.joints.rightLeg = NaoLeg(
+            hip: YPJoint(pitch: Angle(degrees: 0.0), roll: Angle(degrees: 0.0), yawPitch: Angle(degrees: -53.0)),
+            knee: PitchJoint(pitch: Angle(degrees: 121.0)),
+            ankle: PitchRollJoint(pitch: Angle(degrees: -69.2), roll: Angle(degrees: -0.7))
+        )
+    }
+    
+    /// Change the joints so that the robot is in the standing position.
+    ///
+    /// - Parameter head: Optionally specify the position of the head. If
+    /// omitted the head is not changed.
+    ///
+    /// - Parameter leftArm: Optionally specify the position of the left arm. If
+    /// omitted the left arm is changed to the position that it is normally in
+    /// when the robot is standing. Pass nil to keep the current position of the
+    /// left arm.
+    ///
+    /// - Parameter rightArm: Optionally specify the position of the right arm.
+    /// If omitted the right arm is changed to the position that it is normally
+    /// in when the robot is standing. Pass nil to keep the current position of
+    /// the right arm.
+    public mutating func stand(
+        head: NaoHead? = nil,
+        leftArm: NaoArm? = NaoArm(
+            shoulder: PitchRollJoint(pitch: Angle(degrees: 90), roll: Angle(degrees: 18)),
+            elbow: YawRollJoint(yaw: Angle(degrees: 0), roll: Angle(degrees: -2)),
+            wrist: YawJoint(yaw: Angle(degrees: -90))
+        ),
+        rightArm: NaoArm? = NaoArm(
+            shoulder: PitchRollJoint(pitch: Angle(degrees: 90), roll: Angle(degrees: -18)),
+            elbow: YawRollJoint(yaw: Angle(degrees: 0), roll: Angle(degrees: 2)),
+            wrist: YawJoint(yaw: Angle(degrees: -90))
+        )
+    ) {
+        self.joints.head = head ?? self.joints.head
+        self.joints.leftArm = leftArm ?? self.joints.leftArm
+        self.joints.rightArm = rightArm ?? self.joints.rightArm
+        self.joints.leftLeg = NaoLeg(
+            hip: YPJoint(pitch: Angle(degrees: 0.0), roll: Angle(degrees: 0.0), yawPitch: Angle(degrees: -29.0)),
+            knee: PitchJoint(pitch: Angle(degrees: 59.2)),
+            ankle: PitchRollJoint(pitch: Angle(degrees: -30), roll: Angle(degrees: 0))
+        )
+        self.joints.rightLeg = NaoLeg(
+            hip: YPJoint(pitch: Angle(degrees: 0.0), roll: Angle(degrees: 0.0), yawPitch: Angle(degrees: -29.0)),
+            knee: PitchJoint(pitch: Angle(degrees: 58.8)),
+            ankle: PitchRollJoint(pitch: Angle(degrees: -30), roll: Angle(degrees: 0))
+        )
+    }
+    
 }
