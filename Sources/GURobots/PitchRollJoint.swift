@@ -61,25 +61,25 @@ import GUUnits
 
 public struct PitchRollJoint: CTypeWrapper {
     
-    public var pitch: Degrees_f
+    public var pitch: Angle
     
-    public var roll: Degrees_f
+    public var roll: Angle
     
     public var rawValue: gu_pitch_roll_joint {
         return gu_pitch_roll_joint(
-            pitch: self.pitch.rawValue,
-            roll: self.roll.rawValue
+            pitch: self.pitch.degrees_f.rawValue,
+            roll: self.roll.degrees_f.rawValue
         )
     }
     
     public init(_ other: gu_pitch_roll_joint) {
         self.init(
-            pitch: Degrees_f(rawValue: other.pitch),
-            roll: Degrees_f(rawValue: other.roll)
+            pitch: Angle(Degrees_f(rawValue: other.pitch)),
+            roll: Angle(Degrees_f(rawValue: other.roll))
         )
     }
     
-    public init(pitch: Degrees_f = 0.0, roll: Degrees_f = 0.0) {
+    public init(pitch: Angle = 0.0, roll: Angle = 0.0) {
         self.pitch = pitch
         self.roll = roll
     }

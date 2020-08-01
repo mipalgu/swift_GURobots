@@ -61,25 +61,25 @@ import GUUnits
 
 public struct PitchYawJoint: CTypeWrapper {
     
-    public var pitch: Degrees_f
+    public var pitch: Angle
     
-    public var yaw: Degrees_f
+    public var yaw: Angle
     
     public var rawValue: gu_pitch_yaw_joint {
         return gu_pitch_yaw_joint(
-            pitch: self.pitch.rawValue,
-            yaw: self.pitch.rawValue
+            pitch: self.pitch.degrees_f.rawValue,
+            yaw: self.pitch.degrees_f.rawValue
         )
     }
     
     public init(_ other: gu_pitch_yaw_joint) {
         self.init(
-            pitch: Degrees_f(rawValue: other.pitch),
-            yaw: Degrees_f(rawValue: other.yaw)
+            pitch: Angle(Degrees_f(rawValue: other.pitch)),
+            yaw: Angle(Degrees_f(rawValue: other.yaw))
         )
     }
     
-    public init(pitch: Degrees_f = 0.0, yaw: Degrees_f = 0.0) {
+    public init(pitch: Angle = 0.0, yaw: Angle = 0.0) {
         self.pitch = pitch
         self.yaw = yaw
     }

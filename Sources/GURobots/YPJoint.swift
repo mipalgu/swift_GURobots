@@ -61,29 +61,29 @@ import GUUnits
 
 public struct YPJoint: CTypeWrapper {
     
-    public var pitch: Degrees_f
+    public var pitch: Angle
     
-    public var roll: Degrees_f
+    public var roll: Angle
     
-    public var yawPitch: Degrees_f
+    public var yawPitch: Angle
     
     public var rawValue: gu_yp_joint {
         return gu_yp_joint(
-            pitch: self.pitch.rawValue,
-            roll: self.roll.rawValue,
-            yawPitch: self.yawPitch.rawValue
+            pitch: self.pitch.degrees_f.rawValue,
+            roll: self.roll.degrees_f.rawValue,
+            yawPitch: self.yawPitch.degrees_f.rawValue
         )
     }
     
     public init(_ other: gu_yp_joint) {
         self.init(
-            pitch: Degrees_f(rawValue: other.pitch),
-            roll: Degrees_f(rawValue: other.roll),
-            yawPitch: Degrees_f(rawValue: other.yawPitch)
+            pitch: Angle(Degrees_f(rawValue: other.pitch)),
+            roll: Angle(Degrees_f(rawValue: other.roll)),
+            yawPitch: Angle(Degrees_f(rawValue: other.yawPitch))
         )
     }
     
-    public init(pitch: Degrees_f = 0.0, roll: Degrees_f = 0.0, yawPitch: Degrees_f = 0.0) {
+    public init(pitch: Angle = 0.0, roll: Angle = 0.0, yawPitch: Angle = 0.0) {
         self.pitch = pitch
         self.roll = roll
         self.yawPitch = yawPitch

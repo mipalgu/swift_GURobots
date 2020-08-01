@@ -61,17 +61,17 @@ import GUUnits
 
 public struct PitchJoint: CTypeWrapper {
     
-    public var pitch: Degrees_f
+    public var pitch: Angle
     
     public var rawValue: gu_pitch_joint {
-        return gu_pitch_joint(pitch: self.pitch.rawValue)
+        return gu_pitch_joint(pitch: self.pitch.degrees_f.rawValue)
     }
     
     public init(_ other: gu_pitch_joint) {
-        self.init(pitch: Degrees_f(rawValue: other.pitch))
+        self.init(pitch: Angle(Degrees_f(rawValue: other.pitch)))
     }
     
-    public init(pitch: Degrees_f = 0.0) {
+    public init(pitch: Angle = 0.0) {
         self.pitch = pitch
     }
     

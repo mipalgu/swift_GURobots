@@ -61,17 +61,17 @@ import GUUnits
 
 public struct YawJoint: CTypeWrapper {
     
-    public var yaw: Degrees_f
+    public var yaw: Angle
     
     public var rawValue: gu_yaw_joint {
-        return gu_yaw_joint(yaw: self.yaw.rawValue)
+        return gu_yaw_joint(yaw: self.yaw.degrees_f.rawValue)
     }
     
     public init(_ other: gu_yaw_joint) {
-        self.init(yaw: Degrees_f(rawValue: other.yaw))
+        self.init(yaw: Angle(Degrees_f(rawValue: other.yaw)))
     }
     
-    public init(yaw: Degrees_f = 0.0) {
+    public init(yaw: Angle = 0.0) {
         self.yaw = yaw
     }
     

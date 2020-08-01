@@ -61,25 +61,25 @@ import GUUnits
 
 public struct YawRollJoint: CTypeWrapper {
     
-    public var yaw: Degrees_f
+    public var yaw: Angle
     
-    public var roll: Degrees_f
+    public var roll: Angle
     
     public var rawValue: gu_yaw_roll_joint {
         return gu_yaw_roll_joint(
-            yaw: self.yaw.rawValue,
-            roll: self.roll.rawValue
+            yaw: self.yaw.degrees_f.rawValue,
+            roll: self.roll.degrees_f.rawValue
         )
     }
     
     public init(_ other: gu_yaw_roll_joint) {
         self.init(
-            yaw: Degrees_f(rawValue: other.yaw),
-            roll: Degrees_f(rawValue: other.roll)
+            yaw: Angle(Degrees_f(rawValue: other.yaw)),
+            roll: Angle(Degrees_f(rawValue: other.roll))
         )
     }
     
-    public init(yaw: Degrees_f = 0.0, roll: Degrees_f = 0.0) {
+    public init(yaw: Angle = 0.0, roll: Angle = 0.0) {
         self.yaw = yaw
         self.roll = roll
     }
