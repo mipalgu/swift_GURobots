@@ -1,5 +1,5 @@
 /*
- * SoccerSightings.swift
+ * SoccerObjectLocations.swift
  * GURobots
  *
  * Created by Callum McColl on 26/7/20.
@@ -59,14 +59,15 @@
 import CGURobots
 import GUCoordinates
 
-/// Contains the locations on the soccer field in relation from a source point.
+/// Contains the locations of objects on the soccer field in relation from a
+/// source point.
 ///
-/// The sightings contained within this struct are stored in relation to some
-/// other object (usually the robot). As such, these sightings are only
-/// available if the robot can actually see them. These sightings are typically
+/// The locations contained within this struct are stored in relation to some
+/// other object (usually the robot). As such, these locations are only
+/// available if the robot can actually see them. These locations are typically
 /// created by querying the messages posted by the Kalman Filter in the
 /// whiteboard.
-public struct SoccerSightings: CTypeWrapper {
+public struct SoccerObjectLocations: CTypeWrapper {
     
 // MARK: - Properties
     
@@ -102,7 +103,7 @@ public struct SoccerSightings: CTypeWrapper {
             goal: gu_optional_relative_coordinate(has_value: self.goal != nil, value: self.goal?.rawValue ?? gu_relative_coordinate()))
     }
     
-    /// Create a SoccerSightings by copying the values from the underlying
+    /// Create a SoccerObjectLocations by copying the values from the underlying
     /// gurobots C type `gu_soccer_sightings`.
     ///
     /// - Parameter other: The underlying gurobots C type `gu_soccer_sightings`
@@ -116,9 +117,9 @@ public struct SoccerSightings: CTypeWrapper {
         )
     }
     
-// MARK: - Creating SoccerSightings
+// MARK: - Creating a SoccerObjectLocations
     
-    /// Create a SoccerSightings.
+    /// Create a SoccerObjectLocations.
     ///
     /// - Parameter ball: The location of the ball.
     ///
@@ -126,7 +127,7 @@ public struct SoccerSightings: CTypeWrapper {
     ///
     /// - Parameter rightGoalPost: The location of the right goal post.
     ///
-    /// - Parmaeter goal: The location of the goal.
+    /// - Parameter goal: The location of the goal.
     public init(ball: RelativeCoordinate? = nil, leftGoalPost: RelativeCoordinate? = nil, rightGoalPost: RelativeCoordinate? = nil, goal: RelativeCoordinate? = nil) {
         self.ball = ball
         self.leftGoalPost = leftGoalPost

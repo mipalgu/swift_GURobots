@@ -1,8 +1,8 @@
 /*
- * SoccerSightingsContainer.swift
+ * FieldPosition+SoccerObjectLocationsContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 25/7/20.
+ * Created by Callum McColl on 26/7/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,46 +56,52 @@
  *
  */
 
-import CGURobots
 import GUCoordinates
 
-/// Conforming types are capable of knowing the location of object in the
-/// soccer field in relation to themselves.
-///
-/// Note that this means that the values returned by the soccerSightings ---
-/// since they are in relative coordinate --- will be in relation to the
-/// conforming type.
-public protocol SoccerSightingsContainer {
- 
-// MARK: - Properties
+extension FieldPositionContainer where Self: SoccerObjectLocationsContainer {
     
-    /// The current soccer field objects that are viewable.
-    var soccerSightings: SoccerSightings { get }
+// MARK: - Field Positions Of Sightings
     
-}
-
-// MARK: - Convenience Functions
-
-extension SoccerSightingsContainer {
+    /// Calculate the field position of the ball that we can currently see.
+    ///
+    /// Returns nil if `fieldPosition` or `ballSighting` is nil.
+    public var ballLocationPosition: CartesianCoordinate? {
+        guard let sighting = self.ballLocation else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
+    }
     
-    /// Provides a convenience getter referencing `soccerSightings.ball`.
-    public var ballSighting: RelativeCoordinate? {
-        return self.soccerSightings.ball
+    /// Calculate the field position of the left goal post that we can
+    /// currently see.
+    ///
+    /// Returns nil if `fieldPosition` or `leftGoalPostSighting` is nil.
+    public var leftGoalPostLocationPosition: CartesianCoordinate? {
+        guard let sighting = self.leftGoalPostLocation else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
     }
-
-    /// Provides a convenience getter referencing `soccerSightings.leftGoalPost`.
-    public var leftGoalPostSighting: RelativeCoordinate? {
-        return self.soccerSightings.leftGoalPost
+    
+    /// Calculate the field position of the right goal post that we can
+    /// currently see.
+    ///
+    /// Returns nil if `fieldPosition` or `rightGoalPostSighting` is nil.
+    public var rightGoalPostLocationPosition: CartesianCoordinate? {
+        guard let sighting = self.rightGoalPostLocation else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
     }
-
-    /// Provides a convenience getter referencing `soccerSightings.rightGoalPost`.
-    public var rightGoalPostSighting: RelativeCoordinate? {
-        return self.soccerSightings.rightGoalPost
-    }
-
-    /// Provides a convenience getter referencing `soccerSightings.goal`.
-    public var goalSighting: RelativeCoordinate? {
-        return self.soccerSightings.goal
+    
+    /// Calculate the field position of the goal that we can currently see.
+    ///
+    /// Returns nil if `fieldPosition` or `goalSighting` is nil.
+    public var goalLocationPosition: CartesianCoordinate? {
+        guard let sighting = self.goalLocation else {
+            return nil
+        }
+        return self.cartesianCoordinate(at: sighting)
     }
     
 }

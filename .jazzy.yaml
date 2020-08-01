@@ -40,10 +40,10 @@ custom_categories:
           - YawJoint
           - YawRollJoint
 
-    - name: Sightings
+    - name: Locations
       children:
-          - SoccerSightingsContainer
-          - SoccerSightings
+          - SoccerObjectLocationsContainer
+          - SoccerObjectLocations
 
     - name: Localisation
       children:

@@ -68,7 +68,7 @@ import GUSimpleWhiteboard
 ///
 /// - SeeAlso: `NaoWrapper`
 /// - SeeAlso: `NaoJointsContainer`
-/// - SeeAlso: `SoccerSightingsContainer`
+/// - SeeAlso: `SoccerObjectLocationsContainer`
 /// - SeeAlso: `FieldPositionContainer`
 public struct NaoV5: NaoWrapper {
 

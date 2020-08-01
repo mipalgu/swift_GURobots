@@ -76,7 +76,7 @@ import GUCoordinates
 /// - SeeAlso: `NaoV5`
 /// - SeeAlso: `NaoWrapper`
 /// - SeeAlso: `NaoJointsContainer`
-/// - SeeAlso: `SoccerSightingsContainer`
+/// - SeeAlso: `SoccerObjectLocationsContainer`
 /// - SeeAlso: `FieldPositionContainer`
 public struct ManageableNaoV5: NaoWrapper {
     
@@ -86,7 +86,7 @@ public struct ManageableNaoV5: NaoWrapper {
     public var joints: NaoJoints
     
     /// The soccer objects that this robot can see.
-    public var soccerSightings: SoccerSightings
+    public var soccerObjectLocations: SoccerObjectLocations
     
     /// The current field position of this robot.
     public var fieldPosition: FieldCoordinate?
@@ -102,7 +102,7 @@ public struct ManageableNaoV5: NaoWrapper {
         return gu_nao(
             fieldPosition: fieldCoordinate,
             joints: self.joints.rawValue,
-            sightings: self.soccerSightings.rawValue
+            sightings: self.soccerObjectLocations.rawValue
         )
     }
     
@@ -114,7 +114,7 @@ public struct ManageableNaoV5: NaoWrapper {
     public init(_ other: gu_nao) {
         self.init(
             joints: NaoJoints(other.joints),
-            soccerSightings: SoccerSightings(other.sightings),
+            soccerObjectLocations: SoccerObjectLocations(other.sightings),
             fieldPosition: other.fieldPosition.has_value ? FieldCoordinate(other.fieldPosition.value) : nil
         )
     }
@@ -125,12 +125,12 @@ public struct ManageableNaoV5: NaoWrapper {
     ///
     /// - Parameter joints: The list of joints for the robot.
     ///
-    /// - Parameter soccerSightings: The soccer objects viewable by the robot.
+    /// - Parameter soccerObjectLocations: The soccer objects viewable by the robot.
     ///
     /// - Parameter fieldPostion: The current field position of the robot.
-    public init(joints: NaoJoints = NaoJoints(), soccerSightings: SoccerSightings = SoccerSightings(), fieldPosition: FieldCoordinate? = nil) {
+    public init(joints: NaoJoints = NaoJoints(), soccerObjectLocations: SoccerObjectLocations = SoccerObjectLocations(), fieldPosition: FieldCoordinate? = nil) {
         self.joints = joints
-        self.soccerSightings = soccerSightings
+        self.soccerObjectLocations = soccerObjectLocations
         self.fieldPosition = fieldPosition
     }
     
@@ -148,7 +148,7 @@ public struct ManageableNaoV5: NaoWrapper {
     /// By default, the right arm will be positioned as it is in the *kneeling*
     /// pose.
     ///
-    /// - Parameter soccerSightings: Optionally specify the sightings viewable
+    /// - Parameter soccerObjectLocations: Optionally specify the sightings viewable
     /// by the robot. Be default, no objects on the field are visible.
     ///
     /// - Parameter fieldPosition: Optionally specify the position of the robot
@@ -165,7 +165,7 @@ public struct ManageableNaoV5: NaoWrapper {
             elbow: YawRollJoint(yaw: Angle(degrees: 0), roll: Angle(degrees: 2.8)),
             wrist: YawJoint(yaw: Angle(degrees: -90))
         ),
-        soccerSightings: SoccerSightings = SoccerSightings(),
+        soccerObjectLocations: SoccerObjectLocations = SoccerObjectLocations(),
         fieldPosition: FieldCoordinate? = nil
     ) -> ManageableNaoV5 {
         let leftLeg = NaoLeg(
@@ -180,7 +180,7 @@ public struct ManageableNaoV5: NaoWrapper {
         )
         return ManageableNaoV5(
             joints: NaoJoints(head: head, leftArm: leftArm, rightArm: rightArm, leftLeg: leftLeg, rightLeg: rightLeg),
-            soccerSightings: soccerSightings,
+            soccerObjectLocations: soccerObjectLocations,
             fieldPosition: fieldPosition
         )
     }
@@ -197,7 +197,7 @@ public struct ManageableNaoV5: NaoWrapper {
     /// By default, the right arm will be positioned as it is in the *standing*
     /// pose.
     ///
-    /// - Parameter soccerSightings: Optionally specify the sightings viewable
+    /// - Parameter soccerObjectLocations: Optionally specify the sightings viewable
     /// by the robot. Be default, no objects on the field are visible.
     ///
     /// - Parameter fieldPosition: Optionally specify the position of the robot
@@ -214,7 +214,7 @@ public struct ManageableNaoV5: NaoWrapper {
             elbow: YawRollJoint(yaw: Angle(degrees: 0), roll: Angle(degrees: 2)),
             wrist: YawJoint(yaw: Angle(degrees: -90))
         ),
-        soccerSightings: SoccerSightings = SoccerSightings(),
+        soccerObjectLocations: SoccerObjectLocations = SoccerObjectLocations(),
         fieldPosition: FieldCoordinate? = nil
     ) -> ManageableNaoV5 {
         let leftLeg = NaoLeg(
@@ -229,7 +229,7 @@ public struct ManageableNaoV5: NaoWrapper {
         )
         return ManageableNaoV5(
             joints: NaoJoints(head: head, leftArm: leftArm, rightArm: rightArm, leftLeg: leftLeg, rightLeg: rightLeg),
-            soccerSightings: soccerSightings,
+            soccerObjectLocations: soccerObjectLocations,
             fieldPosition: fieldPosition
         )
     }
@@ -292,7 +292,7 @@ public struct ManageableNaoV5: NaoWrapper {
     /// If omitted the right arm is changed to the position that it is normally
     /// in when the robot is kneeling. Pass nil to keep the current position of
     /// the right arm.
-    public mutating func kneeling(
+    public func kneeling(
         head: NaoHead? = nil,
         leftArm: NaoArm? = NaoArm(
             shoulder: PitchRollJoint(pitch: Angle(degrees: 90), roll: Angle(degrees: 4)),
@@ -321,7 +321,7 @@ public struct ManageableNaoV5: NaoWrapper {
                     ankle: PitchRollJoint(pitch: Angle(degrees: -69.2), roll: Angle(degrees: -0.7))
                 )
             ),
-            soccerSightings: self.soccerSightings,
+            soccerObjectLocations: self.soccerObjectLocations,
             fieldPosition: self.fieldPosition
         )
     }
@@ -411,7 +411,7 @@ public struct ManageableNaoV5: NaoWrapper {
                     ankle: PitchRollJoint(pitch: Angle(degrees: -30), roll: Angle(degrees: 0))
                 )
             ),
-            soccerSightings: self.soccerSightings,
+            soccerObjectLocations: self.soccerObjectLocations,
             fieldPosition: self.fieldPosition
         )
     }

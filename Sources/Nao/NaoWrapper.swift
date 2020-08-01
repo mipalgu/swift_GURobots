@@ -101,8 +101,8 @@ extension NaoWrapper {
     }
 
     /// Converts from `rawValue.sightings`.
-    public var soccerSightings: SoccerSightings {
-        SoccerSightings(self.rawValue.sightings)
+    public var soccerObjectLocations: SoccerObjectLocations {
+        SoccerObjectLocations(self.rawValue.sightings)
     }
 
     /// Converts from `rawValue.fieldPosition`.
