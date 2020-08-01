@@ -59,12 +59,20 @@
 import CGURobots
 import GUUnits
 
+/// A joint that can rotate along the pitch and yaw axes.
 public struct PitchYawJoint: CTypeWrapper {
     
+// MARK: - Properties
+    
+    /// The angle of the pitch of the joint.
     public var pitch: Angle
     
+    /// The angle of the yaw of the object
     public var yaw: Angle
     
+// MARK: - Converting Between The Underlying gurobots C Type
+    
+    /// Convert to the underlying gurobots C type `gu_pitch_yaw_joint`.
     public var rawValue: gu_pitch_yaw_joint {
         return gu_pitch_yaw_joint(
             pitch: self.pitch.degrees_f.rawValue,
@@ -72,6 +80,8 @@ public struct PitchYawJoint: CTypeWrapper {
         )
     }
     
+    /// Create a PitchYawJoint by copying the values from the underlying
+    /// gurobots C type `gu_pitch_yaw_joint`.
     public init(_ other: gu_pitch_yaw_joint) {
         self.init(
             pitch: Angle(Degrees_f(rawValue: other.pitch)),
@@ -79,6 +89,13 @@ public struct PitchYawJoint: CTypeWrapper {
         )
     }
     
+// MARK: - Create a PitchYawJoint
+    
+    /// Create a PitchYawJoint.
+    ///
+    /// - Parameter pitch: The angle of the pitch of the joint.
+    ///
+    /// - Parameter yaw: The angle of the yaw of the joint.
     public init(pitch: Angle = 0.0, yaw: Angle = 0.0) {
         self.pitch = pitch
         self.yaw = yaw

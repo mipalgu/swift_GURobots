@@ -59,12 +59,20 @@
 import CGURobots
 import GUUnits
 
+/// A joint that can rotate along the pitch and roll axes.
 public struct PitchRollJoint: CTypeWrapper {
     
+// MARK: - Properties
+    
+    /// The angle of the pitch of the joint.
     public var pitch: Angle
     
+    /// The angle of the roll of the joint.
     public var roll: Angle
     
+// MARK: - Converting Between Thy Underlying gurobots C Type
+    
+    /// Convert to the underlying gurobots C type `gu_pitch_roll_joint`.
     public var rawValue: gu_pitch_roll_joint {
         return gu_pitch_roll_joint(
             pitch: self.pitch.degrees_f.rawValue,
@@ -72,6 +80,11 @@ public struct PitchRollJoint: CTypeWrapper {
         )
     }
     
+    /// Create a PitchRollJoint by copying values from the underlying gurobots
+    /// C type `gu_pitch_roll_joint`.
+    ///
+    /// - Parameter other: The underlying gurobots C type `gu_pitch_roll_joint`
+    /// which contains the values being copied.
     public init(_ other: gu_pitch_roll_joint) {
         self.init(
             pitch: Angle(Degrees_f(rawValue: other.pitch)),
@@ -79,6 +92,13 @@ public struct PitchRollJoint: CTypeWrapper {
         )
     }
     
+// MARK: - Creating a PitchRollJoint
+    
+    /// Create a PitchRollJoint.
+    ///
+    /// - Parameter pitch: The angle of the pitch of the joint.
+    ///
+    /// - Parameter roll: The angle of the roll of the joint.
     public init(pitch: Angle = 0.0, roll: Angle = 0.0) {
         self.pitch = pitch
         self.roll = roll
