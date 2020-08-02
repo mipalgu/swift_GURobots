@@ -160,7 +160,6 @@ let neck = nao.head.neck // PitchYawJoint
 ```
 
 #### Manipulating Joints
----
 
 For the `ManageableNaoV5` struct, it can be difficult to set all the joints to place the robot
 into specific positions. To make this easier, the `ManageableNaoV5`  stryct provides
@@ -189,6 +188,7 @@ let newNao = nao.kneeling()
 ```
 
 ### Kinematics
+---
 
 Because the nao structs contain the current position of all the joints, kinematics calculations
 are possible. Importantly, this makes it possible to provide convenience functions for
