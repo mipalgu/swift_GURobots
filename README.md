@@ -15,7 +15,7 @@ GURobots
     + [Joints](#joints)
       - [Manipulating Joints](#manipulating-joints)
     + [Kinematics](#kinematics)
-    + [Vision (Not Yet Implemented)](#vision--not-yet-implemented-)
+    + [Vision (Not Yet Implemented)](#vision-not-yet-implemented)
     + [Locations](#locations)
     + [Field Position](#field-position)
 
