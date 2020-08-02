@@ -6,7 +6,6 @@ GURobots
 
 # Table Of Contents
 
-- [GURobots](#gurobots)
 - [Quick Start](#quick-start)
 - [Nao's](#nao-s)
   * [Reading From The Whiteboard](#reading-from-the-whiteboard)
