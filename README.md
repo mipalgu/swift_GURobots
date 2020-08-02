@@ -7,7 +7,7 @@ GURobots
 # Table Of Contents
 
 - [Quick Start](#quick-start)
-- [Nao's](#nao-s)
+- [Nao Robots](#nao-robots)
   * [Reading From The Whiteboard](#reading-from-the-whiteboard)
   * [A Manageable Nao](#a-manageable-nao)
   * [Common Functionality](#common-functionality)
@@ -60,7 +60,7 @@ if nao.topCameraObjectOnGround(pixelCoordinate) {
 let clamped = nao.topCameraClampedPercentCoordinate()
 ```
 
-# Nao's
+# Nao Robots
 
 ## Reading From The Whiteboard
 
