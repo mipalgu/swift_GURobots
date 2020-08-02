@@ -88,7 +88,7 @@ public struct YawJoint: CTypeWrapper {
     /// Create a YawJoint.
     ///
     /// - Parameter yaw: The angle of the yaw of the joint.
-    public init(yaw: Angle = 0.0) {
+    public init(yaw: Angle = .zero) {
         self.yaw = yaw
     }
     

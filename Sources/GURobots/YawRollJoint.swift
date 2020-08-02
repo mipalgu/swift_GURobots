@@ -99,7 +99,7 @@ public struct YawRollJoint: CTypeWrapper {
     /// - Parameter yaw: The angle of the yaw of the joint.
     ///
     /// - Parameter roll: The angle of the roll of the joint.
-    public init(yaw: Angle = 0.0, roll: Angle = 0.0) {
+    public init(yaw: Angle = .zero, roll: Angle = .zero) {
         self.yaw = yaw
         self.roll = roll
     }

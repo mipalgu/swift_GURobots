@@ -85,7 +85,7 @@ public struct PitchJoint: CTypeWrapper {
     /// Create a PitchJoint.
     ///
     /// - Parameter pitch: The angle of the pitch of the joint.
-    public init(pitch: Angle = 0.0) {
+    public init(pitch: Angle = .zero) {
         self.pitch = pitch
     }
     

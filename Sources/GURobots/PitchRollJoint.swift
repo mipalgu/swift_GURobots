@@ -99,7 +99,7 @@ public struct PitchRollJoint: CTypeWrapper {
     /// - Parameter pitch: The angle of the pitch of the joint.
     ///
     /// - Parameter roll: The angle of the roll of the joint.
-    public init(pitch: Angle = 0.0, roll: Angle = 0.0) {
+    public init(pitch: Angle = .zero, roll: Angle = .zero) {
         self.pitch = pitch
         self.roll = roll
     }

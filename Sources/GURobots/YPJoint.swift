@@ -107,7 +107,7 @@ public struct YPJoint: CTypeWrapper {
     /// - Parameter roll: The angle of the roll of the joint.
     ///
     /// - Parameter yawPitch: The angle of the yawPitch of the joint.
-    public init(pitch: Angle = 0.0, roll: Angle = 0.0, yawPitch: Angle = 0.0) {
+    public init(pitch: Angle = .zero, roll: Angle = .zero, yawPitch: Angle = .zero) {
         self.pitch = pitch
         self.roll = roll
         self.yawPitch = yawPitch

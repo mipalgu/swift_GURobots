@@ -99,7 +99,7 @@ public struct PitchYawJoint: CTypeWrapper {
     /// - Parameter pitch: The angle of the pitch of the joint.
     ///
     /// - Parameter yaw: The angle of the yaw of the joint.
-    public init(pitch: Angle = 0.0, yaw: Angle = 0.0) {
+    public init(pitch: Angle = .zero, yaw: Angle = .zero) {
         self.pitch = pitch
         self.yaw = yaw
     }
