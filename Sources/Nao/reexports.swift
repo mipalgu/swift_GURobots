@@ -57,3 +57,5 @@
  */
 
 @_exported import GURobots
+@_exported import CGUSimpleWhiteboard
+@_exported import GUSimpleWhiteboard
