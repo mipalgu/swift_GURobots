@@ -78,6 +78,7 @@ import GUCoordinates
 /// - SeeAlso: `NaoJointsContainer`
 /// - SeeAlso: `SoccerObjectLocationsContainer`
 /// - SeeAlso: `FieldPositionContainer`
+/// - SeeAlso: `BallPositionContainer`
 public struct ManageableNaoV5: NaoWrapper {
     
 // MARK: - Properties
@@ -91,6 +92,9 @@ public struct ManageableNaoV5: NaoWrapper {
     /// The current field position of this robot.
     public var fieldPosition: FieldCoordinate?
     
+    /// The current position and orientation of the ball on the soccer field.
+    public var ballPosition: BallPosition?
+    
 // MARK: - Converting Between The Underlying gurobots C Type
     
     /// Convert this object to the underlying gurobots C type `gu_nao`.
@@ -99,9 +103,13 @@ public struct ManageableNaoV5: NaoWrapper {
             has_value: self.fieldPosition != nil,
             value: self.fieldPosition?.rawValue ?? gu_field_coordinate()
         )
+        let ballPosition = gu_optional_ball_position(
+            has_value: self.ballPosition != nil,
+            value: self.ballPosition?.rawValue ?? gu_ball_position()
+        )
         return gu_nao(
             fieldPosition: fieldCoordinate,
-            ballPosition: gu_optional_ball_position(has_value: false, value: gu_ball_position()),
+            ballPosition: ballPosition,
             joints: self.joints.rawValue,
             sightings: self.soccerObjectLocations.rawValue
         )
@@ -116,7 +124,8 @@ public struct ManageableNaoV5: NaoWrapper {
         self.init(
             joints: NaoJoints(other.joints),
             soccerObjectLocations: SoccerObjectLocations(other.sightings),
-            fieldPosition: other.fieldPosition.has_value ? FieldCoordinate(other.fieldPosition.value) : nil
+            fieldPosition: other.fieldPosition.has_value ? FieldCoordinate(other.fieldPosition.value) : nil,
+            ballPosition: other.ballPosition.has_value ? BallPosition(other.ballPosition.value) : nil
         )
     }
     
@@ -129,10 +138,14 @@ public struct ManageableNaoV5: NaoWrapper {
     /// - Parameter soccerObjectLocations: The soccer objects viewable by the robot.
     ///
     /// - Parameter fieldPostion: The current field position of the robot.
-    public init(joints: NaoJoints = NaoJoints(), soccerObjectLocations: SoccerObjectLocations = SoccerObjectLocations(), fieldPosition: FieldCoordinate? = nil) {
+    ///
+    /// - Parameter ballPosition: The current position and orientation of the
+    /// soccer ball on the soccer field.
+    public init(joints: NaoJoints = NaoJoints(), soccerObjectLocations: SoccerObjectLocations = SoccerObjectLocations(), fieldPosition: FieldCoordinate? = nil, ballPosition: BallPosition? = nil) {
         self.joints = joints
         self.soccerObjectLocations = soccerObjectLocations
         self.fieldPosition = fieldPosition
+        self.ballPosition = ballPosition
     }
     
 // MARK: - Creating a ManageableNaoV5 in Specific Poses
@@ -154,6 +167,10 @@ public struct ManageableNaoV5: NaoWrapper {
     ///
     /// - Parameter fieldPosition: Optionally specify the position of the robot
     /// on the field. By default, there is no field position.
+    ///
+    /// - Parameter ballPosition: Optionally specify the current position and
+    /// orientation of the soccer ball on the soccer field. By default, the
+    /// position and orientation of the ball is unknown.
     public static func kneeling(
         head: NaoHead = NaoHead(),
         leftArm: NaoArm = NaoArm(
@@ -167,7 +184,8 @@ public struct ManageableNaoV5: NaoWrapper {
             wrist: YawJoint(yaw: Angle(degrees: -90))
         ),
         soccerObjectLocations: SoccerObjectLocations = SoccerObjectLocations(),
-        fieldPosition: FieldCoordinate? = nil
+        fieldPosition: FieldCoordinate? = nil,
+        ballPosition: BallPosition? = nil
     ) -> ManageableNaoV5 {
         let leftLeg = NaoLeg(
             hip: YPJoint(pitch: Angle(degrees: 2.7), roll: Angle(degrees: -0.7), yawPitch: Angle(degrees: -53.0)),
@@ -182,7 +200,8 @@ public struct ManageableNaoV5: NaoWrapper {
         return ManageableNaoV5(
             joints: NaoJoints(head: head, leftArm: leftArm, rightArm: rightArm, leftLeg: leftLeg, rightLeg: rightLeg),
             soccerObjectLocations: soccerObjectLocations,
-            fieldPosition: fieldPosition
+            fieldPosition: fieldPosition,
+            ballPosition: ballPosition
         )
     }
     
@@ -203,6 +222,10 @@ public struct ManageableNaoV5: NaoWrapper {
     ///
     /// - Parameter fieldPosition: Optionally specify the position of the robot
     /// on the field. By default, there is no field position.
+    ///
+    /// - Parameter ballPosition: Optionally specify the current position and
+    /// orientation of the soccer ball on the soccer field. By default, the
+    /// position and orientation of the ball is unknown.
     public static func standing(
         head: NaoHead = NaoHead(),
         leftArm: NaoArm = NaoArm(
@@ -216,7 +239,8 @@ public struct ManageableNaoV5: NaoWrapper {
             wrist: YawJoint(yaw: Angle(degrees: -90))
         ),
         soccerObjectLocations: SoccerObjectLocations = SoccerObjectLocations(),
-        fieldPosition: FieldCoordinate? = nil
+        fieldPosition: FieldCoordinate? = nil,
+        ballPosition: BallPosition? = nil
     ) -> ManageableNaoV5 {
         let leftLeg = NaoLeg(
             hip: YPJoint(pitch: Angle(degrees: 0.0), roll: Angle(degrees: 0.0), yawPitch: Angle(degrees: -29.0)),
@@ -231,7 +255,8 @@ public struct ManageableNaoV5: NaoWrapper {
         return ManageableNaoV5(
             joints: NaoJoints(head: head, leftArm: leftArm, rightArm: rightArm, leftLeg: leftLeg, rightLeg: rightLeg),
             soccerObjectLocations: soccerObjectLocations,
-            fieldPosition: fieldPosition
+            fieldPosition: fieldPosition,
+            ballPosition: ballPosition
         )
     }
     
@@ -323,7 +348,8 @@ public struct ManageableNaoV5: NaoWrapper {
                 )
             ),
             soccerObjectLocations: self.soccerObjectLocations,
-            fieldPosition: self.fieldPosition
+            fieldPosition: self.fieldPosition,
+            ballPosition: self.ballPosition
         )
     }
     
@@ -413,7 +439,8 @@ public struct ManageableNaoV5: NaoWrapper {
                 )
             ),
             soccerObjectLocations: self.soccerObjectLocations,
-            fieldPosition: self.fieldPosition
+            fieldPosition: self.fieldPosition,
+            ballPosition: self.ballPosition
         )
     }
     

@@ -57,4 +57,4 @@
  */
 
 /// The protocol that provides functionality for robots that can play soccer.
-public protocol SoccerPlayingRobot: SoccerObjectLocationsContainer, FieldPositionContainer {}
+public protocol SoccerPlayingRobot: SoccerObjectLocationsContainer, FieldPositionContainer, BallPositionContainer {}

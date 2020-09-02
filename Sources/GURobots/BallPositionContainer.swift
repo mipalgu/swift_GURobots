@@ -1,8 +1,8 @@
 /*
- * NaoWrapper.swift
+ * BallPositionContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 25/7/20.
+ * Created by Callum McColl on 2/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,80 +56,13 @@
  *
  */
 
-import GURobots
-import GUCoordinates
-
-/// The protocol that all nao robot types conform to.
-///
-/// This protocol provides a common set of functionality for nao robot types.
-/// The protocol stipulates that conforming types have a top camera, a bottom
-/// camera, a set of `NaoJoint`s and provides all the functionality of the
-/// `SoccerPlayingRobot` protocol.
-public protocol NaoWrapper:
-    CameraPivotContainer,
-    TopCameraContainer,
-    BottomCameraContainer,
-    NaoJointsContainer,
-    SoccerPlayingRobot
-{
+/// Conforming types are able to report the position of the ball on the
+/// soccer field.
+public protocol BallPositionContainer {
     
-// MARK: - Properties
-    
-    /// Nao types must be able to be converted to the underlying gurobots C
-    /// type `gu_nao`.
-    var rawValue: gu_nao { get }
-    
-}
-
-// MARK: - Default Implementations
-
-extension NaoWrapper {
-    
-    /// Converts from GU_NAO_V5_TOP_CAMERA_INDEX.
-    public var topCameraIndex: Int {
-        Int(GU_NAO_V5_TOP_CAMERA_INDEX)
-    }
-    
-    /// Converts from GU_NAO_V5_BOTTOM_CAMERA_INDEX.
-    public var bottomCameraIndex: Int {
-        Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX)
-    }
-    
-    /// Converts from `rawValue.joints`.
-    public var joints: NaoJoints {
-        NaoJoints(self.rawValue.joints)
-    }
-
-    /// Converts from `rawValue.sightings`.
-    public var soccerObjectLocations: SoccerObjectLocations {
-        SoccerObjectLocations(self.rawValue.sightings)
-    }
-
-    /// Converts from `rawValue.fieldPosition`.
-    public var fieldPosition: FieldCoordinate? {
-        guard self.rawValue.fieldPosition.has_value else {
-            return nil
-        }
-        return FieldCoordinate(self.rawValue.fieldPosition.value)
-    }
-    
-    /// Converts from `rawValue.ballPosition`.
-    public var ballPosition: BallPosition? {
-        guard self.rawValue.ballPosition.has_value else {
-            return nil
-        }
-        return BallPosition(self.rawValue.ballPosition.value)
-    }
-    
-    /// Calculates the cameraPivot by performing a kinematics chain on `joints`.
-    ///
-    /// - Bug: Currently the kinematics calculations do not take palce and
-    /// instead a hard-coded value for the camera pivot is used. This
-    /// hard-coded value takes into consideration the pitch and yaw of the head
-    /// but assumes that the robot is in the position where it is standing and
-    /// ready to walk.
-    public var cameraPivot: CameraPivot {
-        CameraPivot(gu_nao_head_to_camera_pivot(self.joints.head.rawValue))
-    }
+    /// The current position and orientation of the soccer ball on the soccer
+    /// field. If nil, the position and orientation of the soccer ball are
+    /// unknown.
+    var ballPosition: BallPosition? { get }
     
 }

@@ -64,17 +64,18 @@ public struct Orientation: CTypeWrapper {
     
 // MARK: - Properties
     
-    /// The angle of the pitch of the joint.
+    /// The angle of the vertical axis.
     public var pitch: Angle
     
-    /// The angle of the yaw of the object
+    /// The angle of the horizontal axis.
     public var yaw: Angle
     
+    /// The angle of the roll axis.
     public var roll: Angle
     
 // MARK: - Converting Between The Underlying gurobots C Type
     
-    /// Convert to the underlying gurobots C type `gu_pitch_yaw_joint`.
+    /// Convert to the underlying gurobots C type `gu_orientation`.
     public var rawValue: gu_orientation {
         return gu_orientation(
             pitch: self.pitch.degrees_f.rawValue,

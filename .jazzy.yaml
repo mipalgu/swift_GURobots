@@ -48,6 +48,9 @@ custom_categories:
     - name: Localisation
       children:
           - FieldPositionContainer
+          - BallPositionContainer
+          - BallPosition
+          - Orientation
 
     - name: Converting C Types
       children:

@@ -65,9 +65,12 @@ public struct BallPosition: CTypeWrapper {
     
 // MARK: - Properties
     
-    /// The angle of the yaw of the joint.
+    /// The x/y position of the ball on the soccer field using the field
+    /// coordinate system.
     public var position: CartesianCoordinate
     
+    /// The orientation of the ball with respect to the three angular
+    /// coordinates where the pivot point is the center of the soccer ball.
     public var orientation: Orientation
     
 // MARK: - Converting Between The Underlying gurobots C Type
