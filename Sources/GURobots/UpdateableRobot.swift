@@ -1,8 +1,8 @@
 /*
- * NaoV5.swift
+ * UpdateableRobot.swift
  * GURobots
  *
- * Created by Callum McColl on 25/7/20.
+ * Created by Callum McColl on 2/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,57 +56,10 @@
  *
  */
 
-import GURobots
-import GUSimpleWhiteboard
-
-/// A read-only nao that reads its values from the whiteboard.
-///
-/// Note that by itself, this struct looks like it doesn't do anything.
-/// This is because, the entirety of its functionality is provided through
-/// protocols and protocols extensions. Consider looking through these protocols
-/// in order to understand all the functionality that this type provides.
-///
-/// - SeeAlso: `NaoWrapper`
-/// - SeeAlso: `NaoJointsContainer`
-/// - SeeAlso: `SoccerObjectLocationsContainer`
-/// - SeeAlso: `FieldPositionContainer`
-public struct NaoV5: NaoWrapper, UpdateableRobot {
-
-// MARK: - Properties
+/// A robot that can be updated from some hidden external source.
+public protocol UpdateableRobot {
     
-    private let wb: Whiteboard
+    /// Update the robot with the latest values from the hidden external source.
+    mutating func update()
     
-    private let indexes: NaoWBIndexes
-
-// MARK: - Converting To The Underlying gurobots C Type
-    
-    /// Convert this object to the underlying gurobots C type `gu_nao`.
-    public private(set) var rawValue: gu_nao
-    
-// MARK: - Creating a NaoV5
-
-    /// Create a `NaoV5`.
-    ///
-    /// - Parameter wb: The whiteboard which this object will fetch its values
-    /// from. If this parameter is omitted then the global whiteboard is used.
-    ///
-    /// - Parameter indexes: The indexes of the messages within the whiteboard.
-    /// By default, these indexes are those for the normal global whiteboard.
-    /// By specifying a value for the indexes, we can allow the use of custom
-    /// whiteboards. Again, by default, this parameter can be omitted in order
-    /// to use the global whiteboard indexes.
-    public init(wb: Whiteboard = Whiteboard(), indexes: NaoWBIndexes = NaoWBIndexes()) {
-        self.wb = wb
-        self.indexes = indexes
-        self.rawValue = gu_nao()
-        self.update()
-    }
-    
-// MARK: - Reading From The Whiteboard
-
-    /// Update the nao by reading values from the whiteboard.
-    public mutating func update() {
-        gu_nao_update_from_custom_wb(&self.rawValue, self.wb.wb, self.indexes.rawValue)
-    }
-
 }
