@@ -57,9 +57,9 @@
  */
 
 /// A robot that can be updated from some hidden external source.
-public protocol UpdateableRobot {
+public protocol UpdateableRobot: AnyObject {
     
     /// Update the robot with the latest values from the hidden external source.
-    mutating func update()
+    func update()
     
 }
