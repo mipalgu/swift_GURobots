@@ -63,6 +63,7 @@ extension gu_nao_wb_indexes: Hashable, Codable {
     enum CodingKeys: String, CodingKey {
         case torsoSensors
         case topParticles
+        case ballPosition
         case handSensors
         case headSensors
         case legSensors
@@ -76,6 +77,7 @@ extension gu_nao_wb_indexes: Hashable, Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         let torsoSensors = try values.decode(CInt.self, forKey: .torsoSensors)
         let topParticles = try values.decode(CInt.self, forKey: .topParticles)
+        let ballPosition = try values.decode(CInt.self, forKey: .ballPosition)
         let handSensors = try values.decode(CInt.self, forKey: .handSensors)
         let headSensors = try values.decode(CInt.self, forKey: .headSensors)
         let legSensors = try values.decode(CInt.self, forKey: .legSensors)
@@ -86,6 +88,7 @@ extension gu_nao_wb_indexes: Hashable, Codable {
         self.init(
             torsoSensors: torsoSensors,
             topParticles: topParticles,
+            ballPosition: ballPosition,
             handSensors: handSensors,
             headSensors: headSensors,
             legSensors: legSensors,
@@ -100,6 +103,7 @@ extension gu_nao_wb_indexes: Hashable, Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.torsoSensors, forKey: .torsoSensors)
         try container.encode(self.topParticles, forKey: .topParticles)
+        try container.encode(self.ballPosition, forKey: .ballPosition)
         try container.encode(self.handSensors, forKey: .handSensors)
         try container.encode(self.headSensors, forKey: .headSensors)
         try container.encode(self.legSensors, forKey: .legSensors)
@@ -112,6 +116,7 @@ extension gu_nao_wb_indexes: Hashable, Codable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(self.torsoSensors)
         hasher.combine(self.topParticles)
+        hasher.combine(self.ballPosition)
         hasher.combine(self.handSensors)
         hasher.combine(self.headSensors)
         hasher.combine(self.legSensors)

@@ -65,6 +65,8 @@ public struct NaoWBIndexes: CTypeWrapper {
     
     public var topParticles: Int
     
+    public var ballPosition: Int
+    
     public var handSensors: Int
     
     public var headSensors: Int
@@ -83,6 +85,7 @@ public struct NaoWBIndexes: CTypeWrapper {
         return gu_nao_wb_indexes(
             torsoSensors: CInt(self.torsoSensors),
             topParticles: CInt(self.topParticles),
+            ballPosition: CInt(self.ballPosition),
             handSensors: CInt(self.handSensors),
             headSensors: CInt(self.headSensors),
             legSensors: CInt(self.legSensors),
@@ -110,6 +113,7 @@ public struct NaoWBIndexes: CTypeWrapper {
     public init(
         torsoSensors: Int = Int(kSENSORSTorsoJointSensors_v.rawValue),
         topParticles: Int = Int(kTopParticles_v.rawValue),
+        ballPosition: Int = Int(kBallPosition_v.rawValue),
         handSensors: Int = Int(kSensorsHandSensors_v.rawValue),
         headSensors: Int = Int(kSensorsHeadSensors_v.rawValue),
         legSensors: Int = Int(kSENSORSLegJointSensors_v.rawValue),
@@ -120,6 +124,7 @@ public struct NaoWBIndexes: CTypeWrapper {
     ) {
         self.torsoSensors = torsoSensors
         self.topParticles = topParticles
+        self.ballPosition = ballPosition
         self.handSensors = handSensors
         self.headSensors = headSensors
         self.legSensors = legSensors

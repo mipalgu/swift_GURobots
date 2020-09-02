@@ -101,6 +101,7 @@ public struct ManageableNaoV5: NaoWrapper {
         )
         return gu_nao(
             fieldPosition: fieldCoordinate,
+            ballPosition: gu_optional_ball_position(has_value: false, value: gu_ball_position()),
             joints: self.joints.rawValue,
             sightings: self.soccerObjectLocations.rawValue
         )
