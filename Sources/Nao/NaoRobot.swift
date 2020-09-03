@@ -65,7 +65,7 @@ import GUCoordinates
 /// The protocol stipulates that conforming types have a top camera, a bottom
 /// camera, a set of `NaoJoint`s and provides all the functionality of the
 /// `SoccerPlayingRobot` protocol.
-public protocol NaoWrapper:
+public protocol NaoRobot:
     CameraPivotContainer,
     TopCameraContainer,
     BottomCameraContainer,
@@ -83,7 +83,7 @@ public protocol NaoWrapper:
 
 // MARK: - Default Implementations
 
-extension NaoWrapper {
+extension NaoRobot {
     
     /// Converts from GU_NAO_V5_TOP_CAMERA_INDEX.
     public var topCameraIndex: Int {

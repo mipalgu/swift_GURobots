@@ -79,7 +79,7 @@ import GUCoordinates
 /// - SeeAlso: `SoccerObjectLocationsContainer`
 /// - SeeAlso: `FieldPositionContainer`
 /// - SeeAlso: `BallPositionContainer`
-public struct ManageableNaoV5: NaoWrapper {
+public struct ManageableNaoV5: NaoRobot {
     
 // MARK: - Properties
     

@@ -70,7 +70,7 @@ import GUSimpleWhiteboard
 /// - SeeAlso: `NaoJointsContainer`
 /// - SeeAlso: `SoccerObjectLocationsContainer`
 /// - SeeAlso: `FieldPositionContainer`
-public final class NaoV5: NaoWrapper, UpdateableRobot {
+public final class NaoV5: NaoRobot, UpdateableRobot {
 
 // MARK: - Properties
     

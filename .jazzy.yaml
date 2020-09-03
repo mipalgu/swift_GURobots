@@ -7,7 +7,6 @@ exclude:
 custom_categories:
     - name: Nao
       children: 
-          - NaoWrapper
           - NaoV5
           - NaoWBIndexes
           - NaoJointsContainer
@@ -21,6 +20,7 @@ custom_categories:
 
     - name: Robot Types
       children:
+          - NaoRobot
           - SoccerPlayingRobot
           - UpdateableRobot
 
