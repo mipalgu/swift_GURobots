@@ -1,8 +1,8 @@
 /*
- * SoccerPlayingRobot.swift
+ * JointsContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 1/8/20.
+ * Created by Callum McColl on 9/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,5 +56,20 @@
  *
  */
 
-/// The protocol that provides functionality for robots that can play soccer.
-public protocol SoccerPlayingRobot: PlayerNumberContainer, SoccerObjectLocationsContainer, FieldPositionContainer, BallPositionContainer {}
+/// Conforming types are robots that are capable of providing information on
+/// the status of their joints.
+public protocol JointsContainer {
+    
+    /// The type of the joints.
+    ///
+    /// This is different for each robot. For example, a nao robot would use the
+    /// `NaoJoints` struct for this type.
+    ///
+    /// - SeeAlso: `NaoJointsContainer`
+    /// - SeeAlso: `NaoJoints`
+    associatedtype Joints
+    
+    /// The status of the joints of the robot.
+    var joints: Joints { get }
+    
+}

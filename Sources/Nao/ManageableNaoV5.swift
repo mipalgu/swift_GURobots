@@ -83,6 +83,9 @@ public struct ManageableNaoV5: NaoRobot {
     
 // MARK: - Properties
     
+    /// The robots player number.
+    public var playerNumber: Int
+    
     /// The joints of the robot.
     public var joints: NaoJoints
     
@@ -108,6 +111,7 @@ public struct ManageableNaoV5: NaoRobot {
             value: self.ballPosition?.rawValue ?? gu_ball_position()
         )
         return gu_nao(
+            playerNumber: UInt8(self.playerNumber),
             fieldPosition: fieldCoordinate,
             ballPosition: ballPosition,
             joints: self.joints.rawValue,
@@ -122,6 +126,7 @@ public struct ManageableNaoV5: NaoRobot {
     /// will be copied.
     public init(_ other: gu_nao) {
         self.init(
+            playerNumber: Int(other.playerNumber),
             joints: NaoJoints(other.joints),
             soccerObjectLocations: SoccerObjectLocations(other.sightings),
             fieldPosition: other.fieldPosition.has_value ? FieldCoordinate(other.fieldPosition.value) : nil,
@@ -133,6 +138,8 @@ public struct ManageableNaoV5: NaoRobot {
     
     /// Create a `ManageableNaoV5`.
     ///
+    /// - Parameter playerNumber: The player number for this robot.
+    ///
     /// - Parameter joints: The list of joints for the robot.
     ///
     /// - Parameter soccerObjectLocations: The soccer objects viewable by the robot.
@@ -141,7 +148,8 @@ public struct ManageableNaoV5: NaoRobot {
     ///
     /// - Parameter ballPosition: The current position and orientation of the
     /// soccer ball on the soccer field.
-    public init(joints: NaoJoints = NaoJoints(), soccerObjectLocations: SoccerObjectLocations = SoccerObjectLocations(), fieldPosition: FieldCoordinate? = nil, ballPosition: BallPosition? = nil) {
+    public init(playerNumber: Int, joints: NaoJoints = NaoJoints(), soccerObjectLocations: SoccerObjectLocations = SoccerObjectLocations(), fieldPosition: FieldCoordinate? = nil, ballPosition: BallPosition? = nil) {
+        self.playerNumber = playerNumber
         self.joints = joints
         self.soccerObjectLocations = soccerObjectLocations
         self.fieldPosition = fieldPosition
@@ -151,6 +159,8 @@ public struct ManageableNaoV5: NaoRobot {
 // MARK: - Creating a ManageableNaoV5 in Specific Poses
     
     /// Creates a `ManageableNaoV5` in the kneeling position.
+    ///
+    /// - Parameter playerNumber: The player number of this robot.
     ///
     /// - Parameter head: Optionally specify the position of the head.
     ///
@@ -172,6 +182,7 @@ public struct ManageableNaoV5: NaoRobot {
     /// orientation of the soccer ball on the soccer field. By default, the
     /// position and orientation of the ball is unknown.
     public static func kneeling(
+        playerNumber: Int,
         head: NaoHead = NaoHead(),
         leftArm: NaoArm = NaoArm(
             shoulder: PitchRollJoint(pitch: Angle(degrees: 90), roll: Angle(degrees: 4)),
@@ -198,6 +209,7 @@ public struct ManageableNaoV5: NaoRobot {
             ankle: PitchRollJoint(pitch: Angle(degrees: -69.2), roll: Angle(degrees: -0.7))
         )
         return ManageableNaoV5(
+            playerNumber: playerNumber,
             joints: NaoJoints(head: head, leftArm: leftArm, rightArm: rightArm, leftLeg: leftLeg, rightLeg: rightLeg),
             soccerObjectLocations: soccerObjectLocations,
             fieldPosition: fieldPosition,
@@ -206,6 +218,8 @@ public struct ManageableNaoV5: NaoRobot {
     }
     
     /// Creates a `ManageableNaoV5` in the standing position.
+    ///
+    /// - Parameter playerNumber: The player number of this robot.
     ///
     /// - Parameter head: Optionally specify the position of the head.
     ///
@@ -227,6 +241,7 @@ public struct ManageableNaoV5: NaoRobot {
     /// orientation of the soccer ball on the soccer field. By default, the
     /// position and orientation of the ball is unknown.
     public static func standing(
+        playerNumber: Int,
         head: NaoHead = NaoHead(),
         leftArm: NaoArm = NaoArm(
             shoulder: PitchRollJoint(pitch: Angle(degrees: 90), roll: Angle(degrees: 18)),
@@ -253,6 +268,7 @@ public struct ManageableNaoV5: NaoRobot {
             ankle: PitchRollJoint(pitch: Angle(degrees: -30), roll: Angle(degrees: 0))
         )
         return ManageableNaoV5(
+            playerNumber: playerNumber,
             joints: NaoJoints(head: head, leftArm: leftArm, rightArm: rightArm, leftLeg: leftLeg, rightLeg: rightLeg),
             soccerObjectLocations: soccerObjectLocations,
             fieldPosition: fieldPosition,
@@ -332,6 +348,7 @@ public struct ManageableNaoV5: NaoRobot {
         )
     ) -> ManageableNaoV5 {
         return ManageableNaoV5(
+            playerNumber: self.playerNumber,
             joints: NaoJoints(
                 head: head ?? self.joints.head,
                 leftArm: leftArm ?? self.joints.leftArm,
@@ -423,6 +440,7 @@ public struct ManageableNaoV5: NaoRobot {
         )
     ) -> ManageableNaoV5 {
         return ManageableNaoV5(
+            playerNumber: self.playerNumber,
             joints: NaoJoints(
                 head: head ?? self.joints.head,
                 leftArm: leftArm ?? self.joints.leftArm,

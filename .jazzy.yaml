@@ -34,12 +34,17 @@ custom_categories:
 
     - name: Joints
       children:
+          - JointsContainer
           - PitchJoint
           - PitchRollJoint
           - PitchYawJoint
           - YPJoint
           - YawJoint
           - YawRollJoint
+
+    - name: Player Data
+      children:
+          - PlayerNumberContainer
 
     - name: Locations
       children:

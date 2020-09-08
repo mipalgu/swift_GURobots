@@ -61,6 +61,7 @@ import GURobots
 extension gu_nao_wb_indexes: Hashable, Codable {
     
     enum CodingKeys: String, CodingKey {
+        case playerNumber
         case torsoSensors
         case topParticles
         case ballPosition
@@ -75,6 +76,7 @@ extension gu_nao_wb_indexes: Hashable, Codable {
 
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        let playerNumber = try values.decode(CInt.self, forKey: .playerNumber)
         let torsoSensors = try values.decode(CInt.self, forKey: .torsoSensors)
         let topParticles = try values.decode(CInt.self, forKey: .topParticles)
         let ballPosition = try values.decode(CInt.self, forKey: .ballPosition)
@@ -86,6 +88,7 @@ extension gu_nao_wb_indexes: Hashable, Codable {
         let rightGoalPostLocation = try values.decode(CInt.self, forKey: .rightGoalPostLocation)
         let goalLocation = try values.decode(CInt.self, forKey: .goalLocation)
         self.init(
+            playerNumber: playerNumber,
             torsoSensors: torsoSensors,
             topParticles: topParticles,
             ballPosition: ballPosition,
@@ -101,6 +104,7 @@ extension gu_nao_wb_indexes: Hashable, Codable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.playerNumber, forKey: .playerNumber)
         try container.encode(self.torsoSensors, forKey: .torsoSensors)
         try container.encode(self.topParticles, forKey: .topParticles)
         try container.encode(self.ballPosition, forKey: .ballPosition)
@@ -114,6 +118,7 @@ extension gu_nao_wb_indexes: Hashable, Codable {
     }
     
     public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.playerNumber)
         hasher.combine(self.torsoSensors)
         hasher.combine(self.topParticles)
         hasher.combine(self.ballPosition)

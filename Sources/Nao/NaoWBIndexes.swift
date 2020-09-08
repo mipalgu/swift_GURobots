@@ -61,6 +61,8 @@ import GUSimpleWhiteboard
 
 public struct NaoWBIndexes: CTypeWrapper {
     
+    public var playerNumber: Int
+    
     public var torsoSensors: Int
     
     public var topParticles: Int
@@ -83,6 +85,7 @@ public struct NaoWBIndexes: CTypeWrapper {
     
     public var rawValue: gu_nao_wb_indexes {
         return gu_nao_wb_indexes(
+            playerNumber: CInt(self.playerNumber),
             torsoSensors: CInt(self.torsoSensors),
             topParticles: CInt(self.topParticles),
             ballPosition: CInt(self.ballPosition),
@@ -111,6 +114,7 @@ public struct NaoWBIndexes: CTypeWrapper {
     }
     
     public init(
+        playerNumber: Int = Int(kPlayerNumber_v.rawValue),
         torsoSensors: Int = Int(kSENSORSTorsoJointSensors_v.rawValue),
         topParticles: Int = Int(kTopParticles_v.rawValue),
         ballPosition: Int = Int(kBallPosition_v.rawValue),
@@ -122,6 +126,7 @@ public struct NaoWBIndexes: CTypeWrapper {
         rightGoalPostLocation: Int = Int(kRightGoalPostLocation_v.rawValue),
         goalLocation: Int = Int(kGoalLocation_v.rawValue)
     ) {
+        self.playerNumber = playerNumber
         self.torsoSensors = torsoSensors
         self.topParticles = topParticles
         self.ballPosition = ballPosition

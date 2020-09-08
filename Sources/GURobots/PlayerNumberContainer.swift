@@ -1,8 +1,8 @@
 /*
- * SoccerPlayingRobot.swift
+ * PlayerNumberContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 1/8/20.
+ * Created by Callum McColl on 9/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,5 +56,11 @@
  *
  */
 
-/// The protocol that provides functionality for robots that can play soccer.
-public protocol SoccerPlayingRobot: PlayerNumberContainer, SoccerObjectLocationsContainer, FieldPositionContainer, BallPositionContainer {}
+/// Conforming types represent a robot with a specific player number on the
+/// soccer field.
+public protocol PlayerNumberContainer {
+    
+    /// The player number of the robot for the robots team.
+    var playerNumber: Int { get }
+    
+}

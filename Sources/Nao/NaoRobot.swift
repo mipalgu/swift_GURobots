@@ -95,6 +95,11 @@ extension NaoRobot {
         Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX)
     }
     
+    /// Converts from `rawValue.playerNumber`.
+    public var playerNumber: Int {
+        Int(self.rawValue.playerNumber)
+    }
+    
     /// Converts from `rawValue.joints`.
     public var joints: NaoJoints {
         NaoJoints(self.rawValue.joints)
