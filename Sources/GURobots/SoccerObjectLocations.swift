@@ -94,9 +94,9 @@ public struct SoccerObjectLocations: CTypeWrapper {
     
 // MARK: - Converting Between The Underlying gurobots C Type
     
-    /// Convert to the underlying gurobots C type `gu_soccer_sightings`.
-    public var rawValue: gu_soccer_sightings {
-        return gu_soccer_sightings(
+    /// Convert to the underlying gurobots C type `gu_soccer_locations`.
+    public var rawValue: gu_soccer_locations {
+        return gu_soccer_locations(
             ball: gu_optional_relative_coordinate(has_value: self.ball != nil, value: self.ball?.rawValue ?? gu_relative_coordinate()),
             leftGoalPost: gu_optional_relative_coordinate(has_value: self.leftGoalPost != nil, value: self.leftGoalPost?.rawValue ?? gu_relative_coordinate()),
             rightGoalPost: gu_optional_relative_coordinate(has_value: self.rightGoalPost != nil, value: self.rightGoalPost?.rawValue ?? gu_relative_coordinate()),
@@ -104,11 +104,11 @@ public struct SoccerObjectLocations: CTypeWrapper {
     }
     
     /// Create a SoccerObjectLocations by copying the values from the underlying
-    /// gurobots C type `gu_soccer_sightings`.
+    /// gurobots C type `gu_soccer_locations`.
     ///
-    /// - Parameter other: The underlying gurobots C type `gu_soccer_sightings`
+    /// - Parameter other: The underlying gurobots C type `gu_soccer_locations`
     /// that contains the values that will be copied.
-    public init(_ other: gu_soccer_sightings) {
+    public init(_ other: gu_soccer_locations) {
         self.init(
             ball: other.ball.has_value ? RelativeCoordinate(other.ball.value) : nil,
             leftGoalPost: other.leftGoalPost.has_value ? RelativeCoordinate(other.leftGoalPost.value) : nil,

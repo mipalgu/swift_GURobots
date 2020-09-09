@@ -1,5 +1,5 @@
 /*
- * gu_soccer_sightings.swift
+ * gu_soccer_locations.swift
  * GURobots
  *
  * Created by Callum McColl on 26/7/20.
@@ -56,7 +56,7 @@
  *
  */
 
-extension gu_soccer_sightings: Hashable, Codable {
+extension gu_soccer_locations: Hashable, Codable {
     
     enum CodingKeys: String, CodingKey {
         case ball
@@ -89,8 +89,8 @@ extension gu_soccer_sightings: Hashable, Codable {
         hasher.combine(self.goal)
     }
     
-    public static func ==(lhs: gu_soccer_sightings, rhs: gu_soccer_sightings) -> Bool {
-        return gu_soccer_sightings_equals(lhs, rhs)
+    public static func ==(lhs: gu_soccer_locations, rhs: gu_soccer_locations) -> Bool {
+        return gu_soccer_locations_equals(lhs, rhs)
     }
     
 }

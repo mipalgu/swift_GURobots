@@ -115,7 +115,7 @@ public struct ManageableNaoV5: NaoRobot {
             fieldPosition: fieldCoordinate,
             ballPosition: ballPosition,
             joints: self.joints.rawValue,
-            sightings: self.soccerObjectLocations.rawValue
+            locations: self.soccerObjectLocations.rawValue
         )
     }
     
@@ -128,7 +128,7 @@ public struct ManageableNaoV5: NaoRobot {
         self.init(
             playerNumber: Int(other.playerNumber),
             joints: NaoJoints(other.joints),
-            soccerObjectLocations: SoccerObjectLocations(other.sightings),
+            soccerObjectLocations: SoccerObjectLocations(other.locations),
             fieldPosition: other.fieldPosition.has_value ? FieldCoordinate(other.fieldPosition.value) : nil,
             ballPosition: other.ballPosition.has_value ? BallPosition(other.ballPosition.value) : nil
         )

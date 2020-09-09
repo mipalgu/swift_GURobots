@@ -107,7 +107,7 @@ extension NaoRobot {
 
     /// Converts from `rawValue.sightings`.
     public var soccerObjectLocations: SoccerObjectLocations {
-        SoccerObjectLocations(self.rawValue.sightings)
+        SoccerObjectLocations(self.rawValue.locations)
     }
 
     /// Converts from `rawValue.fieldPosition`.
