@@ -115,7 +115,9 @@ public struct ManageableNaoV5: NaoRobot {
             fieldPosition: fieldCoordinate,
             ballPosition: ballPosition,
             joints: self.joints.rawValue,
-            locations: self.soccerObjectLocations.rawValue
+            locations: self.soccerObjectLocations.rawValue,
+            topCameraSightings: gu_soccer_sightings(),
+            bottomCameraSightings: gu_soccer_sightings()
         )
     }
     
