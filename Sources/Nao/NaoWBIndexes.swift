@@ -83,6 +83,18 @@ public struct NaoWBIndexes: CTypeWrapper {
     
     public var goalLocation: Int
     
+    public var ballSightings: Int
+    
+    public var goalSightings: Int
+    
+    public var horizonSightings: Int
+    
+    public var topLineSightings: Int
+    
+    public var bottomLineSightings: Int
+    
+    public var fieldFeatureSightings: Int
+    
     public var rawValue: gu_nao_wb_indexes {
         return gu_nao_wb_indexes(
             playerNumber: CInt(self.playerNumber),
@@ -95,7 +107,13 @@ public struct NaoWBIndexes: CTypeWrapper {
             ballLocation: CInt(self.ballLocation),
             leftGoalPostLocation: CInt(self.leftGoalPostLocation),
             rightGoalPostLocation: CInt(self.rightGoalPostLocation),
-            goalLocation: CInt(self.goalLocation)
+            goalLocation: CInt(self.goalLocation),
+            ballSightings: CInt(self.ballSightings),
+            goalSightings: CInt(self.goalSightings),
+            horizonSightings: CInt(self.horizonSightings),
+            topLineSightings: CInt(self.topLineSightings),
+            bottomLineSightings: CInt(self.bottomLineSightings),
+            fieldFeatureSightings: CInt(self.fieldFeatureSightings)
         )
     }
     
@@ -109,7 +127,13 @@ public struct NaoWBIndexes: CTypeWrapper {
             ballLocation: Int(other.ballLocation),
             leftGoalPostLocation: Int(other.leftGoalPostLocation),
             rightGoalPostLocation: Int(other.rightGoalPostLocation),
-            goalLocation: Int(other.goalLocation)
+            goalLocation: Int(other.goalLocation),
+            ballSightings: Int(other.ballSightings),
+            goalSightings: Int(other.goalSightings),
+            horizonSightings: Int(other.horizonSightings),
+            topLineSightings: Int(other.topLineSightings),
+            bottomLineSightings: Int(other.bottomLineSightings),
+            fieldFeatureSightings: Int(other.fieldFeatureSightings)
         )
     }
     
@@ -124,7 +148,13 @@ public struct NaoWBIndexes: CTypeWrapper {
         ballLocation: Int = Int(kBallLocation_v.rawValue),
         leftGoalPostLocation: Int = Int(kLeftGoalPostLocation_v.rawValue),
         rightGoalPostLocation: Int = Int(kRightGoalPostLocation_v.rawValue),
-        goalLocation: Int = Int(kGoalLocation_v.rawValue)
+        goalLocation: Int = Int(kGoalLocation_v.rawValue),
+        ballSightings: Int = Int(kVisionDetectionBalls_v.rawValue),
+        goalSightings: Int = Int(kVisionDetectionGoals_v.rawValue),
+        horizonSightings: Int = Int(kVisionDetectionHorizons_v.rawValue),
+        topLineSightings: Int = Int(kTopVisionLines_v.rawValue),
+        bottomLineSightings: Int = Int(kBottomVisionLines_v.rawValue),
+        fieldFeatureSightings: Int = Int(kVisionFieldFeatures_v.rawValue)
     ) {
         self.playerNumber = playerNumber
         self.torsoSensors = torsoSensors
@@ -137,6 +167,12 @@ public struct NaoWBIndexes: CTypeWrapper {
         self.leftGoalPostLocation = leftGoalPostLocation
         self.rightGoalPostLocation = rightGoalPostLocation
         self.goalLocation = goalLocation
+        self.ballSightings = ballSightings
+        self.goalSightings = goalSightings
+        self.horizonSightings = horizonSightings
+        self.topLineSightings = topLineSightings
+        self.bottomLineSightings = bottomLineSightings
+        self.fieldFeatureSightings = fieldFeatureSightings
     }
     
 }

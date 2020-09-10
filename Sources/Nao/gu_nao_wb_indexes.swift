@@ -72,6 +72,12 @@ extension gu_nao_wb_indexes: Hashable, Codable {
         case leftGoalPostLocation
         case rightGoalPostLocation
         case goalLocation
+        case ballSightings
+        case goalSightings
+        case horizonSightings
+        case topLineSightings
+        case bottomLineSightings
+        case fieldFeatureSightings
     }
 
     public init(from decoder: Decoder) throws {
@@ -87,6 +93,12 @@ extension gu_nao_wb_indexes: Hashable, Codable {
         let leftGoalPostLocation = try values.decode(CInt.self, forKey: .leftGoalPostLocation)
         let rightGoalPostLocation = try values.decode(CInt.self, forKey: .rightGoalPostLocation)
         let goalLocation = try values.decode(CInt.self, forKey: .goalLocation)
+        let ballSightings = try values.decode(CInt.self, forKey: .ballSightings)
+        let goalSightings = try values.decode(CInt.self, forKey: .goalSightings)
+        let horizonSightings = try values.decode(CInt.self, forKey: .horizonSightings)
+        let topLineSightings = try values.decode(CInt.self, forKey: .topLineSightings)
+        let bottomLineSightings = try values.decode(CInt.self, forKey: .bottomLineSightings)
+        let fieldFeatureSightings = try values.decode(CInt.self, forKey: .fieldFeatureSightings)
         self.init(
             playerNumber: playerNumber,
             torsoSensors: torsoSensors,
@@ -98,7 +110,13 @@ extension gu_nao_wb_indexes: Hashable, Codable {
             ballLocation: ballLocation,
             leftGoalPostLocation: leftGoalPostLocation,
             rightGoalPostLocation: rightGoalPostLocation,
-            goalLocation: goalLocation
+            goalLocation: goalLocation,
+            ballSightings: ballSightings,
+            goalSightings: goalSightings,
+            horizonSightings: horizonSightings,
+            topLineSightings: topLineSightings,
+            bottomLineSightings: bottomLineSightings,
+            fieldFeatureSightings: fieldFeatureSightings
         )
     }
 
@@ -115,6 +133,12 @@ extension gu_nao_wb_indexes: Hashable, Codable {
         try container.encode(self.leftGoalPostLocation, forKey: .leftGoalPostLocation)
         try container.encode(self.rightGoalPostLocation, forKey: .rightGoalPostLocation)
         try container.encode(self.goalLocation, forKey: .goalLocation)
+        try container.encode(self.ballSightings, forKey: .ballSightings)
+        try container.encode(self.goalSightings, forKey: .goalSightings)
+        try container.encode(self.horizonSightings, forKey: .horizonSightings)
+        try container.encode(self.topLineSightings, forKey: .topLineSightings)
+        try container.encode(self.bottomLineSightings, forKey: .bottomLineSightings)
+        try container.encode(self.fieldFeatureSightings, forKey: .fieldFeatureSightings)
     }
     
     public func hash(into hasher: inout Hasher) {
@@ -129,6 +153,12 @@ extension gu_nao_wb_indexes: Hashable, Codable {
         hasher.combine(self.leftGoalPostLocation)
         hasher.combine(self.rightGoalPostLocation)
         hasher.combine(self.goalLocation)
+        hasher.combine(self.ballSightings)
+        hasher.combine(self.goalSightings)
+        hasher.combine(self.horizonSightings)
+        hasher.combine(self.topLineSightings)
+        hasher.combine(self.bottomLineSightings)
+        hasher.combine(self.fieldFeatureSightings)
     }
     
     public static func ==(lhs: gu_nao_wb_indexes, rhs: gu_nao_wb_indexes) -> Bool {
