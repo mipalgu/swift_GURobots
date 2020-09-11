@@ -77,6 +77,15 @@ public protocol BottomCameraContainer {
     
 }
 
+extension BottomCameraContainer where Self: BottomCameraIndexContainer {
+    
+    /// The robots bottom camera.
+    public var bottomCamera: RobotCamera {
+        return self.cameras[self.bottomCameraIndex]
+    }
+    
+}
+
 extension BottomCameraContainer {
     
 // MARK: - Camera Visibility Of Objects

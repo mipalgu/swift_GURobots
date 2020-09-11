@@ -1,5 +1,5 @@
 /*
- * SoccerSightingsContainer.swift
+ * BottomCameraIndexContainer.swift
  * GURobots
  *
  * Created by Callum McColl on 11/9/20.
@@ -56,17 +56,11 @@
  *
  */
 
-/// Conforming types are able to see soccer objects such as the ball
-/// and goals on the soccer field.
-public protocol SoccerSightingsContainer: CamerasContainer {
+/// Conforming types are able to designate a camera the *bottom* camera in the
+/// `cameras` array.
+public protocol BottomCameraIndexContainer: CamerasContainer {
     
-// MARK: - Properties
-    
-    /// All soccer object sightings that can be seen currently.
-    ///
-    /// The array is indexed the same as the `cameras` array, meaning that
-    /// the sightings at index 0 correspond to the camera at index 0 in the
-    /// `cameras` array.
-    var soccerSightings: [SoccerSightings] { get }
+    /// The index of the *bottom* camera in the `cameras` array.
+    var bottomCameraIndex: Int { get }
     
 }

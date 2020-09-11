@@ -66,7 +66,8 @@ import GUCoordinates
 /// camera, a set of `NaoJoint`s and provides all the functionality of the
 /// `SoccerPlayingRobot` protocol.
 public protocol NaoRobot:
-    CamerasContainer,
+    TopCameraIndexContainer,
+    BottomCameraIndexContainer,
     TopCameraContainer,
     BottomCameraContainer,
     NaoJointsContainer,
@@ -96,20 +97,19 @@ extension NaoRobot {
     /// ready to walk.
     public var cameras: [RobotCamera] {
         let cameraPivot = CameraPivot(gu_nao_head_to_camera_pivot(self.joints.head.rawValue))
-        return [
-            RobotCamera(cameraPivot: cameraPivot, camera: Int(GU_NAO_V5_TOP_CAMERA_INDEX)),
-            RobotCamera(cameraPivot: cameraPivot, camera: Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX))
-        ]
+        return [GU_NAO_V5_TOP_CAMERA_INDEX, GU_NAO_V5_BOTTOM_CAMERA_INDEX].sorted().map {
+            RobotCamera(cameraPivot: cameraPivot, camera: Int($0))
+        }
     }
     
     /// The nao robots top camera.
-    public var topCamera: RobotCamera {
-        return self.cameras[0]
+    public var topCameraIndex: Int {
+        return Int(GU_NAO_V5_TOP_CAMERA_INDEX)
     }
     
     /// The nao robots bottom camera.
-    public var bottomCamera: RobotCamera {
-        return self.cameras[1]
+    public var bottomCameraIndex: Int {
+        return Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX)
     }
     
     /// Converts from `rawValue.playerNumber`.
