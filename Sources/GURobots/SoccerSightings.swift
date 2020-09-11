@@ -116,16 +116,15 @@ public struct SoccerSightings: CTypeWrapper {
     /// - Parameter other: The underlying gurobots C type `gu_soccer_sightings`
     /// which contains the values being copied.
     public init(_ other: gu_soccer_sightings) {
-        let lines = withUnsafePointer(to: other.lines.0) {
-            UnsafeBufferPointer(start: $0, count: Int(other.numLines)).map { RectangleSighting($0) }
-        }
         self.init(
             ball: other.ball.has_value ? EllipseSighting(other.ball.value) : nil,
             genericGoalPost: other.genericGoalPost.has_value ? RectangleSighting(other.genericGoalPost.value) : nil,
             leftGoalPost: other.leftGoalPost.has_value ? RectangleSighting(other.leftGoalPost.value) : nil,
             rightGoalPost: other.rightGoalPost.has_value ? RectangleSighting(other.rightGoalPost.value) : nil,
             horizon: other.horizon.has_value ? HorizonSighting(other.horizon.value) : nil,
-            lines: lines
+            lines: withUnsafePointer(to: other.lines.0) {
+                UnsafeBufferPointer(start: $0, count: Int(other.numLines)).map { RectangleSighting($0) }
+            }
         )
     }
     
