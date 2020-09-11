@@ -68,23 +68,16 @@ import GUCoordinates
 ///
 /// As the name of the protocol suggests; all the functionality provided by
 /// this protocol deals with a specific camera designated the *top camera*.
-public protocol TopCameraContainer: TopCameraPivotContainer {
+public protocol TopCameraContainer {
     
 // MARK: - Properties
     
-    /// The index of the *top camera* within the `topCameraPivot.cameras`
-    /// array.
-    var topCameraIndex: Int { get }
+    /// The robots top camera.
+    var topCamera: RobotCamera { get }
     
 }
 
 extension TopCameraContainer {
-    
-    /// Fetch the `Camera` for the top camera from the `topCameraPivot.cameras`
-    /// array.
-    public var topCamera: Camera {
-        self.topCameraPivot.cameras[self.topCameraIndex]
-    }
     
 // MARK: - Camera Visibility Of Objects
     
@@ -96,7 +89,7 @@ extension TopCameraContainer {
     /// - Returns: True if the top camera can see the object, False
     /// otherwise.
     public func topCameraCanSee(object: RelativeCoordinate) -> Bool {
-        self.topCameraPivotCanSee(object: object, inCamera: self.topCameraIndex)
+        self.topCamera.canSee(object: object)
     }
     
 // MARK: - Image Coordinate Validation
@@ -109,7 +102,7 @@ extension TopCameraContainer {
     /// - Returns: True if the pixel represents an object that is on the ground.
     /// Otherwise, False.
     public func topCameraObjectOnGround(_ coord: CameraCoordinate) -> Bool {
-        self.topCameraPivotObjectOnGround(coord, forCamera: self.topCameraIndex)
+        self.topCamera.objectOnGround(coord)
     }
     
     /// Is the object represent by the pixel in the image taken from the top
@@ -120,7 +113,7 @@ extension TopCameraContainer {
     /// - Returns: True if the pixel represents an object that is on the ground.
     /// Otherwise, False.
     public func topCameraObjectOnGround(_ coord: PixelCoordinate) -> Bool {
-        self.topCameraPivotObjectOnGround(coord, forCamera: self.topCameraIndex)
+        self.topCamera.objectOnGround(coord)
     }
     
     /// Is the object represent by the point in the image taken from the top
@@ -131,7 +124,7 @@ extension TopCameraContainer {
     /// - Returns: True if the point represents an object that is on the ground.
     /// Otherwise, False.
     public func topCameraObjectOnGround(_ coord: PercentCoordinate) -> Bool {
-        self.topCameraPivotObjectOnGround(coord, forCamera: self.topCameraIndex)
+        self.topCamera.objectOnGround(coord)
     }
     
 // MARK: - Converting Image Coordinates To Relative Coordinates
@@ -150,7 +143,7 @@ extension TopCameraContainer {
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
     public func topCameraRelativeCoordinate(of coord: CameraCoordinate) -> RelativeCoordinate {
-        self.topCameraPivotRelativeCoordinate(of: coord, camera: self.topCameraIndex)
+        self.topCamera.relativeCoordinate(of: coord)
     }
 
     /// Convert the object in an image to a `RelativeCoordinate` for the
@@ -167,7 +160,7 @@ extension TopCameraContainer {
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
     public func topCameraRelativeCoordinate(of coord: PixelCoordinate) -> RelativeCoordinate {
-        self.topCameraPivotRelativeCoordinate(of: coord, camera: self.topCameraIndex)
+        self.topCamera.relativeCoordinate(of: coord)
     }
 
     /// Convert the object in an image to a `RelativeCoordinate` for the
@@ -184,7 +177,7 @@ extension TopCameraContainer {
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
     public func topCameraRelativeCoordinate(of coord: PercentCoordinate) -> RelativeCoordinate {
-        self.topCameraPivotRelativeCoordinate(of: coord, camera: self.topCameraIndex)
+        self.topCamera.relativeCoordinate(of: coord)
     }
     
 // MARK: - Converting Relative Coordinates To Image Coordinates
@@ -208,7 +201,7 @@ extension TopCameraContainer {
     /// you should only use this function if you are positive that the camera
     /// can actually see the object at `coord`.
     public func topCameraCameraCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate {
-        return self.topCameraPivotCameraCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
+        return self.topCamera.cameraCoordinate(to: coord, resWidth: resWidth, resHeight: resHeight)
     }
     
     /// Calculate a pixel within an image representing the specified object in
@@ -230,7 +223,7 @@ extension TopCameraContainer {
     /// you should only use this function if you are positive that the camera
     /// can actually see the object at `coord`.
     public func topCameraPixelCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate {
-        return self.topCameraPivotPixelCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
+        return self.topCamera.pixelCoordinate(to: coord, resWidth: resWidth, resHeight: resHeight)
     }
     
     /// Calculate a point within an image representing the specified object in
@@ -246,7 +239,7 @@ extension TopCameraContainer {
     /// you should only use this function if you are positive that the camera
     /// can actually see the object at `coord`.
     public func topCameraPercentCoordinate(to coord: RelativeCoordinate) -> PercentCoordinate {
-        return self.topCameraPivotPercentCoordinate(to: coord, camera: self.topCameraIndex)
+        return self.topCamera.percentCoordinate(to: coord)
     }
     
     /// Calculate a pixel within an image representing the specified
@@ -267,8 +260,8 @@ extension TopCameraContainer {
     ///
     /// - Returns: A new `CameraCoordinate` representing the object in the
     /// top camera.
-    public func topCameraClampedCameraCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
-        self.topCameraPivotClampedCameraCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    public func topCameraClampedCameraCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate {
+        return self.topCamera.clampedCameraCoordinate(to: coord, resWidth: resWidth, resHeight: resHeight)
     }
     
     /// Calculate a pixel within an image representing the specified
@@ -289,8 +282,8 @@ extension TopCameraContainer {
     ///
     /// - Returns: A new `PixelCoordinate` representing the object in the
     /// top camera.
-    public func topCameraClampedPixelCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
-        self.topCameraPivotClampedPixelCoordinate(to: coord, camera: self.topCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    public func topCameraClampedPixelCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate {
+        return self.topCamera.clampedPixelCoordinate(to: coord, resWidth: resWidth, resHeight: resHeight)
     }
     
     /// Calculate a point within an image representing the specified
@@ -305,8 +298,8 @@ extension TopCameraContainer {
     ///
     /// - Returns: A new `PercentCoordinate` representing the object in the
     /// top camera.
-    public func topCameraClampedPercentCoordinate(to coord: RelativeCoordinate) -> PercentCoordinate? {
-        self.topCameraPivotClampedPercentCoordinate(to: coord, camera: self.topCameraIndex)
+    public func topCameraClampedPercentCoordinate(to coord: RelativeCoordinate) -> PercentCoordinate {
+        return self.topCamera.clampedPercentCoordinate(to: coord)
     }
     
 }

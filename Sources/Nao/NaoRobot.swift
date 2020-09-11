@@ -66,7 +66,7 @@ import GUCoordinates
 /// camera, a set of `NaoJoint`s and provides all the functionality of the
 /// `SoccerPlayingRobot` protocol.
 public protocol NaoRobot:
-    CameraPivotContainer,
+    CamerasContainer,
     TopCameraContainer,
     BottomCameraContainer,
     NaoJointsContainer,
@@ -85,14 +85,29 @@ public protocol NaoRobot:
 
 extension NaoRobot {
     
-    /// Converts from GU_NAO_V5_TOP_CAMERA_INDEX.
-    public var topCameraIndex: Int {
-        Int(GU_NAO_V5_TOP_CAMERA_INDEX)
+    /// Created a cameras array from GU_NAO_V5_TOP_CAMERA_INDEX and GU_NAO_V5_BOTTOM_CAMERA_INDEX.
+    ///
+    /// Calculates the cameraPivot by performing a kinematics chain on `joints`.
+    ///
+    /// - Bug: Currently the kinematics calculations do not take place and
+    /// instead a hard-coded value for the camera pivot is used. This
+    /// hard-coded value takes into consideration the pitch and yaw of the head
+    /// but assumes that the robot is in the position where it is standing and
+    /// ready to walk.
+    public var cameras: [RobotCamera] {
+        let cameraPivot = CameraPivot(gu_nao_head_to_camera_pivot(self.joints.head.rawValue))
+        return [
+            RobotCamera(cameraPivot: cameraPivot, camera: Int(GU_NAO_V5_TOP_CAMERA_INDEX)),
+            RobotCamera(cameraPivot: cameraPivot, camera: Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX))
+        ]
     }
     
-    /// Converts from GU_NAO_V5_BOTTOM_CAMERA_INDEX.
-    public var bottomCameraIndex: Int {
-        Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX)
+    public var topCamera: RobotCamera {
+        return self.cameras[0]
+    }
+    
+    public var bottomCamera: RobotCamera {
+        return self.cameras[1]
     }
     
     /// Converts from `rawValue.playerNumber`.
@@ -124,17 +139,6 @@ extension NaoRobot {
             return nil
         }
         return BallPosition(self.rawValue.ballPosition.value)
-    }
-    
-    /// Calculates the cameraPivot by performing a kinematics chain on `joints`.
-    ///
-    /// - Bug: Currently the kinematics calculations do not take palce and
-    /// instead a hard-coded value for the camera pivot is used. This
-    /// hard-coded value takes into consideration the pitch and yaw of the head
-    /// but assumes that the robot is in the position where it is standing and
-    /// ready to walk.
-    public var cameraPivot: CameraPivot {
-        CameraPivot(gu_nao_head_to_camera_pivot(self.joints.head.rawValue))
     }
     
 }

@@ -72,7 +72,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
         guard let relativeCoordinate = self.relativeCoordinate(to: coord) else {
             return nil
         }
-        return self.bottomCameraPivotCanSee(object: relativeCoordinate, inCamera: self.bottomCameraIndex)
+        return self.bottomCameraCanSee(object: relativeCoordinate)
     }
     
     /// Can the camera see the object?
@@ -88,7 +88,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
         guard let relativeCoordinate = self.relativeCoordinate(to: coord) else {
             return nil
         }
-        return self.bottomCameraPivotCanSee(object: relativeCoordinate, inCamera: self.bottomCameraIndex)
+        return self.bottomCameraCanSee(object: relativeCoordinate)
     }
     
 // MARK: Field Coordinates From Bottom Camera Image Coordinates
@@ -106,7 +106,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
     public func bottomCameraCartesianCoordinate(at coord: CameraCoordinate) -> CartesianCoordinate? {
-        return self.bottomCameraPivotCartesianCoordinate(at: coord, camera: self.bottomCameraIndex)
+        return self.fieldPosition.map { self.bottomCamera.cartesianCoordinate(at: coord, from: $0) }
     }
     
     /// Calculate the position of an object in an image from the bottom camera
@@ -122,7 +122,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
     public func bottomCameraCartesianCoordinate(at coord: PixelCoordinate) -> CartesianCoordinate? {
-        return self.bottomCameraPivotCartesianCoordinate(at: coord, camera: self.bottomCameraIndex)
+        return self.fieldPosition.map { self.bottomCamera.cartesianCoordinate(at: coord, from: $0) }
     }
     
     /// Calculate the position of an object in an image from the bottom camera
@@ -138,7 +138,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
     public func bottomCameraCartesianCoordinate(at coord: PercentCoordinate) -> CartesianCoordinate? {
-        return self.bottomCameraPivotCartesianCoordinate(at: coord, camera: self.bottomCameraIndex)
+        return self.fieldPosition.map { self.bottomCamera.cartesianCoordinate(at: coord, from: $0) }
     }
     
     /// Calculate the position of an object in an image from the bottom camera
@@ -157,7 +157,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
     public func bottomCameraFieldCoordinate(at coord: CameraCoordinate, heading: Degrees_t) -> FieldCoordinate? {
-        return self.bottomCameraPivotFieldCoordinate(at: coord, camera: self.bottomCameraIndex, heading: heading)
+        return self.fieldPosition.map { self.bottomCamera.fieldCoordinate(at: coord, from: $0, heading: heading) }
     }
     
     /// Calculate the position of an object in an image from the bottom camera
@@ -176,7 +176,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
     public func bottomCameraFieldCoordinate(at coord: PixelCoordinate, heading: Degrees_t) -> FieldCoordinate? {
-        return self.bottomCameraPivotFieldCoordinate(at: coord, camera: self.bottomCameraIndex, heading: heading)
+        return self.fieldPosition.map { self.bottomCamera.fieldCoordinate(at: coord, from: $0, heading: heading) }
     }
     
     /// Calculate the position of an object in an image from the bottom camera
@@ -195,7 +195,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
     public func bottomCameraFieldCoordinate(at coord: PercentCoordinate, heading: Degrees_t) -> FieldCoordinate? {
-        return self.bottomCameraPivotFieldCoordinate(at: coord, camera: self.bottomCameraIndex, heading: heading)
+        return self.fieldPosition.map { self.bottomCamera.fieldCoordinate(at: coord, from: $0, heading: heading) }
     }
     
 // MARK: - Bottom Camera Image Coordinates From Field Coordinates
@@ -219,7 +219,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// should only use this function if you are positive that the camera can
     /// actually see the object at `coord`.
     public func bottomCameraCameraCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
-        return self.bottomCameraPivotCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+        return self.fieldPosition.map { self.bottomCamera.cameraCoordinate(to: coord, from: $0, resWidth: resWidth, resHeight: resHeight) }
     }
 
     /// Calculate a pixel within a specific image from the bottom camera
@@ -241,7 +241,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// should only use this function if you are positive that the camera can
     /// actually see the object at `coord`.
     public func bottomCameraCameraCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
-        return self.bottomCameraPivotCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+        return self.fieldPosition.map { self.bottomCamera.cameraCoordinate(to: coord, from: $0, resWidth: resWidth, resHeight: resHeight) }
     }
 
     /// Calculate a pixel within a specific image from the bottom camera
@@ -263,7 +263,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// should only use this function if you are positive that the camera can
     /// actually see the object at `coord`.
     public func bottomCameraPixelCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
-        return self.bottomCameraPivotPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+        return self.fieldPosition.map { self.bottomCamera.pixelCoordinate(to: coord, from: $0, resWidth: resWidth, resHeight: resHeight) }
     }
 
     /// Calculate a pixel within a specific image from the bottom camera
@@ -285,7 +285,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// should only use this function if you are positive that the camera can
     /// actually see the object at `coord`.
     public func bottomCameraPixelCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
-        return self.bottomCameraPivotPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+        return self.fieldPosition.map { self.bottomCamera.pixelCoordinate(to: coord, from: $0, resWidth: resWidth, resHeight: resHeight) }
     }
 
     /// Calculate a point within a specific image from the bottom camera
@@ -301,7 +301,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// should only use this function if you are positive that the camera can
     /// actually see the object at `coord`.
     public func bottomCameraPercentCoordinate(to coord: CartesianCoordinate) -> PercentCoordinate? {
-        return self.bottomCameraPivotPercentCoordinate(to: coord, camera: self.bottomCameraIndex)
+        return self.fieldPosition.map { self.bottomCamera.percentCoordinate(to: coord, from: $0) }
     }
 
     /// Calculate a point within a specific image from the bottom camera
@@ -319,7 +319,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// of this function that performs this bounds check then use
     /// `bottomCameraPercentCoordinate(to:)`.
     public func bottomCameraPercentCoordinate(to coord: FieldCoordinate, camera: Int) -> PercentCoordinate? {
-        return self.bottomCameraPivotPercentCoordinate(to: coord, camera: self.bottomCameraIndex)
+        return self.fieldPosition.map { self.bottomCamera.percentCoordinate(to: coord, from: $0) }
     }
     
     /// Calculate a pixel within a specific image from the bottom camera
@@ -341,7 +341,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Returns: A new `CameraCoordinate` representing the object in the
     /// camera. Returns nil if `fieldPosition` is nil.
     public func bottomCameraClampedCameraCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
-        return self.bottomCameraPivotClampedCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+        return self.fieldPosition.map { self.bottomCamera.clampedCameraCoordinate(to: coord, from: $0, resWidth: resWidth, resHeight: resHeight) }
     }
 
     /// Calculate a pixel within a specific image from the bottom camera
@@ -363,7 +363,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Returns: A new `CameraCoordinate` representing the object in the
     /// camera. Returns nil if `fieldPosition` is nil.
     public func bottomCameraClampedCameraCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
-        return self.bottomCameraPivotClampedCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+        return self.fieldPosition.map { self.bottomCamera.clampedCameraCoordinate(to: coord, from: $0, resWidth: resWidth, resHeight: resHeight) }
     }
 
     /// Calculate a pixel within a specific image from the bottom camera
@@ -385,7 +385,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Returns: A new `PixelCoordinate` representing the object in the
     /// camera. Returns nil if `fieldPosition` is nil.
     public func bottomCameraClampedPixelCoordinate(to coord: CartesianCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
-        return self.bottomCameraPivotClampedPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+        return self.fieldPosition.map { self.bottomCamera.clampedPixelCoordinate(to: coord, from: $0, resWidth: resWidth, resHeight: resHeight) }
     }
 
     /// Calculate a pixel within a specific image from the bottom camera
@@ -407,7 +407,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Returns: A new `PixelCoordinate` representing the object in the
     /// camera. Returns nil if `fieldPosition` is nil.
     public func bottomCameraClampedPixelCoordinate(to coord: FieldCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
-        return self.bottomCameraPivotClampedPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+        return self.fieldPosition.map { self.bottomCamera.clampedPixelCoordinate(to: coord, from: $0, resWidth: resWidth, resHeight: resHeight) }
     }
 
     /// Calculate a point within a specific image from the bottom camera
@@ -423,7 +423,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Returns: A new `PercentCoordinate` representing the object in the
     /// camera. Returns nil if `fieldPosition` is nil.
     public func bottomCameraClampedPercentCoordinate(to coord: CartesianCoordinate) -> PercentCoordinate? {
-        return self.bottomCameraPivotClampedPercentCoordinate(to: coord, camera: self.bottomCameraIndex)
+        return self.fieldPosition.map { self.bottomCamera.clampedPercentCoordinate(to: coord, from: $0) }
     }
 
     /// Calculate a point within a specific image from the bottom camera
@@ -439,7 +439,7 @@ extension FieldPositionContainer where Self: BottomCameraContainer {
     /// - Returns: A new `PercentCoordinate` representing the object in the
     /// camera. Returns nil if `fieldPosition` is nil.
     public func bottomClampedPercentCoordinate(to coord: FieldCoordinate) -> PercentCoordinate? {
-        return self.bottomCameraPivotClampedPercentCoordinate(to: coord, camera: self.bottomCameraIndex)
+        return self.fieldPosition.map { self.bottomCamera.clampedPercentCoordinate(to: coord, from: $0) }
     }
     
 }
