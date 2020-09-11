@@ -62,10 +62,6 @@
  *
  *  In such a case, some functionality needs to be provided. The swift type
  *  must provide the ability to be converted to the underlying C type.
- *
- *  This protocol also requires that conforming types behave the same way
- *  when it comes to equality, hashing, encoding and decoding using the
- *  `Equatable`, `Hashable`, `Encodable` and `Decodable` protocols.
  */
 public protocol CTypeDelegator: Hashable, Codable {
 
@@ -78,38 +74,5 @@ public protocol CTypeDelegator: Hashable, Codable {
      *  Convert `self` to the underlying C type.
      */
     var rawValue: CType { get }
-
-}
-
-extension CTypeDelegator where Self: Equatable, CType: Equatable {
-
-    /**
-     *  Delegates equality to the underlying C type.
-     */
-    public static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs.rawValue == rhs.rawValue
-    }
-
-}
-
-extension CTypeDelegator where Self: Hashable, CType: Hashable {
-
-    /**
-     *  Delegates hashing functionality to the underlying C type.
-     */
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.rawValue)
-    }
-
-}
-
-extension CTypeDelegator where Self: Encodable, CType: Encodable {
-
-    /**
-     *  Delegates encoding to the underlying C type.
-     */
-    public func encode(to encoder: Encoder) throws {
-        try self.rawValue.encode(to: encoder)
-    }
 
 }
