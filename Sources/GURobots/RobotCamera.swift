@@ -91,4 +91,49 @@ public struct RobotCamera {
         self.index = camera
     }
     
+// MARK: - Checking Whether Conversions Are Possible
+    
+    /// Is the object represent by the pixel in the image taken from the camera
+    /// on the ground?
+    ///
+    /// - Parameter coord: The pixel in the image representing the object.
+    ///
+    /// - Returns: True if the pixel represents an object that is on the ground.
+    /// Otherwise, False.
+    public func objectOnGround(_ coord: CameraCoordinate) -> Bool {
+        return self.cameraPivot.objectOnGround(coord, forCamera: self.index)
+    }
+    
+    /// Is the object represent by the pixel in the image taken from the camera
+    /// on the ground?
+    ///
+    /// - Parameter coord: The pixel in the image representing the object.
+    ///
+    /// - Returns: True if the pixel represents an object that is on the ground.
+    /// Otherwise, False.
+    public func objectOnGround(_ coord: PixelCoordinate) -> Bool {
+        return self.cameraPivot.objectOnGround(coord, forCamera: self.index)
+    }
+    
+    /// Is the object represent by the pixel in the image taken from the camera
+    /// on the ground?
+    ///
+    /// - Parameter coord: The pixel in the image representing the object.
+    ///
+    /// - Returns: True if the pixel represents an object that is on the ground.
+    /// Otherwise, False.
+    public func objectOnGround(_ coord: PercentCoordinate) -> Bool {
+        return self.cameraPivot.objectOnGround(coord, forCamera: self.index)
+    }
+    
+    /// Can the camera see the object?
+    ///
+    /// - Parameter coord: The location of the object in relation to the camera.
+    ///
+    /// - Returns: True if the specified camera can see the object, False
+    /// otherwise.
+    public func canSee(object coord: RelativeCoordinate) -> Bool {
+        return self.cameraPivot.canSee(object: coord, inCamera: self.index)
+    }
+    
 }
