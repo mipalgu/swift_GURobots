@@ -61,5 +61,6 @@ public protocol SoccerPlayingRobot:
     PlayerNumberContainer,
     SoccerObjectLocationsContainer,
     FieldPositionContainer,
-    BallPositionContainer
+    BallPositionContainer,
+    SoccerSightingsContainer
 {}

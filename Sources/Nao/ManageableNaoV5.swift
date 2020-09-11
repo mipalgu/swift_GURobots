@@ -76,6 +76,8 @@ import GUCoordinates
 /// - SeeAlso: `NaoV5`
 /// - SeeAlso: `NaoWrapper`
 /// - SeeAlso: `NaoJointsContainer`
+/// - SeeAlso: `TopCameraSoccerSightingsContainer`
+/// - SeeAlso: `BottomCameraSoccerSightingsContainer`
 /// - SeeAlso: `SoccerObjectLocationsContainer`
 /// - SeeAlso: `FieldPositionContainer`
 /// - SeeAlso: `BallPositionContainer`
@@ -88,6 +90,12 @@ public struct ManageableNaoV5: NaoRobot {
     
     /// The joints of the robot.
     public var joints: NaoJoints
+    
+    /// The sightings for the top camera.
+    public var topCameraSoccerSightings: SoccerSightings
+    
+    /// The sightings for the bottom camera.
+    public var bottomCameraSoccerSightings: SoccerSightings
     
     /// The soccer objects that this robot can see.
     public var soccerObjectLocations: SoccerObjectLocations
@@ -116,8 +124,8 @@ public struct ManageableNaoV5: NaoRobot {
             ballPosition: ballPosition,
             joints: self.joints.rawValue,
             locations: self.soccerObjectLocations.rawValue,
-            topCameraSightings: gu_soccer_sightings(),
-            bottomCameraSightings: gu_soccer_sightings()
+            topCameraSightings: self.topCameraSoccerSightings.rawValue,
+            bottomCameraSightings: self.bottomCameraSoccerSightings.rawValue
         )
     }
     
@@ -130,6 +138,8 @@ public struct ManageableNaoV5: NaoRobot {
         self.init(
             playerNumber: Int(other.playerNumber),
             joints: NaoJoints(other.joints),
+            topCameraSoccerSightings: SoccerSightings(other.topCameraSightings),
+            bottomCameraSoccerSightings: SoccerSightings(other.bottomCameraSightings),
             soccerObjectLocations: SoccerObjectLocations(other.locations),
             fieldPosition: other.fieldPosition.has_value ? FieldCoordinate(other.fieldPosition.value) : nil,
             ballPosition: other.ballPosition.has_value ? BallPosition(other.ballPosition.value) : nil
@@ -144,15 +154,31 @@ public struct ManageableNaoV5: NaoRobot {
     ///
     /// - Parameter joints: The list of joints for the robot.
     ///
+    /// - Parameter topCameraSoccerSightings: The sightings from vision for the
+    /// top camera.
+    ///
+    /// - Parameter bottomCameraSoccerSightings: The sightings from vision for
+    /// the bottom camera.
+    ///
     /// - Parameter soccerObjectLocations: The soccer objects viewable by the robot.
     ///
     /// - Parameter fieldPostion: The current field position of the robot.
     ///
     /// - Parameter ballPosition: The current position and orientation of the
     /// soccer ball on the soccer field.
-    public init(playerNumber: Int, joints: NaoJoints = NaoJoints(), soccerObjectLocations: SoccerObjectLocations = SoccerObjectLocations(), fieldPosition: FieldCoordinate? = nil, ballPosition: BallPosition? = nil) {
+    public init(
+        playerNumber: Int,
+        joints: NaoJoints = NaoJoints(),
+        topCameraSoccerSightings: SoccerSightings = SoccerSightings(),
+        bottomCameraSoccerSightings: SoccerSightings = SoccerSightings(),
+        soccerObjectLocations: SoccerObjectLocations = SoccerObjectLocations(),
+        fieldPosition: FieldCoordinate? = nil,
+        ballPosition: BallPosition? = nil
+    ) {
         self.playerNumber = playerNumber
         self.joints = joints
+        self.topCameraSoccerSightings = topCameraSoccerSightings
+        self.bottomCameraSoccerSightings = bottomCameraSoccerSightings
         self.soccerObjectLocations = soccerObjectLocations
         self.fieldPosition = fieldPosition
         self.ballPosition = ballPosition
@@ -196,6 +222,8 @@ public struct ManageableNaoV5: NaoRobot {
             elbow: YawRollJoint(yaw: Angle(degrees: 0), roll: Angle(degrees: 2.8)),
             wrist: YawJoint(yaw: Angle(degrees: -90))
         ),
+        topCameraSoccerSightings: SoccerSightings = SoccerSightings(),
+        bottomCameraSoccerSightings: SoccerSightings = SoccerSightings(),
         soccerObjectLocations: SoccerObjectLocations = SoccerObjectLocations(),
         fieldPosition: FieldCoordinate? = nil,
         ballPosition: BallPosition? = nil
@@ -213,6 +241,8 @@ public struct ManageableNaoV5: NaoRobot {
         return ManageableNaoV5(
             playerNumber: playerNumber,
             joints: NaoJoints(head: head, leftArm: leftArm, rightArm: rightArm, leftLeg: leftLeg, rightLeg: rightLeg),
+            topCameraSoccerSightings: topCameraSoccerSightings,
+            bottomCameraSoccerSightings: bottomCameraSoccerSightings,
             soccerObjectLocations: soccerObjectLocations,
             fieldPosition: fieldPosition,
             ballPosition: ballPosition
@@ -255,6 +285,8 @@ public struct ManageableNaoV5: NaoRobot {
             elbow: YawRollJoint(yaw: Angle(degrees: 0), roll: Angle(degrees: 2)),
             wrist: YawJoint(yaw: Angle(degrees: -90))
         ),
+        topCameraSoccerSightings: SoccerSightings = SoccerSightings(),
+        bottomCameraSoccerSightings: SoccerSightings = SoccerSightings(),
         soccerObjectLocations: SoccerObjectLocations = SoccerObjectLocations(),
         fieldPosition: FieldCoordinate? = nil,
         ballPosition: BallPosition? = nil
@@ -272,6 +304,8 @@ public struct ManageableNaoV5: NaoRobot {
         return ManageableNaoV5(
             playerNumber: playerNumber,
             joints: NaoJoints(head: head, leftArm: leftArm, rightArm: rightArm, leftLeg: leftLeg, rightLeg: rightLeg),
+            topCameraSoccerSightings: topCameraSoccerSightings,
+            bottomCameraSoccerSightings: bottomCameraSoccerSightings,
             soccerObjectLocations: soccerObjectLocations,
             fieldPosition: fieldPosition,
             ballPosition: ballPosition
@@ -366,6 +400,8 @@ public struct ManageableNaoV5: NaoRobot {
                     ankle: PitchRollJoint(pitch: Angle(degrees: -69.2), roll: Angle(degrees: -0.7))
                 )
             ),
+            topCameraSoccerSightings: self.topCameraSoccerSightings,
+            bottomCameraSoccerSightings: self.bottomCameraSoccerSightings,
             soccerObjectLocations: self.soccerObjectLocations,
             fieldPosition: self.fieldPosition,
             ballPosition: self.ballPosition
@@ -458,6 +494,8 @@ public struct ManageableNaoV5: NaoRobot {
                     ankle: PitchRollJoint(pitch: Angle(degrees: -30), roll: Angle(degrees: 0))
                 )
             ),
+            topCameraSoccerSightings: self.topCameraSoccerSightings,
+            bottomCameraSoccerSightings: self.bottomCameraSoccerSightings,
             soccerObjectLocations: self.soccerObjectLocations,
             fieldPosition: self.fieldPosition,
             ballPosition: self.ballPosition

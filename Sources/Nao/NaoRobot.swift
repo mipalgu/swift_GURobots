@@ -68,10 +68,10 @@ import GUCoordinates
 public protocol NaoRobot:
     TopCameraIndexContainer,
     BottomCameraIndexContainer,
-    TopCameraContainer,
-    BottomCameraContainer,
     NaoJointsContainer,
-    SoccerPlayingRobot
+    SoccerPlayingRobot,
+    TopCameraSoccerSightingsContainer,
+    BottomCameraSoccerSightingsContainer
 {
     
 // MARK: - Properties
@@ -103,30 +103,74 @@ extension NaoRobot {
     }
     
     /// The nao robots top camera.
+    ///
+    /// This value is equal to GU_NAO_V5_TOP_CAMERA_INDEX.
     public var topCameraIndex: Int {
         return Int(GU_NAO_V5_TOP_CAMERA_INDEX)
     }
     
     /// The nao robots bottom camera.
+    ///
+    /// This value is equal to GU_NAO_V5_BOTTOM_CAMERA_INDEX.
     public var bottomCameraIndex: Int {
         return Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX)
     }
     
+    /// The nao robots player number.
+    ///
     /// Converts from `rawValue.playerNumber`.
     public var playerNumber: Int {
         Int(self.rawValue.playerNumber)
     }
     
+    /// The nao robots joints.
+    ///
     /// Converts from `rawValue.joints`.
     public var joints: NaoJoints {
         NaoJoints(self.rawValue.joints)
     }
+    
+    /// The vision sightings seen from the top camera.
+    ///
+    /// Converts from `rawValue.topCameraSightings`.
+    public var topCameraSoccerSightings: SoccerSightings {
+        SoccerSightings(self.rawValue.topCameraSightings)
+    }
+    
+    /// The vision sightings seen from the bottom camera.
+    ///
+    /// Converts from `rawValue.bottomCameraSightings`.
+    public var bottomCameraSoccerSightings: SoccerSightings {
+        SoccerSightings(self.rawValue.bottomCameraSightings)
+    }
+    
+    /// All vision sightings seen in both the top camera and bottom cameras.
+    ///
+    /// Converts from `rawValue.topCameraSightings` and
+    /// `rawValue.bottomCameraSightings`.
+    public var soccerSightings: [SoccerSightings] {
+        let indexes = [GU_NAO_V5_TOP_CAMERA_INDEX, GU_NAO_V5_BOTTOM_CAMERA_INDEX].sorted()
+        return indexes.map {
+            switch $0 {
+            case GU_NAO_V5_TOP_CAMERA_INDEX:
+                return self.topCameraSoccerSightings
+            case GU_NAO_V5_BOTTOM_CAMERA_INDEX:
+                return self.bottomCameraSoccerSightings
+            default:
+                fatalError("Unsupported camera index: \($0).")
+            }
+        }
+    }
 
+    /// The location of soccer object in relation to the nao robot.
+    ///
     /// Converts from `rawValue.sightings`.
     public var soccerObjectLocations: SoccerObjectLocations {
         SoccerObjectLocations(self.rawValue.locations)
     }
 
+    /// The field position of the nao robot.
+    ///
     /// Converts from `rawValue.fieldPosition`.
     public var fieldPosition: FieldCoordinate? {
         guard self.rawValue.fieldPosition.has_value else {
@@ -135,6 +179,8 @@ extension NaoRobot {
         return FieldCoordinate(self.rawValue.fieldPosition.value)
     }
     
+    /// Where this nao robot thinks the ball is on the field.
+    ///
     /// Converts from `rawValue.ballPosition`.
     public var ballPosition: BallPosition? {
         guard self.rawValue.ballPosition.has_value else {
