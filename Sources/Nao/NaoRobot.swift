@@ -102,10 +102,12 @@ extension NaoRobot {
         ]
     }
     
+    /// The nao robots top camera.
     public var topCamera: RobotCamera {
         return self.cameras[0]
     }
     
+    /// The nao robots bottom camera.
     public var bottomCamera: RobotCamera {
         return self.cameras[1]
     }
