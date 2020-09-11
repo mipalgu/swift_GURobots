@@ -78,6 +78,8 @@ public struct RobotCamera {
             self.cameraPivot.cameras[index] = newValue
         }
     }
+
+// MARK: - Createing a RobotCamera
     
     /// Create a `RobotCamera`.
     ///
