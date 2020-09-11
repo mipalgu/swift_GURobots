@@ -58,8 +58,12 @@
 
 import GUCoordinates
 
+/// For objects that may use cameras.
 public protocol CamerasContainer {
     
+// MARK: - Properties
+    
+    /// All cameras that are available to be used.
     var cameras: [RobotCamera] { get }
     
 }

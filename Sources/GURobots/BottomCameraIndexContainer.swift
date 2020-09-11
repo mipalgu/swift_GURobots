@@ -60,6 +60,8 @@
 /// `cameras` array.
 public protocol BottomCameraIndexContainer: CamerasContainer {
     
+// MARK: - Properties
+    
     /// The index of the *bottom* camera in the `cameras` array.
     var bottomCameraIndex: Int { get }
     
