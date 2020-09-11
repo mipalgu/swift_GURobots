@@ -91,7 +91,7 @@ public struct LineSighting: CTypeWrapper {
     /// Create a LineSighting by copying the values from the underlying
     /// gurobots C type `gu_line_sighting`.
     ///
-    /// - Parameter other: The underlying gurobots C type `gu_ellipse_sighting`
+    /// - Parameter other: The underlying gurobots C type `gu_line_sighting`
     /// which contains the values being copied.
     public init(_ other: gu_line_sighting) {
         self.init(
