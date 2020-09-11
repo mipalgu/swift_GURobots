@@ -1,4 +1,3 @@
-//
 /*
  * SoccerSightingsContainer.swift
  * GURobots
