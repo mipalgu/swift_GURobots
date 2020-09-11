@@ -200,6 +200,12 @@ public struct ManageableNaoV5: NaoRobot {
     /// By default, the right arm will be positioned as it is in the *kneeling*
     /// pose.
     ///
+    /// - Parameter topCameraSoccerSightings: The sightings from vision for the
+    /// top camera.
+    ///
+    /// - Parameter bottomCameraSoccerSightings: The sightings from vision for
+    /// the bottom camera.
+    ///
     /// - Parameter soccerObjectLocations: Optionally specify the sightings viewable
     /// by the robot. Be default, no objects on the field are visible.
     ///
@@ -262,6 +268,12 @@ public struct ManageableNaoV5: NaoRobot {
     /// - Parameter rightArm: Optionally specify the position of the right arm.
     /// By default, the right arm will be positioned as it is in the *standing*
     /// pose.
+    ///
+    /// - Parameter topCameraSoccerSightings: The sightings from vision for the
+    /// top camera.
+    ///
+    /// - Parameter bottomCameraSoccerSightings: The sightings from vision for
+    /// the bottom camera. 
     ///
     /// - Parameter soccerObjectLocations: Optionally specify the sightings viewable
     /// by the robot. Be default, no objects on the field are visible.
