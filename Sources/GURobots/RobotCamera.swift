@@ -1,5 +1,5 @@
 /*
- * BallSightingContainer.swift
+ * RobotCamera.swift
  * GURobots
  *
  * Created by Callum McColl on 11/9/20.
@@ -56,25 +56,39 @@
  *
  */
 
-/// Conforming types are able to see the soccer ball on the soccer field.
-public protocol BallSightingContainer {
+import GUCoordinates
+
+/// Provides a convenience struct that makes operating with GUCoordinate cameras
+/// easier.
+public struct RobotCamera {
     
 // MARK: - Properties
     
-    /// The current sighting of the ball.
-    ///
-    /// If the ball cannot be seen, this value is nil.
-    var ballSighting: EllipseSighting? { get }
+    /// The `CameraPivot` that this camera is attached to.
+    public var cameraPivot: CameraPivot
     
-}
-
-public extension BallSightingContainer where Self: SoccerSightingsContainer {
+    // The index of the camera within the `cameraPivot.cameras` array.
+    private let index: Int
     
-    /// The current sighting of the ball.
+    /// The `Camera`.
+    public var camera: Camera {
+        get {
+            self.cameraPivot.cameras[index]
+        } set {
+            self.cameraPivot.cameras[index] = newValue
+        }
+    }
+    
+    /// Create a `RobotCamera`.
     ///
-    /// If the ball cannot be seen, this value is nil.
-    var ballSighting: EllipseSighting? {
-        self.sightings.ball
+    /// - Parameter cameraPivot: The `CameraPivot` which this camera is attached
+    /// to.
+    ///
+    /// - Parameter camera: The index of the camera within the
+    /// `cameraPivot.cameras` array.
+    public init(cameraPivot: CameraPivot, camera: Int) {
+        self.cameraPivot = cameraPivot
+        self.index = camera
     }
     
 }

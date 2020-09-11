@@ -1,5 +1,5 @@
 /*
- * GenericGoalPostSightingContainer.swift
+ * CamerasContainer.swift
  * GURobots
  *
  * Created by Callum McColl on 11/9/20.
@@ -56,25 +56,10 @@
  *
  */
 
-/// Conforming types are able to see generic goal posts on the soccer field.
-public protocol GenericGoalPostSightingContainer {
-    
-// MARK: - Properties
-    
-    /// The current sighting of the generic goal post.
-    ///
-    /// If the post cannot be seen, this value is nil.
-    var genericGoalPostSighting: RectangleSighting? { get }
-    
-}
+import GUCoordinates
 
-public extension GenericGoalPostSightingContainer where Self: SoccerSightingsContainer {
+public protocol CamerasContainer {
     
-    /// The current sighting of the generic goal post.
-    ///
-    /// If the post cannot be seen, this value is nil.
-    var genericGoalPostSighting: RectangleSighting? {
-        self.sightings.genericGoalPost
-    }
+    var cameras: [(CameraPivot, Camera)] { get }
     
 }

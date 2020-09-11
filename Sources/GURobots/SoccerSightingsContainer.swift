@@ -58,11 +58,13 @@
 
 /// Conforming types are able to see soccer objects such as the ball
 /// and goals on the soccer field.
-public protocol SoccerSightingsContainer {
+public protocol SoccerSightingsContainer: CamerasContainer {
     
 // MARK: - Properties
     
     /// All soccer object sightings that can be seen currently.
-    var sightings: SoccerSightings { get }
+    ///
+    /// The array is indexed using 
+    var soccerSightings: [SoccerSightings] { get }
     
 }
