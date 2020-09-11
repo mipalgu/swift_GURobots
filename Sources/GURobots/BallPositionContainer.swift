@@ -60,6 +60,8 @@
 /// soccer field.
 public protocol BallPositionContainer {
     
+// MARK: - Properties
+    
     /// The current position and orientation of the soccer ball on the soccer
     /// field. If nil, the position and orientation of the soccer ball are
     /// unknown.
