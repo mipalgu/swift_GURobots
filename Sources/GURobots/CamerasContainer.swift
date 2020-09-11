@@ -60,6 +60,6 @@ import GUCoordinates
 
 public protocol CamerasContainer {
     
-    var cameras: [(CameraPivot, Camera)] { get }
+    var cameras: [RobotCamera] { get }
     
 }

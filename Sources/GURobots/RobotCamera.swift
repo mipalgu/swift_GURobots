@@ -67,8 +67,8 @@ public struct RobotCamera {
     /// The `CameraPivot` that this camera is attached to.
     public var cameraPivot: CameraPivot
     
-    // The index of the camera within the `cameraPivot.cameras` array.
-    private let index: Int
+    /// The index of the camera within the `cameraPivot.cameras` array.
+    public let index: Int
     
     /// The `Camera`.
     public var camera: Camera {
