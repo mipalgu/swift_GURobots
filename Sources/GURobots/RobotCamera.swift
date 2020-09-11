@@ -93,6 +93,98 @@ public struct RobotCamera {
         self.index = camera
     }
     
+// MARK: - Convenince Getters
+    
+    /// The vertical distance from the ground to the pivot
+    /// point.
+    public var cameraPivotHeight: Distance {
+        get {
+            return self.cameraPivot.height
+        } set {
+            self.cameraPivot.height = newValue
+        }
+    }
+    
+    /// The vertical orientation of the pivot point.
+    public var cameraPivotPitch: Angle {
+        get {
+            return self.cameraPivot.pitch
+        } set {
+            self.cameraPivot.pitch = newValue
+        }
+    }
+    
+    /// The horizontal orientation of the pivot point.
+    public var cameraPivotYaw: Angle {
+        get {
+            return self.cameraPivot.yaw
+        } set {
+            self.cameraPivot.yaw = newValue
+        }
+    }
+    
+    /// The vertical distance from the pivot point to the middle of the camera.
+    ///
+    /// If the pivot point is the ground then this is the height to the ground.
+    /// If it is a camera on a stick then it's the height from the end of the
+    /// stick to the camera. If it's a camera attached to the head of a robot
+    /// then its the length from the neck (the pivot point for the head) to the
+    /// camera.
+    public var cameraHeight: Distance {
+        get {
+            return self.camera.height
+        } set {
+            self.camera.height = newValue
+        }
+    }
+    
+    /// The vertical orientation of the camera in relation
+    /// to the pivot point.
+    ///
+    /// A positive value means that the camera is pointing more to the ground. A
+    /// negative value means that the camera is pointing more to the sky.
+    public var cameraPitch: Angle {
+        get {
+            return self.camera.vDirection
+        } set {
+            self.camera.vDirection = newValue
+        }
+    }
+    
+    /// The distance the camera is from the pivot point. A positive value
+    /// indicates that the camera is in front of the pivot point while a
+    /// negative value indicates that the camera is behind the pivot
+    /// point.
+    ///
+    /// This property is useful for when the camera is mounted on a robot
+    /// and distance calculations need to be calculated from the torso,
+    /// not the camera.
+    public var centerOffset: Distance {
+        get {
+            return self.camera.centerOffset
+        } set {
+            self.camera.centerOffset = newValue
+        }
+    }
+    
+    /// The vertical field of view of the camera.
+    public var vFov: Angle {
+        get {
+            return self.camera.vFov
+        } set {
+            self.camera.vFov = newValue
+        }
+    }
+    
+    /// The horizontal field of view of the camera.
+    public var hFov: Angle {
+        get {
+            return self.camera.hFov
+        } set {
+            self.camera.hFov = newValue
+        }
+    }
+    
 // MARK: - Checking Whether Conversions Are Possible
     
     /// Is the object represent by the pixel in the image taken from the camera
