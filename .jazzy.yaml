@@ -3,6 +3,7 @@ theme: fullwidth
 
 exclude:
     - Sources/*/gu_*.swift
+    - Sources/GURobots/HorizonSighting+Codable.swift
 
 custom_categories:
     - name: Nao
@@ -24,13 +25,18 @@ custom_categories:
           - SoccerPlayingRobot
           - UpdateableRobot
 
+    - name: Player Data
+      children:
+          - PlayerNumberContainer
+
     - name: Cameras
       children:
+          - RobotCamera
+          - CamerasContainer
           - BottomCameraContainer
-          - BottomCameraPivotContainer
-          - CameraPivotContainer
+          - BottomCameraIndexContainer
           - TopCameraContainer
-          - TopCameraPivotContainer
+          - TopCameraIndexContainer
 
     - name: Joints
       children:
@@ -42,9 +48,17 @@ custom_categories:
           - YawJoint
           - YawRollJoint
 
-    - name: Player Data
+    - name: Sightings (Vision)
       children:
-          - PlayerNumberContainer
+          - SoccerSightingsContainer
+          - BottomCameraSoccerSightingsContainer
+          - TopCameraSoccerSightingsContainer
+          - SoccerSightings
+          - EllipseSighting
+          - RectangleSighting
+          - HorizonSighting
+          - CornerSighting
+          - LineSighting
 
     - name: Locations
       children:
