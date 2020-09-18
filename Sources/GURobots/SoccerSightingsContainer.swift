@@ -1,8 +1,8 @@
 /*
- * gu_optional_relative_coordinate.swift
+ * SoccerSightingsContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 11/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,36 +56,17 @@
  *
  */
 
-import CGURobots
-import GUCoordinates
-
-extension gu_optional_relative_coordinate: Hashable, Codable {
+/// Conforming types are able to see soccer objects such as the ball
+/// and goals on the soccer field.
+public protocol SoccerSightingsContainer: CamerasContainer {
     
-    enum CodingKeys: String, CodingKey {
-        case has_value
-        case value
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let has_value = try values.decode(Bool.self, forKey: .has_value)
-        let value = try values.decode(RelativeCoordinate.self, forKey: .value)
-        self.init(has_value: has_value, value: value.rawValue)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.has_value, forKey: .has_value)
-        try container.encode(RelativeCoordinate(self.value), forKey: .value)
-    }
+// MARK: - Properties
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.has_value)
-        hasher.combine(RelativeCoordinate(self.value))
-    }
-    
-    public static func ==(lhs: gu_optional_relative_coordinate, rhs: gu_optional_relative_coordinate) -> Bool {
-        return lhs.has_value == rhs.has_value && lhs.value == rhs.value
-    }
+    /// All soccer object sightings that can be seen currently.
+    ///
+    /// The array is indexed the same as the `cameras` array, meaning that
+    /// the sightings at index 0 correspond to the camera at index 0 in the
+    /// `cameras` array.
+    var soccerSightings: [SoccerSightings] { get }
     
 }

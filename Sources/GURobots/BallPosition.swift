@@ -1,8 +1,8 @@
 /*
- * gu_nao_head_sensors.swift
+ * BallPosition.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 2/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,39 +56,57 @@
  *
  */
 
-import GURobots
+import CGURobots
+import GUUnits
+import GUCoordinates
 
-extension gu_nao_head_sensors: Hashable, Codable {
+/// The position and orientation of the soccer ball on the soccer field.
+public struct BallPosition: CTypeWrapper {
     
-    enum CodingKeys: String, CodingKey {
-        case touchFront
-        case touchMiddle
-        case touchRear
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let touchFront = try values.decode(Bool.self, forKey: .touchFront)
-        let touchMiddle = try values.decode(Bool.self, forKey: .touchMiddle)
-        let touchRear = try values.decode(Bool.self, forKey: .touchRear)
-        self.init(touchFront: touchFront, touchMiddle: touchMiddle, touchRear: touchRear)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.touchFront, forKey: .touchFront)
-        try container.encode(self.touchMiddle, forKey: .touchMiddle)
-        try container.encode(self.touchRear, forKey: .touchRear)
-    }
+// MARK: - Properties
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.touchFront)
-        hasher.combine(self.touchMiddle)
-        hasher.combine(self.touchRear)
+    /// The x/y position of the ball on the soccer field using the field
+    /// coordinate system.
+    public var position: CartesianCoordinate
+    
+    /// The orientation of the ball with respect to the three angular
+    /// coordinates where the pivot point is the center of the soccer ball.
+    public var orientation: Orientation
+    
+// MARK: - Converting Between The Underlying gurobots C Type
+    
+    /// Convert to the underlying gurobots C type `gu_ball_position`.
+    public var rawValue: gu_ball_position {
+        return gu_ball_position(
+            position: self.position.rawValue,
+            orientation: self.orientation.rawValue
+        )
     }
     
-    public static func ==(lhs: gu_nao_head_sensors, rhs: gu_nao_head_sensors) -> Bool {
-        return gu_nao_head_sensors_equals(lhs, rhs)
+    /// Create a BallPosition by copying the values from the underlying gurobots
+    /// C type `gu_ball_position`.
+    ///
+    /// - Parameter other: The underlying gurobots C type `gu_ball_position`
+    /// which contains the values being copied.
+    public init(_ other: gu_ball_position) {
+        self.init(
+            position: CartesianCoordinate(other.position),
+            orientation: Orientation(other.orientation)
+        )
+    }
+    
+// MARK: - Creating a BallPosition
+    
+    /// Create a BallPosition.
+    ///
+    /// - Parameter position: The position of the ball on the field.
+    ///
+    /// - Parameter orientation: The orientation of the ball with respect to the
+    /// three angular coordinates where the pivot point is the center of the
+    /// ball.
+    public init(position: CartesianCoordinate = CartesianCoordinate(), orientation: Orientation = Orientation()) {
+        self.position = position
+        self.orientation = orientation
     }
     
 }

@@ -1,8 +1,8 @@
 /*
- * gu_pitch_roll_joint.swift
+ * HorizonSighting.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 11/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,33 +58,62 @@
 
 import CGURobots
 
-extension gu_pitch_roll_joint: Hashable, Codable {
+/// A corner sighting such as the corner of the horizon.
+public enum HorizonSighting: CTypeWrapper {
     
-    enum CodingKeys: String, CodingKey {
-        case pitch
-        case roll
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let pitch = try values.decode(degrees_f.self, forKey: .pitch)
-        let roll = try values.decode(degrees_f.self, forKey: .roll)
-        self.init(pitch: pitch, roll: roll)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.pitch, forKey: .pitch)
-        try container.encode(self.roll, forKey: .roll)
+// MARK: - Cases
+    
+    /// A horizon sighting where only the field is visible.
+    case fieldOnly
+    
+    /// A horizon sighting where only a single edge of the field is visible.
+    case lineSighting(lineSighting: LineSighting)
+    
+    /// A horizon sighting where the corner of the field is visible.
+    case cornerSighting(cornerSighting: CornerSighting)
+    
+// MARK: - Converting Between The Underlying gurobots C Type
+    
+    /// Convert to the underlying gurobots C type `gu_horizon_sighting`.
+    public var rawValue: gu_horizon_sighting {
+        switch self {
+        case .fieldOnly:
+            return gu_horizon_sighting(
+                sightingType: GUHorizonSightingField,
+                lineSighting: gu_line_sighting(),
+                cornerSighting: gu_corner_sighting()
+            )
+        case .lineSighting(let lineSighting):
+            return gu_horizon_sighting(
+                sightingType: GUHorizonSightingLine,
+                lineSighting: lineSighting.rawValue,
+                cornerSighting: gu_corner_sighting()
+            )
+        case .cornerSighting(let cornerSighting):
+            return gu_horizon_sighting(
+                sightingType: GUHorizonSightingCorner,
+                lineSighting: gu_line_sighting(),
+                cornerSighting: cornerSighting.rawValue
+            )
+        }
     }
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.pitch)
-        hasher.combine(self.roll)
-    }
-    
-    public static func ==(lhs: gu_pitch_roll_joint, rhs: gu_pitch_roll_joint) -> Bool {
-        return lhs.pitch == rhs.pitch && lhs.roll == rhs.roll
+    /// Create a HorizonSighting by copying the values from the underlying
+    /// gurobots C type `gu_horizon_sighting`.
+    ///
+    /// - Parameter other: The underlying gurobots C type `gu_horizon_sighting`
+    /// which contains the values being copied.
+    public init(_ other: gu_horizon_sighting) {
+        switch other.sightingType {
+        case GUHorizonSightingField:
+            self = .fieldOnly
+        case GUHorizonSightingLine:
+            self = .lineSighting(lineSighting: LineSighting(other.lineSighting))
+        case GUHorizonSightingCorner:
+            self = .cornerSighting(cornerSighting: CornerSighting(other.cornerSighting))
+        default:
+            fatalError("Invalid value for horizon sighting type: \(other.sightingType)")
+        }
     }
     
 }

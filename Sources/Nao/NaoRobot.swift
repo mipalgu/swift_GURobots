@@ -65,12 +65,13 @@ import GUCoordinates
 /// The protocol stipulates that conforming types have a top camera, a bottom
 /// camera, a set of `NaoJoint`s and provides all the functionality of the
 /// `SoccerPlayingRobot` protocol.
-public protocol NaoWrapper:
-    CameraPivotContainer,
-    TopCameraContainer,
-    BottomCameraContainer,
+public protocol NaoRobot:
+    TopCameraIndexContainer,
+    BottomCameraIndexContainer,
     NaoJointsContainer,
-    SoccerPlayingRobot
+    SoccerPlayingRobot,
+    TopCameraSoccerSightingsContainer,
+    BottomCameraSoccerSightingsContainer
 {
     
 // MARK: - Properties
@@ -83,28 +84,93 @@ public protocol NaoWrapper:
 
 // MARK: - Default Implementations
 
-extension NaoWrapper {
+extension NaoRobot {
     
-    /// Converts from GU_NAO_V5_TOP_CAMERA_INDEX.
+    /// Created a cameras array from GU_NAO_V5_TOP_CAMERA_INDEX and GU_NAO_V5_BOTTOM_CAMERA_INDEX.
+    ///
+    /// Calculates the cameraPivot by performing a kinematics chain on `joints`.
+    ///
+    /// - Bug: Currently the kinematics calculations do not take place and
+    /// instead a hard-coded value for the camera pivot is used. This
+    /// hard-coded value takes into consideration the pitch and yaw of the head
+    /// but assumes that the robot is in the position where it is standing and
+    /// ready to walk.
+    public var cameras: [RobotCamera] {
+        let cameraPivot = CameraPivot(gu_nao_head_to_camera_pivot(self.joints.head.rawValue))
+        return [GU_NAO_V5_TOP_CAMERA_INDEX, GU_NAO_V5_BOTTOM_CAMERA_INDEX].sorted().map {
+            RobotCamera(cameraPivot: cameraPivot, camera: Int($0))
+        }
+    }
+    
+    /// The nao robots top camera.
+    ///
+    /// This value is equal to GU_NAO_V5_TOP_CAMERA_INDEX.
     public var topCameraIndex: Int {
-        Int(GU_NAO_V5_TOP_CAMERA_INDEX)
+        return Int(GU_NAO_V5_TOP_CAMERA_INDEX)
     }
     
-    /// Converts from GU_NAO_V5_BOTTOM_CAMERA_INDEX.
+    /// The nao robots bottom camera.
+    ///
+    /// This value is equal to GU_NAO_V5_BOTTOM_CAMERA_INDEX.
     public var bottomCameraIndex: Int {
-        Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX)
+        return Int(GU_NAO_V5_BOTTOM_CAMERA_INDEX)
     }
     
+    /// The nao robots player number.
+    ///
+    /// Converts from `rawValue.playerNumber`.
+    public var playerNumber: Int {
+        Int(self.rawValue.playerNumber)
+    }
+    
+    /// The nao robots joints.
+    ///
     /// Converts from `rawValue.joints`.
     public var joints: NaoJoints {
         NaoJoints(self.rawValue.joints)
     }
-
-    /// Converts from `rawValue.sightings`.
-    public var soccerObjectLocations: SoccerObjectLocations {
-        SoccerObjectLocations(self.rawValue.sightings)
+    
+    /// The vision sightings seen from the top camera.
+    ///
+    /// Converts from `rawValue.topCameraSightings`.
+    public var topCameraSoccerSightings: SoccerSightings {
+        SoccerSightings(self.rawValue.topCameraSightings)
+    }
+    
+    /// The vision sightings seen from the bottom camera.
+    ///
+    /// Converts from `rawValue.bottomCameraSightings`.
+    public var bottomCameraSoccerSightings: SoccerSightings {
+        SoccerSightings(self.rawValue.bottomCameraSightings)
+    }
+    
+    /// All vision sightings seen in both the top camera and bottom cameras.
+    ///
+    /// Converts from `rawValue.topCameraSightings` and
+    /// `rawValue.bottomCameraSightings`.
+    public var soccerSightings: [SoccerSightings] {
+        let indexes = [GU_NAO_V5_TOP_CAMERA_INDEX, GU_NAO_V5_BOTTOM_CAMERA_INDEX].sorted()
+        return indexes.map {
+            switch $0 {
+            case GU_NAO_V5_TOP_CAMERA_INDEX:
+                return self.topCameraSoccerSightings
+            case GU_NAO_V5_BOTTOM_CAMERA_INDEX:
+                return self.bottomCameraSoccerSightings
+            default:
+                fatalError("Unsupported camera index: \($0).")
+            }
+        }
     }
 
+    /// The location of soccer object in relation to the nao robot.
+    ///
+    /// Converts from `rawValue.sightings`.
+    public var soccerObjectLocations: SoccerObjectLocations {
+        SoccerObjectLocations(self.rawValue.locations)
+    }
+
+    /// The field position of the nao robot.
+    ///
     /// Converts from `rawValue.fieldPosition`.
     public var fieldPosition: FieldCoordinate? {
         guard self.rawValue.fieldPosition.has_value else {
@@ -113,15 +179,14 @@ extension NaoWrapper {
         return FieldCoordinate(self.rawValue.fieldPosition.value)
     }
     
-    /// Calculates the cameraPivot by performing a kinematics chain on `joints`.
+    /// Where this nao robot thinks the ball is on the field.
     ///
-    /// - Bug: Currently the kinematics calculations do not take palce and
-    /// instead a hard-coded value for the camera pivot is used. This
-    /// hard-coded value takes into consideration the pitch and yaw of the head
-    /// but assumes that the robot is in the position where it is standing and
-    /// ready to walk.
-    public var cameraPivot: CameraPivot {
-        CameraPivot(gu_nao_head_to_camera_pivot(self.joints.head.rawValue))
+    /// Converts from `rawValue.ballPosition`.
+    public var ballPosition: BallPosition? {
+        guard self.rawValue.ballPosition.has_value else {
+            return nil
+        }
+        return BallPosition(self.rawValue.ballPosition.value)
     }
     
 }

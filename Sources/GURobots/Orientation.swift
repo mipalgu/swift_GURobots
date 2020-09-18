@@ -1,8 +1,8 @@
 /*
- * gu_nao_joints.swift
+ * Orientation.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 2/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,51 +56,60 @@
  *
  */
 
-import GURobots
+import CGURobots
+import GUUnits
 
-extension gu_nao_joints: Hashable, Codable {
+/// The orientation of an object with respect to the three angular coordinates.
+public struct Orientation: CTypeWrapper {
     
-    enum CodingKeys: String, CodingKey {
-        case head
-        case leftArm
-        case rightArm
-        case leftLeg
-        case rightLeg
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let head = try values.decode(gu_nao_head.self, forKey: .head)
-        let leftArm = try values.decode(gu_nao_arm.self, forKey: .leftArm)
-        let rightArm = try values.decode(gu_nao_arm.self, forKey: .rightArm)
-        let leftLeg = try values.decode(gu_nao_leg.self, forKey: .leftLeg)
-        let rightLeg = try values.decode(gu_nao_leg.self, forKey: .rightLeg)
-        self.init(head: head, leftArm: leftArm, rightArm: rightArm, leftLeg: leftLeg, rightLeg: rightLeg)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.head, forKey: .head)
-        try container.encode(self.leftArm, forKey: .leftArm)
-        try container.encode(self.rightArm, forKey: .rightArm)
-        try container.encode(self.leftLeg, forKey: .leftLeg)
-        try container.encode(self.rightLeg, forKey: .rightLeg)
+// MARK: - Properties
+    
+    /// The angle of the vertical axis.
+    public var pitch: Angle
+    
+    /// The angle of the horizontal axis.
+    public var yaw: Angle
+    
+    /// The angle of the roll axis.
+    public var roll: Angle
+    
+// MARK: - Converting Between The Underlying gurobots C Type
+    
+    /// Convert to the underlying gurobots C type `gu_orientation`.
+    public var rawValue: gu_orientation {
+        return gu_orientation(
+            pitch: self.pitch.degrees_f.rawValue,
+            yaw: self.pitch.degrees_f.rawValue,
+            roll: self.pitch.degrees_f.rawValue
+        )
     }
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.head)
-        hasher.combine(self.leftArm)
-        hasher.combine(self.rightArm)
-        hasher.combine(self.leftLeg)
-        hasher.combine(self.rightLeg)
+    /// Create an Orientation by copying the values from the underlying
+    /// gurobots C type `gu_orientation`.
+    ///
+    /// - Parameter other: The underlying gurobots C type `gu_orientation`
+    /// which contains the values being copied.
+    public init(_ other: gu_orientation) {
+        self.init(
+            pitch: Angle(Degrees_f(rawValue: other.pitch)),
+            yaw: Angle(Degrees_f(rawValue: other.yaw)),
+            roll: Angle(Degrees_f(rawValue: other.roll))
+        )
     }
     
-    public static func ==(lhs: gu_nao_joints, rhs: gu_nao_joints) -> Bool {
-        return lhs.head == rhs.head
-            && lhs.leftArm == rhs.leftArm
-            && lhs.rightArm == rhs.rightArm
-            && lhs.leftLeg == rhs.leftLeg
-            && lhs.rightLeg == rhs.rightLeg
+// MARK: - Create an Orientation
+    
+    /// Create an Orientation.
+    ///
+    /// - Parameter pitch: The angle of the vertical axis.
+    ///
+    /// - Parameter yaw: The angle of the horizontal axis.
+    ///
+    /// - Parameter roll: The angle of the roll axis.
+    public init(pitch: Angle = .zero, yaw: Angle = .zero, roll: Angle = .zero) {
+        self.pitch = pitch
+        self.yaw = yaw
+        self.roll = roll
     }
     
 }

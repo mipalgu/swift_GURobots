@@ -61,9 +61,13 @@ import GUSimpleWhiteboard
 
 public struct NaoWBIndexes: CTypeWrapper {
     
+    public var playerNumber: Int
+    
     public var torsoSensors: Int
     
     public var topParticles: Int
+    
+    public var ballPosition: Int
     
     public var handSensors: Int
     
@@ -79,17 +83,37 @@ public struct NaoWBIndexes: CTypeWrapper {
     
     public var goalLocation: Int
     
+    public var ballSightings: Int
+    
+    public var goalSightings: Int
+    
+    public var horizonSightings: Int
+    
+    public var topLineSightings: Int
+    
+    public var bottomLineSightings: Int
+    
+    public var fieldFeatureSightings: Int
+    
     public var rawValue: gu_nao_wb_indexes {
         return gu_nao_wb_indexes(
+            playerNumber: CInt(self.playerNumber),
             torsoSensors: CInt(self.torsoSensors),
             topParticles: CInt(self.topParticles),
+            ballPosition: CInt(self.ballPosition),
             handSensors: CInt(self.handSensors),
             headSensors: CInt(self.headSensors),
             legSensors: CInt(self.legSensors),
             ballLocation: CInt(self.ballLocation),
             leftGoalPostLocation: CInt(self.leftGoalPostLocation),
             rightGoalPostLocation: CInt(self.rightGoalPostLocation),
-            goalLocation: CInt(self.goalLocation)
+            goalLocation: CInt(self.goalLocation),
+            ballSightings: CInt(self.ballSightings),
+            goalSightings: CInt(self.goalSightings),
+            horizonSightings: CInt(self.horizonSightings),
+            topLineSightings: CInt(self.topLineSightings),
+            bottomLineSightings: CInt(self.bottomLineSightings),
+            fieldFeatureSightings: CInt(self.fieldFeatureSightings)
         )
     }
     
@@ -103,23 +127,39 @@ public struct NaoWBIndexes: CTypeWrapper {
             ballLocation: Int(other.ballLocation),
             leftGoalPostLocation: Int(other.leftGoalPostLocation),
             rightGoalPostLocation: Int(other.rightGoalPostLocation),
-            goalLocation: Int(other.goalLocation)
+            goalLocation: Int(other.goalLocation),
+            ballSightings: Int(other.ballSightings),
+            goalSightings: Int(other.goalSightings),
+            horizonSightings: Int(other.horizonSightings),
+            topLineSightings: Int(other.topLineSightings),
+            bottomLineSightings: Int(other.bottomLineSightings),
+            fieldFeatureSightings: Int(other.fieldFeatureSightings)
         )
     }
     
     public init(
+        playerNumber: Int = Int(kPlayerNumber_v.rawValue),
         torsoSensors: Int = Int(kSENSORSTorsoJointSensors_v.rawValue),
         topParticles: Int = Int(kTopParticles_v.rawValue),
+        ballPosition: Int = Int(kBallPosition_v.rawValue),
         handSensors: Int = Int(kSensorsHandSensors_v.rawValue),
         headSensors: Int = Int(kSensorsHeadSensors_v.rawValue),
         legSensors: Int = Int(kSENSORSLegJointSensors_v.rawValue),
         ballLocation: Int = Int(kBallLocation_v.rawValue),
         leftGoalPostLocation: Int = Int(kLeftGoalPostLocation_v.rawValue),
         rightGoalPostLocation: Int = Int(kRightGoalPostLocation_v.rawValue),
-        goalLocation: Int = Int(kGoalLocation_v.rawValue)
+        goalLocation: Int = Int(kGoalLocation_v.rawValue),
+        ballSightings: Int = Int(kVisionDetectionBalls_v.rawValue),
+        goalSightings: Int = Int(kVisionDetectionGoals_v.rawValue),
+        horizonSightings: Int = Int(kVisionDetectionHorizons_v.rawValue),
+        topLineSightings: Int = Int(kTopVisionLines_v.rawValue),
+        bottomLineSightings: Int = Int(kBottomVisionLines_v.rawValue),
+        fieldFeatureSightings: Int = Int(kVisionFieldFeatures_v.rawValue)
     ) {
+        self.playerNumber = playerNumber
         self.torsoSensors = torsoSensors
         self.topParticles = topParticles
+        self.ballPosition = ballPosition
         self.handSensors = handSensors
         self.headSensors = headSensors
         self.legSensors = legSensors
@@ -127,6 +167,12 @@ public struct NaoWBIndexes: CTypeWrapper {
         self.leftGoalPostLocation = leftGoalPostLocation
         self.rightGoalPostLocation = rightGoalPostLocation
         self.goalLocation = goalLocation
+        self.ballSightings = ballSightings
+        self.goalSightings = goalSightings
+        self.horizonSightings = horizonSightings
+        self.topLineSightings = topLineSightings
+        self.bottomLineSightings = bottomLineSightings
+        self.fieldFeatureSightings = fieldFeatureSightings
     }
     
 }

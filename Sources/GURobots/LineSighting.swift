@@ -1,8 +1,9 @@
+//
 /*
- * gu_yaw_joint.swift
+ * LineSighting.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 11/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,31 +57,63 @@
  *
  */
 
+import GUCoordinates
 import CGURobots
+import GUUnits
 
-extension gu_yaw_joint: Hashable, Codable {
+/// A line sighting such as an edge of an object or horizon.
+public struct LineSighting: CTypeWrapper {
     
-    enum CodingKeys: String, CodingKey {
-        case yaw
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let yaw = try values.decode(degrees_f.self, forKey: .yaw)
-        self.init(yaw: yaw)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.yaw, forKey: .yaw)
+// MARK: - Properties
+    
+    /// The left most point of the line.
+    ///
+    /// If the line is a perfectly vertical line where both points share the
+    /// same x value, then this value is the bottom most point.
+    public var leftOrBottomPoint: PixelCoordinate
+    
+    /// The right most point of the line.
+    ///
+    /// If the line is a perfectly vertical line where both points share the
+    /// same x value, then this value is the top most point.
+    public var rightOrTopPoint: PixelCoordinate
+    
+// MARK: - Converting Between The Underlying gurobots C Type
+    
+    /// Convert to the underlying gurobots C type `gu_line_sighting`.
+    public var rawValue: gu_line_sighting {
+        return gu_line_sighting(
+            leftOrBottomPoint: leftOrBottomPoint.rawValue,
+            rightOrTopPoint: rightOrTopPoint.rawValue
+        )
     }
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.yaw)
+    /// Create a LineSighting by copying the values from the underlying
+    /// gurobots C type `gu_line_sighting`.
+    ///
+    /// - Parameter other: The underlying gurobots C type `gu_line_sighting`
+    /// which contains the values being copied.
+    public init(_ other: gu_line_sighting) {
+        self.init(
+            leftOrBottomPoint: PixelCoordinate(other.leftOrBottomPoint),
+            rightOrTopPoint: PixelCoordinate(other.rightOrTopPoint)
+        )
     }
     
-    public static func ==(lhs: gu_yaw_joint, rhs: gu_yaw_joint) -> Bool {
-        return lhs.yaw == rhs.yaw
+// MARK: - Creating a LineSighting
+    
+    /// Create a LineSighting.
+    ///
+    /// - Parameter leftOrBottomPoint: The left most point of the line. If the
+    /// line is a perfectly vertical line where both points share the same x
+    /// value, then this value is the bottom most point.
+    ///
+    /// - Parameter rightOrTopPoint: The right most point of the line. If the
+    /// line is a perfectly vertical line where both points share the same x
+    /// value, then this value is the top most point.
+    public init(leftOrBottomPoint: PixelCoordinate, rightOrTopPoint: PixelCoordinate) {
+        self.leftOrBottomPoint = leftOrBottomPoint
+        self.rightOrTopPoint = rightOrTopPoint
     }
     
 }

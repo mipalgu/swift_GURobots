@@ -1,8 +1,8 @@
 /*
- * gu_yp_joint.swift
+ * RectangleSighting.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 11/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,39 +56,73 @@
  *
  */
 
-extension gu_yp_joint: Hashable, Codable {
-    
-    enum CodingKeys: String, CodingKey {
-        case pitch
-        case roll
-        case yawPitch
-    }
+import GUCoordinates
+import CGURobots
+import GUUnits
 
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let pitch = try values.decode(degrees_f.self, forKey: .pitch)
-        let roll = try values.decode(degrees_f.self, forKey: .roll)
-        let yawPitch = try values.decode(degrees_f.self, forKey: .yawPitch)
-        self.init(pitch: pitch, roll: roll, yawPitch: yawPitch)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.pitch, forKey: .pitch)
-        try container.encode(self.roll, forKey: .roll)
-        try container.encode(self.yawPitch, forKey: .yawPitch)
+/// A rectangular object sighting such as a line or a goal post.
+public struct RectangleSighting: CTypeWrapper {
+    
+// MARK: - Properties
+    
+    /// The left most point of the top edge of the rectangle.
+    public var topLeftPoint: PixelCoordinate
+    
+    /// The right most point of the top edge of the rectangle.
+    public var topRightPoint: PixelCoordinate
+    
+    /// The left most point of the bottom edge of the rectangle.
+    public var bottomLeftPoint: PixelCoordinate
+    
+    /// The right most point of the bottom edge of the rectangle.
+    public var bottomRightPoint: PixelCoordinate
+    
+// MARK: - Converting Between The Underlying gurobots C Type
+    
+    /// Convert to the underlying gurobots C type `gu_rectangle_sighting`.
+    public var rawValue: gu_rectangle_sighting {
+        return gu_rectangle_sighting(
+            topLeftPoint: self.topLeftPoint.rawValue,
+            topRightPoint: self.topRightPoint.rawValue,
+            bottomLeftPoint: self.bottomLeftPoint.rawValue,
+            bottomRightPoint: self.bottomRightPoint.rawValue
+        )
     }
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.pitch)
-        hasher.combine(self.roll)
-        hasher.combine(self.yawPitch)
+    /// Create a RectangleSighting by copying the values from the underlying
+    /// gurobots C type `gu_rectangle_sighting`.
+    ///
+    /// - Parameter other: The underlying gurobots C type `gu_rectangle_sighting`
+    /// which contains the values being copied.
+    public init(_ other: gu_rectangle_sighting) {
+        self.init(
+            topLeftPoint: PixelCoordinate(other.topLeftPoint),
+            topRightPoint: PixelCoordinate(other.topRightPoint),
+            bottomLeftPoint: PixelCoordinate(other.bottomLeftPoint),
+            bottomRightPoint: PixelCoordinate(other.bottomRightPoint)
+        )
     }
     
-    public static func ==(lhs: gu_yp_joint, rhs: gu_yp_joint) -> Bool {
-        return lhs.pitch == rhs.pitch
-            && lhs.roll == rhs.roll
-            && lhs.yawPitch == rhs.yawPitch
+// MARK: - Creating a RectangleSighting
+    
+    /// Create a RectangleSighting.
+    ///
+    /// - Parameter topLeftPoint: The left most point of the top edge of the
+    /// rectangle.
+    ///
+    /// - Parameter topRightPoint: The right most point of the top edge of the
+    /// rectangle.
+    ///
+    /// - Parameter bottomLeftPoint: The left most point of the bottom edge of
+    /// the rectangle.
+    ///
+    /// - Parameter bottomRightPoint: The right most point of the bottom edge of
+    /// the rectangle.
+    public init(topLeftPoint: PixelCoordinate, topRightPoint: PixelCoordinate, bottomLeftPoint: PixelCoordinate, bottomRightPoint: PixelCoordinate) {
+        self.topLeftPoint = topLeftPoint
+        self.topRightPoint = topRightPoint
+        self.bottomLeftPoint = bottomLeftPoint
+        self.bottomRightPoint = bottomRightPoint
     }
     
 }

@@ -1,8 +1,8 @@
 /*
- * gu_pitch_yaw_joint.swift
+ * BallPositionContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 2/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,35 +56,15 @@
  *
  */
 
-import CGURobots
-
-extension gu_pitch_yaw_joint: Hashable, Codable {
+/// Conforming types are able to report the position of the ball on the
+/// soccer field.
+public protocol BallPositionContainer {
     
-    enum CodingKeys: String, CodingKey {
-        case pitch
-        case yaw
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let pitch = try values.decode(degrees_f.self, forKey: .pitch)
-        let yaw = try values.decode(degrees_f.self, forKey: .yaw)
-        self.init(pitch: pitch, yaw: yaw)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.pitch, forKey: .pitch)
-        try container.encode(self.yaw, forKey: .yaw)
-    }
+// MARK: - Properties
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.pitch)
-        hasher.combine(self.yaw)
-    }
-    
-    public static func ==(lhs: gu_pitch_yaw_joint, rhs: gu_pitch_yaw_joint) -> Bool {
-        return lhs.pitch == rhs.pitch && lhs.yaw == rhs.yaw
-    }
+    /// The current position and orientation of the soccer ball on the soccer
+    /// field. If nil, the position and orientation of the soccer ball are
+    /// unknown.
+    var ballPosition: BallPosition? { get }
     
 }

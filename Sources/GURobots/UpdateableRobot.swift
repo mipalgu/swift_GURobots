@@ -1,8 +1,8 @@
 /*
- * CTypeDelegator.swift
+ * UpdateableRobot.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 2/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,23 +56,10 @@
  *
  */
 
-/**
- *  `CTypeDelegator` provides a common interface for swift types that convert
- *  and provide the functionality of underlying C types.
- *
- *  In such a case, some functionality needs to be provided. The swift type
- *  must provide the ability to be converted to the underlying C type.
- */
-public protocol CTypeDelegator: Hashable, Codable {
-
-    /**
-     *  The type of the underlying C type that the conforming type is wrapping.
-     */
-    associatedtype CType
-
-    /**
-     *  Convert `self` to the underlying C type.
-     */
-    var rawValue: CType { get }
-
+/// A robot that can be updated from some hidden external source.
+public protocol UpdateableRobot: AnyObject {
+    
+    /// Update the robot with the latest values from the hidden external source.
+    func update()
+    
 }

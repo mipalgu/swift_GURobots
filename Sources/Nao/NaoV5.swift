@@ -70,7 +70,7 @@ import GUSimpleWhiteboard
 /// - SeeAlso: `NaoJointsContainer`
 /// - SeeAlso: `SoccerObjectLocationsContainer`
 /// - SeeAlso: `FieldPositionContainer`
-public struct NaoV5: NaoWrapper {
+public final class NaoV5: NaoRobot, UpdateableRobot {
 
 // MARK: - Properties
     
@@ -105,7 +105,7 @@ public struct NaoV5: NaoWrapper {
 // MARK: - Reading From The Whiteboard
 
     /// Update the nao by reading values from the whiteboard.
-    public mutating func update() {
+    public func update() {
         gu_nao_update_from_custom_wb(&self.rawValue, self.wb.wb, self.indexes.rawValue)
     }
 

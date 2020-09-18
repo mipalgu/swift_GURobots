@@ -1,8 +1,8 @@
 /*
- * gu_yaw_roll_joint.swift
+ * EllipseSighting.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 11/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,35 +56,63 @@
  *
  */
 
+import GUCoordinates
 import CGURobots
+import GUUnits
 
-extension gu_yaw_roll_joint: Hashable, Codable {
+/// An elliptical object sighting such as a ball or center circle.
+public struct EllipseSighting: CTypeWrapper {
     
-    enum CodingKeys: String, CodingKey {
-        case yaw
-        case roll
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let yaw = try values.decode(degrees_f.self, forKey: .yaw)
-        let roll = try values.decode(degrees_f.self, forKey: .roll)
-        self.init(yaw: yaw, roll: roll)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.yaw, forKey: .yaw)
-        try container.encode(self.roll, forKey: .roll)
+// MARK: - Properties
+    
+    /// The center point of the ellipse.
+    public var centerPoint: PixelCoordinate
+    
+    /// The number of pixels from the center to the top of the ellipse.
+    public var verticalRadius: Pixels_u
+    
+    /// The number of pixel from the center to the side of the ellipse.
+    public var horizontalRadius: Pixels_u
+    
+// MARK: - Converting Between The Underlying gurobots C Type
+    
+    /// Convert to the underlying gurobots C type `gu_ellipse_sighting`.
+    public var rawValue: gu_ellipse_sighting {
+        return gu_ellipse_sighting(
+            centerPoint: centerPoint.rawValue,
+            verticalRadius: verticalRadius.rawValue,
+            horizontalRadius: horizontalRadius.rawValue
+        )
     }
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.yaw)
-        hasher.combine(self.roll)
+    /// Create an EllipseSighting by copying the values from the underlying
+    /// gurobots C type `gu_ellipse_sighting`.
+    ///
+    /// - Parameter other: The underlying gurobots C type `gu_ellipse_sighting`
+    /// which contains the values being copied.
+    public init(_ other: gu_ellipse_sighting) {
+        self.init(
+            centerPoint: PixelCoordinate(other.centerPoint),
+            verticalRadius: Pixels_u(other.verticalRadius),
+            horizontalRadius: Pixels_u(other.horizontalRadius)
+        )
     }
     
-    public static func ==(lhs: gu_yaw_roll_joint, rhs: gu_yaw_roll_joint) -> Bool {
-        return lhs.yaw == rhs.yaw && lhs.roll == rhs.roll
+// MARK: - Creating an EllipseSighting
+    
+    /// Create an EllipseSighting.
+    ///
+    /// - Parameter centerPoint: The center point of the ellipse.
+    ///
+    /// - Parameter verticalRadius: The number of pixels from the center point
+    /// to the top of the ellipse.
+    ///
+    /// - Parameter horizontalRadius: The number of pixels from the center point
+    /// to the side of the ellipse.
+    public init(centerPoint: PixelCoordinate, verticalRadius: Pixels_u, horizontalRadius: Pixels_u) {
+        self.centerPoint = centerPoint
+        self.verticalRadius = verticalRadius
+        self.horizontalRadius = horizontalRadius
     }
     
 }

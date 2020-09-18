@@ -1,8 +1,8 @@
 /*
- * gu_nao_leg.swift
+ * PlayerNumberContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 9/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,41 +56,11 @@
  *
  */
 
-import GURobots
-
-extension gu_nao_leg: Hashable, Codable {
+/// Conforming types represent a robot with a specific player number on the
+/// soccer field.
+public protocol PlayerNumberContainer {
     
-    enum CodingKeys: String, CodingKey {
-        case hip
-        case knee
-        case ankle
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let hip = try values.decode(gu_yp_joint.self, forKey: .hip)
-        let knee = try values.decode(gu_pitch_joint.self, forKey: .knee)
-        let ankle = try values.decode(gu_pitch_roll_joint.self, forKey: .ankle)
-        self.init(hip: hip, knee: knee, ankle: ankle)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.hip, forKey: .hip)
-        try container.encode(self.knee, forKey: .knee)
-        try container.encode(self.ankle, forKey: .ankle)
-    }
-    
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.hip)
-        hasher.combine(self.knee)
-        hasher.combine(self.ankle)
-    }
-    
-    public static func ==(lhs: gu_nao_leg, rhs: gu_nao_leg) -> Bool {
-        return lhs.hip == rhs.hip
-            && lhs.knee == rhs.knee
-            && lhs.ankle == rhs.ankle
-    }
+    /// The player number of the robot for the robots team.
+    var playerNumber: Int { get }
     
 }

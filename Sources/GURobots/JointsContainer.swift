@@ -1,8 +1,8 @@
 /*
- * gu_nao_head.swift
+ * JointsContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 9/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,35 +56,20 @@
  *
  */
 
-import GURobots
-
-extension gu_nao_head: Hashable, Codable {
+/// Conforming types are robots that are capable of providing information on
+/// the status of their joints.
+public protocol JointsContainer {
     
-    enum CodingKeys: String, CodingKey {
-        case neck
-        case buttons
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let neck = try values.decode(gu_pitch_yaw_joint.self, forKey: .neck)
-        let buttons = try values.decode(gu_nao_head_sensors.self, forKey: .buttons)
-        self.init(neck: neck, buttons: buttons)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.neck, forKey: .neck)
-        try container.encode(self.buttons, forKey: .buttons)
-    }
+    /// The type of the joints.
+    ///
+    /// This is different for each robot. For example, a nao robot would use the
+    /// `NaoJoints` struct for this type.
+    ///
+    /// - SeeAlso: `NaoJointsContainer`
+    /// - SeeAlso: `NaoJoints`
+    associatedtype Joints
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.neck)
-        hasher.combine(self.buttons)
-    }
-    
-    public static func ==(lhs: gu_nao_head, rhs: gu_nao_head) -> Bool {
-        return lhs.neck == rhs.neck && lhs.buttons == rhs.buttons
-    }
+    /// The status of the joints of the robot.
+    var joints: Joints { get }
     
 }

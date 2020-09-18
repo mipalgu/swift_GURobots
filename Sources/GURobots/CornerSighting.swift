@@ -1,8 +1,8 @@
 /*
- * gu_nao_arm.swift
+ * CornerSighting.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 11/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,46 +56,74 @@
  *
  */
 
-import GURobots
+import GUCoordinates
+import CGURobots
+import GUUnits
 
-extension gu_nao_arm: Hashable, Codable {
+/// A corner sighting such as the corner of the horizon.
+public struct CornerSighting: CTypeWrapper {
     
-    enum CodingKeys: String, CodingKey {
-        case shoulder
-        case elbow
-        case wrist
-        case hand
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let shoulder = try values.decode(gu_pitch_roll_joint.self, forKey: .shoulder)
-        let elbow = try values.decode(gu_yaw_roll_joint.self, forKey: .elbow)
-        let wrist = try values.decode(gu_yaw_joint.self, forKey: .wrist)
-        let hand = try values.decode(gu_nao_hand_sensors.self, forKey: .hand)
-        self.init(shoulder: shoulder, elbow: elbow, wrist: wrist, hand: hand)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.shoulder, forKey: .shoulder)
-        try container.encode(self.elbow, forKey: .elbow)
-        try container.encode(self.wrist, forKey: .wrist)
-        try container.encode(self.hand, forKey: .hand)
+// MARK: - Properties
+    
+    /// The left most end point of the corner.
+    ///
+    /// If the corner contains ends which share the same x values, then this
+    /// value is the bottom most point.
+    public var leftOrBottomPoint: PixelCoordinate
+    
+    /// The center point of the corner.
+    ///
+    /// The point which is not on either end of the corner.
+    public var centerPoint: PixelCoordinate
+    
+    /// The right most end point of the corner.
+    ///
+    /// If the corner contains ends which share the same x values, then this
+    /// value is the top most point.
+    public var rightOrTopPoint: PixelCoordinate
+    
+// MARK: - Converting Between The Underlying gurobots C Type
+    
+    /// Convert to the underlying gurobots C type `gu_corner_sighting`.
+    public var rawValue: gu_corner_sighting {
+        return gu_corner_sighting(
+            leftOrBottomPoint: leftOrBottomPoint.rawValue,
+            centerPoint: centerPoint.rawValue,
+            rightOrTopPoint: rightOrTopPoint.rawValue
+        )
     }
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.shoulder)
-        hasher.combine(self.elbow)
-        hasher.combine(self.wrist)
-        hasher.combine(self.hand)
+    /// Create a CornerSighting by copying the values from the underlying
+    /// gurobots C type `gu_corner_sighting`.
+    ///
+    /// - Parameter other: The underlying gurobots C type `gu_corner_sighting`
+    /// which contains the values being copied.
+    public init(_ other: gu_corner_sighting) {
+        self.init(
+            leftOrBottomPoint: PixelCoordinate(other.leftOrBottomPoint),
+            centerPoint: PixelCoordinate(other.centerPoint),
+            rightOrTopPoint: PixelCoordinate(other.rightOrTopPoint)
+        )
     }
     
-    public static func ==(lhs: gu_nao_arm, rhs: gu_nao_arm) -> Bool {
-        return lhs.shoulder == rhs.shoulder
-            && lhs.elbow == rhs.elbow
-            && lhs.wrist == rhs.wrist
-            && lhs.hand == rhs.hand
+// MARK: - Creating a CornerSighting
+    
+    /// Create a CornerSighting.
+    ///
+    /// - Parameter leftOrBottomPoint: The left most end point of the corner. If
+    /// the corner contains ends which share the same x values, then this value
+    /// is the bottom most point.
+    ///
+    /// - Parameter centerPoint: The center point of the corner. The point which
+    /// is not on either end of the corner.
+    ///
+    /// - Parameter rightOrTopPoint: The right most end point of the corner. If
+    /// the corner contains ends which share the same x values, then this value
+    /// is the top most point.
+    public init(leftOrBottomPoint: PixelCoordinate, centerPoint: PixelCoordinate, rightOrTopPoint: PixelCoordinate) {
+        self.leftOrBottomPoint = leftOrBottomPoint
+        self.centerPoint = centerPoint
+        self.rightOrTopPoint = rightOrTopPoint
     }
     
 }

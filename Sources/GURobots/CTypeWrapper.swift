@@ -63,10 +63,6 @@
  *  In such a case, some functionality needs to be provided. The swift type
  *  must be able to be converted from the underlying C type, but must also
  *  provide the ability to be converted to the underlying C type.
- *
- *  This protocol also requires that conforming types behave the same way
- *  when it comes to equality, hashing, encoding and decoding using the
- *  `Equatable`, `Hashable`, `Encodable` and `Decodable` protocols.
  */
 public protocol CTypeWrapper: CTypeDelegator {
 
@@ -75,15 +71,4 @@ public protocol CTypeWrapper: CTypeDelegator {
      */
     init(_: CType)
 
-}
-
-extension CTypeWrapper where Self: Decodable, CType: Decodable {
-
-    /**
-     *  Delegates decoding to the underlying C type.
-     */
-    public init(from decoder: Decoder) throws {
-        self.init(try CType.init(from: decoder))
-    }
-    
 }

@@ -1,8 +1,8 @@
 /*
- * CTypeDelegator.swift
+ * BottomCameraSoccerSightingsContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 11/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,23 +56,57 @@
  *
  */
 
-/**
- *  `CTypeDelegator` provides a common interface for swift types that convert
- *  and provide the functionality of underlying C types.
- *
- *  In such a case, some functionality needs to be provided. The swift type
- *  must provide the ability to be converted to the underlying C type.
- */
-public protocol CTypeDelegator: Hashable, Codable {
+/// Conforming types are able to see soccer objects from the bottom camera.
+public protocol BottomCameraSoccerSightingsContainer: BottomCameraContainer {
+    
+// MARK: - Properties
 
-    /**
-     *  The type of the underlying C type that the conforming type is wrapping.
-     */
-    associatedtype CType
+    /// The list of soccer sightings seen from the bottom camera.
+    var bottomCameraSoccerSightings: SoccerSightings { get }
+    
+}
 
-    /**
-     *  Convert `self` to the underlying C type.
-     */
-    var rawValue: CType { get }
+extension BottomCameraSoccerSightingsContainer where Self: SoccerSightingsContainer, Self: BottomCameraIndexContainer {
+    
+    /// The list of soccer sightings seen from the top camera.
+    public var bottomCameraSoccerSightings: SoccerSightings {
+        return self.soccerSightings[self.bottomCameraIndex]
+    }
+    
+}
 
+// MARK: - Convenience Getters
+
+extension BottomCameraSoccerSightingsContainer {
+    
+    /// The ball sighting seen in the bottom camera.
+    public var bottomCameraBallSighting: EllipseSighting? {
+        return self.bottomCameraSoccerSightings.ball
+    }
+    
+    /// An unknown goal post sighting seen in the bottom camera.
+    public var bottomCameraGenericGoalPostSighting: RectangleSighting? {
+        return self.bottomCameraSoccerSightings.genericGoalPost
+    }
+    
+    /// A left goal post sighting seen in the bottom camera.
+    public var bottomCameraLeftGoalPostSighting: RectangleSighting? {
+        return self.bottomCameraSoccerSightings.leftGoalPost
+    }
+    
+    /// A right goal post sighting seen in the bottom camera.
+    public var bottomCameraRightGoalPostSighting: RectangleSighting? {
+        return self.bottomCameraSoccerSightings.rightGoalPost
+    }
+    
+    /// A horizon sighting seen in the bottom camera.
+    public var bottomCameraHorizonSighting: HorizonSighting? {
+        return self.bottomCameraSoccerSightings.horizon
+    }
+    
+    /// Line sightings seen in the bottom camera.
+    public var bottomCameraLineSightings: [RectangleSighting] {
+        return self.bottomCameraSoccerSightings.lines
+    }
+    
 }

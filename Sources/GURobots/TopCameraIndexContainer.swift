@@ -1,8 +1,8 @@
 /*
- * gu_pitch_joint.swift
+ * TopCameraIndexContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 11/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,31 +56,13 @@
  *
  */
 
-import CGURobots
-
-extension gu_pitch_joint: Hashable, Codable {
+/// Conforming types are able to designate a camera the *top* camera in the
+/// `cameras` array.
+public protocol TopCameraIndexContainer: CamerasContainer {
     
-    enum CodingKeys: String, CodingKey {
-        case pitch
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let pitch = try values.decode(degrees_f.self, forKey: .pitch)
-        self.init(pitch: pitch)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.pitch, forKey: .pitch)
-    }
+// MARK: - Properties
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.pitch)
-    }
-    
-    public static func ==(lhs: gu_pitch_joint, rhs: gu_pitch_joint) -> Bool {
-        return lhs.pitch == rhs.pitch
-    }
+    /// The index of the *top* camera in the `cameras` array.
+    var topCameraIndex: Int { get }
     
 }

@@ -56,8 +56,5 @@
  *
  */
 
-public protocol NaoJointsContainer {
-    
-    var joints: NaoJoints { get }
-    
-}
+/// Stipulates that the `Joints` associated type must equal `NaoJoints`
+public protocol NaoJointsContainer: JointsContainer where Joints == NaoJoints {}

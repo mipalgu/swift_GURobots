@@ -3,11 +3,11 @@ theme: fullwidth
 
 exclude:
     - Sources/*/gu_*.swift
+    - Sources/GURobots/HorizonSighting+Codable.swift
 
 custom_categories:
     - name: Nao
       children: 
-          - NaoWrapper
           - NaoV5
           - NaoWBIndexes
           - NaoJointsContainer
@@ -21,24 +21,44 @@ custom_categories:
 
     - name: Robot Types
       children:
+          - NaoRobot
           - SoccerPlayingRobot
+          - UpdateableRobot
+
+    - name: Player Data
+      children:
+          - PlayerNumberContainer
 
     - name: Cameras
       children:
+          - RobotCamera
+          - CamerasContainer
           - BottomCameraContainer
-          - BottomCameraPivotContainer
-          - CameraPivotContainer
+          - BottomCameraIndexContainer
           - TopCameraContainer
-          - TopCameraPivotContainer
+          - TopCameraIndexContainer
 
     - name: Joints
       children:
+          - JointsContainer
           - PitchJoint
           - PitchRollJoint
           - PitchYawJoint
           - YPJoint
           - YawJoint
           - YawRollJoint
+
+    - name: Sightings (Vision)
+      children:
+          - SoccerSightingsContainer
+          - BottomCameraSoccerSightingsContainer
+          - TopCameraSoccerSightingsContainer
+          - SoccerSightings
+          - EllipseSighting
+          - RectangleSighting
+          - HorizonSighting
+          - CornerSighting
+          - LineSighting
 
     - name: Locations
       children:
@@ -48,6 +68,9 @@ custom_categories:
     - name: Localisation
       children:
           - FieldPositionContainer
+          - BallPositionContainer
+          - BallPosition
+          - Orientation
 
     - name: Converting C Types
       children:

@@ -68,23 +68,25 @@ import GUCoordinates
 ///
 /// As the name of the protocol suggests; all the functionality provided by
 /// this protocol deals with a specific camera designated the *bottom camera*.
-public protocol BottomCameraContainer: BottomCameraPivotContainer {
+public protocol BottomCameraContainer {
     
 // MARK: - Properties
     
-    /// The index of the *bottom camera* within the `bottomCameraPivot.cameras`
-    /// array.
-    var bottomCameraIndex: Int { get }
+    /// The robots bottom camera.
+    var bottomCamera: RobotCamera { get }
+    
+}
+
+extension BottomCameraContainer where Self: BottomCameraIndexContainer {
+    
+    /// The robots bottom camera.
+    public var bottomCamera: RobotCamera {
+        return self.cameras[self.bottomCameraIndex]
+    }
     
 }
 
 extension BottomCameraContainer {
-    
-    /// Fetch the `Camera` for the bottom camera from the
-    /// `bottomCameraPivot.cameras` array.
-    public var bottomCamera: Camera {
-        self.bottomCameraPivot.cameras[self.bottomCameraIndex]
-    }
     
 // MARK: - Camera Visibility Of Objects
     
@@ -96,7 +98,7 @@ extension BottomCameraContainer {
     /// - Returns: True if the bottom camera can see the object, False
     /// otherwise.
     public func bottomCameraCanSee(object: RelativeCoordinate) -> Bool {
-        self.bottomCameraPivotCanSee(object: object, inCamera: self.bottomCameraIndex)
+        return self.bottomCamera.canSee(object: object)
     }
     
 // MARK: - Image Coordinate Validation
@@ -109,7 +111,7 @@ extension BottomCameraContainer {
     /// - Returns: True if the pixel represents an object that is on the ground.
     /// Otherwise, False.
     public func bottomCameraObjectOnGround(_ coord: CameraCoordinate) -> Bool {
-        self.bottomCameraPivotObjectOnGround(coord, forCamera: self.bottomCameraIndex)
+        return self.bottomCamera.objectOnGround(coord)
     }
     
     /// Is the object represent by the pixel in the image taken from the top
@@ -120,7 +122,7 @@ extension BottomCameraContainer {
     /// - Returns: True if the pixel represents an object that is on the ground.
     /// Otherwise, False.
     public func bottomCameraObjectOnGround(_ coord: PixelCoordinate) -> Bool {
-        self.bottomCameraPivotObjectOnGround(coord, forCamera: self.bottomCameraIndex)
+        return self.bottomCamera.objectOnGround(coord)
     }
     
     /// Is the object represent by the point in the image taken from the top
@@ -131,7 +133,7 @@ extension BottomCameraContainer {
     /// - Returns: True if the point represents an object that is on the ground.
     /// Otherwise, False.
     public func bottomCameraObjectOnGround(_ coord: PercentCoordinate) -> Bool {
-        self.bottomCameraPivotObjectOnGround(coord, forCamera: self.bottomCameraIndex)
+        return self.bottomCamera.objectOnGround(coord)
     }
     
 // MARK: Converting Image Coordinates To Relative Coordinates
@@ -150,7 +152,7 @@ extension BottomCameraContainer {
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
     public func bottomCameraRelativeCoordinate(of coord: CameraCoordinate) -> RelativeCoordinate {
-        self.bottomCameraPivotRelativeCoordinate(of: coord, camera: self.bottomCameraIndex)
+        return self.bottomCamera.relativeCoordinate(of: coord)
     }
 
 
@@ -168,7 +170,7 @@ extension BottomCameraContainer {
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
     public func bottomCameraRelativeCoordinate(of coord: PixelCoordinate) -> RelativeCoordinate {
-        self.bottomCameraPivotRelativeCoordinate(of: coord, camera: self.bottomCameraIndex)
+        return self.bottomCamera.relativeCoordinate(of: coord)
     }
 
     /// Convert the object in an image to a `RelativeCoordinate` for the
@@ -185,7 +187,7 @@ extension BottomCameraContainer {
     /// If this is not the case, then the maximum value for the distance will
     /// be used.
     public func bottomCameraRelativeCoordinate(of coord: PercentCoordinate) -> RelativeCoordinate {
-        self.bottomCameraPivotRelativeCoordinate(of: coord, camera: self.bottomCameraIndex)
+        return self.bottomCamera.relativeCoordinate(of: coord)
     }
     
 // MARK: - Converting Relative Coordinates To Image Coordinates
@@ -209,7 +211,7 @@ extension BottomCameraContainer {
     /// you should only use this function if you are positive that the camera
     /// can actually see the object at `coord`.
     public func bottomCameraCameraCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate {
-        return self.bottomCameraPivotCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+        return self.bottomCamera.cameraCoordinate(to: coord, resWidth: resWidth, resHeight: resHeight)
     }
     
     /// Calculate a pixel within an image representing the specified object in
@@ -231,7 +233,7 @@ extension BottomCameraContainer {
     /// you should only use this function if you are positive that the camera
     /// can actually see the object at `coord`.
     public func bottomCameraPixelCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate {
-        return self.bottomCameraPivotPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+        return self.bottomCamera.pixelCoordinate(to: coord, resWidth: resWidth, resHeight: resHeight)
     }
     
     /// Calculate a point within an image representing the specified object in
@@ -247,7 +249,7 @@ extension BottomCameraContainer {
     /// you should only use this function if you are positive that the camera
     /// can actually see the object at `coord`.
     public func bottomCameraPercentCoordinate(to coord: RelativeCoordinate) -> PercentCoordinate {
-        return self.bottomCameraPivotPercentCoordinate(to: coord, camera: self.bottomCameraIndex)
+        return self.bottomCamera.percentCoordinate(to: coord)
     }
     
     /// Calculate a pixel within an image representing the specified
@@ -268,8 +270,8 @@ extension BottomCameraContainer {
     ///
     /// - Returns: A new `CameraCoordinate` representing the object in the
     /// bottom camera.
-    public func bottomCameraClampedCameraCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate? {
-        self.bottomCameraPivotClampedCameraCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    public func bottomCameraClampedCameraCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> CameraCoordinate {
+        return self.bottomCamera.clampedCameraCoordinate(to: coord, resWidth: resWidth, resHeight: resHeight)
     }
     
     /// Calculate a pixel within an image representing the specified
@@ -290,8 +292,8 @@ extension BottomCameraContainer {
     ///
     /// - Returns: A new `PixelCoordinate` representing the object in the
     /// bottom camera.
-    public func bottomCameraClampedPixelCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate? {
-        self.bottomCameraPivotClampedPixelCoordinate(to: coord, camera: self.bottomCameraIndex, resWidth: resWidth, resHeight: resHeight)
+    public func bottomCameraClampedPixelCoordinate(to coord: RelativeCoordinate, resWidth: Pixels_u, resHeight: Pixels_u) -> PixelCoordinate {
+        return self.bottomCamera.clampedPixelCoordinate(to: coord, resWidth: resWidth, resHeight: resHeight)
     }
     
     /// Calculate a point within an image representing the specified
@@ -306,8 +308,8 @@ extension BottomCameraContainer {
     ///
     /// - Returns: A new `PercentCoordinate` representing the object in the
     /// bottom camera.
-    public func bottomCameraClampedPercentCoordinate(to coord: RelativeCoordinate) -> PercentCoordinate? {
-        self.bottomCameraPivotClampedPercentCoordinate(to: coord, camera: self.bottomCameraIndex)
+    public func bottomCameraClampedPercentCoordinate(to coord: RelativeCoordinate) -> PercentCoordinate {
+        return self.bottomCamera.clampedPercentCoordinate(to: coord)
     }
     
 }

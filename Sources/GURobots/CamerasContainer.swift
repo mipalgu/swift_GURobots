@@ -1,8 +1,8 @@
 /*
- * gu_nao_hand_sensors.swift
+ * CamerasContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 11/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,39 +56,14 @@
  *
  */
 
-import GURobots
+import GUCoordinates
 
-extension gu_nao_hand_sensors: Hashable, Codable {
+/// For objects that may use cameras.
+public protocol CamerasContainer {
     
-    enum CodingKeys: String, CodingKey {
-        case touchLeft
-        case touchBack
-        case touchRight
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let touchLeft = try values.decode(Bool.self, forKey: .touchLeft)
-        let touchBack = try values.decode(Bool.self, forKey: .touchBack)
-        let touchRight = try values.decode(Bool.self, forKey: .touchRight)
-        self.init(touchLeft: touchLeft, touchBack: touchBack, touchRight: touchRight)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.touchLeft, forKey: .touchLeft)
-        try container.encode(self.touchBack, forKey: .touchBack)
-        try container.encode(self.touchRight, forKey: .touchRight)
-    }
+// MARK: - Properties
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.touchLeft)
-        hasher.combine(self.touchBack)
-        hasher.combine(self.touchRight)
-    }
-    
-    public static func ==(lhs: gu_nao_hand_sensors, rhs: gu_nao_hand_sensors) -> Bool {
-        return gu_nao_hand_sensors_equals(lhs, rhs)
-    }
+    /// All cameras that are available to be used.
+    var cameras: [RobotCamera] { get }
     
 }

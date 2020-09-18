@@ -1,8 +1,8 @@
 /*
- * gu_soccer_sightings.swift
+ * BottomCameraIndexContainer.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 11/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,41 +56,13 @@
  *
  */
 
-extension gu_soccer_sightings: Hashable, Codable {
+/// Conforming types are able to designate a camera the *bottom* camera in the
+/// `cameras` array.
+public protocol BottomCameraIndexContainer: CamerasContainer {
     
-    enum CodingKeys: String, CodingKey {
-        case ball
-        case leftGoalPost
-        case rightGoalPost
-        case goal
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let ball = try values.decode(gu_optional_relative_coordinate.self, forKey: .ball)
-        let leftGoalPost = try values.decode(gu_optional_relative_coordinate.self, forKey: .leftGoalPost)
-        let rightGoalPost = try values.decode(gu_optional_relative_coordinate.self, forKey: .rightGoalPost)
-        let goal = try values.decode(gu_optional_relative_coordinate.self, forKey: .goal)
-        self.init(ball: ball, leftGoalPost: leftGoalPost, rightGoalPost: rightGoalPost, goal: goal)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.ball, forKey: .ball)
-        try container.encode(self.leftGoalPost, forKey: .leftGoalPost)
-        try container.encode(self.rightGoalPost, forKey: .rightGoalPost)
-        try container.encode(self.goal, forKey: .goal)
-    }
+// MARK: - Properties
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.ball)
-        hasher.combine(self.leftGoalPost)
-        hasher.combine(self.rightGoalPost)
-        hasher.combine(self.goal)
-    }
-    
-    public static func ==(lhs: gu_soccer_sightings, rhs: gu_soccer_sightings) -> Bool {
-        return gu_soccer_sightings_equals(lhs, rhs)
-    }
+    /// The index of the *bottom* camera in the `cameras` array.
+    var bottomCameraIndex: Int { get }
     
 }

@@ -1,8 +1,8 @@
 /*
- * CTypeDelegator.swift
+ * HorizonSighting+Codable.swift
  * GURobots
  *
- * Created by Callum McColl on 26/7/20.
+ * Created by Callum McColl on 11/9/20.
  * Copyright © 2020 Callum McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,23 +56,46 @@
  *
  */
 
-/**
- *  `CTypeDelegator` provides a common interface for swift types that convert
- *  and provide the functionality of underlying C types.
- *
- *  In such a case, some functionality needs to be provided. The swift type
- *  must provide the ability to be converted to the underlying C type.
- */
-public protocol CTypeDelegator: Hashable, Codable {
+public extension HorizonSighting {
+    
+    enum CodingKeys: String, CodingKey {
+        case sightingType
+        case lineSighting
+        case cornerSighting
+    }
 
-    /**
-     *  The type of the underlying C type that the conforming type is wrapping.
-     */
-    associatedtype CType
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let sightingType = try values.decode(Int.self, forKey: .sightingType)
+        switch sightingType {
+        case 0:
+            self = .fieldOnly
+            return
+        case 1:
+            let line = try values.decode(LineSighting.self, forKey: .lineSighting)
+            self = .lineSighting(lineSighting: line)
+            return
+        case 2:
+            let cornerSighting = try values.decode(CornerSighting.self, forKey: .cornerSighting)
+            self = .cornerSighting(cornerSighting: cornerSighting)
+            return
+        default:
+            throw DecodingError.dataCorruptedError(forKey: .sightingType, in: values, debugDescription: "Invalid sighting type for horizon: \(sightingType)")
+        }
+    }
 
-    /**
-     *  Convert `self` to the underlying C type.
-     */
-    var rawValue: CType { get }
-
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        switch self {
+        case .fieldOnly:
+            try container.encode(0, forKey: .sightingType)
+        case .lineSighting(let lineSighting):
+            try container.encode(1, forKey: .sightingType)
+            try container.encode(lineSighting, forKey: .lineSighting)
+        case .cornerSighting(let cornerSighting):
+            try container.encode(2, forKey: .sightingType)
+            try container.encode(cornerSighting, forKey: .cornerSighting)
+        }
+    }
+    
 }
