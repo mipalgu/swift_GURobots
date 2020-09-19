@@ -59,6 +59,11 @@
 /// A robot that can be updated from some hidden external source.
 public protocol UpdateableRobot: AnyObject {
     
+    /// Initialise the robot specifying a name for the hidden external source.
+    ///
+    /// - Parameter name: The name of the hidden external source.
+    init(name: String)
+    
     /// Update the robot with the latest values from the hidden external source.
     func update()
     

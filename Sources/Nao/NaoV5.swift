@@ -85,18 +85,43 @@ public final class NaoV5: NaoRobot, UpdateableRobot {
     
 // MARK: - Creating a NaoV5
 
-    /// Create a `NaoV5`.
+    /// Create a new `NaoV5` with a private whiteboard.
     ///
-    /// - Parameter wb: The whiteboard which this object will fetch its values
-    /// from. If this parameter is omitted then the global whiteboard is used.
+    /// This initialiser uses the default indexes of `NaoWBIndexes`.
+    ///
+    /// - Parameter name: The name of the private whiteboard used as the
+    /// backing store.
+    public convenience init(name: String) {
+        self.init(name: name, indexes: NaoWBIndexes())
+    }
+    
+    /// Create a new `NaoV5` with a private whiteobard and custom message
+    /// offsets.
+    ///
+    /// - Parameter name: The name of the private whiteboard used as the
+    /// backing store.
+    ///
+    /// - Parameter indexes: The offsets for the whiteboard messages that this
+    /// type queries in order to update itself.
+    public init(name: String, indexes: NaoWBIndexes) {
+        guard let wbd = gsw_new_whiteboard(name) else {
+            fatalError("Unable to create private whiteboard \(name).")
+        }
+        self.wb = Whiteboard(wbd: wbd)
+        self.indexes = indexes
+        self.rawValue = gu_nao()
+        self.update()
+    }
+    
+    /// Create a `NaoV5`.
     ///
     /// - Parameter indexes: The indexes of the messages within the whiteboard.
     /// By default, these indexes are those for the normal global whiteboard.
     /// By specifying a value for the indexes, we can allow the use of custom
     /// whiteboards. Again, by default, this parameter can be omitted in order
     /// to use the global whiteboard indexes.
-    public init(wb: Whiteboard = Whiteboard(), indexes: NaoWBIndexes = NaoWBIndexes()) {
-        self.wb = wb
+    public init(indexes: NaoWBIndexes = NaoWBIndexes()) {
+        self.wb = Whiteboard()
         self.indexes = indexes
         self.rawValue = gu_nao()
         self.update()
