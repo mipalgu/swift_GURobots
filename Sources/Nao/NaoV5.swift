@@ -115,12 +115,15 @@ public final class NaoV5: NaoRobot, UpdateableRobot {
     
     /// Create a `NaoV5`.
     ///
+    /// - Parameter wb: The whiteboard which this object will fetch its values
+    /// from. If this parameter is omitted then the global whiteboard is used.
+    ///
     /// - Parameter indexes: The indexes of the messages within the whiteboard.
     /// By default, these indexes are those for the normal global whiteboard.
     /// By specifying a value for the indexes, we can allow the use of custom
     /// whiteboards. Again, by default, this parameter can be omitted in order
     /// to use the global whiteboard indexes.
-    public init(indexes: NaoWBIndexes = NaoWBIndexes()) {
+    public init(wb: Whiteboard = Whiteboard(), indexes: NaoWBIndexes = NaoWBIndexes()) {
         self.wb = Whiteboard()
         self.indexes = indexes
         self.rawValue = gu_nao()
