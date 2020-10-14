@@ -1,9 +1,9 @@
 /*
- * PitchYawJoint.swift
- * GURobots
+ * NaoHead.swift 
+ * GURobots 
  *
- * Created by Callum McColl on 26/7/20.
- * Copyright © 2020 Callum McColl. All rights reserved.
+ * Created by Morgan McColl on 14/10/2020.
+ * Copyright © 2020 Morgan McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -20,7 +20,7 @@
  * 3. All advertising materials mentioning features or use of this
  *    software must display the following acknowledgement:
  *
- *        This product includes software developed by Callum McColl.
+ *        This product includes software developed by Morgan McColl.
  *
  * 4. Neither the name of the author nor the names of contributors
  *    may be used to endorse or promote products derived from this
@@ -57,53 +57,32 @@
  */
 
 import CGURobots
-import GUUnits
+import GUCoordinates
 
-/// A joint that can rotate along the pitch and yaw axes.
-public struct PitchYawJoint: CTypeWrapper {
+public struct NaoHead: CTypeWrapper {
     
-// MARK: - Properties
-    
-    /// The angle of the pitch of the joint.
-    public var pitch: Angle
-    
-    /// The angle of the yaw of the object
-    public var yaw: Angle
-    
-// MARK: - Converting Between The Underlying gurobots C Type
-    
-    /// Convert to the underlying gurobots C type `gu_pitch_yaw_joint`.
-    public var rawValue: gu_pitch_yaw_joint {
-        return gu_pitch_yaw_joint(
-            pitch: self.pitch.degrees_f.rawValue,
-            yaw: self.pitch.degrees_f.rawValue
-        )
+    public var neck: PitchYawJoint
+
+    public var buttons: NaoHeadSensors
+
+    public var rawValue: gu_nao_head {
+        return gu_nao_head(neck: neck.rawValue, buttons: buttons.rawValue)
     }
-    
-    /// Create a PitchYawJoint by copying the values from the underlying
-    /// gurobots C type `gu_pitch_yaw_joint`.
-    ///
-    /// - Parameter other: The underlying gurobots C type `gu_pitch_yaw_joint`
-    /// which contains the values being copied.
-    public init(_ other: gu_pitch_yaw_joint) {
-        self.init(
-            pitch: Angle(Degrees_f(rawValue: other.pitch)),
-            yaw: Angle(Degrees_f(rawValue: other.yaw))
-        )
+
+    public init(_ other: gu_nao_head) {
+        self.init(neck: PitchYawJoint(other.neck), buttons: NaoHeadSensors(other.buttons))
     }
-    
-// MARK: - Create a PitchYawJoint
-    
-    /// Create a PitchYawJoint.
-    ///
-    /// - Parameter pitch: The angle of the pitch of the joint.
-    ///
-    /// - Parameter yaw: The angle of the yaw of the joint.
-    public init(pitch: Angle = .zero, yaw: Angle = .zero) {
-        self.pitch = pitch
-        self.yaw = yaw
+
+    public init(neck: PitchYawJoint, buttons: NaoHeadSensors) {
+        self.neck = neck
+        self.buttons = buttons
     }
-    
+
+    public func toCameraPivot() -> CameraPivot {
+        return CameraPivot(gu_nao_head_to_camera_pivot(self.rawValue))
+    }
+
 }
 
-extension PitchYawJoint: Hashable, Codable {}
+extension NaoHead: Hashable, Codable {}
+

@@ -1,9 +1,9 @@
 /*
- * PitchYawJoint.swift
- * GURobots
+ * NaoHeadSensors.swift 
+ * GURobots 
  *
- * Created by Callum McColl on 26/7/20.
- * Copyright © 2020 Callum McColl. All rights reserved.
+ * Created by Morgan McColl on 14/10/2020.
+ * Copyright © 2020 Morgan McColl. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -20,7 +20,7 @@
  * 3. All advertising materials mentioning features or use of this
  *    software must display the following acknowledgement:
  *
- *        This product includes software developed by Callum McColl.
+ *        This product includes software developed by Morgan McColl.
  *
  * 4. Neither the name of the author nor the names of contributors
  *    may be used to endorse or promote products derived from this
@@ -57,53 +57,37 @@
  */
 
 import CGURobots
-import GUUnits
 
-/// A joint that can rotate along the pitch and yaw axes.
-public struct PitchYawJoint: CTypeWrapper {
+public struct NaoHeadSensors: CTypeWrapper {
     
-// MARK: - Properties
-    
-    /// The angle of the pitch of the joint.
-    public var pitch: Angle
-    
-    /// The angle of the yaw of the object
-    public var yaw: Angle
-    
-// MARK: - Converting Between The Underlying gurobots C Type
-    
-    /// Convert to the underlying gurobots C type `gu_pitch_yaw_joint`.
-    public var rawValue: gu_pitch_yaw_joint {
-        return gu_pitch_yaw_joint(
-            pitch: self.pitch.degrees_f.rawValue,
-            yaw: self.pitch.degrees_f.rawValue
-        )
+    public var touchFront: Bool
+
+    public var touchMiddle: Bool
+
+    public var touchRear: Bool
+
+    public var rawValue: gu_nao_head_sensors {
+        gu_nao_head_sensors(touchFront: touchFront, touchMiddle: touchMiddle, touchRear: touchRear)
+    }
+
+    public init(_ other: gu_nao_head_sensors) {
+        self.init(touchFront: other.touchFront, touchMiddle: other.touchMiddle, touchRear: other.touchRear)
     }
     
-    /// Create a PitchYawJoint by copying the values from the underlying
-    /// gurobots C type `gu_pitch_yaw_joint`.
-    ///
-    /// - Parameter other: The underlying gurobots C type `gu_pitch_yaw_joint`
-    /// which contains the values being copied.
-    public init(_ other: gu_pitch_yaw_joint) {
-        self.init(
-            pitch: Angle(Degrees_f(rawValue: other.pitch)),
-            yaw: Angle(Degrees_f(rawValue: other.yaw))
-        )
+    public init(touchFront: Bool = false, touchMiddle: Bool = false, touchRear: Bool = false) {
+        self.touchFront = touchFront
+        self.touchMiddle = touchMiddle
+        self.touchRear = touchRear
     }
-    
-// MARK: - Create a PitchYawJoint
-    
-    /// Create a PitchYawJoint.
-    ///
-    /// - Parameter pitch: The angle of the pitch of the joint.
-    ///
-    /// - Parameter yaw: The angle of the yaw of the joint.
-    public init(pitch: Angle = .zero, yaw: Angle = .zero) {
-        self.pitch = pitch
-        self.yaw = yaw
-    }
-    
+
 }
 
-extension PitchYawJoint: Hashable, Codable {}
+extension NaoHeadSensors: Hashable, Codable {}
+
+
+
+
+
+
+
+
