@@ -105,5 +105,3 @@ public struct PitchYawJoint: CTypeWrapper {
     }
     
 }
-
-extension PitchYawJoint: Hashable, Codable {}
