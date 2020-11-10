@@ -56,6 +56,7 @@
  *
  */
 
+import GUUnits
 import GUCoordinates
 
 /// Provides a convenience struct that makes operating with GUCoordinate cameras

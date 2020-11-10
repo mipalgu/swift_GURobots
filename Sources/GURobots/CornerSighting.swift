@@ -56,9 +56,9 @@
  *
  */
 
+import GUUnits
 import GUCoordinates
 import CGURobots
-import GUUnits
 
 /// A corner sighting such as the corner of the horizon.
 public struct CornerSighting: CTypeWrapper {

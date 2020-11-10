@@ -57,6 +57,7 @@
  */
 
 import CGURobots
+import GUUnits
 import GUCoordinates
 
 /// Conforming types are capable of knowing the location of object in the

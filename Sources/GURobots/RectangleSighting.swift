@@ -56,9 +56,9 @@
  *
  */
 
+import GUUnits
 import GUCoordinates
 import CGURobots
-import GUUnits
 
 /// A rectangular object sighting such as a line or a goal post.
 public struct RectangleSighting: CTypeWrapper {

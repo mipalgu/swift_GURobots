@@ -57,6 +57,7 @@
  */
 
 import GURobots
+import GUUnits
 import GUCoordinates
 
 /// The protocol that all nao robot types conform to.

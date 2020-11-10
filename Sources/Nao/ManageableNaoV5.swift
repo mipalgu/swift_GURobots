@@ -57,6 +57,7 @@
  */
 
 import GURobots
+import GUUnits
 import GUCoordinates
 
 /// A fully manageable nao type.

@@ -57,9 +57,9 @@
  *
  */
 
+import GUUnits
 import GUCoordinates
 import CGURobots
-import GUUnits
 
 /// A line sighting such as an edge of an object or horizon.
 public struct SoccerSightings: CTypeWrapper {

@@ -56,9 +56,9 @@
  *
  */
 
+import GUUnits
 import GUCoordinates
 import CGURobots
-import GUUnits
 
 /// An elliptical object sighting such as a ball or center circle.
 public struct EllipseSighting: CTypeWrapper {

@@ -56,6 +56,7 @@
  *
  */
 
+import GUUnits
 import GUCoordinates
 
 /// For objects that may use cameras.

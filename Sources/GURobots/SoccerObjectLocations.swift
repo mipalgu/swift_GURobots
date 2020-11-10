@@ -57,6 +57,7 @@
  */
 
 import CGURobots
+import GUUnits
 import GUCoordinates
 
 /// Contains the locations of objects on the soccer field in relation from a

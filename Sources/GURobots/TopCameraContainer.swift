@@ -56,6 +56,7 @@
  *
  */
 
+import GUUnits
 import GUCoordinates
 
 /// Conforming types have a camera designated the *top camera*.
