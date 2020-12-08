@@ -124,7 +124,7 @@ public final class NaoV5: NaoRobot, UpdateableRobot {
     /// whiteboards. Again, by default, this parameter can be omitted in order
     /// to use the global whiteboard indexes.
     public init(wb: Whiteboard = Whiteboard(), indexes: NaoWBIndexes = NaoWBIndexes()) {
-        self.wb = Whiteboard()
+        self.wb = wb
         self.indexes = indexes
         self.rawValue = gu_nao()
         self.update()
