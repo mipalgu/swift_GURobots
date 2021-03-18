@@ -78,10 +78,33 @@ public struct LineSighting: CTypeWrapper {
     /// same x value, then this value is the top most point.
     public var rightOrTopPoint: PixelCoordinate
     
+// MARK: - Checking Special Cases of Lines
+    
+    /// Is the sighting a perfectly vertical line?
+    ///
+    /// Returns true when `leftOrBottomPoint.x` is equal to `rightOrTopPoint.x`.
+    @inlinable public var isVertical: Bool {
+        return leftOrBottomPoint.x == rightOrTopPoint.x
+    }
+    
+    /// Is the sighting a perfectly horizontal line?
+    ///
+    /// Returns true when `leftOrBottomPoint.y` is equal to `rightOrTopPoint.y`.
+    @inlinable public var isHorizontal: Bool {
+        return leftOrBottomPoint.y == rightOrTopPoint.y
+    }
+    
+    /// Is the sighting refering to point?
+    ///
+    /// Returns true when `leftOrBottomPoint` is equal to `rightOrTopPoint`.
+    public var isPoint: Bool {
+        return leftOrBottomPoint == rightOrTopPoint
+    }
+    
 // MARK: - Converting Between The Underlying gurobots C Type
     
     /// Convert to the underlying gurobots C type `gu_line_sighting`.
-    public var rawValue: gu_line_sighting {
+    @inlinable public var rawValue: gu_line_sighting {
         return gu_line_sighting(
             leftOrBottomPoint: leftOrBottomPoint.rawValue,
             rightOrTopPoint: rightOrTopPoint.rawValue
