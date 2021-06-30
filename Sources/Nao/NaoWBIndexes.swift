@@ -138,23 +138,23 @@ public struct NaoWBIndexes: CTypeWrapper {
     }
     
     public init(
-        playerNumber: Int = Int(kPlayerNumber_v.rawValue),
-        torsoSensors: Int = Int(kSENSORSTorsoJointSensors_v.rawValue),
-        topParticles: Int = Int(kTopParticles_v.rawValue),
-        ballPosition: Int = Int(kBallPosition_v.rawValue),
-        handSensors: Int = Int(kSensorsHandSensors_v.rawValue),
-        headSensors: Int = Int(kSensorsHeadSensors_v.rawValue),
-        legSensors: Int = Int(kSENSORSLegJointSensors_v.rawValue),
-        ballLocation: Int = Int(kBallLocation_v.rawValue),
-        leftGoalPostLocation: Int = Int(kLeftGoalPostLocation_v.rawValue),
-        rightGoalPostLocation: Int = Int(kRightGoalPostLocation_v.rawValue),
-        goalLocation: Int = Int(kGoalLocation_v.rawValue),
-        ballSightings: Int = Int(kVisionDetectionBalls_v.rawValue),
-        goalSightings: Int = Int(kVisionDetectionGoals_v.rawValue),
-        horizonSightings: Int = Int(kVisionDetectionHorizons_v.rawValue),
-        topLineSightings: Int = Int(kTopVisionLines_v.rawValue),
-        bottomLineSightings: Int = Int(kBottomVisionLines_v.rawValue),
-        fieldFeatureSightings: Int = Int(kVisionFieldFeatures_v.rawValue)
+        playerNumber: Int = Int(kwb_PlayerNumber_v.rawValue),
+        torsoSensors: Int = Int(kwb_SENSORSTorsoJointSensors_v.rawValue),
+        topParticles: Int = Int(kwb_TopParticles_v.rawValue),
+        ballPosition: Int = Int(kwb_BallPosition_v.rawValue),
+        handSensors: Int = Int(kwb_SensorsHandSensors_v.rawValue),
+        headSensors: Int = Int(kwb_SensorsHeadSensors_v.rawValue),
+        legSensors: Int = Int(kwb_SENSORSLegJointSensors_v.rawValue),
+        ballLocation: Int = Int(kwb_BallLocation_v.rawValue),
+        leftGoalPostLocation: Int = Int(kwb_LeftGoalPostLocation_v.rawValue),
+        rightGoalPostLocation: Int = Int(kwb_RightGoalPostLocation_v.rawValue),
+        goalLocation: Int = Int(kwb_GoalLocation_v.rawValue),
+        ballSightings: Int = Int(kwb_VisionDetectionBalls_v.rawValue),
+        goalSightings: Int = Int(kwb_VisionDetectionGoals_v.rawValue),
+        horizonSightings: Int = Int(kwb_VisionDetectionHorizons_v.rawValue),
+        topLineSightings: Int = Int(kwb_TopVisionLines_v.rawValue),
+        bottomLineSightings: Int = Int(kwb_BottomVisionLines_v.rawValue),
+        fieldFeatureSightings: Int = Int(kwb_VisionFieldFeatures_v.rawValue)
     ) {
         self.playerNumber = playerNumber
         self.torsoSensors = torsoSensors
