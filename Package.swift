@@ -16,8 +16,8 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(name: "GUSimpleWhiteboard", url: "ssh://git.mipal.net/Users/Shared/git/swift_wb", .branch("master")),
-        .package(name: "GUCoordinates", url: "ssh://git.mipal.net/Users/Shared/git/swift_GUCoordinates.git", .branch("master"))
+        .package(name: "GUSimpleWhiteboard", url: "https://github.com/mipalgu/swift_wb.git", .branch("main")),
+        .package(name: "GUCoordinates", url: "https://github.com/mipalgu/swift_GUCoordinates.git", .branch("main"))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
