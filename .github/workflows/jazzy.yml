@@ -61,15 +61,15 @@ jobs:
         ninja install
         cd ../../..
 
-    - name: Clone SimpleShapes
+    - name: Clone guvision_utils 
       uses: actions/checkout@v2
       with:
-        repository: mipalgu/SimpleShapes
-        path: SimpleShapes
+        repository: mipalgu/guvision_utils
+        path: guvision_utils
 
-    - name: Install SimpleShapes
+    - name: Install guvision_utils
       run: |
-        cd SimpleShapes
+        cd guvision_utils
         mkdir build
         cd build
         cmake -G Ninja ..
