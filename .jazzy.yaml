@@ -9,7 +9,7 @@ exclude:
     - gucoordinates/*
     - guvision_utils/*
     - gusimplewhiteboard/*
-    - gurobots
+    - gurobots/*
 
 custom_categories:
     - name: Nao
