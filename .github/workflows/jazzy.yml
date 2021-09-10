@@ -93,6 +93,22 @@ jobs:
         ninja install
         cd ../..
 
+    - name: Clone gurobots
+      uses: actions/checkout@v2
+      with:
+        repository: mipalgu/gurobots
+        path: gurobots
+
+    - name: Install gurobots
+      run: |
+        cd gurobots
+        mkdir build
+        cd build
+        cmake -G Ninja ..
+        ninja
+        ninja install
+        cd ../..
+
     - name: Clone Repository 
       uses: actions/checkout@v2
       with:
