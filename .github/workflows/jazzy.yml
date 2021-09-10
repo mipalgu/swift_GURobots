@@ -61,6 +61,22 @@ jobs:
         ninja install
         cd ../../..
 
+    - name: Clone SimpleShapes
+      uses: actions/checkout@v2
+      with:
+        repository: mipalgu/SimpleShapes
+        path: SimpleShapes
+
+    - name: Install SimpleShapes
+      run: |
+        cd SimpleShapes
+        mkdir build
+        cd build
+        cmake -G Ninja ..
+        ninja
+        ninja install
+        cd ../..
+
     - name: Clone gusimplewhiteboard
       uses: actions/checkout@v2
       with:
