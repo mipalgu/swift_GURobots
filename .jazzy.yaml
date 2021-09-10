@@ -4,6 +4,11 @@ theme: fullwidth
 exclude:
     - Sources/*/gu_*.swift
     - Sources/GURobots/HorizonSighting+Codable.swift
+    - gu_util/*
+    - guunits/*
+    - gucoordinates/*
+    - guvision_utils/*
+    - gusimplewhiteboard/*
 
 custom_categories:
     - name: Nao
