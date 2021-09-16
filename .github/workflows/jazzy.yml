@@ -108,15 +108,14 @@ jobs:
       with:
         repository: mipalgu/swift_GURobots
 
+    - name: Compile GURobots
+      run: swift build
+
     - name: Jazzy Action
       uses: sersoft-gmbh/swifty-docs-action@v1.2.0
       with:
         source: ${{github.workspace}}
         output: docs
-
-    - name: Print log file
-      run: |
-        find /var/folders -name "swift-build-*.log" | cat
 
     - name: Pages Deployment
       uses: peaceiris/actions-gh-pages@v3
