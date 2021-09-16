@@ -114,6 +114,10 @@ jobs:
         source: ${{github.workspace}}
         output: docs
 
+    - name: Print log file
+      run: |
+        find /var/folders -name "swift-build-*.log" | cat
+
     - name: Pages Deployment
       uses: peaceiris/actions-gh-pages@v3
       with:
