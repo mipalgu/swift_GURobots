@@ -1,5 +1,8 @@
 author: Callum McColl
 theme: fullwidth
+github_url: https://github.com/mipalgu/swift_GURobots
+github_file_prefix: https://github.com/mipalgu/swift_GURobots/tree/main
+root_url: https://mipalgu.github.io/swift_GURobots/
 
 exclude:
     - Sources/*/gu_*.swift
