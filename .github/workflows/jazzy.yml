@@ -103,6 +103,10 @@ jobs:
         ninja
         ninja install
 
+    - name: Create symlinks
+      run: |
+        ln -s gu_util/gu_util.h /usr/local/include/
+
     - name: Clone Repository 
       uses: actions/checkout@v2
       with:
