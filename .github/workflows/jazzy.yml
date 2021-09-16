@@ -107,6 +107,70 @@ jobs:
       run: |
         ln -s gu_util/gu_util.h /usr/local/include/
 
+    - name: Create pc files
+      run: |
+        mkdir -p /usr/local/lib/pkgconfig
+        echo 'prefix=/usr/local' > /usr/local/lib/pkgconfig/libguunits.pc
+        echo 'exec_prefix=${prefix}' >> /usr/local/lib/pkgconfig/libguunits.pc
+        echo 'includedir=${prefix}/include' >> /usr/local/lib/pkgconfig/libguunits.pc
+        echo 'libdir=${exec_prefix}/lib' >> /usr/local/lib/pkgconfig/libguunits.pc
+        echo '' >> /usr/local/lib/pkgconfig/libguunits.pc
+        echo 'Name: guunits' >> /usr/local/lib/pkgconfig/libguunits.pc
+        echo 'Version: 1.0' >> /usr/local/lib/pkgconfig/libguunits.pc
+        echo 'Description: Simple units library.' >> /usr/local/lib/pkgconfig/libguunits.pc
+        echo 'Libs: -L${libdir} -lguunits' >> /usr/local/lib/pkgconfig/libguunits.pc
+        echo 'Cflags: -I${includedir} -I${includedir}/guunits' >> /usr/local/lib/pkgconfig/libguunits.pc
+        echo 'prefix=/usr/local' > /usr/local/lib/pkgconfig/libgu_util.pc
+        echo 'exec_prefix=${prefix}' >> /usr/local/lib/pkgconfig/libgu_util.pc
+        echo 'includedir=${prefix}/include' >> /usr/local/lib/pkgconfig/libgu_util.pc
+        echo 'libdir=${exec_prefix}/lib' >> /usr/local/lib/pkgconfig/libgu_util.pc
+        echo '' >> /usr/local/lib/pkgconfig/libgu_util.pc
+        echo 'Name: gu_util' >> /usr/local/lib/pkgconfig/libgu_util.pc
+        echo 'Version: 1.0' >> /usr/local/lib/pkgconfig/libgu_util.pc
+        echo 'Description: Simple units library.' >> /usr/local/lib/pkgconfig/libgu_util.pc
+        echo 'Libs: -L${libdir} -lgu_util' >> /usr/local/lib/pkgconfig/libgu_util.pc
+        echo 'Cflags: -I${includedir} -I${includedir}/gu_util' >> /usr/local/lib/pkgconfig/libgu_util.pc
+        echo 'prefix=/usr/local' > /usr/local/lib/pkgconfig/libgucoordinates.pc
+        echo 'exec_prefix=${prefix}' >> /usr/local/lib/pkgconfig/libgucoordinates.pc
+        echo 'includedir=${prefix}/include' >> /usr/local/lib/pkgconfig/libgucoordinates.pc
+        echo 'libdir=${exec_prefix}/lib' >> /usr/local/lib/pkgconfig/libgucoordinates.pc
+        echo '' >> /usr/local/lib/pkgconfig/libgucoordinates.pc
+        echo 'Name: gucoordinates' >> /usr/local/lib/pkgconfig/libgucoordinates.pc
+        echo 'Version: 1.0' >> /usr/local/lib/pkgconfig/libgucoordinates.pc
+        echo 'Description: Simple units library.' >> /usr/local/lib/pkgconfig/libgucoordinates.pc
+        echo 'Libs: -L${libdir} -lgucoordinates' >> /usr/local/lib/pkgconfig/libgucoordinates.pc
+        echo 'Cflags: -I${includedir} -I${includedir}/gucoordinates' >> /usr/local/lib/pkgconfig/libgucoordinates.pc
+        echo 'prefix=/usr/local' > /usr/local/lib/pkgconfig/libguvision_utils.pc
+        echo 'exec_prefix=${prefix}' >> /usr/local/lib/pkgconfig/libguvision_utils.pc
+        echo 'includedir=${prefix}/include' >> /usr/local/lib/pkgconfig/libguvision_utils.pc
+        echo 'libdir=${exec_prefix}/lib' >> /usr/local/lib/pkgconfig/libguvision_utils.pc
+        echo '' >> /usr/local/lib/pkgconfig/libguvision_utils.pc
+        echo 'Name: guvision_utils' >> /usr/local/lib/pkgconfig/libguvision_utils.pc
+        echo 'Version: 1.0' >> /usr/local/lib/pkgconfig/libguvision_utils.pc
+        echo 'Description: Simple units library.' >> /usr/local/lib/pkgconfig/libguvision_utils.pc
+        echo 'Libs: -L${libdir} -lguvision_utils' >> /usr/local/lib/pkgconfig/libguvision_utils.pc
+        echo 'Cflags: -I${includedir} -I${includedir}/guvision_utils' >> /usr/local/lib/pkgconfig/libguvision_utils.pc
+        echo 'prefix=/usr/local' > /usr/local/lib/pkgconfig/libgusimplewhiteboard.pc
+        echo 'exec_prefix=${prefix}' >> /usr/local/lib/pkgconfig/libgusimplewhiteboard.pc
+        echo 'includedir=${prefix}/include' >> /usr/local/lib/pkgconfig/libgusimplewhiteboard.pc
+        echo 'libdir=${exec_prefix}/lib' >> /usr/local/lib/pkgconfig/libgusimplewhiteboard.pc
+        echo '' >> /usr/local/lib/pkgconfig/libgusimplewhiteboard.pc
+        echo 'Name: gusimplewhiteboard' >> /usr/local/lib/pkgconfig/libgusimplewhiteboard.pc
+        echo 'Version: 1.0' >> /usr/local/lib/pkgconfig/libgusimplewhiteboard.pc
+        echo 'Description: Simple units library.' >> /usr/local/lib/pkgconfig/libgusimplewhiteboard.pc
+        echo 'Libs: -L${libdir} -lgusimplewhiteboard' >> /usr/local/lib/pkgconfig/libgusimplewhiteboard.pc
+        echo 'Cflags: -I${includedir} -I${includedir}/gusimplewhiteboard' >> /usr/local/lib/pkgconfig/libgusimplewhiteboard.pc
+        echo 'prefix=/usr/local' > /usr/local/lib/pkgconfig/libgurobots.pc
+        echo 'exec_prefix=${prefix}' >> /usr/local/lib/pkgconfig/libgurobots.pc
+        echo 'includedir=${prefix}/include' >> /usr/local/lib/pkgconfig/libgurobots.pc
+        echo 'libdir=${exec_prefix}/lib' >> /usr/local/lib/pkgconfig/libgurobots.pc
+        echo '' >> /usr/local/lib/pkgconfig/libgurobots.pc
+        echo 'Name: gurobots' >> /usr/local/lib/pkgconfig/libgurobots.pc
+        echo 'Version: 1.0' >> /usr/local/lib/pkgconfig/libgurobots.pc
+        echo 'Description: Simple units library.' >> /usr/local/lib/pkgconfig/libgurobots.pc
+        echo 'Libs: -L${libdir} -lgurobots' >> /usr/local/lib/pkgconfig/libgurobots.pc
+        echo 'Cflags: -I${includedir} -I${includedir}/gurobots' >> /usr/local/lib/pkgconfig/libgurobots.pc
+
     - name: Clone Repository 
       uses: actions/checkout@v2
       with:
