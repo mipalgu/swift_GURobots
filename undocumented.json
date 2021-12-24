@@ -1,0 +1,362 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoArm.swift",
+      "line": 61,
+      "symbol": "NaoArm",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoArm.swift",
+      "line": 63,
+      "symbol": "NaoArm.shoulder",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoArm.swift",
+      "line": 65,
+      "symbol": "NaoArm.elbow",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoArm.swift",
+      "line": 67,
+      "symbol": "NaoArm.wrist",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoArm.swift",
+      "line": 69,
+      "symbol": "NaoArm.hand",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoArm.swift",
+      "line": 89,
+      "symbol": "NaoArm.init(shoulder:elbow:wrist:hand:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoHandSensors.swift",
+      "line": 61,
+      "symbol": "NaoHandSensors",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoHandSensors.swift",
+      "line": 63,
+      "symbol": "NaoHandSensors.touchLeft",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoHandSensors.swift",
+      "line": 65,
+      "symbol": "NaoHandSensors.touchBack",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoHandSensors.swift",
+      "line": 67,
+      "symbol": "NaoHandSensors.touchRight",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoHandSensors.swift",
+      "line": 85,
+      "symbol": "NaoHandSensors.init(touchLeft:touchBack:touchRight:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoHead.swift",
+      "line": 61,
+      "symbol": "NaoHead",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoHead.swift",
+      "line": 63,
+      "symbol": "NaoHead.neck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoHead.swift",
+      "line": 65,
+      "symbol": "NaoHead.buttons",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoHead.swift",
+      "line": 78,
+      "symbol": "NaoHead.init(neck:buttons:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoHeadSensors.swift",
+      "line": 61,
+      "symbol": "NaoHeadSensors",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoHeadSensors.swift",
+      "line": 63,
+      "symbol": "NaoHeadSensors.touchFront",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoHeadSensors.swift",
+      "line": 65,
+      "symbol": "NaoHeadSensors.touchMiddle",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoHeadSensors.swift",
+      "line": 67,
+      "symbol": "NaoHeadSensors.touchRear",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoHeadSensors.swift",
+      "line": 85,
+      "symbol": "NaoHeadSensors.init(touchFront:touchMiddle:touchRear:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoJoints.swift",
+      "line": 61,
+      "symbol": "NaoJoints",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoJoints.swift",
+      "line": 63,
+      "symbol": "NaoJoints.head",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoJoints.swift",
+      "line": 65,
+      "symbol": "NaoJoints.leftArm",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoJoints.swift",
+      "line": 67,
+      "symbol": "NaoJoints.rightArm",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoJoints.swift",
+      "line": 69,
+      "symbol": "NaoJoints.leftLeg",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoJoints.swift",
+      "line": 71,
+      "symbol": "NaoJoints.rightLeg",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoJoints.swift",
+      "line": 93,
+      "symbol": "NaoJoints.init(head:leftArm:rightArm:leftLeg:rightLeg:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoLeg.swift",
+      "line": 61,
+      "symbol": "NaoLeg",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoLeg.swift",
+      "line": 63,
+      "symbol": "NaoLeg.hip",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoLeg.swift",
+      "line": 65,
+      "symbol": "NaoLeg.knee",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoLeg.swift",
+      "line": 67,
+      "symbol": "NaoLeg.ankle",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoLeg.swift",
+      "line": 85,
+      "symbol": "NaoLeg.init(hip:knee:ankle:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 62,
+      "symbol": "NaoWBIndexes",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 64,
+      "symbol": "NaoWBIndexes.playerNumber",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 66,
+      "symbol": "NaoWBIndexes.torsoSensors",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 68,
+      "symbol": "NaoWBIndexes.topParticles",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 70,
+      "symbol": "NaoWBIndexes.ballPosition",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 72,
+      "symbol": "NaoWBIndexes.handSensors",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 74,
+      "symbol": "NaoWBIndexes.headSensors",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 76,
+      "symbol": "NaoWBIndexes.legSensors",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 78,
+      "symbol": "NaoWBIndexes.ballLocation",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 80,
+      "symbol": "NaoWBIndexes.leftGoalPostLocation",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 82,
+      "symbol": "NaoWBIndexes.rightGoalPostLocation",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 84,
+      "symbol": "NaoWBIndexes.goalLocation",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 86,
+      "symbol": "NaoWBIndexes.ballSightings",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 88,
+      "symbol": "NaoWBIndexes.goalSightings",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 90,
+      "symbol": "NaoWBIndexes.horizonSightings",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 92,
+      "symbol": "NaoWBIndexes.topLineSightings",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 94,
+      "symbol": "NaoWBIndexes.bottomLineSightings",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 96,
+      "symbol": "NaoWBIndexes.fieldFeatureSightings",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/swift_GURobots/swift_GURobots/Sources/Nao/NaoWBIndexes.swift",
+      "line": 140,
+      "symbol": "NaoWBIndexes.init(playerNumber:torsoSensors:topParticles:ballPosition:handSensors:headSensors:legSensors:ballLocation:leftGoalPostLocation:rightGoalPostLocation:goalLocation:ballSightings:goalSightings:horizonSightings:topLineSightings:bottomLineSightings:fieldFeatureSightings:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/runner/work/swift_GURobots/swift_GURobots"
+}

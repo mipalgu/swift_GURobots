@@ -1,0 +1,3249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RobotCamera Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Struct/RobotCamera" class="dashAnchor"></a>
+
+    <a title="RobotCamera Structure Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+           Docs
+        </a>
+         (87% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/mipalgu/swift_GURobots">
+            <img class="header-icon" src="../img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Fmipalgu.github.io%2Fswift_GURobots%2Fdocsets%2F.xml">
+            <img class="header-icon" src="../img/dash.png" alt="Dash"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html"> Reference</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      RobotCamera Structure Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Nao.html">Nao</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NaoV5.html">NaoV5</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NaoWBIndexes.html">NaoWBIndexes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Nao.html#/s:3Nao0A15JointsContainerP">NaoJointsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NaoJoints.html">NaoJoints</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NaoHead.html">NaoHead</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NaoHeadSensors.html">NaoHeadSensors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NaoArm.html">NaoArm</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NaoHandSensors.html">NaoHandSensors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NaoLeg.html">NaoLeg</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ManageableNaoV5.html">ManageableNaoV5</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Robot%20Types.html">Robot Types</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/NaoRobot.html">NaoRobot</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Robot%20Types.html#/s:8GURobots18SoccerPlayingRobotP">SoccerPlayingRobot</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/UpdateableRobot.html">UpdateableRobot</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Player%20Data.html">Player Data</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/PlayerNumberContainer.html">PlayerNumberContainer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Cameras.html">Cameras</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RobotCamera.html">RobotCamera</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CamerasContainer.html">CamerasContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/BottomCameraContainer.html">BottomCameraContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/BottomCameraIndexContainer.html">BottomCameraIndexContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TopCameraContainer.html">TopCameraContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TopCameraIndexContainer.html">TopCameraIndexContainer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Joints.html">Joints</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/JointsContainer.html">JointsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PitchJoint.html">PitchJoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PitchRollJoint.html">PitchRollJoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PitchYawJoint.html">PitchYawJoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/YPJoint.html">YPJoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/YawJoint.html">YawJoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/YawRollJoint.html">YawRollJoint</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Sightings%20%28Vision%29.html">Sightings (Vision)</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/SoccerSightingsContainer.html">SoccerSightingsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/BottomCameraSoccerSightingsContainer.html">BottomCameraSoccerSightingsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TopCameraSoccerSightingsContainer.html">TopCameraSoccerSightingsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SoccerSightings.html">SoccerSightings</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/EllipseSighting.html">EllipseSighting</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RectangleSighting.html">RectangleSighting</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/HorizonSighting.html">HorizonSighting</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/CornerSighting.html">CornerSighting</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/LineSighting.html">LineSighting</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Locations.html">Locations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/SoccerObjectLocationsContainer.html">SoccerObjectLocationsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SoccerObjectLocations.html">SoccerObjectLocations</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Localisation.html">Localisation</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/FieldPositionContainer.html">FieldPositionContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/BallPositionContainer.html">BallPositionContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/BallPosition.html">BallPosition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Orientation.html">Orientation</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Converting%20C%20Types.html">Converting C Types</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CTypeDelegator.html">CTypeDelegator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CTypeWrapper.html">CTypeWrapper</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>RobotCamera</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RobotCamera</span></code></pre>
+
+                </div>
+              </div>
+            <p>Provides a convenience struct that makes operating with GUCoordinate cameras
+easier.</p>
+
+              <div class="slightly-smaller">
+                <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L64-L793">Show on GitHub</a>
+              </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Properties"></a>
+                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Properties"></a>
+                  <h3 class="section-name"><span>Properties</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV11cameraPivot13GUCoordinates0cE0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/cameraPivot" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV11cameraPivot13GUCoordinates0cE0Vvp">cameraPivot</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>CameraPivot</code> that this camera is attached to.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cameraPivot</span><span class="p">:</span> <span class="kt">CameraPivot</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L69">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV5indexSivp"></a>
+                    <a name="//apple_ref/swift/Property/index" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV5indexSivp">index</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The index of the camera within the <code>cameraPivot.cameras</code> array.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L72">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV6camera13GUCoordinates0C0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/camera" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV6camera13GUCoordinates0C0Vvp">camera</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>Camera</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">camera</span><span class="p">:</span> <span class="kt">Camera</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L75-L81">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Createing%20a%20RobotCamera"></a>
+                <a name="//apple_ref/swift/Section/Createing a RobotCamera" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Createing%20a%20RobotCamera"></a>
+                  <h3 class="section-name"><span>Createing a RobotCamera</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV11cameraPivot0D0AC13GUCoordinates0cE0V_Sitcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(cameraPivot:camera:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV11cameraPivot0D0AC13GUCoordinates0cE0V_Sitcfc">init(cameraPivot:<wbr>camera:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a <code>RobotCamera</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">cameraPivot</span><span class="p">:</span> <span class="kt">CameraPivot</span><span class="p">,</span> <span class="nv">camera</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cameraPivot</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>CameraPivot</code> which this camera is attached
+to.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>camera</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index of the camera within the
+<code>cameraPivot.cameras</code> array.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L92-L95">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Convenince%20Getters"></a>
+                <a name="//apple_ref/swift/Section/Convenince Getters" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Convenince%20Getters"></a>
+                  <h3 class="section-name"><span>Convenince Getters</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV17cameraPivotHeight7GUUnits8DistanceVvp"></a>
+                    <a name="//apple_ref/swift/Property/cameraPivotHeight" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV17cameraPivotHeight7GUUnits8DistanceVvp">cameraPivotHeight</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The vertical distance from the ground to the pivot
+point.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cameraPivotHeight</span><span class="p">:</span> <span class="kt">Distance</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L101-L107">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV16cameraPivotPitch7GUUnits5AngleVvp"></a>
+                    <a name="//apple_ref/swift/Property/cameraPivotPitch" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV16cameraPivotPitch7GUUnits5AngleVvp">cameraPivotPitch</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The vertical orientation of the pivot point.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cameraPivotPitch</span><span class="p">:</span> <span class="kt">Angle</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L110-L116">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV14cameraPivotYaw7GUUnits5AngleVvp"></a>
+                    <a name="//apple_ref/swift/Property/cameraPivotYaw" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV14cameraPivotYaw7GUUnits5AngleVvp">cameraPivotYaw</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The horizontal orientation of the pivot point.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cameraPivotYaw</span><span class="p">:</span> <span class="kt">Angle</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L119-L125">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV12cameraHeight7GUUnits8DistanceVvp"></a>
+                    <a name="//apple_ref/swift/Property/cameraHeight" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV12cameraHeight7GUUnits8DistanceVvp">cameraHeight</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The vertical distance from the pivot point to the middle of the camera.</p>
+
+<p>If the pivot point is the ground then this is the height to the ground.
+If it is a camera on a stick then it&rsquo;s the height from the end of the
+stick to the camera. If it&rsquo;s a camera attached to the head of a robot
+then its the length from the neck (the pivot point for the head) to the
+camera.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cameraHeight</span><span class="p">:</span> <span class="kt">Distance</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L134-L140">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV11cameraPitch7GUUnits5AngleVvp"></a>
+                    <a name="//apple_ref/swift/Property/cameraPitch" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV11cameraPitch7GUUnits5AngleVvp">cameraPitch</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The vertical orientation of the camera in relation
+to the pivot point.</p>
+
+<p>A positive value means that the camera is pointing more to the ground. A
+negative value means that the camera is pointing more to the sky.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cameraPitch</span><span class="p">:</span> <span class="kt">Angle</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L147-L153">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV12centerOffset7GUUnits8DistanceVvp"></a>
+                    <a name="//apple_ref/swift/Property/centerOffset" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV12centerOffset7GUUnits8DistanceVvp">centerOffset</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The distance the camera is from the pivot point. A positive value
+indicates that the camera is in front of the pivot point while a
+negative value indicates that the camera is behind the pivot
+point.</p>
+
+<p>This property is useful for when the camera is mounted on a robot
+and distance calculations need to be calculated from the torso,
+not the camera.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">centerOffset</span><span class="p">:</span> <span class="kt">Distance</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L163-L169">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV4vFov7GUUnits5AngleVvp"></a>
+                    <a name="//apple_ref/swift/Property/vFov" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV4vFov7GUUnits5AngleVvp">vFov</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The vertical field of view of the camera.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">vFov</span><span class="p">:</span> <span class="kt">Angle</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L172-L178">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV4hFov7GUUnits5AngleVvp"></a>
+                    <a name="//apple_ref/swift/Property/hFov" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV4hFov7GUUnits5AngleVvp">hFov</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The horizontal field of view of the camera.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">hFov</span><span class="p">:</span> <span class="kt">Angle</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L181-L187">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Checking%20Whether%20Conversions%20Are%20Possible"></a>
+                <a name="//apple_ref/swift/Section/Checking Whether Conversions Are Possible" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Checking%20Whether%20Conversions%20Are%20Possible"></a>
+                  <h3 class="section-name"><span>Checking Whether Conversions Are Possible</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV14objectOnGroundySb13GUCoordinates0C10CoordinateVF"></a>
+                    <a name="//apple_ref/swift/Method/objectOnGround(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV14objectOnGroundySb13GUCoordinates0C10CoordinateVF">objectOnGround(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Is the object represent by the pixel in the image taken from the camera
+on the ground?</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">objectOnGround</span><span class="p">(</span><span class="n">_</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">CameraCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pixel in the image representing the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if the pixel represents an object that is on the ground.
+Otherwise, False.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L198-L200">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV14objectOnGroundySb13GUCoordinates15PixelCoordinateVF"></a>
+                    <a name="//apple_ref/swift/Method/objectOnGround(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV14objectOnGroundySb13GUCoordinates15PixelCoordinateVF">objectOnGround(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Is the object represent by the pixel in the image taken from the camera
+on the ground?</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">objectOnGround</span><span class="p">(</span><span class="n">_</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">PixelCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pixel in the image representing the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if the pixel represents an object that is on the ground.
+Otherwise, False.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L209-L211">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV14objectOnGroundySb13GUCoordinates17PercentCoordinateVF"></a>
+                    <a name="//apple_ref/swift/Method/objectOnGround(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV14objectOnGroundySb13GUCoordinates17PercentCoordinateVF">objectOnGround(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Is the object represent by the pixel in the image taken from the camera
+on the ground?</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">objectOnGround</span><span class="p">(</span><span class="n">_</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">PercentCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pixel in the image representing the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if the pixel represents an object that is on the ground.
+Otherwise, False.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L220-L222">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV6canSee6objectSb13GUCoordinates18RelativeCoordinateV_tF"></a>
+                    <a name="//apple_ref/swift/Method/canSee(object:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV6canSee6objectSb13GUCoordinates18RelativeCoordinateV_tF">canSee(object:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Can the camera see the object?</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">canSee</span><span class="p">(</span><span class="n">object</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">RelativeCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The location of the object in relation to the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if the specified camera can see the object, False
+otherwise.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L230-L232">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Converting%20Image%20Coordinates%20To%20Relative%20Coordinates"></a>
+                <a name="//apple_ref/swift/Section/Converting Image Coordinates To Relative Coordinates" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Converting%20Image%20Coordinates%20To%20Relative%20Coordinates"></a>
+                  <h3 class="section-name"><span>Converting Image Coordinates To Relative Coordinates</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV18relativeCoordinate2of13GUCoordinates08RelativeE0VAF0cE0V_tF"></a>
+                    <a name="//apple_ref/swift/Method/relativeCoordinate(of:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV18relativeCoordinate2of13GUCoordinates08RelativeE0VAF0cE0V_tF">relativeCoordinate(of:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convert the object in an image to a <code>RelativeCoordinate</code> for the
+top camera attached to the <code>topCameraPivot</code> pivot point.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>Only use this function if you are positive that the pixel in
+the image is representing an object on the ground.
+If this is not the case, then the maximum value for the distance will
+be used.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">relativeCoordinate</span><span class="p">(</span><span class="n">of</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">CameraCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">RelativeCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pixel within the image representing the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>This function returns the
+<code>RelativeCoordinate</code> representing the object in the image at the pixel
+<code>coord</code>.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L249-L251">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV18relativeCoordinate2of13GUCoordinates08RelativeE0VAF05PixelE0V_tF"></a>
+                    <a name="//apple_ref/swift/Method/relativeCoordinate(of:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV18relativeCoordinate2of13GUCoordinates08RelativeE0VAF05PixelE0V_tF">relativeCoordinate(of:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convert the object in an image to a <code>RelativeCoordinate</code> for the
+top camera attached to the <code>topCameraPivot</code> pivot point.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>Only use this function if you are positive that the pixel in
+the image is representing an object on the ground.
+If this is not the case, then the maximum value for the distance will
+be used.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">relativeCoordinate</span><span class="p">(</span><span class="n">of</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">PixelCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">RelativeCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pixel within the image representing the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>This function returns the
+<code>RelativeCoordinate</code> representing the object in the image at the pixel
+<code>coord</code>.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L266-L268">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV18relativeCoordinate2of13GUCoordinates08RelativeE0VAF07PercentE0V_tF"></a>
+                    <a name="//apple_ref/swift/Method/relativeCoordinate(of:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV18relativeCoordinate2of13GUCoordinates08RelativeE0VAF07PercentE0V_tF">relativeCoordinate(of:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convert the object in an image to a <code>RelativeCoordinate</code> for the
+top camera attached to the <code>topCameraPivot</code> pivot point.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>Only use this function if you are positive that the point in
+the image is representing an object on the ground.
+If this is not the case, then the maximum value for the distance will
+be used.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">relativeCoordinate</span><span class="p">(</span><span class="n">of</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">PercentCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">RelativeCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The point within the image representing the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>This function returns the
+<code>RelativeCoordinate</code> representing the object in the image at the point
+<code>coord</code>.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L283-L285">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Converting%20Relative%20Coordinates%20To%20Image%20Coordinates"></a>
+                <a name="//apple_ref/swift/Section/Converting Relative Coordinates To Image Coordinates" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Converting%20Relative%20Coordinates%20To%20Image%20Coordinates"></a>
+                  <h3 class="section-name"><span>Converting Relative Coordinates To Image Coordinates</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV16cameraCoordinate2to8resWidth0G6Height13GUCoordinates0cE0VAH08RelativeE0V_7GUUnits8Pixels_uVAOtF"></a>
+                    <a name="//apple_ref/swift/Method/cameraCoordinate(to:resWidth:resHeight:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV16cameraCoordinate2to8resWidth0G6Height13GUCoordinates0cE0VAH08RelativeE0V_7GUUnits8Pixels_uVAOtF">cameraCoordinate(to:<wbr>resWidth:<wbr>resHeight:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a pixel within an image representing the specified object in
+the top camera.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>This function does not check whether the calculated
+coordinate is within the bounds of <code>resWidth</code> and <code>resHeight</code>. As such
+you should only use this function if you are positive that the camera
+can actually see the object at <code>coord</code>.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">cameraCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">RelativeCoordinate</span><span class="p">,</span> <span class="nv">resWidth</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">,</span> <span class="nv">resHeight</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CameraCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The location of the target object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resWidth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The width of the resolution of the image that
+we are placing the target in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resHeight</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The height of the resolution of the image that
+we are placing the target in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The <code>CameraCoordinate</code> representing the target in the image
+at a specific pixel.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L307-L309">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV15pixelCoordinate2to8resWidth0G6Height13GUCoordinates05PixelE0VAH08RelativeE0V_7GUUnits8Pixels_uVAOtF"></a>
+                    <a name="//apple_ref/swift/Method/pixelCoordinate(to:resWidth:resHeight:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV15pixelCoordinate2to8resWidth0G6Height13GUCoordinates05PixelE0VAH08RelativeE0V_7GUUnits8Pixels_uVAOtF">pixelCoordinate(to:<wbr>resWidth:<wbr>resHeight:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a pixel within an image representing the specified object in
+the top camera.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>This function does not check whether the calculated
+coordinate is within the bounds of <code>resWidth</code> and <code>resHeight</code>. As such
+you should only use this function if you are positive that the camera
+can actually see the object at <code>coord</code>.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">pixelCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">RelativeCoordinate</span><span class="p">,</span> <span class="nv">resWidth</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">,</span> <span class="nv">resHeight</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">PixelCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The location of the target object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resWidth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The width of the resolution of the image that
+we are placing the target in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resHeight</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The height of the resolution of the image that
+we are placing the target in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The <code>PixelCoordinate</code> representing the target in the image
+at a specific pixel.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L329-L331">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV17percentCoordinate2to13GUCoordinates07PercentE0VAF08RelativeE0V_tF"></a>
+                    <a name="//apple_ref/swift/Method/percentCoordinate(to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV17percentCoordinate2to13GUCoordinates07PercentE0VAF08RelativeE0V_tF">percentCoordinate(to:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a point within an image representing the specified object in
+the top camera.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>This function does not check whether the calculated
+coordinate is within the bounds of <code>-1.0</code> and <code>1.0</code>. As such
+you should only use this function if you are positive that the camera
+can actually see the object at <code>coord</code>.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">percentCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">RelativeCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">PercentCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The location of the target object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The <code>PercentCoordinate</code> representing the target in the image
+at a specific pixel.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L345-L347">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV07clampedC10Coordinate2to8resWidth0G6Height13GUCoordinates0cE0VAH08RelativeE0V_7GUUnits8Pixels_uVAOtF"></a>
+                    <a name="//apple_ref/swift/Method/clampedCameraCoordinate(to:resWidth:resHeight:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV07clampedC10Coordinate2to8resWidth0G6Height13GUCoordinates0cE0VAH08RelativeE0V_7GUUnits8Pixels_uVAOtF">clampedCameraCoordinate(to:<wbr>resWidth:<wbr>resHeight:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a pixel within an image representing the specified
+object in the top camera.</p>
+
+<p>All calculated pixels that fall outside
+the bounds of the image are moved to the edge of the image to ensure
+that the function always calculates a coordinate within the image
+bounds.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">clampedCameraCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">RelativeCoordinate</span><span class="p">,</span> <span class="nv">resWidth</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">,</span> <span class="nv">resHeight</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CameraCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The location of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resWidth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The width of the resolution of the image that
+we are placing the target.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resHeight</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The height of the resolution of the image that
+we are placing the target.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>CameraCoordinate</code> representing the object in the
+top camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L367-L369">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV22clampedPixelCoordinate2to8resWidth0H6Height13GUCoordinates0eF0VAH08RelativeF0V_7GUUnits8Pixels_uVAOtF"></a>
+                    <a name="//apple_ref/swift/Method/clampedPixelCoordinate(to:resWidth:resHeight:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV22clampedPixelCoordinate2to8resWidth0H6Height13GUCoordinates0eF0VAH08RelativeF0V_7GUUnits8Pixels_uVAOtF">clampedPixelCoordinate(to:<wbr>resWidth:<wbr>resHeight:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a pixel within an image representing the specified
+object in the top camera.</p>
+
+<p>All calculated pixels that fall outside
+the bounds of the image are moved to the edge of the image to ensure
+that the function always calculates a coordinate within the image
+bounds.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">clampedPixelCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">RelativeCoordinate</span><span class="p">,</span> <span class="nv">resWidth</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">,</span> <span class="nv">resHeight</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">PixelCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The location of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resWidth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The width of the resolution of the image that
+we are placing the target.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resHeight</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The height of the resolution of the image that
+we are placing the target.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>PixelCoordinate</code> representing the object in the
+top camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L389-L391">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV24clampedPercentCoordinate2to13GUCoordinates0eF0VAF08RelativeF0V_tF"></a>
+                    <a name="//apple_ref/swift/Method/clampedPercentCoordinate(to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV24clampedPercentCoordinate2to13GUCoordinates0eF0VAF08RelativeF0V_tF">clampedPercentCoordinate(to:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a point within an image representing the specified
+object in the top camera.</p>
+
+<p>All calculated pixels that fall outside
+the bounds of the image are moved to the edge of the image to ensure
+that the function always calculates a coordinate within the image
+bounds.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">clampedPercentCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">RelativeCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">PercentCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The location of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>PercentCoordinate</code> representing the object in the
+top camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L405-L407">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Field%20Coordinates%20From%20Image%20Coordinates"></a>
+                <a name="//apple_ref/swift/Section/Field Coordinates From Image Coordinates" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Field%20Coordinates%20From%20Image%20Coordinates"></a>
+                  <h3 class="section-name"><span>Field Coordinates From Image Coordinates</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV19cartesianCoordinate2at4from13GUCoordinates09CartesianE0VAG0cE0V_AG05FieldE0VtF"></a>
+                    <a name="//apple_ref/swift/Method/cartesianCoordinate(at:from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV19cartesianCoordinate2at4from13GUCoordinates09CartesianE0VAG0cE0V_AG05FieldE0VtF">cartesianCoordinate(at:<wbr>from:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate the position of an object in an image in relation to
+the camera.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>Only use this function if you are positive that the pixel in
+the image represented by <code>coord</code> is representing an object on the ground.
+If this is not the case, then the maximum value for the distance will
+be used.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">cartesianCoordinate</span><span class="p">(</span><span class="n">at</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">CameraCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CartesianCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pixel in the image representing the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>CartesianCoordinate</code> calculated in relation to
+<code>fieldPosition</code>.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L425-L427">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV19cartesianCoordinate2at4from13GUCoordinates09CartesianE0VAG05PixelE0V_AG05FieldE0VtF"></a>
+                    <a name="//apple_ref/swift/Method/cartesianCoordinate(at:from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV19cartesianCoordinate2at4from13GUCoordinates09CartesianE0VAG05PixelE0V_AG05FieldE0VtF">cartesianCoordinate(at:<wbr>from:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate the position of an object in an image in relation to
+the camera.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>Only use this function if you are positive that the pixel in
+the image represented by <code>coord</code> is representing an object on the ground.
+If this is not the case, then the maximum value for the distance will
+be used.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">cartesianCoordinate</span><span class="p">(</span><span class="n">at</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">PixelCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CartesianCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pixel in the image representing the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>CartesianCoordinate</code> calculated in relation to
+<code>fieldPosition</code>.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L443-L445">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV19cartesianCoordinate2at4from13GUCoordinates09CartesianE0VAG07PercentE0V_AG05FieldE0VtF"></a>
+                    <a name="//apple_ref/swift/Method/cartesianCoordinate(at:from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV19cartesianCoordinate2at4from13GUCoordinates09CartesianE0VAG07PercentE0V_AG05FieldE0VtF">cartesianCoordinate(at:<wbr>from:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate the position of an object in an image in relation to
+the camera.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>Only use this function if you are positive that the point in
+the image represented by <code>coord</code> is representing an object on the ground.
+If this is not the case, then the maximum value for the distance will
+be used.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">cartesianCoordinate</span><span class="p">(</span><span class="n">at</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">PercentCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CartesianCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The point in the image representing the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>CartesianCoordinate</code> calculated in relation to
+<code>fieldPosition</code>.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L461-L463">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV15fieldCoordinate2at4from7heading13GUCoordinates05FieldE0VAH0cE0V_AJ7GUUnits9Degrees_tVtF"></a>
+                    <a name="//apple_ref/swift/Method/fieldCoordinate(at:from:heading:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV15fieldCoordinate2at4from7heading13GUCoordinates05FieldE0VAH0cE0V_AJ7GUUnits9Degrees_tVtF">fieldCoordinate(at:<wbr>from:<wbr>heading:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate the position of an object in an image in relation to
+the camera.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>Only use this function if you are positive that the pixel in
+the image represented by <code>coord</code> is representing an object on the ground.
+If this is not the case, then the maximum value for the distance will
+be used.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fieldCoordinate</span><span class="p">(</span><span class="n">at</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">CameraCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="nv">heading</span><span class="p">:</span> <span class="kt">Degrees_t</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">FieldCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pixel in the image representing the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>heading</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The direction in which the new coordinate
+is facing.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>FieldCoordinate</code> calculated in relation to
+<code>fieldPosition</code>.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L482-L484">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV15fieldCoordinate2at4from7heading13GUCoordinates05FieldE0VAH05PixelE0V_AJ7GUUnits9Degrees_tVtF"></a>
+                    <a name="//apple_ref/swift/Method/fieldCoordinate(at:from:heading:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV15fieldCoordinate2at4from7heading13GUCoordinates05FieldE0VAH05PixelE0V_AJ7GUUnits9Degrees_tVtF">fieldCoordinate(at:<wbr>from:<wbr>heading:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate the position of an object in an image in relation to
+the camera.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>Only use this function if you are positive that the pixel in
+the image represented by <code>coord</code> is representing an object on the ground.
+If this is not the case, then the maximum value for the distance will
+be used.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fieldCoordinate</span><span class="p">(</span><span class="n">at</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">PixelCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="nv">heading</span><span class="p">:</span> <span class="kt">Degrees_t</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">FieldCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pixel in the image representing the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>heading</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The direction in which the new coordinate
+is facing.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>FieldCoordinate</code> calculated in relation to
+<code>fieldPosition</code>.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L503-L505">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV15fieldCoordinate2at4from7heading13GUCoordinates05FieldE0VAH07PercentE0V_AJ7GUUnits9Degrees_tVtF"></a>
+                    <a name="//apple_ref/swift/Method/fieldCoordinate(at:from:heading:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV15fieldCoordinate2at4from7heading13GUCoordinates05FieldE0VAH07PercentE0V_AJ7GUUnits9Degrees_tVtF">fieldCoordinate(at:<wbr>from:<wbr>heading:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate the position of an object in an image in relation to
+the camera.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>Only use this function if you are positive that the point in
+the image represented by <code>coord</code> is representing an object on the ground.
+If this is not the case, then the maximum value for the distance will
+be used.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">fieldCoordinate</span><span class="p">(</span><span class="n">at</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">PercentCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="nv">heading</span><span class="p">:</span> <span class="kt">Degrees_t</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">FieldCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The point in the image representing the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>heading</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The direction in which the new coordinate
+is facing.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>FieldCoordinate</code> calculated in relation to
+<code>fieldPosition</code>.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L524-L526">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Image%20Coordinates%20From%20Field%20Coordinates"></a>
+                <a name="//apple_ref/swift/Section/Image Coordinates From Field Coordinates" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Image%20Coordinates%20From%20Field%20Coordinates"></a>
+                  <h3 class="section-name"><span>Image Coordinates From Field Coordinates</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV16cameraCoordinate2to4from8resWidth0H6Height13GUCoordinates0cE0VAI09CartesianE0V_AI05FieldE0V7GUUnits8Pixels_uVARtF"></a>
+                    <a name="//apple_ref/swift/Method/cameraCoordinate(to:from:resWidth:resHeight:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV16cameraCoordinate2to4from8resWidth0H6Height13GUCoordinates0cE0VAI09CartesianE0V_AI05FieldE0V7GUUnits8Pixels_uVARtF">cameraCoordinate(to:<wbr>from:<wbr>resWidth:<wbr>resHeight:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a pixel within a specific image taken from the camera
+representing an object at a given position.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>This function does not check whether the calculated coordinate
+is within the bounds of the <code>resWidth</code> and <code>resHeight</code>. As such you
+should only use this function if you are positive that the camera can
+actually see the object at <code>coord</code>.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">cameraCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">CartesianCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="nv">resWidth</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">,</span> <span class="nv">resHeight</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CameraCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resWidth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The width of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resHeight</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The height of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>CameraCoordinate</code> representing the object in the
+camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L550-L552">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV16cameraCoordinate2to4from8resWidth0H6Height13GUCoordinates0cE0VAI05FieldE0V_AM7GUUnits8Pixels_uVAPtF"></a>
+                    <a name="//apple_ref/swift/Method/cameraCoordinate(to:from:resWidth:resHeight:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV16cameraCoordinate2to4from8resWidth0H6Height13GUCoordinates0cE0VAI05FieldE0V_AM7GUUnits8Pixels_uVAPtF">cameraCoordinate(to:<wbr>from:<wbr>resWidth:<wbr>resHeight:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a pixel within a specific image taken from the camera
+representing an object at a given position.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>This function does not check whether the calculated coordinate
+is within the bounds of the <code>resWidth</code> and <code>resHeight</code>. As such you
+should only use this function if you are positive that the camera can
+actually see the object at <code>coord</code>.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">cameraCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="nv">resWidth</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">,</span> <span class="nv">resHeight</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CameraCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resWidth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The width of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resHeight</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The height of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>CameraCoordinate</code> representing the object in the
+camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L574-L576">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV15pixelCoordinate2to4from8resWidth0H6Height13GUCoordinates05PixelE0VAI09CartesianE0V_AI05FieldE0V7GUUnits8Pixels_uVARtF"></a>
+                    <a name="//apple_ref/swift/Method/pixelCoordinate(to:from:resWidth:resHeight:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV15pixelCoordinate2to4from8resWidth0H6Height13GUCoordinates05PixelE0VAI09CartesianE0V_AI05FieldE0V7GUUnits8Pixels_uVARtF">pixelCoordinate(to:<wbr>from:<wbr>resWidth:<wbr>resHeight:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a pixel within a specific image taken from the camera
+representing an object at a given position.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>This function does not check whether the calculated coordinate
+is within the bounds of the <code>resWidth</code> and <code>resHeight</code>. As such you
+should only use this function if you are positive that the camera can
+actually see the object at <code>coord</code>.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">pixelCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">CartesianCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="nv">resWidth</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">,</span> <span class="nv">resHeight</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">PixelCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resWidth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The width of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resHeight</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The height of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>PixelCoordinate</code> representing the object in the
+camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L598-L600">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV15pixelCoordinate2to4from8resWidth0H6Height13GUCoordinates05PixelE0VAI05FieldE0V_AM7GUUnits8Pixels_uVAPtF"></a>
+                    <a name="//apple_ref/swift/Method/pixelCoordinate(to:from:resWidth:resHeight:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV15pixelCoordinate2to4from8resWidth0H6Height13GUCoordinates05PixelE0VAI05FieldE0V_AM7GUUnits8Pixels_uVAPtF">pixelCoordinate(to:<wbr>from:<wbr>resWidth:<wbr>resHeight:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a pixel within a specific image taken from the camera
+representing an object at a given position.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>This function does not check whether the calculated coordinate
+is within the bounds of the <code>resWidth</code> and <code>resHeight</code>. As such you
+should only use this function if you are positive that the camera can
+actually see the object at <code>coord</code>.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">pixelCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="nv">resWidth</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">,</span> <span class="nv">resHeight</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">PixelCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resWidth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The width of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resHeight</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The height of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>PixelCoordinate</code> representing the object in the
+camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L622-L624">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV17percentCoordinate2to4from13GUCoordinates07PercentE0VAG09CartesianE0V_AG05FieldE0VtF"></a>
+                    <a name="//apple_ref/swift/Method/percentCoordinate(to:from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV17percentCoordinate2to4from13GUCoordinates07PercentE0VAG09CartesianE0V_AG05FieldE0VtF">percentCoordinate(to:<wbr>from:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a point within a specific image taken from the camera
+representing an object at a given position.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>This function does not check whether the calculated coordinate
+is within the bounds of the <code>resWidth</code> and <code>resHeight</code>. As such you
+should only use this function if you are positive that the camera can
+actually see the object at <code>coord</code>.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">percentCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">CartesianCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">PercentCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>PercentCoordinate</code> representing the object in the
+camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L640-L642">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV17percentCoordinate2to4from13GUCoordinates07PercentE0VAG05FieldE0V_AKtF"></a>
+                    <a name="//apple_ref/swift/Method/percentCoordinate(to:from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV17percentCoordinate2to4from13GUCoordinates07PercentE0VAG05FieldE0V_AKtF">percentCoordinate(to:<wbr>from:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a point within a specific image taken from the camera
+representing an object at a given position.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>This function does not check whether the calculated coordinate
+is within the bounds of the <code>resWidth</code> and <code>resHeight</code>. As such you
+should only use this function if you are positive that the camera can
+actually see the object at <code>coord</code>.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">percentCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">PercentCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>PercentCoordinate</code> representing the object in the
+camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L658-L659">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV07clampedC10Coordinate2to4from8resWidth0H6Height13GUCoordinates0cE0VAI09CartesianE0V_AI05FieldE0V7GUUnits8Pixels_uVARtF"></a>
+                    <a name="//apple_ref/swift/Method/clampedCameraCoordinate(to:from:resWidth:resHeight:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV07clampedC10Coordinate2to4from8resWidth0H6Height13GUCoordinates0cE0VAI09CartesianE0V_AI05FieldE0V7GUUnits8Pixels_uVARtF">clampedCameraCoordinate(to:<wbr>from:<wbr>resWidth:<wbr>resHeight:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a pixel within a specific image taken from the camera
+representing an object at a given position.</p>
+
+<p>All calculated pixels that fall outside
+the bounds of the image are moved to the edge of the image to ensure
+that the function always calculates a coordinate within the image
+bounds.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">clampedCameraCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">CartesianCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="nv">resWidth</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">,</span> <span class="nv">resHeight</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CameraCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resWidth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The width of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resHeight</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The height of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>CameraCoordinate</code> representing the object in the
+camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L681-L683">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV07clampedC10Coordinate2to4from8resWidth0H6Height13GUCoordinates0cE0VAI05FieldE0V_AM7GUUnits8Pixels_uVAPtF"></a>
+                    <a name="//apple_ref/swift/Method/clampedCameraCoordinate(to:from:resWidth:resHeight:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV07clampedC10Coordinate2to4from8resWidth0H6Height13GUCoordinates0cE0VAI05FieldE0V_AM7GUUnits8Pixels_uVAPtF">clampedCameraCoordinate(to:<wbr>from:<wbr>resWidth:<wbr>resHeight:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a pixel within a specific image taken from the camera
+representing an object at a given position.</p>
+
+<p>All calculated pixels that fall outside
+the bounds of the image are moved to the edge of the image to ensure
+that the function always calculates a coordinate within the image
+bounds.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">clampedCameraCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="nv">resWidth</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">,</span> <span class="nv">resHeight</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CameraCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resWidth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The width of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resHeight</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The height of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>CameraCoordinate</code> representing the object in the
+camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L705-L707">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV22clampedPixelCoordinate2to4from8resWidth0I6Height13GUCoordinates0eF0VAI09CartesianF0V_AI05FieldF0V7GUUnits8Pixels_uVARtF"></a>
+                    <a name="//apple_ref/swift/Method/clampedPixelCoordinate(to:from:resWidth:resHeight:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV22clampedPixelCoordinate2to4from8resWidth0I6Height13GUCoordinates0eF0VAI09CartesianF0V_AI05FieldF0V7GUUnits8Pixels_uVARtF">clampedPixelCoordinate(to:<wbr>from:<wbr>resWidth:<wbr>resHeight:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a pixel within a specific image taken from the camera
+representing an object at a given position.</p>
+
+<p>All calculated pixels that fall outside
+the bounds of the image are moved to the edge of the image to ensure
+that the function always calculates a coordinate within the image
+bounds.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">clampedPixelCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">CartesianCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="nv">resWidth</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">,</span> <span class="nv">resHeight</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">PixelCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resWidth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The width of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resHeight</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The height of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>PixelCoordinate</code> representing the object in the
+camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L729-L731">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV22clampedPixelCoordinate2to4from8resWidth0I6Height13GUCoordinates0eF0VAI05FieldF0V_AM7GUUnits8Pixels_uVAPtF"></a>
+                    <a name="//apple_ref/swift/Method/clampedPixelCoordinate(to:from:resWidth:resHeight:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV22clampedPixelCoordinate2to4from8resWidth0I6Height13GUCoordinates0eF0VAI05FieldF0V_AM7GUUnits8Pixels_uVAPtF">clampedPixelCoordinate(to:<wbr>from:<wbr>resWidth:<wbr>resHeight:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a pixel within a specific image taken from the camera
+representing an object at a given position.</p>
+
+<p>All calculated pixels that fall outside
+the bounds of the image are moved to the edge of the image to ensure
+that the function always calculates a coordinate within the image
+bounds.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">clampedPixelCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="nv">resWidth</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">,</span> <span class="nv">resHeight</span><span class="p">:</span> <span class="kt">Pixels_u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">PixelCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resWidth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The width of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resHeight</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The height of the resolution of the image that
+we are placing the object in.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>PixelCoordinate</code> representing the object in the
+camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L753-L755">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV24clampedPercentCoordinate2to4from13GUCoordinates0eF0VAG09CartesianF0V_AG05FieldF0VtF"></a>
+                    <a name="//apple_ref/swift/Method/clampedPercentCoordinate(to:from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV24clampedPercentCoordinate2to4from13GUCoordinates0eF0VAG09CartesianF0V_AG05FieldF0VtF">clampedPercentCoordinate(to:<wbr>from:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a point within a specific image taken from the camera
+representing an object at a given position.</p>
+
+<p>All calculated pixels that fall outside
+the bounds of the image are moved to the edge of the image to ensure
+that the function always calculates a coordinate within the image
+bounds.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">clampedPercentCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">CartesianCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">PercentCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>PercentCoordinate</code> representing the object in the
+camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L771-L773">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8GURobots11RobotCameraV24clampedPercentCoordinate2to4from13GUCoordinates0eF0VAG05FieldF0V_AKtF"></a>
+                    <a name="//apple_ref/swift/Method/clampedPercentCoordinate(to:from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8GURobots11RobotCameraV24clampedPercentCoordinate2to4from13GUCoordinates0eF0VAG05FieldF0V_AKtF">clampedPercentCoordinate(to:<wbr>from:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculate a point within a specific image taken from the camera
+representing an object at a given position.</p>
+
+<p>All calculated pixels that fall outside
+the bounds of the image are moved to the edge of the image to ensure
+that the function always calculates a coordinate within the image
+bounds.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">clampedPercentCoordinate</span><span class="p">(</span><span class="n">to</span> <span class="nv">coord</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">,</span> <span class="n">from</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">PercentCoordinate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coord</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The position of the object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field position of the camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>PercentCoordinate</code> representing the object in the
+camera.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/GURobots/RobotCamera.swift#L789-L791">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2021 <a class="link" href="" target="_blank" rel="external noopener">Callum McColl</a>. All rights reserved. (Last updated: 2021-12-24)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

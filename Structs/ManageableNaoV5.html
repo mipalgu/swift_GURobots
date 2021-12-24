@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ManageableNaoV5 Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Struct/ManageableNaoV5" class="dashAnchor"></a>
+
+    <a title="ManageableNaoV5 Structure Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+           Docs
+        </a>
+         (87% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/mipalgu/swift_GURobots">
+            <img class="header-icon" src="../img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Fmipalgu.github.io%2Fswift_GURobots%2Fdocsets%2F.xml">
+            <img class="header-icon" src="../img/dash.png" alt="Dash"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html"> Reference</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      ManageableNaoV5 Structure Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Nao.html">Nao</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NaoV5.html">NaoV5</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NaoWBIndexes.html">NaoWBIndexes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Nao.html#/s:3Nao0A15JointsContainerP">NaoJointsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NaoJoints.html">NaoJoints</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NaoHead.html">NaoHead</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NaoHeadSensors.html">NaoHeadSensors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NaoArm.html">NaoArm</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NaoHandSensors.html">NaoHandSensors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NaoLeg.html">NaoLeg</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ManageableNaoV5.html">ManageableNaoV5</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Robot%20Types.html">Robot Types</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/NaoRobot.html">NaoRobot</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Robot%20Types.html#/s:8GURobots18SoccerPlayingRobotP">SoccerPlayingRobot</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/UpdateableRobot.html">UpdateableRobot</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Player%20Data.html">Player Data</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/PlayerNumberContainer.html">PlayerNumberContainer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Cameras.html">Cameras</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RobotCamera.html">RobotCamera</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CamerasContainer.html">CamerasContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/BottomCameraContainer.html">BottomCameraContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/BottomCameraIndexContainer.html">BottomCameraIndexContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TopCameraContainer.html">TopCameraContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TopCameraIndexContainer.html">TopCameraIndexContainer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Joints.html">Joints</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/JointsContainer.html">JointsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PitchJoint.html">PitchJoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PitchRollJoint.html">PitchRollJoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PitchYawJoint.html">PitchYawJoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/YPJoint.html">YPJoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/YawJoint.html">YawJoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/YawRollJoint.html">YawRollJoint</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Sightings%20%28Vision%29.html">Sightings (Vision)</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/SoccerSightingsContainer.html">SoccerSightingsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/BottomCameraSoccerSightingsContainer.html">BottomCameraSoccerSightingsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/TopCameraSoccerSightingsContainer.html">TopCameraSoccerSightingsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SoccerSightings.html">SoccerSightings</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/EllipseSighting.html">EllipseSighting</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RectangleSighting.html">RectangleSighting</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/HorizonSighting.html">HorizonSighting</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/CornerSighting.html">CornerSighting</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/LineSighting.html">LineSighting</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Locations.html">Locations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/SoccerObjectLocationsContainer.html">SoccerObjectLocationsContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SoccerObjectLocations.html">SoccerObjectLocations</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Localisation.html">Localisation</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/FieldPositionContainer.html">FieldPositionContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/BallPositionContainer.html">BallPositionContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/BallPosition.html">BallPosition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Orientation.html">Orientation</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Converting%20C%20Types.html">Converting C Types</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CTypeDelegator.html">CTypeDelegator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CTypeWrapper.html">CTypeWrapper</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>ManageableNaoV5</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ManageableNaoV5</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/NaoRobot.html">NaoRobot</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>A fully manageable nao type.</p>
+
+<p>Generally it is advisable to use <code><a href="../Classes/NaoV5.html">NaoV5</a></code> instead of this type. You
+should only use this type if you are simulating a nao with
+an editor or simulator. This type will not allow you to retrieve the current
+state of the sensors, the current field position of the robot, nor any
+useful data about what the robot is seeing. Instead, this type allows you to
+specify all of these things manually. This gives you complete control.</p>
+
+<p>Note that by itself, this struct looks like it doesn&rsquo;t do much.
+This is because, the entirety of its functionality is provided through
+protocols and protocols extensions. Consider looking through these protocols
+in order to understand all the functionality that this type provides.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Classes/NaoV5.html">NaoV5</a></code>
+
+</div><div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code>NaoWrapper</code>
+
+</div><div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Nao.html#/s:3Nao0A15JointsContainerP">NaoJointsContainer</a></code>
+
+</div><div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Protocols/TopCameraSoccerSightingsContainer.html">TopCameraSoccerSightingsContainer</a></code>
+
+</div><div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Protocols/BottomCameraSoccerSightingsContainer.html">BottomCameraSoccerSightingsContainer</a></code>
+
+</div><div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Protocols/SoccerObjectLocationsContainer.html">SoccerObjectLocationsContainer</a></code>
+
+</div><div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Protocols/FieldPositionContainer.html">FieldPositionContainer</a></code>
+
+</div><div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Protocols/BallPositionContainer.html">BallPositionContainer</a></code>
+
+</div>
+
+              <div class="slightly-smaller">
+                <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L85-L518">Show on GitHub</a>
+              </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Properties"></a>
+                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Properties"></a>
+                  <h3 class="section-name"><span>Properties</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V12playerNumberSivp"></a>
+                    <a name="//apple_ref/swift/Property/playerNumber" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V12playerNumberSivp">playerNumber</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The robots player number.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">playerNumber</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L90">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V6jointsAA0A6JointsVvp"></a>
+                    <a name="//apple_ref/swift/Property/joints" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V6jointsAA0A6JointsVvp">joints</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The joints of the robot.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">joints</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoJoints.html">NaoJoints</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L93">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V24topCameraSoccerSightings8GURobots0fG0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/topCameraSoccerSightings" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V24topCameraSoccerSightings8GURobots0fG0Vvp">topCameraSoccerSightings</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The sightings for the top camera.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">topCameraSoccerSightings</span><span class="p">:</span> <span class="kt"><a href="../Structs/SoccerSightings.html">SoccerSightings</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L96">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V27bottomCameraSoccerSightings8GURobots0fG0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/bottomCameraSoccerSightings" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V27bottomCameraSoccerSightings8GURobots0fG0Vvp">bottomCameraSoccerSightings</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The sightings for the bottom camera.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">bottomCameraSoccerSightings</span><span class="p">:</span> <span class="kt"><a href="../Structs/SoccerSightings.html">SoccerSightings</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L99">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V21soccerObjectLocations8GURobots06SoccereF0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/soccerObjectLocations" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V21soccerObjectLocations8GURobots06SoccereF0Vvp">soccerObjectLocations</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The soccer objects that this robot can see.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">soccerObjectLocations</span><span class="p">:</span> <span class="kt"><a href="../Structs/SoccerObjectLocations.html">SoccerObjectLocations</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L102">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V13fieldPosition13GUCoordinates15FieldCoordinateVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/fieldPosition" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V13fieldPosition13GUCoordinates15FieldCoordinateVSgvp">fieldPosition</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current field position of this robot.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L105">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V12ballPosition8GURobots04BallE0VSgvp"></a>
+                    <a name="//apple_ref/swift/Property/ballPosition" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V12ballPosition8GURobots04BallE0VSgvp">ballPosition</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current position and orientation of the ball on the soccer field.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">ballPosition</span><span class="p">:</span> <span class="kt"><a href="../Structs/BallPosition.html">BallPosition</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L108">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Converting%20Between%20The%20Underlying%20gurobots%20C%20Type"></a>
+                <a name="//apple_ref/swift/Section/Converting Between The Underlying gurobots C Type" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Converting%20Between%20The%20Underlying%20gurobots%20C%20Type"></a>
+                  <h3 class="section-name"><span>Converting Between The Underlying gurobots C Type</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V8rawValueSo6gu_naoVvp"></a>
+                    <a name="//apple_ref/swift/Property/rawValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V8rawValueSo6gu_naoVvp">rawValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convert this object to the underlying gurobots C type <code>gu_nao</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="n">gu_nao</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L113-L131">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5VyACSo6gu_naoVcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5VyACSo6gu_naoVcfc">init(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a <code>ManageableNaoV5</code> by copying the values from the underlying
+gurobots C type <code>gu_nao</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">other</span><span class="p">:</span> <span class="n">gu_nao</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>other</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The underlying gurobots C type <code>gu_nao</code> which values
+will be copied.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L138-L148">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Creating%20a%20ManageableNaoV5"></a>
+                <a name="//apple_ref/swift/Section/Creating a ManageableNaoV5" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Creating%20a%20ManageableNaoV5"></a>
+                  <h3 class="section-name"><span>Creating a ManageableNaoV5</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V12playerNumber6joints24topCameraSoccerSightings06bottomhiJ021soccerObjectLocations13fieldPosition04ballP0ACSi_AA0A6JointsV8GURobots0iJ0VAoM0imN0V13GUCoordinates15FieldCoordinateVSgAM04BallP0VSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(playerNumber:joints:topCameraSoccerSightings:bottomCameraSoccerSightings:soccerObjectLocations:fieldPosition:ballPosition:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V12playerNumber6joints24topCameraSoccerSightings06bottomhiJ021soccerObjectLocations13fieldPosition04ballP0ACSi_AA0A6JointsV8GURobots0iJ0VAoM0imN0V13GUCoordinates15FieldCoordinateVSgAM04BallP0VSgtcfc">init(playerNumber:<wbr>joints:<wbr>topCameraSoccerSightings:<wbr>bottomCameraSoccerSightings:<wbr>soccerObjectLocations:<wbr>fieldPosition:<wbr>ballPosition:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a <code>ManageableNaoV5</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span>
+    <span class="nv">playerNumber</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span>
+    <span class="nv">joints</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoJoints.html">NaoJoints</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoJoints.html">NaoJoints</a></span><span class="p">(),</span>
+    <span class="nv">topCameraSoccerSightings</span><span class="p">:</span> <span class="kt"><a href="../Structs/SoccerSightings.html">SoccerSightings</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/SoccerSightings.html">SoccerSightings</a></span><span class="p">(),</span>
+    <span class="nv">bottomCameraSoccerSightings</span><span class="p">:</span> <span class="kt"><a href="../Structs/SoccerSightings.html">SoccerSightings</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/SoccerSightings.html">SoccerSightings</a></span><span class="p">(),</span>
+    <span class="nv">soccerObjectLocations</span><span class="p">:</span> <span class="kt"><a href="../Structs/SoccerObjectLocations.html">SoccerObjectLocations</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/SoccerObjectLocations.html">SoccerObjectLocations</a></span><span class="p">(),</span>
+    <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">ballPosition</span><span class="p">:</span> <span class="kt"><a href="../Structs/BallPosition.html">BallPosition</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+<span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>playerNumber</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The player number for this robot.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>joints</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The list of joints for the robot.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>topCameraSoccerSightings</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The sightings from vision for the
+top camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bottomCameraSoccerSightings</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The sightings from vision for
+the bottom camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>soccerObjectLocations</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The soccer objects viewable by the robot.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPostion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current field position of the robot.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ballPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current position and orientation of the
+soccer ball on the soccer field.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L170-L186">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Creating%20a%20ManageableNaoV5%20in%20Specific%20Poses"></a>
+                <a name="//apple_ref/swift/Section/Creating a ManageableNaoV5 in Specific Poses" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Creating%20a%20ManageableNaoV5%20in%20Specific%20Poses"></a>
+                  <h3 class="section-name"><span>Creating a ManageableNaoV5 in Specific Poses</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V8kneeling12playerNumber4head7leftArm05rightI024topCameraSoccerSightings06bottomlmN021soccerObjectLocations13fieldPosition04ballT0ACSi_AA0A4HeadVAA0aI0VAQ8GURobots0mN0VAtR0mqR0V13GUCoordinates15FieldCoordinateVSgAR04BallT0VSgtFZ"></a>
+                    <a name="//apple_ref/swift/Method/kneeling(playerNumber:head:leftArm:rightArm:topCameraSoccerSightings:bottomCameraSoccerSightings:soccerObjectLocations:fieldPosition:ballPosition:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V8kneeling12playerNumber4head7leftArm05rightI024topCameraSoccerSightings06bottomlmN021soccerObjectLocations13fieldPosition04ballT0ACSi_AA0A4HeadVAA0aI0VAQ8GURobots0mN0VAtR0mqR0V13GUCoordinates15FieldCoordinateVSgAR04BallT0VSgtFZ">kneeling(playerNumber:<wbr>head:<wbr>leftArm:<wbr>rightArm:<wbr>topCameraSoccerSightings:<wbr>bottomCameraSoccerSightings:<wbr>soccerObjectLocations:<wbr>fieldPosition:<wbr>ballPosition:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a <code>ManageableNaoV5</code> in the kneeling position.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">kneeling</span><span class="p">(</span>
+    <span class="nv">playerNumber</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span>
+    <span class="nv">head</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoHead.html">NaoHead</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoHead.html">NaoHead</a></span><span class="p">(),</span>
+    <span class="nv">leftArm</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">(</span>
+        <span class="nv">shoulder</span><span class="p">:</span> <span class="kt"><a href="../Structs/PitchRollJoint.html">PitchRollJoint</a></span><span class="p">(</span><span class="nv">pitch</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">90</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">4</span><span class="p">)),</span>
+        <span class="nv">elbow</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawRollJoint.html">YawRollJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">0</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mf">2.8</span><span class="p">)),</span>
+        <span class="nv">wrist</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawJoint.html">YawJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="nv">rightArm</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">(</span>
+        <span class="nv">shoulder</span><span class="p">:</span> <span class="kt"><a href="../Structs/PitchRollJoint.html">PitchRollJoint</a></span><span class="p">(</span><span class="nv">pitch</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">90</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">4</span><span class="p">)),</span>
+        <span class="nv">elbow</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawRollJoint.html">YawRollJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">0</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mf">2.8</span><span class="p">)),</span>
+        <span class="nv">wrist</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawJoint.html">YawJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="nv">topCameraSoccerSightings</span><span class="p">:</span> <span class="kt"><a href="../Structs/SoccerSightings.html">SoccerSightings</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/SoccerSightings.html">SoccerSightings</a></span><span class="p">(),</span>
+    <span class="nv">bottomCameraSoccerSightings</span><span class="p">:</span> <span class="kt"><a href="../Structs/SoccerSightings.html">SoccerSightings</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/SoccerSightings.html">SoccerSightings</a></span><span class="p">(),</span>
+    <span class="nv">soccerObjectLocations</span><span class="p">:</span> <span class="kt"><a href="../Structs/SoccerObjectLocations.html">SoccerObjectLocations</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/SoccerObjectLocations.html">SoccerObjectLocations</a></span><span class="p">(),</span>
+    <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">ballPosition</span><span class="p">:</span> <span class="kt"><a href="../Structs/BallPosition.html">BallPosition</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ManageableNaoV5</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>playerNumber</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The player number of this robot.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>head</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the head.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>leftArm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the left arm. By
+default, the left arm will be positioned as it is in the <em>kneeling</em>
+pose.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rightArm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the right arm.
+By default, the right arm will be positioned as it is in the <em>kneeling</em>
+pose.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>topCameraSoccerSightings</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The sightings from vision for the
+top camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bottomCameraSoccerSightings</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The sightings from vision for
+the bottom camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>soccerObjectLocations</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the sightings viewable
+by the robot. Be default, no objects on the field are visible.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the robot
+on the field. By default, there is no field position.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ballPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the current position and
+orientation of the soccer ball on the soccer field. By default, the
+position and orientation of the ball is unknown.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L219-L257">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V8standing12playerNumber4head7leftArm05rightI024topCameraSoccerSightings06bottomlmN021soccerObjectLocations13fieldPosition04ballT0ACSi_AA0A4HeadVAA0aI0VAQ8GURobots0mN0VAtR0mqR0V13GUCoordinates15FieldCoordinateVSgAR04BallT0VSgtFZ"></a>
+                    <a name="//apple_ref/swift/Method/standing(playerNumber:head:leftArm:rightArm:topCameraSoccerSightings:bottomCameraSoccerSightings:soccerObjectLocations:fieldPosition:ballPosition:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V8standing12playerNumber4head7leftArm05rightI024topCameraSoccerSightings06bottomlmN021soccerObjectLocations13fieldPosition04ballT0ACSi_AA0A4HeadVAA0aI0VAQ8GURobots0mN0VAtR0mqR0V13GUCoordinates15FieldCoordinateVSgAR04BallT0VSgtFZ">standing(playerNumber:<wbr>head:<wbr>leftArm:<wbr>rightArm:<wbr>topCameraSoccerSightings:<wbr>bottomCameraSoccerSightings:<wbr>soccerObjectLocations:<wbr>fieldPosition:<wbr>ballPosition:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a <code>ManageableNaoV5</code> in the standing position.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">standing</span><span class="p">(</span>
+    <span class="nv">playerNumber</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span>
+    <span class="nv">head</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoHead.html">NaoHead</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoHead.html">NaoHead</a></span><span class="p">(),</span>
+    <span class="nv">leftArm</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">(</span>
+        <span class="nv">shoulder</span><span class="p">:</span> <span class="kt"><a href="../Structs/PitchRollJoint.html">PitchRollJoint</a></span><span class="p">(</span><span class="nv">pitch</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">90</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">18</span><span class="p">)),</span>
+        <span class="nv">elbow</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawRollJoint.html">YawRollJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">0</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">)),</span>
+        <span class="nv">wrist</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawJoint.html">YawJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="nv">rightArm</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">(</span>
+        <span class="nv">shoulder</span><span class="p">:</span> <span class="kt"><a href="../Structs/PitchRollJoint.html">PitchRollJoint</a></span><span class="p">(</span><span class="nv">pitch</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">90</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">18</span><span class="p">)),</span>
+        <span class="nv">elbow</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawRollJoint.html">YawRollJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">0</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">2</span><span class="p">)),</span>
+        <span class="nv">wrist</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawJoint.html">YawJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="nv">topCameraSoccerSightings</span><span class="p">:</span> <span class="kt"><a href="../Structs/SoccerSightings.html">SoccerSightings</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/SoccerSightings.html">SoccerSightings</a></span><span class="p">(),</span>
+    <span class="nv">bottomCameraSoccerSightings</span><span class="p">:</span> <span class="kt"><a href="../Structs/SoccerSightings.html">SoccerSightings</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/SoccerSightings.html">SoccerSightings</a></span><span class="p">(),</span>
+    <span class="nv">soccerObjectLocations</span><span class="p">:</span> <span class="kt"><a href="../Structs/SoccerObjectLocations.html">SoccerObjectLocations</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/SoccerObjectLocations.html">SoccerObjectLocations</a></span><span class="p">(),</span>
+    <span class="nv">fieldPosition</span><span class="p">:</span> <span class="kt">FieldCoordinate</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">ballPosition</span><span class="p">:</span> <span class="kt"><a href="../Structs/BallPosition.html">BallPosition</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ManageableNaoV5</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>playerNumber</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The player number of this robot.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>head</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the head.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>leftArm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the left arm. By
+default, the left arm will be positioned as it is in the <em>standing</em>
+pose.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rightArm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the right arm.
+By default, the right arm will be positioned as it is in the <em>standing</em>
+pose.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>topCameraSoccerSightings</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The sightings from vision for the
+top camera.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bottomCameraSoccerSightings</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The sightings from vision for
+the bottom camera. </p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>soccerObjectLocations</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the sightings viewable
+by the robot. Be default, no objects on the field are visible.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fieldPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the robot
+on the field. By default, there is no field position.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ballPosition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the current position and
+orientation of the soccer ball on the soccer field. By default, the
+position and orientation of the ball is unknown.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L288-L326">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Moving%20To%20Specific%20Poses"></a>
+                <a name="//apple_ref/swift/Section/Moving To Specific Poses" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Moving%20To%20Specific%20Poses"></a>
+                  <h3 class="section-name"><span>Moving To Specific Poses</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V5kneel4head7leftArm05rightG0yAA0A4HeadVSg_AA0aG0VSgAMtF"></a>
+                    <a name="//apple_ref/swift/Method/kneel(head:leftArm:rightArm:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V5kneel4head7leftArm05rightG0yAA0A4HeadVSg_AA0aG0VSgAMtF">kneel(head:<wbr>leftArm:<wbr>rightArm:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Change the joints so that the robot is in the kneeling position.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">kneel</span><span class="p">(</span>
+    <span class="nv">head</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoHead.html">NaoHead</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">leftArm</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">?</span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">(</span>
+        <span class="nv">shoulder</span><span class="p">:</span> <span class="kt"><a href="../Structs/PitchRollJoint.html">PitchRollJoint</a></span><span class="p">(</span><span class="nv">pitch</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">90</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">4</span><span class="p">)),</span>
+        <span class="nv">elbow</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawRollJoint.html">YawRollJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">0</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mf">2.8</span><span class="p">)),</span>
+        <span class="nv">wrist</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawJoint.html">YawJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="nv">rightArm</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">?</span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">(</span>
+        <span class="nv">shoulder</span><span class="p">:</span> <span class="kt"><a href="../Structs/PitchRollJoint.html">PitchRollJoint</a></span><span class="p">(</span><span class="nv">pitch</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">90</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">4</span><span class="p">)),</span>
+        <span class="nv">elbow</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawRollJoint.html">YawRollJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">0</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mf">2.8</span><span class="p">)),</span>
+        <span class="nv">wrist</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawJoint.html">YawJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">))</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>head</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the head. If
+omitted the head is not changed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>leftArm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the left arm. If
+omitted the left arm is changed to the position that it is normally in
+when the robot is kneeling. Pass nil to keep the current position of the
+left arm.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rightArm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the right arm.
+If omitted the right arm is changed to the position that it is normally
+in when the robot is kneeling. Pass nil to keep the current position of
+the right arm.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L344-L370">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V8kneeling4head7leftArm05rightG0AcA0A4HeadVSg_AA0aG0VSgAMtF"></a>
+                    <a name="//apple_ref/swift/Method/kneeling(head:leftArm:rightArm:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V8kneeling4head7leftArm05rightG0AcA0A4HeadVSg_AA0aG0VSgAMtF">kneeling(head:<wbr>leftArm:<wbr>rightArm:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Change the joints so that the robot is in the kneeling position.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">kneeling</span><span class="p">(</span>
+    <span class="nv">head</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoHead.html">NaoHead</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">leftArm</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">?</span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">(</span>
+        <span class="nv">shoulder</span><span class="p">:</span> <span class="kt"><a href="../Structs/PitchRollJoint.html">PitchRollJoint</a></span><span class="p">(</span><span class="nv">pitch</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">90</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">4</span><span class="p">)),</span>
+        <span class="nv">elbow</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawRollJoint.html">YawRollJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">0</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mf">2.8</span><span class="p">)),</span>
+        <span class="nv">wrist</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawJoint.html">YawJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="nv">rightArm</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">?</span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">(</span>
+        <span class="nv">shoulder</span><span class="p">:</span> <span class="kt"><a href="../Structs/PitchRollJoint.html">PitchRollJoint</a></span><span class="p">(</span><span class="nv">pitch</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">90</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">4</span><span class="p">)),</span>
+        <span class="nv">elbow</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawRollJoint.html">YawRollJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">0</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mf">2.8</span><span class="p">)),</span>
+        <span class="nv">wrist</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawJoint.html">YawJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">))</span>
+    <span class="p">)</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ManageableNaoV5</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>head</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the head. If
+omitted the head is not changed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>leftArm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the left arm. If
+omitted the left arm is changed to the position that it is normally in
+when the robot is kneeling. Pass nil to keep the current position of the
+left arm.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rightArm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the right arm.
+If omitted the right arm is changed to the position that it is normally
+in when the robot is kneeling. Pass nil to keep the current position of
+the right arm.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L386-L422">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V5stand4head7leftArm05rightG0yAA0A4HeadVSg_AA0aG0VSgAMtF"></a>
+                    <a name="//apple_ref/swift/Method/stand(head:leftArm:rightArm:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V5stand4head7leftArm05rightG0yAA0A4HeadVSg_AA0aG0VSgAMtF">stand(head:<wbr>leftArm:<wbr>rightArm:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Change the joints so that the robot is in the standing position.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">stand</span><span class="p">(</span>
+    <span class="nv">head</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoHead.html">NaoHead</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">leftArm</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">?</span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">(</span>
+        <span class="nv">shoulder</span><span class="p">:</span> <span class="kt"><a href="../Structs/PitchRollJoint.html">PitchRollJoint</a></span><span class="p">(</span><span class="nv">pitch</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">90</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">18</span><span class="p">)),</span>
+        <span class="nv">elbow</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawRollJoint.html">YawRollJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">0</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">)),</span>
+        <span class="nv">wrist</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawJoint.html">YawJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="nv">rightArm</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">?</span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">(</span>
+        <span class="nv">shoulder</span><span class="p">:</span> <span class="kt"><a href="../Structs/PitchRollJoint.html">PitchRollJoint</a></span><span class="p">(</span><span class="nv">pitch</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">90</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">18</span><span class="p">)),</span>
+        <span class="nv">elbow</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawRollJoint.html">YawRollJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">0</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">2</span><span class="p">)),</span>
+        <span class="nv">wrist</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawJoint.html">YawJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">))</span>
+    <span class="p">)</span>
+<span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>head</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the head. If
+omitted the head is not changed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>leftArm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the left arm. If
+omitted the left arm is changed to the position that it is normally in
+when the robot is standing. Pass nil to keep the current position of the
+left arm.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rightArm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the right arm.
+If omitted the right arm is changed to the position that it is normally
+in when the robot is standing. Pass nil to keep the current position of
+the right arm.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L438-L464">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:3Nao010ManageableA2V5V8standing4head7leftArm05rightG0AcA0A4HeadVSg_AA0aG0VSgAMtF"></a>
+                    <a name="//apple_ref/swift/Method/standing(head:leftArm:rightArm:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:3Nao010ManageableA2V5V8standing4head7leftArm05rightG0AcA0A4HeadVSg_AA0aG0VSgAMtF">standing(head:<wbr>leftArm:<wbr>rightArm:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a new nao in the standing position.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">standing</span><span class="p">(</span>
+    <span class="nv">head</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoHead.html">NaoHead</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">leftArm</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">?</span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">(</span>
+        <span class="nv">shoulder</span><span class="p">:</span> <span class="kt"><a href="../Structs/PitchRollJoint.html">PitchRollJoint</a></span><span class="p">(</span><span class="nv">pitch</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">90</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">18</span><span class="p">)),</span>
+        <span class="nv">elbow</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawRollJoint.html">YawRollJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">0</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">)),</span>
+        <span class="nv">wrist</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawJoint.html">YawJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="nv">rightArm</span><span class="p">:</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">?</span> <span class="o">=</span> <span class="kt"><a href="../Structs/NaoArm.html">NaoArm</a></span><span class="p">(</span>
+        <span class="nv">shoulder</span><span class="p">:</span> <span class="kt"><a href="../Structs/PitchRollJoint.html">PitchRollJoint</a></span><span class="p">(</span><span class="nv">pitch</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">90</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">18</span><span class="p">)),</span>
+        <span class="nv">elbow</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawRollJoint.html">YawRollJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">0</span><span class="p">),</span> <span class="nv">roll</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="mi">2</span><span class="p">)),</span>
+        <span class="nv">wrist</span><span class="p">:</span> <span class="kt"><a href="../Structs/YawJoint.html">YawJoint</a></span><span class="p">(</span><span class="nv">yaw</span><span class="p">:</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">degrees</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">))</span>
+    <span class="p">)</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ManageableNaoV5</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>head</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the head. If
+omitted the head is not changed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>leftArm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the left arm. If
+omitted the left arm is changed to the position that it is normally in
+when the robot is standing. Pass nil to keep the current position of the
+left arm.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rightArm</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optionally specify the position of the right arm.
+If omitted the right arm is changed to the position that it is normally
+in when the robot is standing. Pass nil to keep the current position of
+the right arm.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/mipalgu/swift_GURobots/tree/main/Sources/Nao/ManageableNaoV5.swift#L480-L516">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2021 <a class="link" href="" target="_blank" rel="external noopener">Callum McColl</a>. All rights reserved. (Last updated: 2021-12-24)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>
