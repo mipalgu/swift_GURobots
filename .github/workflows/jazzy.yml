@@ -180,11 +180,10 @@ jobs:
       run: swift build
 
     - name: Jazzy Action
-      uses: callummccoll/swifty-docs-action@ignore-targets
+      uses: sersoft-gmbh/swifty-docs-action@v1.2.0
       with:
         source: ${{github.workspace}}
         output: docs
-        ignore-targets: "Nao"
 
     - name: Pages Deployment
       uses: peaceiris/actions-gh-pages@v3
